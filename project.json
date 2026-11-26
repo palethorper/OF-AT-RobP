@@ -19,7 +19,7 @@
   ],
   "schemaVersion": "4.1",
   "studioVersion": "26.10.0.0",
-  "projectVersion": "1.0.249361036",
+  "projectVersion": "1.0.249361037",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -56,7 +56,7 @@
         "fileName": "Tests\\TC_P2P_E2E.xaml"
       },
       {
-        "editingStatus": "InProgress",
+        "editingStatus": "Publishable",
         "testCaseId": "bff913c0-a5f6-4c24-b17d-a875d61412d2",
         "dataVariationFilePath": ".variations\\OfatTestData_API_CreatePR.json",
         "testCaseType": "TestCase",

@@ -1,10 +1,8 @@
 {
   "checkedAt": "2026-11-26",
-  "status": "ready-local",
-  "statusNote": "2026-11-26: TC_P2P_E2E passed locally (RunId 2611261221). Runs from Test Manager need a runtime in Shared/OracleFusion.",
-  "blockers": [
-    "Shared/OracleFusion has 1 Test Automation runtime (machine template OracleFusion-Testing, created 2026-11-26) but 0 connected: a robot (user/robot account assigned to the folder) and a machine connected with the template's key are still needed before Test Manager can run DNZTRAIN:76."
-  ],
+  "status": "ready",
+  "statusNote": "2026-11-26: TC_P2P_E2E passed locally (RunId 2611261221). DNZTRAIN:78 (API CreatePR, data-driven) passed from Test Manager on the connected robot: execution f1953c7f, 3/3 rows, 17/17 checks.",
+  "blockers": [],
   "machineTemplate": {
     "name": "OracleFusion-Testing",
     "key": "b3bf56f1-2d33-4a33-b690-6aca198a12fb",
@@ -14,9 +12,9 @@
   },
   "package": {
     "name": "OF-AT-RobP",
-    "latestVersion": "1.0.2",
+    "latestVersion": "1.0.249361037",
     "feed": "Orchestrator Tenant Processes Feed",
-    "note": "1.0.2 sets the TC_P2P_E2E CredentialFolderPath default to Shared/OracleFusion (1.0.1 still had Shared/Testing-UBAPI)."
+    "note": "1.0.249361037 (2026-11-26) adds Tests\\API\\CreatePR (data-driven from OfatTestData / API_CreatePR). Versions must stay above Studio's auto-version 1.0.249361036, because Test Manager links resolve to the latest 1.0.x."
   },
   "linkedTestCases": [
     {
@@ -26,6 +24,17 @@
       "entryPoint": "Tests\\TC_P2P_E2E",
       "entryPointId": "62d0a4af-f6e6-43de-9f9e-ffd0c72d6070",
       "folderKey": "4a9ed7a3-e3cf-4e2e-81ac-352ed2406cf3"
+    },
+    {
+      "key": "DNZTRAIN:78",
+      "id": "7c492449-716a-0300-3a4d-0b4a6923c75b",
+      "name": "API CreatePR: create purchase requisition via REST, cancel refused while Incomplete, delete cleans up",
+      "labels": ["api", "P2P"],
+      "entryPoint": "Tests\\API\\CreatePR",
+      "entryPointId": "bff913c0-a5f6-4c24-b17d-a875d61412d2",
+      "folderKey": "4a9ed7a3-e3cf-4e2e-81ac-352ed2406cf3",
+      "dataSource": "Data Fabric OfatTestData, DataSet = API_CreatePR (one run per record)",
+      "lastRun": "execution f1953c7f-3ac7-0400-31b9-0b4a69324f96, 2026-11-26, Passed 3 / Failed 0"
     }
   ],
   "dataFabric": {

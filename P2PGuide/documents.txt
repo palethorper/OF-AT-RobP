@@ -64,3 +64,6 @@ API|204190|Tests\API\CreatePR run 2 (RunId 261126151507): all 7 verifications pa
 API|204191|Tests\API\CreatePR data-driven row 1 (OfatTestData API_CreatePR, 10.00): created Incomplete, cancel refused POR-2010919, deleted 204, 0 rows; 7/7 checks passed|16:41 2026-11-26
 API|204192|Tests\API\CreatePR data-driven row 2 (25.50): same outcomes; 7/7 checks passed|16:41 2026-11-26
 API|-|Tests\API\CreatePR data-driven row 3 (missing destination org): create 400 POR-2010313, nothing created; 3/3 checks passed (run twice)|16:42-16:43 2026-11-26
+API|204193|TM execution f1953c7f (DNZTRAIN:78, package 1.0.249361037) row 1: created, cancel refused POR-2010919, deleted, 0 rows; 7/7 Passed|17:00 2026-11-26
+API|204194|TM execution f1953c7f row 2 (25.50): same; 7/7 Passed|17:01 2026-11-26
+API|-|TM execution f1953c7f row 3: create 400 POR-2010313, nothing created; 3/3 Passed|17:01 2026-11-26
