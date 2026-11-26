@@ -1,0 +1,101 @@
+{
+  "_status": "APPROVED 2026-11-26 (user: 'Do option 3 now' on the proposed one-entity test data design).",
+  "scope": "tenant",
+  "purpose": "All Data Service test data for this project: one record per data row. A test case's data source filters on DataSet; Test Manager runs the case once per matching record.",
+  "entity": {
+    "name": "OfatTestData",
+    "displayName": "OF-AT Test Data",
+    "description": "Test data rows for the OF-AT-RobP test project. One record per row; RowData holds the row as one JSON object of text values.",
+    "fields": [
+      {
+        "name": "DataSet",
+        "displayName": "Data set",
+        "type": "STRING",
+        "lengthLimit": 100,
+        "isRequired": true,
+        "description": "Name of the data set the row belongs to, unique within the project (for example API_CreatePR)."
+      },
+      {
+        "name": "RowOrder",
+        "displayName": "Row order",
+        "type": "DECIMAL",
+        "decimalPrecision": 0,
+        "minValue": 1,
+        "isRequired": true,
+        "description": "Row position within its data set, from 1."
+      },
+      {
+        "name": "RowData",
+        "displayName": "Row data",
+        "type": "MULTILINE_TEXT",
+        "lengthLimit": 4000,
+        "isRequired": true,
+        "description": "The row as one JSON object of text values; every field of its data set present, an empty value as \"\"."
+      }
+    ]
+  },
+  "dataSets": {
+    "API_CreatePR": {
+      "testCase": "Tests\\API\\CreatePR.xaml",
+      "fields": [
+        "Scenario",
+        "BusinessUnit",
+        "RequesterEmail",
+        "DestinationOrganizationId",
+        "DeliverToLocation",
+        "Category",
+        "Supplier",
+        "SupplierSite",
+        "Price",
+        "ExpectedCreateStatus",
+        "ExpectedDocumentStatus",
+        "ExpectedErrorCode"
+      ],
+      "rows": [
+        {
+          "Scenario": "Create, cancel refused, delete (10.00 USD)",
+          "BusinessUnit": "US1 Business Unit",
+          "RequesterEmail": "CASEY.BROWN_eqjz-dev16@oraclepdemos.com",
+          "DestinationOrganizationId": "300000047274444",
+          "DeliverToLocation": "Seattle",
+          "Category": "206.61 Monitors",
+          "Supplier": "Dell Inc.",
+          "SupplierSite": "Dell US1",
+          "Price": "10.00",
+          "ExpectedCreateStatus": "201",
+          "ExpectedDocumentStatus": "Incomplete",
+          "ExpectedErrorCode": ""
+        },
+        {
+          "Scenario": "Create, cancel refused, delete (25.50 USD)",
+          "BusinessUnit": "US1 Business Unit",
+          "RequesterEmail": "CASEY.BROWN_eqjz-dev16@oraclepdemos.com",
+          "DestinationOrganizationId": "300000047274444",
+          "DeliverToLocation": "Seattle",
+          "Category": "206.61 Monitors",
+          "Supplier": "Dell Inc.",
+          "SupplierSite": "Dell US1",
+          "Price": "25.50",
+          "ExpectedCreateStatus": "201",
+          "ExpectedDocumentStatus": "Incomplete",
+          "ExpectedErrorCode": ""
+        },
+        {
+          "Scenario": "Create rejected: missing destination organization",
+          "BusinessUnit": "US1 Business Unit",
+          "RequesterEmail": "CASEY.BROWN_eqjz-dev16@oraclepdemos.com",
+          "DestinationOrganizationId": "",
+          "DeliverToLocation": "Seattle",
+          "Category": "206.61 Monitors",
+          "Supplier": "Dell Inc.",
+          "SupplierSite": "Dell US1",
+          "Price": "10.00",
+          "ExpectedCreateStatus": "400",
+          "ExpectedDocumentStatus": "",
+          "ExpectedErrorCode": "POR-2010313"
+        }
+      ]
+    }
+  },
+  "_note": "Field 'Row' was rejected by Data Fabric (reserved SQL word); renamed RowData with user approval 2026-11-26."
+}

@@ -1,0 +1,141 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Workflows_Common_ParseTestRow" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Caller" Type="InArgument(x:String)" />
+    <x:Property Name="in_DataSet" Type="InArgument(x:String)" />
+    <x:Property Name="in_RowOrder" Type="InArgument(x:String)" />
+    <x:Property Name="in_RowData" Type="InArgument(x:String)" />
+    <x:Property Name="in_RequiredFields" Type="InArgument(s:String[])" />
+    <x:Property Name="out_Values" Type="OutArgument(scg:Dictionary(x:String, x:String))" />
+  </x:Members>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Parse one test data row (strict): RowData JSON to text values" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strContext" />
+      <Variable x:TypeArguments="njl:JObject" Name="joRow" />
+      <Variable x:TypeArguments="x:String" Default="" Name="strMissing" />
+      <Variable x:TypeArguments="x:String" Default="" Name="strNotText" />
+    </Sequence.Variables>
+    <Assign DisplayName="strContext = caller, data set and row (for error messages)" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strContext]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[If(in_Caller, "(caller not given)") &amp; ": data set '" &amp; If(in_DataSet, "") &amp; "' row " &amp; If(in_RowOrder, "")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[String.IsNullOrWhiteSpace(in_RowData)]" DisplayName="If RowData is empty: fail" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Throw DisplayName="Throw ArgumentException (empty row)" sap2010:WorkflowViewState.IdRef="Throw_1">
+            <Throw.Exception>
+              <InArgument x:TypeArguments="s:Exception">[New ArgumentException(strContext &amp; ": RowData is empty.")]</InArgument>
+            </Throw.Exception>
+          </Throw>
+        </Sequence>
+      </If.Then>
+    </If>
+    <TryCatch DisplayName="Parse RowData as a JSON object" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence DisplayName="Try" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Assign DisplayName="joRow = JObject.Parse(RowData)" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign.To>
+              <OutArgument x:TypeArguments="njl:JObject">[joRow]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="njl:JObject">[JObject.Parse(in_RowData)]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch_1">
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exParse" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Catch" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <Throw DisplayName="Throw ArgumentException (not a JSON object)" sap2010:WorkflowViewState.IdRef="Throw_2">
+                <Throw.Exception>
+                  <InArgument x:TypeArguments="s:Exception">[New ArgumentException(strContext &amp; ": RowData is not a JSON object (" &amp; exParse.Message &amp; ").", exParse)]</InArgument>
+                </Throw.Exception>
+              </Throw>
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <Assign DisplayName="strMissing = required fields the row lacks" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strMissing]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[String.Join(", ", If(in_RequiredFields, New String() {}).Where(Function(f) joRow.Property(f) Is Nothing))]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[strMissing &lt;&gt; &quot;&quot;]" DisplayName="If a required field is missing: fail" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Throw DisplayName="Throw ArgumentException (missing fields)" sap2010:WorkflowViewState.IdRef="Throw_3">
+            <Throw.Exception>
+              <InArgument x:TypeArguments="s:Exception">[New ArgumentException(strContext &amp; ": missing field(s) " &amp; strMissing &amp; ".")]</InArgument>
+            </Throw.Exception>
+          </Throw>
+        </Sequence>
+      </If.Then>
+    </If>
+    <Assign DisplayName="strNotText = fields whose value is not text" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strNotText]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[String.Join(", ", joRow.Properties().Where(Function(p) p.Value.Type &lt;&gt; JTokenType.String).Select(Function(p) p.Name &amp; " (" &amp; p.Value.Type.ToString() &amp; ")"))]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[strNotText &lt;&gt; &quot;&quot;]" DisplayName="If a value is not text: fail" sap2010:WorkflowViewState.IdRef="If_3">
+      <If.Then>
+        <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Throw DisplayName="Throw ArgumentException (non-text values)" sap2010:WorkflowViewState.IdRef="Throw_4">
+            <Throw.Exception>
+              <InArgument x:TypeArguments="s:Exception">[New ArgumentException(strContext &amp; ": every value must be text; not text: " &amp; strNotText &amp; ".")]</InArgument>
+            </Throw.Exception>
+          </Throw>
+        </Sequence>
+      </If.Then>
+    </If>
+    <Assign DisplayName="out_Values = field name to text value" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[out_Values]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[joRow.Properties().ToDictionary(Function(p) p.Name, Function(p) p.Value.ToString())]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:LogMessage DisplayName="Log parsed (field names only, never values)" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[strContext &amp; &quot; parsed: &quot; &amp; String.Join(&quot;, &quot;, out_Values.Keys)]" />
+  </Sequence>
+</Activity>

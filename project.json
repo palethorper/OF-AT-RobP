@@ -54,6 +54,14 @@
         "testCaseType": "TestCase",
         "executionTemplateInvokeIsolated": false,
         "fileName": "Tests\\TC_P2P_E2E.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "bff913c0-a5f6-4c24-b17d-a875d61412d2",
+        "dataVariationFilePath": ".variations\\OfatTestData_API_CreatePR.json",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\API\\CreatePR.xaml"
       }
     ],
     "saveToCloud": false

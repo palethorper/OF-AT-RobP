@@ -57,3 +57,10 @@ Robot run 26 (2611241219): FULL PASS S0-S7 + S9, all 9 verifications passed (Req
 PUBLISHED OracleFusion_AgenticTesting 1.0.0 (tenant processes feed); OFP2P:227 LINKED to Tests\TC_P2P_E2E; TM unattended execution 9cbae443-11c3-0400-2d96-0b4a670d782f started|12:36
 Invoice|889900|canceled via REST cancelInvoice (leftover from 23 Nov E2E, PO US165366)|12:16 2026-11-26
 E2E|2611261221|TC_P2P_E2E local run (DNZTRAIN setup): supplier UIPTST Supplier 2611261221 (#1522, reg 300000342410481, kept active), req 204186 (Approved), PO US165380 (Closed), invoice UIP-OFP2P-2611261221 (Canceled)|12:21-12:36 2026-11-26
+Requisition|204188|created via REST POST purchaseRequisitions (UIP-TEST-API-2611261459, 1 x 10.00 USD, Dell US1), status Incomplete|14:59 2026-11-26
+Requisition|204188|cancel refused POR-2010919 (Incomplete); deleted via REST DELETE purchaseRequisitions/{id}|15:00 2026-11-26
+API|204189|Tests\API\CreatePR run 1 (RunId 261126151437): created Incomplete, cancel refused POR-2010919, deleted 204, search 0 rows|15:14 2026-11-26
+API|204190|Tests\API\CreatePR run 2 (RunId 261126151507): all 7 verifications passed; deleted 204, search 0 rows|15:15 2026-11-26
+API|204191|Tests\API\CreatePR data-driven row 1 (OfatTestData API_CreatePR, 10.00): created Incomplete, cancel refused POR-2010919, deleted 204, 0 rows; 7/7 checks passed|16:41 2026-11-26
+API|204192|Tests\API\CreatePR data-driven row 2 (25.50): same outcomes; 7/7 checks passed|16:41 2026-11-26
+API|-|Tests\API\CreatePR data-driven row 3 (missing destination org): create 400 POR-2010313, nothing created; 3/3 checks passed (run twice)|16:42-16:43 2026-11-26

@@ -1,0 +1,7 @@
+{
+  "ofatTestData": {
+    "DataSet": "API_CreatePR",
+    "RowOrder": 1,
+    "RowData": "{\"Scenario\": \"Create, cancel refused, delete (10.00 USD)\", \"BusinessUnit\": \"US1 Business Unit\", \"RequesterEmail\": \"CASEY.BROWN_eqjz-dev16@oraclepdemos.com\", \"DestinationOrganizationId\": \"300000047274444\", \"DeliverToLocation\": \"Seattle\", \"Category\": \"206.61 Monitors\", \"Supplier\": \"Dell Inc.\", \"SupplierSite\": \"Dell US1\", \"Price\": \"10.00\", \"ExpectedCreateStatus\": \"201\", \"ExpectedDocumentStatus\": \"Incomplete\", \"ExpectedErrorCode\": \"\"}"
+  }
+}

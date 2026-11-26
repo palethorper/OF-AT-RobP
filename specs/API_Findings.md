@@ -359,3 +359,28 @@ The request named Workday operations (`Get_Workers`, `Get_Organizations`, `Get_E
 - An OAuth client (§4.2).
 - Move the connection to Shared/OracleFusion if test runs should use that folder.
 - Leftover invoice **889900** (Validated, Unpaid) and its closed PO US165366 from the 23 Nov end-to-end run: decide whether to cancel the invoice.
+
+### 9.5 Create and cancel a requisition through REST (experiment, 2026-11-26)
+
+| Step | Call | Result |
+|---|---|---|
+| Create | `POST purchaseRequisitions`, `Content-Type: application/json` | **201**: requisition **204188**, status **Incomplete** (it is not submitted for approval) |
+| Cancel | `POST purchaseRequisitions/{id}/action/cancel` `{"cancelReason": "..."}` | **400 POR-2010919** "You can't cancel a requisition … if it's incomplete. You must delete it." |
+| Clean up | `DELETE purchaseRequisitions/{id}` | **204**; a search by number then returns 0 rows |
+
+**Minimum create body** (US1, Casey). The first attempt without the two marked fields gave 400 POR-2010313:
+```json
+{"RequisitioningBU": "US1 Business Unit", "PreparerEmail": "CASEY.BROWN_eqjz-dev16@oraclepdemos.com",
+ "ExternallyManagedFlag": false,                       // required
+ "Description": "UIP-TEST-API-<ts> ...",
+ "lines": [{"LineNumber": 1, "LineTypeCode": "Goods", "CategoryName": "206.61 Monitors",
+   "ItemDescription": "UIP-TEST-API-<ts> ...", "Quantity": 1, "UOM": "Ea", "Price": 10, "CurrencyCode": "USD",
+   "RequesterEmail": "CASEY.BROWN_eqjz-dev16@oraclepdemos.com", "DestinationTypeCode": "EXPENSE",
+   "DestinationOrganizationId": 300000047274444,       // required (org code 001)
+   "DeliverToLocationCode": "Seattle", "Supplier": "Dell Inc.", "SupplierSite": "Dell US1"}]}
+```
+
+**Implication:**
+- REST is a fast way to create test data, but the requisition stays Incomplete.
+- To get a requisition that can be canceled, submit it first (`action/submitRequisition`, not tried yet), which starts approval. Under 50K, Casey's catch-all step still applies.
+- An Incomplete requisition is cleaned up with `DELETE`.

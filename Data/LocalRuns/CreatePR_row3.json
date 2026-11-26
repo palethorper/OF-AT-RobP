@@ -1,0 +1,7 @@
+{
+  "ofatTestData": {
+    "DataSet": "API_CreatePR",
+    "RowOrder": 3,
+    "RowData": "{\"Scenario\": \"Create rejected: missing destination organization\", \"BusinessUnit\": \"US1 Business Unit\", \"RequesterEmail\": \"CASEY.BROWN_eqjz-dev16@oraclepdemos.com\", \"DestinationOrganizationId\": \"\", \"DeliverToLocation\": \"Seattle\", \"Category\": \"206.61 Monitors\", \"Supplier\": \"Dell Inc.\", \"SupplierSite\": \"Dell US1\", \"Price\": \"10.00\", \"ExpectedCreateStatus\": \"400\", \"ExpectedDocumentStatus\": \"\", \"ExpectedErrorCode\": \"POR-2010313\"}"
+  }
+}
