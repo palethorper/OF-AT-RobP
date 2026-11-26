@@ -8,6 +8,7 @@
 #   .project/      binding metadata shipped in the package
 #   .templates/    test execution templates
 #   .entities/     imported Data Fabric entities (EntitiesStore.json; project.json points here)
+#   .tmh/          Test Manager link (server URL + default project DNZTRAIN; no credentials)
 #   Data/, Tests/, Workflows/, specs/, P2PGuide/, Prompts/, run-config.json
 
 # ---------------------------------------------------------------------------
@@ -22,9 +23,6 @@
 
 # Runtime statistics (ActivityStatistics etc.)
 .storage/.runtime/
-
-# Studio's per-user Test Manager connection (re-create with `uip rpa tm connect`)
-.tmh/
 
 # Local edit backups taken before bulk changes (kept on disk, not in history)
 .backup/

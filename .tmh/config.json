@@ -1,0 +1,9 @@
+{
+  "issueKeyTestcaseValues": {},
+  "testManagerBasePath": "https://cloud.uipath.com/deloivqbaydk/DefaultTenant/testmanager_",
+  "defaultProject": {
+    "id": "bfe8d125-7e0f-0000-9a10-0b4a6805c63e",
+    "name": "DNZ-Train",
+    "key": "DNZTRAIN"
+  }
+}

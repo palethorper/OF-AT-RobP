@@ -1,0 +1,25 @@
+# .gitattributes — OracleFusion_AgenticTesting
+#
+# Mark binary files so git never applies line-ending conversion or text diffs to them
+# (Object Repository screenshots, evidence images, Office source documents, archives).
+# Text files (xaml, json, md, Object Repository descriptors) are left to the default
+# behaviour on purpose: adding eol rules here would rewrite every file on the next commit.
+
+# Images (.screenshots/, P2PGuide/shots/)
+*.jpg   binary
+*.jpeg  binary
+*.png   binary
+*.gif   binary
+*.bmp   binary
+*.ico   binary
+
+# Office and documents (specs/source/, Data/)
+*.docx  binary
+*.xlsx  binary
+*.pptx  binary
+*.pdf   binary
+
+# Archives, packages and media
+*.zip   binary
+*.nupkg binary
+*.mp4   binary
