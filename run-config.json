@@ -3,8 +3,15 @@
   "status": "ready-local",
   "statusNote": "2026-11-26: TC_P2P_E2E passed locally (RunId 2611261221). Runs from Test Manager need a runtime in Shared/OracleFusion.",
   "blockers": [
-    "Shared/OracleFusion has 0 runtimes of every type (checked 2026-11-26), so Test Manager cannot run DNZTRAIN:76 there yet."
+    "Shared/OracleFusion has 1 Test Automation runtime (machine template OracleFusion-Testing, created 2026-11-26) but 0 connected: a robot (user/robot account assigned to the folder) and a machine connected with the template's key are still needed before Test Manager can run DNZTRAIN:76."
   ],
+  "machineTemplate": {
+    "name": "OracleFusion-Testing",
+    "key": "b3bf56f1-2d33-4a33-b690-6aca198a12fb",
+    "testAutomationSlots": 1,
+    "assignedFolder": "Shared/OracleFusion",
+    "note": "The machine (license) key used to connect a robot is in Orchestrator > Machines; not stored here."
+  },
   "package": {
     "name": "OF-AT-RobP",
     "latestVersion": "1.0.2",
