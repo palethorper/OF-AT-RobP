@@ -1,0 +1,267 @@
+### Eval
+- Result: Create Invoice - Invoices - Oracle Fusion Cloud Applications
+https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview
+Skip to main content
+
+19
+
+Create Invoice: UIP-AP-231126-1013
+		
+About This Record
+	 	
+		Canceled
+	 	
+	Invoice Actions	
+
+Save and Create Next
+		
+Save
+		
+Save and Close
+		
+Cancel
+
+Last Saved	22/11/26 11:29 PM
+
+Invoice Header
+	
+	Show More
+
+Identifying PO	
+Business Unit	US1 Business Unit
+Supplier	ABC Consulting
+Supplier Number	1288
+Supplier Site	ABC US1
+Legal Entity	US1 Legal Entity
+Invoice Group	
+
+Number	UIP-AP-231126-1013
+*Amount	
+USD - US Dollar		
+	0.00
+
+Type	Standard
+Description	
+
+Date	22/11/26
+Payment Terms	Net 30
+Terms Date	22/11/26
+Requester	
+Attachments	
+None		
+
+Note	
+		
+Lines
+
+Match Invoice Lines
+Match to Receipt Charges
+Correct Matched Invoices
+Correct Unmatched Invoices
+Action
+
+View	
+	
+Add Row
+	
+Duplicate
+	
+Delete
+	
+Export to Excel
+	
+Query By Example
+	
+Detach
+Detach
+	
+Allocate
+	
+Button has a popup, press down arrow key to access the popup.
+	
+Cancel Line
+	
+Distributions
+	
+DistributionReferenceTaxPurchase OrderAssetProject
+
+*Number
+	
+*Type
+	
+*Amount
+
+Distribution
+	
+Reference
+	
+Tax
+	
+Purchase Order
+	
+Asset
+	
+Project
+	
+Details
+
+Distribution Set
+	
+Distribution Combination
+	
+Accounting Date
+	
+Prorate Across All Item Lines
+	
+Description
+	
+Tax Classification
+	
+Ship-to Location
+	
+Number
+	
+Line
+	
+Schedule
+	
+Track as Asset
+	
+Book
+	
+Asset Category
+	
+Project Number		
+	
+Task Number		
+	
+Expenditure Item Date		
+	
+Expenditure Type		
+	
+Expenditure Organization		
+	
+Contract Number		
+	
+Funding Source		
+ 	
+1	
+	Item	
+Amount
+
+Distribution Combination ID
+
+Press down arrow to access Calendar
+Accounting Date
+
+Description
+	
+Tax Classification
+	
+Autocompletes on TAB
+	
+Ship-to Location
+	
+Autocompletes on TAB
+	
+Number
+	
+Autocompletes on TAB
+	
+Line
+	
+Autocompletes on TAB
+	
+Schedule
+	
+Autocompletes on TAB
+
+Asset Category
+
+Taxes
+		
+Transaction Taxes
+Withholding Taxes
+	View	
+	
+Detach
+Detach
+	
+Override Tax Amount	
+	Apply	Edit Taxes	Manage Tax Details
+
+Line
+	
+Rate Name
+	
+Rate
+	
+Amount
+	
+Canceled
+	
+Inclusive
+	
+Self-Assessed
+	
+Tax Only Line
+	
+Regime
+	
+Tax Name
+	
+Tax Jurisdiction
+2	STD	2.5	0.00	
+Canceled
+	
+Inclusive
+	
+Self-Assessed
+	
+Tax Only Line
+	US SALES AND USE TAX	COUNTY	CA-San Mateo-CO-050810000
+3	STD	6.5	0.00	
+Canceled
+	
+Inclusive
+	
+Self-Assessed
+	
+Tax Only Line
+	US SALES AND USE TAX	STATE	CA-ST-050000000
+
+Total
+	
+	0.00
+	 	
+	0.00
+	
+	0.00
+
+Totals
+	
+Items
+0.00
+	
+Freight
+0.00
+	
+Miscellaneous
+0.00
+Retainage
+0.00
+	
+Tax
+0.00
+Withholding
+0.00
+	
+Included Prepayments
+0.00
+Applied Prepayments
+0.00
+	
+Total
+		0.00
+Due
+0.00

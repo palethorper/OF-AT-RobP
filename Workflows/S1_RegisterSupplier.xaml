@@ -1,0 +1,806 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Workflows_S1_RegisterSupplier" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:uta="clr-namespace:UiPath.Testing.Activities;assembly=UiPath.Testing.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Browser" Type="InArgument(ui:UiElement)" />
+    <x:Property Name="in_SupplierName" Type="InArgument(x:String)" />
+    <x:Property Name="in_TaxpayerId" Type="InArgument(x:String)" />
+    <x:Property Name="in_AccountNumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_Profile" Type="InArgument(scg:Dictionary(x:String, x:String))" />
+    <x:Property Name="out_RegistrationId" Type="OutArgument(x:String)" />
+  </x:Members>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Testing.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="S1 Register supplier" sap:VirtualizedContainerService.HintSize="790,2862" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log S1 start" sap:VirtualizedContainerService.HintSize="770,48" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;S1 Register supplier: &quot; &amp; in_SupplierName &amp; &quot; / Taxpayer ID &quot; &amp; in_TaxpayerId]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" ConnectionId="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Use Browser Chrome: Oracle Fusion" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="770,2790" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_Browser]" IsIncognito="{x:Null}" OpenMode="Never" OutUiElement="{x:Null}" ScopeGuid="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="{x:Null}" UserDataFolderMode="{x:Null}" UserDataFolderPath="{x:Null}" Version="V2" WebDriverMode="{x:Null}">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="770,2724" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="optionText" />
+              <Variable x:TypeArguments="x:String" Name="strUrl" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="Open the Supplier Registration wizard" sap:VirtualizedContainerService.HintSize="740,654" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Open Supplier Management (reload up to 3x)" sap:VirtualizedContainerService.HintSize="710,564" sap2010:WorkflowViewState.IdRef="RetryScope_101" LogRetriedExceptions="True" NumberOfRetries="3" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:02" StopRetryingOnBusinessException="{x:Null}">
+                <ui:RetryScope.ActivityBody>
+                  <ActivityAction>
+                    <Sequence DisplayName="Open Supplier Management (reload up to 3x) (body)" sap:VirtualizedContainerService.HintSize="710,378" sap2010:WorkflowViewState.IdRef="Sequence_102">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <uix:NGoToUrl ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Go To Supplier Management" sap:VirtualizedContainerService.HintSize="680,48" sap2010:WorkflowViewState.IdRef="NGoToUrl_70" InUiElement="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="{x:Null}" Url="[in_Profile(&quot;BaseUrl&quot;) &amp; &quot;/fscmUI/redwood/suppliers/landing-page/overview&quot;]" Version="V5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </uix:NGoToUrl>
+                      <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Register Supplier (landing page re-renders while loading)" sap:VirtualizedContainerService.HintSize="680,282" sap2010:WorkflowViewState.IdRef="RetryScope_2" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
+                        <ui:RetryScope.ActivityBody>
+                          <ActivityAction>
+                            <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="680,96" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Register Supplier Link" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_3" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                                <uix:NClick.Target>
+                                  <uix:TargetAnchorable ContentHash="mySqUnhBGE-08NH919HomA" DesignTimeRectangle="1278, 504, 123, 21" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='Register Supplier' tag='A' uipath-html-title='Register Supplier' /&gt;" Guid="713dd9c3-b874-4370-8350-86fff8a51c29" InformativeScreenshot="5046219c9141ae76ae28cf73c1c82d43.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/MRNW5N07mEayizfB9qbRVg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Supplier Management - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                </uix:NClick.Target>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </uix:NClick>
+                            </Sequence>
+                          </ActivityAction>
+                        </ui:RetryScope.ActivityBody>
+                        <ui:RetryScope.Condition>
+                          <ActivityFunc x:TypeArguments="x:Boolean" />
+                        </ui:RetryScope.Condition>
+                      </ui:RetryScope>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:RetryScope.ActivityBody>
+                <ui:RetryScope.Condition>
+                  <ActivityFunc x:TypeArguments="x:Boolean" />
+                </ui:RetryScope.Condition>
+              </ui:RetryScope>
+            </Sequence>
+            <uix:NCheckState CheckWindowActive="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Check draft-exists dialog (Casey already has an open draft)" Exists="{x:Null}" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="740,330" sap2010:WorkflowViewState.IdRef="NCheckState_2" InUiElement="{x:Null}" OutUiElement="{x:Null}" Result="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" Version="V5">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Draft exists: Start Over" sap:VirtualizedContainerService.HintSize="680,144" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log draft exists" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Warn" Message="[&quot;S1: an open draft registration exists; clicking Start Over (discards that draft)&quot;]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:LogMessage>
+                  <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Draft Exists Start Over Button" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_32" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="Qe3QNhZxrEC-Zn42RO0ZHw" DesignTimeRectangle="946, 642, 99, 44" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='internalDraftRequestExistsDialog' tag='OJ-DIALOG' /&gt;&lt;webctrl tag='BUTTON' aaname='Start Over' /&gt;" Guid="2e2a4dfd-93b5-49cf-b5a1-bb2d0511b5d7" InformativeScreenshot="3685884673b88e646cbf1e432f8e286d.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/zIPAczD5IE6ZXQsB6Ds_mQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                    </uix:NClick.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="No draft" sap:VirtualizedContainerService.HintSize="680,96" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log no draft" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;S1: no open draft dialog&quot;]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:LogMessage>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable ContentHash="Qe3QNhZxrEC-Zn42RO0ZHw" DesignTimeRectangle="946, 642, 99, 44" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='internalDraftRequestExistsDialog' tag='OJ-DIALOG' /&gt;&lt;webctrl tag='BUTTON' aaname='Start Over' /&gt;" Guid="0b7e43f1-5d0a-4c8e-9a51-3f6f2d8c1a77" InformativeScreenshot="3685884673b88e646cbf1e432f8e286d.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/zIPAczD5IE6ZXQsB6Ds_mQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+            <Sequence DisplayName="Page 1 Company Details" sap:VirtualizedContainerService.HintSize="740,1392" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Get url (page re-renders after Start Over)" sap:VirtualizedContainerService.HintSize="680,240" sap2010:WorkflowViewState.IdRef="RetryScope_3" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
+                <ui:RetryScope.ActivityBody>
+                  <ActivityAction>
+                    <Sequence DisplayName="Action" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                      <uix:NGetAttributeGeneric x:TypeArguments="x:String" Attribute="url" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Get Attribute url (wizard tab holds SupplierRegId)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric_1" InScope="{x:Null}" InUiElement="{x:Null}" OutUiElement="{x:Null}" Result="[strUrl]" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" Version="V5">
+                        <uix:NGetAttributeGeneric.Target>
+                          <uix:TargetAnchorable ContentHash="HqmXVnULy06UP6Zvk4p3xw" DesignTimeRectangle="57, 420, 430, 52" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='CompanySearchField|input' tag='INPUT' type='text' class='oj-inputtext-input oj-text-field-input oj-component-initnode' aaname='Company' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="18c8c962-fdc8-4730-886a-32bdd5888607" InformativeScreenshot="ac9c3a1ba34a39af47a8c1150f8cd209.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/lBvFiIazyEugkRfcwJnHVQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive" />
+                        </uix:NGetAttributeGeneric.Target>
+                      </uix:NGetAttributeGeneric>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:RetryScope.ActivityBody>
+                <ui:RetryScope.Condition>
+                  <ActivityFunc x:TypeArguments="x:Boolean" />
+                </ui:RetryScope.Condition>
+              </ui:RetryScope>
+              <Assign DisplayName="Assign out_RegistrationId" sap:VirtualizedContainerService.HintSize="680,48" sap2010:WorkflowViewState.IdRef="Assign_1">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[out_RegistrationId]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[Regex.Match(strUrl, "SupplierRegId=(\d+)").Groups(1).Value]</InArgument>
+                </Assign.Value>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Assign>
+              <ui:LogMessage DisplayName="Log registration id" sap:VirtualizedContainerService.HintSize="680,48" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;S1 wizard opened, SupplierRegId=&quot; &amp; out_RegistrationId]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Business Relationship Dropdown" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="680,48" sap2010:WorkflowViewState.IdRef="NClick_4" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="xWaHgm3m9UOWjXKveDvF9A" DesignTimeRectangle="513, 420, 379, 52" ElementType="DropDown" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='busRelSelectSingle|input' tag='INPUT' type='text' class='oj-searchselect-input oj-text-field-input' aaname='Business Relationship' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="7b509826-5891-4ec7-8a8e-a76b655fc175" InformativeScreenshot="78fb291b425253b4a22b76eb38ddfd6c.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/9BElvpgNkEaewsFGAoV3pQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="529, 428, 122, 16" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-LABEL' id='busRelSelectSingle-labelled-by' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' id='busRelSelectSingle-labelled-by|label' type='' class='oj-component-initnode' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Business Relationship' /&gt;" Guid="e100741d-6e1f-40fb-b5d1-9f94833b158c" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NClick>
+              <Assign DisplayName="optionText = Business Relationship" sap2010:WorkflowViewState.IdRef="Assign_2">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[optionText]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[in_Profile("BusinessRelationship")]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Option (Business Relationship)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_5" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="WBHmu42HjU2-XPY21CCq-A" DesignTimeRectangle="989, 475, 398, 21" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl aria-role='gridcell' tag='DIV' class='oj-listview-cell-element' visibleinnertext='{0}' /&gt;&quot;, optionText)]" Guid="707be8a8-2ec4-4e39-a10a-96db38ad5390" InformativeScreenshot="7fe73359be0a3dcf81b1dca3a5ca9c9a.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/0FV2zcOEG0q0QRgmd20-kw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Procurement BU Dropdown" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_6" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="ZxsSP1zYYEKfOvpmcNVacg" DesignTimeRectangle="969, 420, 379, 52" ElementType="DropDown" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='prcBUSelectSingle|input' tag='INPUT' type='text' class='oj-searchselect-input oj-text-field-input' aaname='Procurement BU' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="c82e5e67-72f8-4aa3-b64f-6d8b8a77ab2a" InformativeScreenshot="816da5c64de28660a7e2f11452f542ba.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/vNlCW4UwpkqRXdSODPmZxg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="985, 437, 105, 16" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-LABEL' id='prcBUSelectSingle-labelled-by' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' id='prcBUSelectSingle-labelled-by|label' type='' class='oj-component-initnode' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Procurement BU' /&gt;" Guid="16d842bf-175b-4402-ad12-bb432a73e4d9" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <Assign DisplayName="optionText = Procurement BU" sap2010:WorkflowViewState.IdRef="Assign_3">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[optionText]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[in_Profile("ProcurementBU")]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Option (Procurement BU)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_7" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="WBHmu42HjU2-XPY21CCq-A" DesignTimeRectangle="989, 475, 398, 21" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl aria-role='gridcell' tag='DIV' class='oj-listview-cell-element' visibleinnertext='{0}' /&gt;&quot;, optionText)]" Guid="707be8a8-2ec4-4e39-a10a-96db38ad5390" InformativeScreenshot="7fe73359be0a3dcf81b1dca3a5ca9c9a.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/0FV2zcOEG0q0QRgmd20-kw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Request Reason Dropdown" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_8" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="fnkiE0Ntck2HAJGYAIUHkQ" DesignTimeRectangle="57, 509, 379, 52" ElementType="DropDown" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='reqReasonSelectSingle|input' tag='INPUT' type='text' class='oj-searchselect-input oj-text-field-input' aaname='Request Reason' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="3cd4a4ad-2b9a-4d10-897e-532ed565a37a" InformativeScreenshot="dba7652e30429af4839550ebe93c3899.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/0vZdiBLqZUO6h4YTo-l2-Q" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="73, 526, 102, 17" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-LABEL' id='reqReasonSelectSingle-labelled-by' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' id='reqReasonSelectSingle-labelled-by|label' type='' class='oj-component-initnode' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Request Reason' /&gt;" Guid="f843e991-9e70-4b21-9987-76feb800abea" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <Assign DisplayName="optionText = Request Reason" sap2010:WorkflowViewState.IdRef="Assign_4">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[optionText]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[in_Profile("RequestReason")]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Option (Request Reason)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_9" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="WBHmu42HjU2-XPY21CCq-A" DesignTimeRectangle="989, 475, 398, 21" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl aria-role='gridcell' tag='DIV' class='oj-listview-cell-element' visibleinnertext='{0}' /&gt;&quot;, optionText)]" Guid="707be8a8-2ec4-4e39-a10a-96db38ad5390" InformativeScreenshot="7fe73359be0a3dcf81b1dca3a5ca9c9a.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/0FV2zcOEG0q0QRgmd20-kw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Tax Country (filter)" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" SecureText="{x:Null}" Text="[in_Profile(&quot;Country&quot;)]" Timeout="10" Version="V5">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable ContentHash="9W5wMF-etEC-vmooyboFAg" DesignTimeRectangle="969, 509, 379, 52" ElementType="DropDown" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='countrySelectSingle|input' tag='INPUT' type='text' class='oj-searchselect-input oj-text-field-input' aaname='Country' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="1fb31a1a-fca8-427a-abd6-77637fb74d0a" InformativeScreenshot="0175d74e702ebb618aac41b5ec28c8d8.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/nYg28rdtYkikJVX1GhqOVg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="985, 526, 52, 17" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-LABEL' id='countrySelectSingle-labelled-by' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' id='countrySelectSingle-labelled-by|label' type='' class='oj-component-initnode' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Country' /&gt;" Guid="06eff538-1b9a-4668-bdc0-ce16070ed749" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+              </uix:NTypeInto>
+              <Assign DisplayName="optionText = Country" sap2010:WorkflowViewState.IdRef="Assign_5">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[optionText]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[in_Profile("Country")]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Option (Country)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_10" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="WBHmu42HjU2-XPY21CCq-A" DesignTimeRectangle="989, 475, 398, 21" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl aria-role='gridcell' tag='DIV' class='oj-listview-cell-element' visibleinnertext='{0}' /&gt;&quot;, optionText)]" Guid="707be8a8-2ec4-4e39-a10a-96db38ad5390" InformativeScreenshot="7fe73359be0a3dcf81b1dca3a5ca9c9a.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/0FV2zcOEG0q0QRgmd20-kw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Taxpayer ID" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" SecureText="{x:Null}" Text="[in_TaxpayerId]" Timeout="10" Version="V5">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable ContentHash="1y9IFk7zH0qXYLYXHhd0vg" DesignTimeRectangle="57, 599, 430, 52" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='ui-id-54|input' tag='INPUT' type='text' class='oj-inputtext-input oj-text-field-input oj-component-initnode' aaname='Taxpayer ID' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="307ee516-4ee1-4da4-9fdd-051b7ad05a9a" InformativeScreenshot="5d14dc47ef7c1cab7ac3c69f66b76c9f.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/EjJgcnsP80y5iPiGqjZFKQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="73, 615, 75, 17" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-DYN-FORM' id='companyDetailsID' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' type='' class='oj-component-initnode' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Taxpayer ID' /&gt;" Guid="4c9f466c-94f0-4539-a44f-617b20bd92ed" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+              </uix:NTypeInto>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Organization Type Dropdown" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_11" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="fs5ulrVkw0KfnSWbCh3A5Q" DesignTimeRectangle="57, 688, 379, 52" ElementType="DropDown" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='taxOrganizationType|input' tag='INPUT' type='text' class='oj-searchselect-input oj-text-field-input' aaname='Organization Type' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="d1715676-3168-4ae9-ac0d-37251495485b" InformativeScreenshot="9adf06b016da44bc272eca037d0a370b.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/JkJpRKlm2U21nPYMR5K9nw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="73, 705, 117, 16" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-LABEL' id='taxOrganizationType-labelled-by' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' id='taxOrganizationType-labelled-by|label' type='' class='oj-component-initnode' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Organization Type' /&gt;" Guid="93e173dc-0f12-4924-a24c-528e96eee302" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <Assign DisplayName="optionText = Organization Type" sap2010:WorkflowViewState.IdRef="Assign_6">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[optionText]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[in_Profile("OrganizationType")]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Option (Organization Type)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_12" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="WBHmu42HjU2-XPY21CCq-A" DesignTimeRectangle="989, 475, 398, 21" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl aria-role='gridcell' tag='DIV' class='oj-listview-cell-element' visibleinnertext='{0}' /&gt;&quot;, optionText)]" Guid="707be8a8-2ec4-4e39-a10a-96db38ad5390" InformativeScreenshot="7fe73359be0a3dcf81b1dca3a5ca9c9a.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/0FV2zcOEG0q0QRgmd20-kw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Company (last: the wizard clears values typed while it initialises)" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" SecureText="{x:Null}" Text="[in_SupplierName]" Timeout="10" Version="V5">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable ContentHash="HqmXVnULy06UP6Zvk4p3xw" DesignTimeRectangle="57, 420, 430, 52" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='CompanySearchField|input' tag='INPUT' type='text' class='oj-inputtext-input oj-text-field-input oj-component-initnode' aaname='Company' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="1dfba513-c438-4f62-b8f5-928afd3e5747" InformativeScreenshot="ac9c3a1ba34a39af47a8c1150f8cd209.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/lBvFiIazyEugkRfcwJnHVQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="73, 437, 61, 16" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-LABEL' id='CompanySearchField-labelled-by' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' id='CompanySearchField-labelled-by|label' type='' class='oj-component-initnode' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Company' /&gt;" Guid="e56774c0-7ec9-4dc7-8574-8cc53d5af052" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+              </uix:NTypeInto>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Continue (Company Details)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_13" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="gpueVXW_Sk2D12bh91V88g" DesignTimeRectangle="1329, 976, 92, 36" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl aria-label='Continue' class='*BaseButtonStyles_styles_base*' tag='BUTTON' type='' aaname=' Continue ' matching:aria-label='fuzzy' fuzzylevel:aria-label='0.0' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Continue' /&gt;" Guid="3eb625b1-84c6-4838-a4a2-88125cafbe92" InformativeScreenshot="1a9e107b00cc2226851ba4624d0557b3.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/gSay6ZsI2Eeqd607x1nG-w" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="1346, 985, 58, 18" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-C-PROGRESS-BUTTON' redwood-id='uidcontinue' matching:redwood-id='fuzzy' fuzzylevel:redwood-id='0.0' /&gt;&lt;webctrl tag='SPAN' aaname=' Continue ' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:text='Continue' /&gt;" Guid="f005353c-0d10-465e-b4f9-e07a1fe300cf" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+            </Sequence>
+            <Sequence DisplayName="Page 2 Contacts" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Poll Type Into Contact First Name (10 s checks)" sap2010:WorkflowViewState.IdRef="RetryScope_103" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
+                <ui:RetryScope.ActivityBody>
+                  <ActivityAction>
+                    <Sequence DisplayName="Poll Type Into Contact First Name (10 s checks) (body)" sap2010:WorkflowViewState.IdRef="Sequence_104">
+                      <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Contact First Name" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NTypeInto_4" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" SecureText="{x:Null}" Text="[in_Profile(&quot;ContactFirstName&quot;)]" Timeout="10" Version="V5">
+                        <uix:NTypeInto.Target>
+                          <uix:TargetAnchorable ContentHash="PdiCo00PMUGQrSk0YJB-Lg" DesignTimeRectangle="57, 415, 430, 52" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='contact-update-dynamic-form_fl_contacts.FirstName|input' tag='INPUT' type='text' class='oj-inputtext-input oj-text-field-input oj-component-initnode' aaname='First Name' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="0403745b-4475-41e6-bf3a-84458ef165cb" InformativeScreenshot="92f9023503cb98765d59f329be355714.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/gsZeUty6u0O94bioKzg5PQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target DesignTimeRectangle="73, 431, 70, 17" ElementType="Text" FuzzySelectorArgument="&lt;webctrl data-oj-field='FirstName' tag='OJ-INPUT-TEXT' id='contact-update-dynamic-form_fl_contacts.FirstName' matching:data-oj-field='fuzzy' fuzzylevel:data-oj-field='0.0' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='OJ-LABEL' id='contact-update-dynamic-form_fl_contacts.FirstName-labelled-by' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' id='contact-update-dynamic-form_fl_contacts.FirstName-labelled-by|label' type='' class='oj-component-initnode' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='First Name' /&gt;" Guid="d3c008df-9bde-468c-a99a-eea2f7481e9d" SearchSteps="FuzzySelector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NTypeInto.Target>
+                      </uix:NTypeInto>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:RetryScope.ActivityBody>
+                <ui:RetryScope.Condition>
+                  <ActivityFunc x:TypeArguments="x:Boolean" />
+                </ui:RetryScope.Condition>
+              </ui:RetryScope>
+              <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Contact Last Name" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NTypeInto_5" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" SecureText="{x:Null}" Text="[in_Profile(&quot;ContactLastName&quot;)]" Timeout="10" Version="V5">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable ContentHash="0HxjM7RjXkSEQw9nHR8OWQ" DesignTimeRectangle="513, 415, 430, 52" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='contact-update-dynamic-form_fl_contacts.LastName|input' tag='INPUT' type='text' class='oj-inputtext-input oj-text-field-input oj-component-initnode' aaname='Last Name' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="e09f663f-755f-494d-be0d-3c559f9256e8" InformativeScreenshot="1b18d2b34d9efbcac31716f9f82c267d.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/vAdYJTNeUEa5Bvuccnx14w" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="529, 431, 68, 17" ElementType="Text" FuzzySelectorArgument="&lt;webctrl data-oj-field='LastName' tag='OJ-INPUT-TEXT' id='contact-update-dynamic-form_fl_contacts.LastName' matching:data-oj-field='fuzzy' fuzzylevel:data-oj-field='0.0' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='OJ-LABEL' id='contact-update-dynamic-form_fl_contacts.LastName-labelled-by' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' id='contact-update-dynamic-form_fl_contacts.LastName-labelled-by|label' type='' class='oj-component-initnode' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Last Name' /&gt;" Guid="01d0beed-88f0-47f9-9604-2f5d458429c8" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+              </uix:NTypeInto>
+              <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Contact Email" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NTypeInto_6" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" SecureText="{x:Null}" Text="[in_Profile(&quot;ContactEmail&quot;)]" Timeout="10" Version="V5">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable ContentHash="tLY0ZmzBtEitdC0NPZUWqA" DesignTimeRectangle="969, 415, 430, 52" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='_arbwi8j03au-input' tag='INPUT' type='' class=' TextFieldInputStyles_textFieldInputBase__lkfh4l0 TextFieldInputVariants_multiVariantStyles_styleVariant_default__1c85q7n0 TextFieldInputVariants_multiVariantStyles_insideLabel_hasInsideLabel__1c85q7n6 TextFieldInputVariants_multiVariantStyles_disabled_notDisabled__1c85q7n9 TextFieldInputVariants_multiVariantStyles_compound_1__1c85q7np TextFieldInputVariants_multiVariantStyles_compound_3__1c85q7nr TextFieldInputVariants_multiVariantStyles_compound_4__1c85q7ns TextFieldInputVariants_multiVariantStyles_compound_6__1c85q7nu TextFieldInputVariants_multiVariantStyles_compound_12__1c85q7nz text_textAlign_start__1h8gevb0' aaname='Email' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="3b4aef57-b8c0-4853-902f-ba324bab1cf3" InformativeScreenshot="53d5b242ae97ee9a270584f68ac8d6a4.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/uPf9YkyJr0-CvcyI0RwD1A" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="985, 423, 31, 15" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-SP-INPUT-EMAIL' id='email-0' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' type='' class='LabelBaseTheme_baseTheme__mpxezv0 LabelStyles_baseStyle__t9j3mr0 LabelStyles_insideBase__t9j3mr3 LabelStyles_insideNonReadonly__t9j3mr7 LabelStyles_insideNonReadonlyHasValue__t9j3mr8 LabelStyles_insideBaseUADensityEfficientReflow__t9j3mr4 TextFieldBaseTheme_baseTheme__1qsscqw0' aaname='Email' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Email' /&gt;" Guid="a425cf73-5559-4d1d-a32c-efb0b9c28cac" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+              </uix:NTypeInto>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Continue (Contacts)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_14" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="gpueVXW_Sk2D12bh91V88g" DesignTimeRectangle="1329, 976, 92, 36" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl aria-label='Continue' class='*BaseButtonStyles_styles_base*' tag='BUTTON' type='' aaname=' Continue ' matching:aria-label='fuzzy' fuzzylevel:aria-label='0.0' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Continue' /&gt;" Guid="3eb625b1-84c6-4838-a4a2-88125cafbe92" InformativeScreenshot="1a9e107b00cc2226851ba4624d0557b3.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/gSay6ZsI2Eeqd607x1nG-w" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="1346, 985, 58, 18" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-C-PROGRESS-BUTTON' redwood-id='uidcontinue' matching:redwood-id='fuzzy' fuzzylevel:redwood-id='0.0' /&gt;&lt;webctrl tag='SPAN' aaname=' Continue ' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:text='Continue' /&gt;" Guid="f005353c-0d10-465e-b4f9-e07a1fe300cf" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+            </Sequence>
+            <Sequence DisplayName="Page 3 Addresses" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Poll Type Into Address Name (10 s checks)" sap2010:WorkflowViewState.IdRef="RetryScope_105" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
+                <ui:RetryScope.ActivityBody>
+                  <ActivityAction>
+                    <Sequence DisplayName="Poll Type Into Address Name (10 s checks) (body)" sap2010:WorkflowViewState.IdRef="Sequence_106">
+                      <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Address Name" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NTypeInto_7" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" SecureText="{x:Null}" Text="[in_Profile(&quot;AddressName&quot;)]" Timeout="10" Version="V5">
+                        <uix:NTypeInto.Target>
+                          <uix:TargetAnchorable ContentHash="IbaPhH1nBEypcVIq2dPEYA" DesignTimeRectangle="57, 446, 430, 52" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='addr-edit-dyn-form1_fl_addresses.AddressName|input' tag='INPUT' type='text' class='oj-inputtext-input oj-text-field-input oj-component-initnode' aaname='Address Name' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="07960a9d-14a5-4d0a-860c-1321dcf9d996" InformativeScreenshot="b1f4573644647b7b3b7be3a13cf5bc74.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/fWm3yRLLtEG0zj4QDEHHfw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target DesignTimeRectangle="73, 463, 93, 16" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-DYN-FORM' id='addr-edit-dyn-form1' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl data-oj-field='AddressName' tag='OJ-INPUT-TEXT' matching:data-oj-field='fuzzy' fuzzylevel:data-oj-field='0.0' /&gt;&lt;webctrl tag='LABEL' type='' class='oj-component-initnode' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Address Name' /&gt;" Guid="b9ff0e84-f6b4-49cb-993c-d33efecf0fd5" SearchSteps="FuzzySelector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NTypeInto.Target>
+                      </uix:NTypeInto>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:RetryScope.ActivityBody>
+                <ui:RetryScope.Condition>
+                  <ActivityFunc x:TypeArguments="x:Boolean" />
+                </ui:RetryScope.Condition>
+              </ui:RetryScope>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Receive Purchase Orders Checkbox" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_15" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="vrAPJzvWFU-FiNF8Kaa12w" DesignTimeRectangle="512, 473, 24, 32" ElementType="CheckBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='ui-id-234|cb' tag='INPUT' type='checkbox' class='oj-checkbox oj-component oj-enabled oj-component-initnode' aaname='  Receive Purchase Orders' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="838e67a3-0830-4e09-b106-c00516c93209" InformativeScreenshot="6dc996dc897b1ae534d424c2b0920386.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/rrIcaTHGU0-DeJjStyFB7w" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="536, 473, 178, 35" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-CHECKBOXSET' id='chkbox-address-purpose-0' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' type='' class='oj-checkbox-label oj-enabled' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='unchecked' /&gt;" Guid="b264ee1b-d2b0-43a1-b8a5-dae3485531b1" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Receive Payments Checkbox" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_16" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="xb12uM3tY0CbcXLKeKMq1g" DesignTimeRectangle="746, 473, 24, 32" ElementType="CheckBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='ui-id-235|cb' tag='INPUT' type='checkbox' class='oj-checkbox oj-component oj-enabled oj-component-initnode' aaname='  Receive Payments' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="dd65d1e1-7093-4d6e-a791-c5e23c7dcad3" InformativeScreenshot="1c57f929d57ca9d77f0a09f1facd279a.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/tEDUx5cHTkaw2yRyBl0atw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="770, 473, 131, 35" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-CHECKBOXSET' id='chkbox-address-purpose-0' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' type='' class='oj-checkbox-label oj-enabled' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='unchecked' /&gt;" Guid="464b9c72-46db-4cd1-a6cc-20508497a967" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Address Contact Checkbox" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_17" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="dC6i_WGRDkeIIvbTF9nnzA" DesignTimeRectangle="72, 800, 36, 36" ElementType="CheckBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aria-label='*Select Item*' class='*oj-selectorbox*' tag='INPUT' /&gt;" Guid="ca975019-15cc-46fa-8a19-7de65c3c457d" InformativeScreenshot="37f985fa6d70e3b35a479a0c70455f6f.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/quHY2M44L0-pZU9R6MRptA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Enter Address Lookup" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NTypeInto_8" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" SecureText="{x:Null}" Text="[in_Profile(&quot;AddressLookup&quot;)]" Timeout="10" Version="V5">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable ContentHash="ip72iIi7MUmg1YKIF5L6vA" DesignTimeRectangle="57, 538, 1316, 52" ElementType="DropDown" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl aria-role='combobox' id='main-input-address-*_address-search-select|input' tag='INPUT' type='text' class='oj-searchselect-input oj-text-field-input' aaname='Enter Address' matching:aria-role='fuzzy' fuzzylevel:aria-role='0.0' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="eb0b40c6-8ecf-4594-a6a2-8d69aff883d6" InformativeScreenshot="8dcf2b12448ee181135d2b9ace52c044.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/808k5AIAlkWuVu4sKDHNfQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="73, 555, 90, 16" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-SELECT-SINGLE' redwood-id='uidaddresssearchselect' matching:redwood-id='fuzzy' fuzzylevel:redwood-id='0.0' /&gt;&lt;webctrl tag='LABEL' type='' class='oj-component-initnode' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Enter Address' /&gt;" Guid="0347739e-7fe6-4d7b-b18c-d2bafddb98f6" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+              </uix:NTypeInto>
+              <Assign DisplayName="optionText = Address suggestion" sap2010:WorkflowViewState.IdRef="Assign_7">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[optionText]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[in_Profile("AddressLookup") &amp; "*"]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Option (Address suggestion)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_18" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="WBHmu42HjU2-XPY21CCq-A" DesignTimeRectangle="989, 475, 398, 21" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl aria-role='gridcell' tag='DIV' class='oj-listview-cell-element' visibleinnertext='{0}' /&gt;&quot;, optionText)]" Guid="707be8a8-2ec4-4e39-a10a-96db38ad5390" InformativeScreenshot="7fe73359be0a3dcf81b1dca3a5ca9c9a.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/0FV2zcOEG0q0QRgmd20-kw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Continue (Addresses)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_19" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="gpueVXW_Sk2D12bh91V88g" DesignTimeRectangle="1329, 976, 92, 36" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl aria-label='Continue' class='*BaseButtonStyles_styles_base*' tag='BUTTON' type='' aaname=' Continue ' matching:aria-label='fuzzy' fuzzylevel:aria-label='0.0' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Continue' /&gt;" Guid="3eb625b1-84c6-4838-a4a2-88125cafbe92" InformativeScreenshot="1a9e107b00cc2226851ba4624d0557b3.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/gSay6ZsI2Eeqd607x1nG-w" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="1346, 985, 58, 18" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-C-PROGRESS-BUTTON' redwood-id='uidcontinue' matching:redwood-id='fuzzy' fuzzylevel:redwood-id='0.0' /&gt;&lt;webctrl tag='SPAN' aaname=' Continue ' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:text='Continue' /&gt;" Guid="f005353c-0d10-465e-b4f9-e07a1fe300cf" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+            </Sequence>
+            <Sequence DisplayName="Page 4 Business Classifications" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Poll Click Classification Dropdown (10 s checks)" sap2010:WorkflowViewState.IdRef="RetryScope_107" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
+                <ui:RetryScope.ActivityBody>
+                  <ActivityAction>
+                    <Sequence DisplayName="Poll Click Classification Dropdown (10 s checks) (body)" sap2010:WorkflowViewState.IdRef="Sequence_108">
+                      <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Classification Dropdown" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_20" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                        <uix:NClick.Target>
+                          <uix:TargetAnchorable ContentHash="UVSkEoszuUyh6bfKR-xOZA" DesignTimeRectangle="57, 457, 870, 52" ElementType="DropDown" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='oj-selectsingle-1|input' tag='INPUT' type='text' class='oj-searchselect-input oj-text-field-input' aaname='Classification' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="6eb91634-748a-4ae5-82d1-33f5094c09aa" InformativeScreenshot="2b5b62387dc0fa37dad238d92efabb76.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/SVSHEA0eikO2c_DUFsG5GA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target DesignTimeRectangle="73, 473, 85, 17" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-SELECT-SINGLE' id='oj-selectsingle-1' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' type='' class='oj-component-initnode' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Classification' /&gt;" Guid="9a6703a2-b088-4601-aaba-4bee2094ddb4" SearchSteps="FuzzySelector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NClick.Target>
+                      </uix:NClick>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:RetryScope.ActivityBody>
+                <ui:RetryScope.Condition>
+                  <ActivityFunc x:TypeArguments="x:Boolean" />
+                </ui:RetryScope.Condition>
+              </ui:RetryScope>
+              <Assign DisplayName="optionText = Business Classification" sap2010:WorkflowViewState.IdRef="Assign_8">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[optionText]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[in_Profile("BusinessClassification")]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Option (Business Classification)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_21" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="WBHmu42HjU2-XPY21CCq-A" DesignTimeRectangle="989, 475, 398, 21" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl aria-role='gridcell' tag='DIV' class='oj-listview-cell-element' visibleinnertext='{0}' /&gt;&quot;, optionText)]" Guid="707be8a8-2ec4-4e39-a10a-96db38ad5390" InformativeScreenshot="7fe73359be0a3dcf81b1dca3a5ca9c9a.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/0FV2zcOEG0q0QRgmd20-kw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Continue (Business Classifications)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_22" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="gpueVXW_Sk2D12bh91V88g" DesignTimeRectangle="1329, 976, 92, 36" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl aria-label='Continue' class='*BaseButtonStyles_styles_base*' tag='BUTTON' type='' aaname=' Continue ' matching:aria-label='fuzzy' fuzzylevel:aria-label='0.0' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Continue' /&gt;" Guid="3eb625b1-84c6-4838-a4a2-88125cafbe92" InformativeScreenshot="1a9e107b00cc2226851ba4624d0557b3.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/gSay6ZsI2Eeqd607x1nG-w" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="1346, 985, 58, 18" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-C-PROGRESS-BUTTON' redwood-id='uidcontinue' matching:redwood-id='fuzzy' fuzzylevel:redwood-id='0.0' /&gt;&lt;webctrl tag='SPAN' aaname=' Continue ' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:text='Continue' /&gt;" Guid="f005353c-0d10-465e-b4f9-e07a1fe300cf" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+            </Sequence>
+            <Sequence DisplayName="Page 5 Bank Accounts (Country defaults from Tax Country)" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Poll Type Into Branch Number (filter) (10 s checks)" sap2010:WorkflowViewState.IdRef="RetryScope_109" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
+                <ui:RetryScope.ActivityBody>
+                  <ActivityAction>
+                    <Sequence DisplayName="Poll Type Into Branch Number (filter) (10 s checks) (body)" sap2010:WorkflowViewState.IdRef="Sequence_110">
+                      <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Branch Number (filter)" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NTypeInto_9" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" SecureText="{x:Null}" Text="[in_Profile(&quot;BranchNumber&quot;)]" Timeout="10" Version="V5">
+                        <uix:NTypeInto.Target>
+                          <uix:TargetAnchorable ContentHash="Hiz5zVlCf0OsEQZUG6i-xA" DesignTimeRectangle="57, 544, 379, 52" ElementType="DropDown" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='oj-selectsingle-6|input' tag='INPUT' type='text' class='oj-searchselect-input oj-text-field-input' aaname='Branch Number' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="e2e9ce9c-66c5-4fe2-abed-641750833e3a" InformativeScreenshot="e2ba5f8112c3840d578147accb2940d5.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/JtD2S7TYZUS8dYxmPMaedA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target DesignTimeRectangle="73, 561, 100, 16" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-SELECT-SINGLE' id='oj-selectsingle-6' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' type='' class='oj-component-initnode' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Branch Number' /&gt;" Guid="62c12a24-018d-4a52-8ced-d566b48bd0bd" SearchSteps="FuzzySelector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NTypeInto.Target>
+                      </uix:NTypeInto>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:RetryScope.ActivityBody>
+                <ui:RetryScope.Condition>
+                  <ActivityFunc x:TypeArguments="x:Boolean" />
+                </ui:RetryScope.Condition>
+              </ui:RetryScope>
+              <Assign DisplayName="optionText = Branch row" sap2010:WorkflowViewState.IdRef="Assign_9">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[optionText]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[in_Profile("BranchNumber") &amp; "*"]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Table Option (Branch Number)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_23" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="ArxJWQKNukKqiYPetKJlow" DesignTimeRectangle="57, 654, 437, 47" ElementType="TableRow" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='TR' parentclass='oj-table-body' visibleinnertext='{0}' /&gt;&quot;, optionText)]" Guid="1323007c-0f26-491c-b7d2-e72aa36e0fa8" InformativeScreenshot="512de9e6109092ed54a5c9f502c6b357.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/ikHptuRhXESEAoMnhF2BNA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Account Number" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NTypeInto_10" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" SecureText="{x:Null}" Text="[in_AccountNumber]" Timeout="10" Version="V5">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable ContentHash="ZZtfLBuVWUyZW7zV8n9PSg" DesignTimeRectangle="57, 633, 430, 52" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='ui-id-391|input' tag='INPUT' type='text' class='oj-inputtext-input oj-text-field-input oj-component-initnode' aaname='Account Number' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="0e056a55-d2a2-4d04-b998-cd37adbaf3b4" InformativeScreenshot="a039a578f145ee563e6b4b73a9720b0b.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/xs-Pvw42OEaQW9SuUbQ3wA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="73, 650, 108, 16" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-VALIDATION-GROUP' id='validationBAGroup' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' type='' class='oj-component-initnode' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Account Number' /&gt;" Guid="4aec9d42-69ec-45b2-95d4-802b5fdcebc4" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+              </uix:NTypeInto>
+              <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Account Holder" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NTypeInto_11" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" SecureText="{x:Null}" Text="[in_Profile(&quot;AccountHolder&quot;)]" Timeout="10" Version="V5">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable ContentHash="dTTzqXm2H0Gq0n0_x9B9FA" DesignTimeRectangle="57, 722, 430, 52" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='ui-id-396|input' tag='INPUT' type='text' class='oj-inputtext-input oj-text-field-input oj-component-initnode' aaname='Account Holder' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="f63b57c3-c883-49a3-bc19-e912c3eaf960" InformativeScreenshot="0359b453eac65b3b54e884d56cf11d4e.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/q1j7AgLXUUOiIOFxds8fMQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="73, 739, 99, 17" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-VALIDATION-GROUP' id='validationBAGroup' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' type='' class='oj-component-initnode' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Account Holder' /&gt;" Guid="fa0ed80b-67d9-40bc-a8f5-6ac26dc3d7a3" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+              </uix:NTypeInto>
+              <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Account Suffix" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NTypeInto_12" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" SecureText="{x:Null}" Text="[in_Profile(&quot;AccountSuffix&quot;)]" Timeout="10" Version="V5">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable ContentHash="wtTTA78GX0mHQ_XCDEAlzw" DesignTimeRectangle="513, 722, 430, 52" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='ui-id-399|input' tag='INPUT' type='text' class='oj-inputtext-input oj-text-field-input oj-component-initnode' aaname='Account Suffix' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="6a6a8a82-8196-4ab6-952e-5662e259d75f" InformativeScreenshot="4af1cec5a86d4d7512309ebe8e35b61a.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/GHPmCwffVUWSv5C4ylmFQA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="529, 739, 93, 17" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-VALIDATION-GROUP' id='validationBAGroup' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' type='' class='oj-component-initnode' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Account Suffix' /&gt;" Guid="59365f6d-be20-41f6-b7b8-47bf075c53dd" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+              </uix:NTypeInto>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Continue (Bank Accounts)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_24" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="gpueVXW_Sk2D12bh91V88g" DesignTimeRectangle="1329, 976, 92, 36" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl aria-label='Continue' class='*BaseButtonStyles_styles_base*' tag='BUTTON' type='' aaname=' Continue ' matching:aria-label='fuzzy' fuzzylevel:aria-label='0.0' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Continue' /&gt;" Guid="3eb625b1-84c6-4838-a4a2-88125cafbe92" InformativeScreenshot="1a9e107b00cc2226851ba4624d0557b3.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/gSay6ZsI2Eeqd607x1nG-w" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="1346, 985, 58, 18" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-C-PROGRESS-BUTTON' redwood-id='uidcontinue' matching:redwood-id='fuzzy' fuzzylevel:redwood-id='0.0' /&gt;&lt;webctrl tag='SPAN' aaname=' Continue ' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:text='Continue' /&gt;" Guid="f005353c-0d10-465e-b4f9-e07a1fe300cf" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+            </Sequence>
+            <Sequence DisplayName="Page 6 Products and Services" sap2010:WorkflowViewState.IdRef="Sequence_9">
+              <Assign DisplayName="optionText = Products category" sap2010:WorkflowViewState.IdRef="Assign_10">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[optionText]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[in_Profile("ProductsCategory")]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Poll Click Category Checkbox (10 s checks)" sap2010:WorkflowViewState.IdRef="RetryScope_111" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
+                <ui:RetryScope.ActivityBody>
+                  <ActivityAction>
+                    <Sequence DisplayName="Poll Click Category Checkbox (10 s checks) (body)" sap2010:WorkflowViewState.IdRef="Sequence_112">
+                      <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Category Checkbox" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_25" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                        <uix:NClick.Target>
+                          <uix:TargetAnchorable ContentHash="ROzXxGkl70uo8_Bx3508Lw" DesignTimeRectangle="56, 732, 36, 36" ElementType="CheckBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='TR' parentid='table' visibleinnertext='*{0}*' /&gt;&lt;webctrl tag='INPUT' type='checkbox' class='oj-selectorbox' /&gt;&quot;, optionText)]" Guid="c70d68ed-e98a-47c2-8c7e-8d20335ed560" InformativeScreenshot="c51f1c2589c38852d7975c6ca5b5de6b.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/HbiPWzI8vEu6lIZIb0OLGg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                        </uix:NClick.Target>
+                      </uix:NClick>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:RetryScope.ActivityBody>
+                <ui:RetryScope.Condition>
+                  <ActivityFunc x:TypeArguments="x:Boolean" />
+                </ui:RetryScope.Condition>
+              </ui:RetryScope>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Continue (Products and Services)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_26" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="gpueVXW_Sk2D12bh91V88g" DesignTimeRectangle="1329, 976, 92, 36" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl aria-label='Continue' class='*BaseButtonStyles_styles_base*' tag='BUTTON' type='' aaname=' Continue ' matching:aria-label='fuzzy' fuzzylevel:aria-label='0.0' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Continue' /&gt;" Guid="3eb625b1-84c6-4838-a4a2-88125cafbe92" InformativeScreenshot="1a9e107b00cc2226851ba4624d0557b3.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/gSay6ZsI2Eeqd607x1nG-w" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="1346, 985, 58, 18" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-C-PROGRESS-BUTTON' redwood-id='uidcontinue' matching:redwood-id='fuzzy' fuzzylevel:redwood-id='0.0' /&gt;&lt;webctrl tag='SPAN' aaname=' Continue ' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:text='Continue' /&gt;" Guid="f005353c-0d10-465e-b4f9-e07a1fe300cf" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+            </Sequence>
+            <Sequence DisplayName="Page 7 Questionnaire and Submit" sap2010:WorkflowViewState.IdRef="Sequence_10">
+              <Assign DisplayName="optionText = Full Compliance" sap2010:WorkflowViewState.IdRef="Assign_11">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[optionText]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">a. Full Compliance</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Poll Click Questionnaire Answer Radio (10 s checks)" sap2010:WorkflowViewState.IdRef="RetryScope_113" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
+                <ui:RetryScope.ActivityBody>
+                  <ActivityAction>
+                    <Sequence DisplayName="Poll Click Questionnaire Answer Radio (10 s checks) (body)" sap2010:WorkflowViewState.IdRef="Sequence_114">
+                      <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Questionnaire Answer Radio" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_27" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                        <uix:NClick.Target>
+                          <uix:TargetAnchorable ContentHash="nJHh8zz2JEa9H_l7qOxENw" DesignTimeRectangle="56, 527, 24, 31" ElementType="RadioButton" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='INPUT' parentname='rs-questionnaire' aaname='*{0}' /&gt;&quot;, optionText)]" Guid="64fbf691-3a19-4a47-ab2b-d6faea31cac6" InformativeScreenshot="da84939c5a0742e384daada902dd47f8.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/uagiHiqn9ECyCs_EwZKVYQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                        </uix:NClick.Target>
+                      </uix:NClick>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:RetryScope.ActivityBody>
+                <ui:RetryScope.Condition>
+                  <ActivityFunc x:TypeArguments="x:Boolean" />
+                </ui:RetryScope.Condition>
+              </ui:RetryScope>
+              <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Add Attachments (button re-renders after the radio click)" sap2010:WorkflowViewState.IdRef="RetryScope_1" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
+                <ui:RetryScope.ActivityBody>
+                  <ActivityAction>
+                    <Sequence DisplayName="Action" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                      <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Add Attachments Button" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_28" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                        <uix:NClick.Target>
+                          <uix:TargetAnchorable ContentHash="IVLw2GKaDUSNG8NY7MREcQ" DesignTimeRectangle="56, 682, 186, 36" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl aaname='*Add Attachments*' parentname='rs-questionnaire' tag='BUTTON' type='' class='oj-button-button' fuzzylevel:aaname='0.0' matching:parentname='fuzzy' fuzzylevel:parentname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:text='Add Attachments (0)' /&gt;" Guid="ba6a4d7a-a5b8-4c9e-87f7-bb9c54f2e146" InformativeScreenshot="fb7bad3f5b4dea6abd01c1f9cad863fc.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/Z1gWw-jUS0e9vFegn5TB-g" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target DesignTimeRectangle="93, 691, 148, 18" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-FORM-LAYOUT' id='oflId_0' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl class='*oj-button-text*' tag='SPAN' type='' aaname='Add Attachments (0)' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Add Attachments (0)' /&gt;" Guid="e74b972c-4845-4721-b54f-1569f28dac3c" SearchSteps="FuzzySelector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NClick.Target>
+                      </uix:NClick>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:RetryScope.ActivityBody>
+                <ui:RetryScope.Condition>
+                  <ActivityFunc x:TypeArguments="x:Boolean" />
+                </ui:RetryScope.Condition>
+              </ui:RetryScope>
+              <uix:NBrowserFilePickerScope ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Browser File Picker Scope (questionnaire attachment)" sap2010:WorkflowViewState.IdRef="NBrowserFilePickerScope_1" InScope="{x:Null}" InUiElement="{x:Null}" MultiFilePaths="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" SingleFilePath="[Path.GetFullPath(in_Profile(&quot;QuestionnaireAttachment&quot;))]" Timeout="{x:Null}" Version="V5" WaitForDialogToAppearTimeout="30">
+                <uix:NBrowserFilePickerScope.Body>
+                  <Sequence DisplayName="Actions that trigger the file picker" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Add Files Drop Zone" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_29" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable ContentHash="o72Se-rPV0SPA1Cs88wIXg" DesignTimeRectangle="984, 362, 913, 97" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl aria-label='Add Files. Drag and Drop. Select or drop files here.' aria-role='button' tag='DIV' type='' class='oj-filepicker-container' aaname='' matching:aria-label='fuzzy' fuzzylevel:aria-label='0.0' matching:aria-role='fuzzy' fuzzylevel:aria-role='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Drag and DropSelect or drop files here.' /&gt;" Guid="f7ff7b13-759d-4164-8185-28fddb720447" InformativeScreenshot="2a4220b3cf900ab6e46f3ad8987fe0ef.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/ERwkH74cR0yAAsbWzRC_qg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="1009, 387, 863, 25" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-FILE-PICKER' id='attachmentsFilePickermcssResponseAttachment' redwood-id='attachmentsFilePickeruniqueId' matching:id='fuzzy' fuzzylevel:id='0.0' matching:redwood-id='fuzzy' fuzzylevel:redwood-id='0.0' /&gt;&lt;webctrl tag='DIV' class='oj-filepicker-text' type='' aaname='Drag and Drop' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Drag and Drop' /&gt;" Guid="49665e24-494e-4f09-8bc0-601a4a916082" SearchSteps="FuzzySelector" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                  </Sequence>
+                </uix:NBrowserFilePickerScope.Body>
+              </uix:NBrowserFilePickerScope>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Attachments Panel Close Button" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_30" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="Dari3s_rkU6lapgxrvO0pQ" DesignTimeRectangle="968, 245, 44, 44" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='responseMCSSAttachCloseDrawer' tag='OJ-BUTTON' /&gt;&lt;webctrl tag='BUTTON' /&gt;" Guid="0c687739-54b0-42e3-a4e5-e2a80505aba5" InformativeScreenshot="61952578a6820b50750dba5d21b42478.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/RdZ8D6OZckqXtsCRlYEVrg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Submit (WRITE: submits the registration request)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_31" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable ContentHash="av55n0Cz1UuB1hLEwgYtDw" DesignTimeRectangle="1341, 976, 80, 36" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl aria-label='Submit' class='*BaseButtonStyles_styles_base*' tag='BUTTON' type='' aaname=' Submit ' matching:aria-label='fuzzy' fuzzylevel:aria-label='0.0' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Submit' /&gt;" Guid="691b99fb-e72e-4770-81f4-ce07c4bb1d08" InformativeScreenshot="c8d2454018587f063271d9f08097390f.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/l49rTBLTF0WY9KscJtyLTg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="1358, 985, 46, 18" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-C-PROGRESS-BUTTON' redwood-id='uidprimaryAction' matching:redwood-id='fuzzy' fuzzylevel:redwood-id='0.0' /&gt;&lt;webctrl tag='SPAN' aaname=' Submit ' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:text='Submit' /&gt;" Guid="882a4c6c-7592-432a-b663-9b3047b744a4" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Poll Check back on Supplier Management (submitted) (10 s checks)" sap2010:WorkflowViewState.IdRef="RetryScope_115" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
+                <ui:RetryScope.ActivityBody>
+                  <ActivityAction>
+                    <Sequence DisplayName="Poll Check back on Supplier Management (submitted) (10 s checks) (body)" sap2010:WorkflowViewState.IdRef="Sequence_116">
+                      <uix:NCheckState CheckWindowActive="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Check back on Supplier Management (submitted)" Exists="{x:Null}" HealingAgentBehavior="Disabled" sap2010:WorkflowViewState.IdRef="NCheckState_1" InScope="{x:Null}" InUiElement="{x:Null}" OutUiElement="{x:Null}" Result="{x:Null}" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" Version="V5">
+                        <uix:NCheckState.IfExists>
+                          <Sequence DisplayName="Target appears" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                            <ui:LogMessage DisplayName="Log submitted" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;S1 registration submitted for &quot; &amp; in_SupplierName &amp; &quot; (SupplierRegId &quot; &amp; out_RegistrationId &amp; &quot;)&quot;]" />
+                          </Sequence>
+                        </uix:NCheckState.IfExists>
+                        <uix:NCheckState.IfNotExists>
+                          <Sequence DisplayName="Target does not appear" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                            <Throw DisplayName="Throw submit not confirmed" Exception="[New Exception(&quot;S1: after Submit the wizard did not return to Supplier Management (SupplierRegId &quot; &amp; out_RegistrationId &amp; &quot;)&quot;)]" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                          </Sequence>
+                        </uix:NCheckState.IfNotExists>
+                        <uix:NCheckState.Target>
+                          <uix:TargetAnchorable ContentHash="mySqUnhBGE-08NH919HomA" DesignTimeRectangle="1278, 504, 123, 21" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='Register Supplier' tag='A' uipath-html-title='Register Supplier' /&gt;" Guid="713dd9c3-b874-4370-8350-86fff8a51c29" InformativeScreenshot="5046219c9141ae76ae28cf73c1c82d43.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/MRNW5N07mEayizfB9qbRVg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Supplier Management - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                        </uix:NCheckState.Target>
+                      </uix:NCheckState><uta:VerifyControlAttribute AlternativeVerificationTitle="S1 registration submitted (back on Supplier Management)" ContinueOnFailure="True" DisplayName="Verify S1 registration submitted (back on Supplier Management)" Operator="Equality" OutputArgument="Exists" TakeScreenshotInCaseOfFailingAssertion="True" TakeScreenshotInCaseOfSucceedingAssertion="True" sap2010:WorkflowViewState.IdRef="VerifyControlAttribute_90"><uta:VerifyControlAttribute.ActivityToTest><ActivityAction><uix:NCheckState DisplayName="Check State - S1 registration submitted (back on Supplier Management)" HealingAgentBehavior="Disabled" sap2010:WorkflowViewState.IdRef="NCheckState_90" ScopeIdentifier="7c1f3a52-1e64-4b0e-9f0a-3d2b8c6e5a11" Timeout="10" Version="V5"><uix:NCheckState.Target><uix:TargetAnchorable ContentHash="mySqUnhBGE-08NH919HomA" DesignTimeRectangle="1278, 504, 123, 21" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='Register Supplier' tag='A' uipath-html-title='Register Supplier' /&gt;" Guid="da3b137a-ea16-4e4c-a0dc-613db78b5003" InformativeScreenshot="5046219c9141ae76ae28cf73c1c82d43.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/MRNW5N07mEayizfB9qbRVg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Supplier Management - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" /></uix:NCheckState.Target></uix:NCheckState></ActivityAction></uta:VerifyControlAttribute.ActivityToTest><uta:VerifyControlAttribute.Expression><InArgument x:TypeArguments="x:Boolean">[True]</InArgument></uta:VerifyControlAttribute.Expression></uta:VerifyControlAttribute>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:RetryScope.ActivityBody>
+                <ui:RetryScope.Condition>
+                  <ActivityFunc x:TypeArguments="x:Boolean" />
+                </ui:RetryScope.Condition>
+              </ui:RetryScope>
+            </Sequence>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1936, 1048" BrowserType="Chrome" ContentHash="bhOFyJXf7Uy5U1RwlcafdQ" InformativeScreenshot="338e80a71c75cbf66745105171d379d7.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/7TN2LWKdH0S2QSDE9rLCIg" Selector="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications*' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" Url="https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FuseWelcome?_afrLoop=11258094890483431&amp;_afrWindowMode=0&amp;_afrWindowId=null&amp;_adf.ctrl-state=lggbpl9aztfrnv_1&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1920&amp;_afrMFH=855&amp;_afrMFDW=1920&amp;_afrMFDH=1080&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" Version="V3">
+          <uix:TargetApp.SapInfo>
+            <uix:SAPElementInfo IsSapSubsystem="False" WebAutomationFramework="Default" />
+          </uix:TargetApp.SapInfo>
+        </uix:TargetApp>
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

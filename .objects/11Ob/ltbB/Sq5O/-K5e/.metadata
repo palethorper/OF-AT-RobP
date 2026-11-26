@@ -1,0 +1,15 @@
+﻿{
+  "Name": "PO Search Result Cell",
+  "Description": "PO Search Result Cell",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "-K5eV4VG4USEoE86iAEF0Q",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/-K5eV4VG4USEoE86iAEF0Q",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Sq5OicXup0KJgfP--XChMA",
+  "Created": "2026-11-23T10:41:50.8917725Z",
+  "Updated": "2026-11-23T10:41:50.8917725Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

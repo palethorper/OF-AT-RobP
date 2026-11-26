@@ -1,0 +1,69 @@
+### Eval
+- Result: Self Service Procurement Home - Search - Oracle Fusion Cloud Applications
+https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions
+Skip to main content
+15
+Self Service Procurement
+US1 Business Unit | Seattle
+Preferences
+Need help with your requisitions?
+Ask our Procurement Policy Advisor
+Ask Oracle
+Displaying page 1 of 5
+Page 1 content loaded
+_oj425_paging_controlPagination
+Page
+1
+Page
+2
+Page
+3
+Page
+4
+Page
+5
+My recent requisitions
+Delivered
+Requisition 204161
+
+Test Req
+
+1 Line
+
+Purchase Order US165364
+
+Buyer
+Calvin Roth
+Ordered
+Requisition 204160
+
+Example non-catalog item
+
+1 Line
+
+Purchase Order US165363
+
+Buyer
+Casey Brown
+Pending approval
+Requisition 204150
+
+LaserJet Pro 400 M401n Laser Printer
+
+1 Line
+
+Date Submitted
+08/07/25
+Purchasing news
+Use preferred suppliers for all your business requirements.
+Shop by category
+Browse all
+Amazon
+Office Supplies
+Office Technology
+Services
+Telecommunications
+Create Noncatalog Request
+Self Service Procurement
+My Requisitions
+Cart

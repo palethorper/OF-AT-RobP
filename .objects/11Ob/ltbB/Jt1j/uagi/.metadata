@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Questionnaire Answer Radio",
+  "Description": "Questionnaire answer radio button matched by its label (parametrized optionText), e.g. a. Full Compliance",
+  "Type": "Element",
+  "TaxonomyType": "RadioButton",
+  "Id": "uagiHiqn9ECyCs_EwZKVYQ",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/uagiHiqn9ECyCs_EwZKVYQ",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Jt1jXBgpj0akYQz6-Z4ygQ",
+  "Created": "2026-11-23T05:30:46.4287634Z",
+  "Updated": "2026-11-23T05:30:46.4287634Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

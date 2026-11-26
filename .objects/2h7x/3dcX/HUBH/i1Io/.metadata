@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Password Input",
+  "Description": "Password text box on the Oracle Cloud sign-in form",
+  "Type": "Element",
+  "TaxonomyType": "Password",
+  "Id": "i1IoElEXDES-dGxkgGnFtg",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/i1IoElEXDES-dGxkgGnFtg",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/HUBH5pJF9E2nxzkZHf7kdA",
+  "Created": "2026-11-23T03:10:44.8321575Z",
+  "Updated": "2026-11-23T04:44:38.8928702Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

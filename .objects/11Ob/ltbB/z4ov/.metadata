@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Fusion Redwood Page",
+  "Description": "Any Redwood page (global header with Notifications)",
+  "Type": "Screen",
+  "Id": "z4ovH5D8okq8-29g9OcuBQ",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/z4ovH5D8okq8-29g9OcuBQ",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/ltbBRqeaGEOJBm2u-N1KjA",
+  "Created": "2026-11-23T11:16:01.356022Z",
+  "Updated": "2026-11-23T11:16:01.356022Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

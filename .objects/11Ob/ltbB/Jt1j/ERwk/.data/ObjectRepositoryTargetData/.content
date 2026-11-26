@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="o72Se-rPV0SPA1Cs88wIXg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" DesignTimeRectangle="984, 362, 913, 97" DesignTimeScaleFactor="1" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl aria-label='Add Files. Drag and Drop. Select or drop files here.' aria-role='button' tag='DIV' type='' class='oj-filepicker-container' aaname='' matching:aria-label='fuzzy' fuzzylevel:aria-label='0.0' matching:aria-role='fuzzy' fuzzylevel:aria-role='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Drag and DropSelect or drop files here.' /&gt;" Guid="f7ff7b13-759d-4164-8185-28fddb720447" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="1">
+          <Target DesignTimeRectangle="1009, 387, 863, 25" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-FILE-PICKER' id='attachmentsFilePickermcssResponseAttachment' redwood-id='attachmentsFilePickeruniqueId' matching:id='fuzzy' fuzzylevel:id='0.0' matching:redwood-id='fuzzy' fuzzylevel:redwood-id='0.0' /&gt;&lt;webctrl tag='DIV' class='oj-filepicker-text' type='' aaname='Drag and Drop' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Drag and Drop' /&gt;" Guid="49665e24-494e-4f09-8bc0-601a4a916082" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="2a4220b3cf900ab6e46f3ad8987fe0ef.jpg" xmlns="">0PPcJM1ceD02U3AoyG34yHg</imageRef>
+    </TargetAnchorable>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

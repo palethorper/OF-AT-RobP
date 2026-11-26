@@ -1,0 +1,75 @@
+### Eval
+- Result: Self Service Procurement Home - Search - Oracle Fusion Cloud Applications
+https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions
+Skip to main content
+16
+Self Service Procurement
+US1 Business Unit | Seattle
+Preferences
+Need help with your requisitions?
+Ask our Procurement Policy Advisor
+Ask Oracle
+Displaying page 1 of 5
+Page 1 content loaded
+_oj408_paging_controlPagination
+Page
+1
+Page
+2
+Page
+3
+Page
+4
+Page
+5
+My recent requisitions
+Canceled
+Requisition 204165
+
+Test UiPath P2P-01 R4 approver override
+
+1 Line
+
+Last Updated
+22/11/26
+Canceled
+Requisition 204164
+
+Test UiPath P2P-01 R3 above 50K boundary
+
+1 Line
+
+Last Updated
+22/11/26
+Canceled
+Requisition 204163
+
+Test UiPath P2P-01 R2 at 50K boundary
+
+1 Line
+
+Last Updated
+22/11/26
+Canceled
+Requisition 204162
+
+Test UiPath P2P-01 R1 below 50K boundary
+
+1 Line
+
+Last Updated
+22/11/26
+See more
+Purchasing news
+Use preferred suppliers for all your business requirements.
+Shop by category
+Browse all
+Amazon
+Office Supplies
+Office Technology
+Services
+Telecommunications
+Create Noncatalog Request
+Self Service Procurement
+My Requisitions
+Cart

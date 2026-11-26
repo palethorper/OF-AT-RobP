@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="IVLw2GKaDUSNG8NY7MREcQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" DesignTimeRectangle="56, 682, 186, 36" DesignTimeScaleFactor="1" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl aaname='*Add Attachments*' parentname='rs-questionnaire' tag='BUTTON' type='' class='oj-button-button' fuzzylevel:aaname='0.0' matching:parentname='fuzzy' fuzzylevel:parentname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:text='Add Attachments (0)' /&gt;" Guid="ba6a4d7a-a5b8-4c9e-87f7-bb9c54f2e146" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="1">
+          <Target DesignTimeRectangle="93, 691, 148, 18" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-FORM-LAYOUT' id='oflId_0' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl class='*oj-button-text*' tag='SPAN' type='' aaname='Add Attachments (0)' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Add Attachments (0)' /&gt;" Guid="e74b972c-4845-4721-b54f-1569f28dac3c" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="fb7bad3f5b4dea6abd01c1f9cad863fc.jpg" xmlns="">0okOVUOG490GkCMKidFCxtg</imageRef>
+    </TargetAnchorable>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

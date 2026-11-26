@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Requisition Line Row Checkbox",
+  "Description": "Requisition Line Row Checkbox",
+  "Type": "Element",
+  "TaxonomyType": "Checkbox",
+  "Id": "-egpsA2gBUaTkq3XwAwLMw",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/-egpsA2gBUaTkq3XwAwLMw",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/w6OwNA7hAE-KYeIMOONslQ",
+  "Created": "2026-11-23T10:21:43.5950321Z",
+  "Updated": "2026-11-23T10:21:43.5950321Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Notification Approve Button",
+  "Description": "Notification Approve Button",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "CO-_pynyRkSgT3GQwsmQ4A",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/CO-_pynyRkSgT3GQwsmQ4A",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/z4ovH5D8okq8-29g9OcuBQ",
+  "Created": "2026-11-23T11:17:46.3345105Z",
+  "Updated": "2026-11-23T11:19:17.3112096Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

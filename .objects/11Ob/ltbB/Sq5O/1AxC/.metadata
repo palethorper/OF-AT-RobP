@@ -1,0 +1,15 @@
+﻿{
+  "Name": "PO Search Dialog OK Button",
+  "Description": "PO Search Dialog OK Button",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "1AxC9m6UX0WuSwNEBLqiQQ",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/1AxC9m6UX0WuSwNEBLqiQQ",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Sq5OicXup0KJgfP--XChMA",
+  "Created": "2026-11-23T10:42:07.3277406Z",
+  "Updated": "2026-11-23T10:42:07.3277406Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

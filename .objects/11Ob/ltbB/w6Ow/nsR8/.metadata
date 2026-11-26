@@ -1,0 +1,15 @@
+﻿{
+  "Name": "View Purchase Order Link",
+  "Description": "View Purchase Order Link",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "nsR876y8i0--mtgM79U5Gw",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/nsR876y8i0--mtgM79U5Gw",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/w6OwNA7hAE-KYeIMOONslQ",
+  "Created": "2026-11-23T10:25:42.9793594Z",
+  "Updated": "2026-11-23T10:25:42.9793594Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

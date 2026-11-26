@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="N3BtNddN20uxGFPK-h0FXA" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" DesignTimeRectangle="727, 703, 482, 44" DesignTimeScaleFactor="1" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='idcs-signin-basic-signin-form-submit' tag='OJ-BUTTON' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='BUTTON' type='' class='oj-button-button' aaname='Next' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Next' /&gt;" Guid="c887145a-3a17-4bf4-89e9-63bea0b842d5" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Cloud Sign In' url='https://idcs-dfd9d303fd844502b1bca6b30a13b968.identity.oraclecloud.com/ui*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="1">
+          <Target DesignTimeRectangle="953, 716, 30, 18" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-BUTTON' id='idcs-signin-basic-signin-form-submit' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='SPAN' aaname='Next' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:text='Next' /&gt;" Guid="d1b163cc-abb7-4a59-88b7-f4664bc53a3a" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="7dbf06bf36efa168f291becacf8903e0.jpg" xmlns="">0ArB_AZMNIUGRhP728WrA2w</imageRef>
+    </TargetAnchorable>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

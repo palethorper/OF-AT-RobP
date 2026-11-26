@@ -1,0 +1,17 @@
+﻿{
+  "Name": "Supplier Registration Wizard",
+  "Description": "Redwood internal Supplier Registration wizard (7 pages: Company Details, Contacts, Addresses, Business Classifications, Bank Accounts, Products and Services, Questionnaire)",
+  "Type": "Screen",
+  "Id": "Jt1jXBgpj0akYQz6-Z4ygQ",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/Jt1jXBgpj0akYQz6-Z4ygQ",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/ltbBRqeaGEOJBm2u-N1KjA",
+  "Created": "2026-11-23T03:24:49.3212791Z",
+  "Updated": "2026-11-23T04:51:27.2238733Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

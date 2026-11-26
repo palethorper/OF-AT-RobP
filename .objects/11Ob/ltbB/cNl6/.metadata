@@ -1,0 +1,14 @@
+﻿{
+  "Name": "BPM Task Window",
+  "Description": "BPM approval task window (adf.task-flow), title = task title",
+  "Type": "Screen",
+  "Id": "cNl6egkSqk2MwtyM5suytA",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/cNl6egkSqk2MwtyM5suytA",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/ltbBRqeaGEOJBm2u-N1KjA",
+  "Created": "2026-11-23T10:08:41.939228Z",
+  "Updated": "2026-11-23T10:08:41.939228Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

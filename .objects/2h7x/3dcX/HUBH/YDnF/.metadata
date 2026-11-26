@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Username Input",
+  "Description": "Username text box on the Oracle Cloud sign-in form",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "YDnFuy1_RUqnH_bIk3_pbA",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/YDnFuy1_RUqnH_bIk3_pbA",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/HUBH5pJF9E2nxzkZHf7kdA",
+  "Created": "2026-11-23T03:10:44.7106483Z",
+  "Updated": "2026-11-23T04:44:38.7848847Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

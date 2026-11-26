@@ -1,0 +1,295 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="TC_P2P_E2E" this:TC_P2P_E2E.Oracle_Fusion_P2P_Test="Oracle_Fusion_P2P_Test" this:TC_P2P_E2E.CredentialFolderPath="Shared/OracleFusion" this:TC_P2P_E2E.FusionUrl="https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FuseWelcome" this:TC_P2P_E2E.UseIncognito="False" this:TC_P2P_E2E.RunCleanup="True" this:TC_P2P_E2E.SupplierName="UIPTST Supplier" this:TC_P2P_E2E.TaxpayerId="AUTO" this:TC_P2P_E2E.AccountNumber="AUTO" this:TC_P2P_E2E.ProcurementBU="US1 Business Unit" this:TC_P2P_E2E.Country="New Zealand" this:TC_P2P_E2E.OrganizationType="Corporation" this:TC_P2P_E2E.ContactEmail="1@1.com" this:TC_P2P_E2E.AddressLookup="216 Queen Street Northcote Point Auckland 0627" this:TC_P2P_E2E.BusinessClassification="Veteran Owned" this:TC_P2P_E2E.BranchNumber="1010" this:TC_P2P_E2E.ProductsCategory="Healthcare" this:TC_P2P_E2E.ItemDescription="UI Path Item" this:TC_P2P_E2E.Category="206.61 Monitors" this:TC_P2P_E2E.Quantity="1" this:TC_P2P_E2E.Price="2000" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uta="clr-namespace:UiPath.Testing.Activities;assembly=UiPath.Testing.Activities" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Oracle_Fusion_P2P_Test" Type="InArgument(x:String)" />
+    <x:Property Name="CredentialFolderPath" Type="InArgument(x:String)" />
+    <x:Property Name="FusionUrl" Type="InArgument(x:String)" />
+    <x:Property Name="UseIncognito" Type="InArgument(x:Boolean)" />
+    <x:Property Name="RunCleanup" Type="InArgument(x:Boolean)" />
+    <x:Property Name="SupplierName" Type="InArgument(x:String)" />
+    <x:Property Name="TaxpayerId" Type="InArgument(x:String)" />
+    <x:Property Name="AccountNumber" Type="InArgument(x:String)" />
+    <x:Property Name="ProcurementBU" Type="InArgument(x:String)" />
+    <x:Property Name="Country" Type="InArgument(x:String)" />
+    <x:Property Name="OrganizationType" Type="InArgument(x:String)" />
+    <x:Property Name="ContactEmail" Type="InArgument(x:String)" />
+    <x:Property Name="AddressLookup" Type="InArgument(x:String)" />
+    <x:Property Name="BusinessClassification" Type="InArgument(x:String)" />
+    <x:Property Name="BranchNumber" Type="InArgument(x:String)" />
+    <x:Property Name="ProductsCategory" Type="InArgument(x:String)" />
+    <x:Property Name="ItemDescription" Type="InArgument(x:String)" />
+    <x:Property Name="Category" Type="InArgument(x:String)" />
+    <x:Property Name="Quantity" Type="InArgument(x:String)" />
+    <x:Property Name="Price" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Testing.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="TC P2P E2E: new supplier to validated invoice (OFP2P:227)" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strRunId" />
+      <Variable x:TypeArguments="x:String" Name="strSupplierName" />
+      <Variable x:TypeArguments="x:String" Name="strTaxpayerId" />
+      <Variable x:TypeArguments="x:String" Name="strAccountNumber" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dictSupplierProfile" />
+      <Variable x:TypeArguments="ui:UiElement" Name="uiBrowser" />
+      <Variable x:TypeArguments="x:String" Name="strRegistrationId" />
+      <Variable x:TypeArguments="x:String" Name="strBaseUrl" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dictRequisitionProfile" />
+      <Variable x:TypeArguments="x:String" Name="strRequisitionNumber" />
+      <Variable x:TypeArguments="x:String" Name="strPONumber" />
+      <Variable x:TypeArguments="x:String" Name="strInvoiceNumber" />
+      <Variable x:TypeArguments="x:String" Name="strInvoiceAmount" />
+      <Variable x:TypeArguments="x:String" Name="strInvoiceStatus" />
+      <Variable x:TypeArguments="s:Exception" Name="exWhen" />
+      <Variable x:TypeArguments="x:String" Name="strRunRecordId" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dictRun" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="P2P E2E Given" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <Assign DisplayName="Assign strRunId (yyMMddHHmm)" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[strRunId]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[DateTime.Now.ToString("yyMMddHHmm")]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign unique supplier name" sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[strSupplierName]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[SupplierName &amp; " " &amp; strRunId]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign unique Taxpayer ID (AUTO = RunId)" sap2010:WorkflowViewState.IdRef="Assign_3">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[strTaxpayerId]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[If(String.IsNullOrWhiteSpace(TaxpayerId) OrElse TaxpayerId.Trim().ToUpper() = "AUTO", strRunId, TaxpayerId)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign unique bank account number (AUTO = MMddHHmm)" sap2010:WorkflowViewState.IdRef="Assign_4">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[strAccountNumber]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[If(String.IsNullOrWhiteSpace(AccountNumber) OrElse AccountNumber.Trim().ToUpper() = "AUTO", DateTime.Now.ToString("MMddHHmm"), AccountNumber)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign supplier profile (arguments + script defaults)" sap2010:WorkflowViewState.IdRef="Assign_5">
+        <Assign.To>
+          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dictSupplierProfile]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[New Dictionary(Of String, String) From {{"BusinessRelationship", "Spend Authorized"}, {"ProcurementBU", ProcurementBU}, {"RequestReason", "New Supply Source"}, {"Country", Country}, {"OrganizationType", OrganizationType}, {"ContactFirstName", "Contact"}, {"ContactLastName", "1"}, {"ContactEmail", ContactEmail}, {"AddressName", "HQ"}, {"AddressLookup", AddressLookup}, {"BusinessClassification", BusinessClassification}, {"BranchNumber", BranchNumber}, {"AccountHolder", "Example Holder"}, {"AccountSuffix", "00"}, {"ProductsCategory", ProductsCategory}, {"QuestionnaireAttachment", "Data\Questionnaire_Attachment.docx"}, {"BaseUrl", New Uri(FusionUrl).GetLeftPart(UriPartial.Authority)}}]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign Fusion base URL (scheme + host)" sap2010:WorkflowViewState.IdRef="Assign_6">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[strBaseUrl]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[New Uri(FusionUrl).GetLeftPart(UriPartial.Authority)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign requisition profile (arguments + script defaults)" sap2010:WorkflowViewState.IdRef="Assign_7">
+        <Assign.To>
+          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dictRequisitionProfile]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[New Dictionary(Of String, String) From {{"ItemDescription", "UIP-TEST-" &amp; strRunId &amp; " " &amp; ItemDescription}, {"Category", Category}, {"Quantity", Quantity}, {"UOMSearch", "Each"}, {"UOM", "Ea"}, {"Price", Price}, {"SupplierName", strSupplierName}}]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign unique invoice number" sap2010:WorkflowViewState.IdRef="Assign_8">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[strInvoiceNumber]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">["UIP-OFP2P-" &amp; strRunId]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign invoice amount (price x qty + 9.5% US1 Seattle tax)" sap2010:WorkflowViewState.IdRef="Assign_9">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[strInvoiceAmount]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[Math.Round(Decimal.Parse(Price, Globalization.CultureInfo.InvariantCulture) * Decimal.Parse(Quantity, Globalization.CultureInfo.InvariantCulture) * 1.095D, 2).ToString("0.00", Globalization.CultureInfo.InvariantCulture)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:LogMessage DisplayName="Log run data" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;RunId=&quot; &amp; strRunId &amp; &quot; Supplier=&quot; &amp; strSupplierName &amp; &quot; TaxpayerId=&quot; &amp; strTaxpayerId &amp; &quot; Account=&quot; &amp; strAccountNumber]" />
+      <Assign DisplayName="Assign dictRun (fixed run facts for the Data Fabric run record)" sap2010:WorkflowViewState.IdRef="Assign_91">
+        <Assign.To>
+          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dictRun]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[New Dictionary(Of String, String) From {{"RunId", strRunId}, {"TestCaseKey", "OFP2P:227"}, {"BusinessUnit", ProcurementBU}, {"Requester", "Casey Brown"}, {"Supplier", strSupplierName}, {"ItemDescription", dictRequisitionProfile("ItemDescription")}, {"Category", Category}, {"Quantity", Quantity}, {"UOM", "Ea"}, {"UnitPrice", Price}, {"Amount", Math.Round(Decimal.Parse(Price, Globalization.CultureInfo.InvariantCulture) * Decimal.Parse(Quantity, Globalization.CultureInfo.InvariantCulture), 2).ToString("0.00", Globalization.CultureInfo.InvariantCulture)}, {"Currency", "USD"}}]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="DF create run record (Requisition) - Invoke Workflow File (DF_SaveP2PRun.xaml)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_96" UnSafe="False" WorkflowFileName="Workflows\DF_SaveP2PRun.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RecordId">[String.Empty]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_Stage">Requisition</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_CleanupAction">None</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_CleanupNotes">[String.Empty]</InArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_Run">[dictRun]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RequisitionNumber">[String.Empty]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_PONumber">[String.Empty]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[String.Empty]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceStatus">[String.Empty]</InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_RecordId">[strRunRecordId]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="S0 Sign in - Invoke Workflow File (S0_SignIn.xaml)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\S0_SignIn.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_CredentialAssetName">[Oracle_Fusion_P2P_Test]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_CredentialFolderPath">[CredentialFolderPath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_FusionUrl">[FusionUrl]</InArgument>
+          <InArgument x:TypeArguments="x:Boolean" x:Key="in_UseIncognito">[UseIncognito]</InArgument>
+          <OutArgument x:TypeArguments="ui:UiElement" x:Key="out_Browser">[uiBrowser]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+    </Sequence>
+    <TryCatch DisplayName="Try When (always close the robot browser)" sap2010:WorkflowViewState.IdRef="TryCatch_1"><TryCatch.Try><Sequence DisplayName="P2P E2E When" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="S1 Register supplier - Invoke Workflow File (S1_RegisterSupplier.xaml)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\S1_RegisterSupplier.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">[uiBrowser]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_SupplierName">[strSupplierName]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_TaxpayerId">[strTaxpayerId]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_AccountNumber">[strAccountNumber]</InArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_Profile">[dictSupplierProfile]</InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_RegistrationId">[strRegistrationId]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="S2 Approve supplier registration - Invoke Workflow File (Common_ApproveNotification.xaml)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\Common_ApproveNotification.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">[uiBrowser]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_BaseUrl">[strBaseUrl]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_TaskTitle">["Supplier Registration Request * for " &amp; strSupplierName]</InArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="S3 Create requisition - Invoke Workflow File (S3_CreateRequisition.xaml)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workflows\S3_CreateRequisition.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">[uiBrowser]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_BaseUrl">[strBaseUrl]</InArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_Profile">[dictRequisitionProfile]</InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_RequisitionNumber">[strRequisitionNumber]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="S4 Approve requisition - Invoke Workflow File (Common_ApproveNotification.xaml)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Workflows\Common_ApproveNotification.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">[uiBrowser]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_BaseUrl">[strBaseUrl]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_TaskTitle">["Approve Requisition " &amp; strRequisitionNumber]</InArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="DF update run record (Approved) - Invoke Workflow File (DF_SaveP2PRun.xaml)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_97" UnSafe="False" WorkflowFileName="Workflows\DF_SaveP2PRun.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RecordId">[strRunRecordId]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_Stage">Approved</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_CleanupAction">None</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_CleanupNotes">[String.Empty]</InArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_Run">[dictRun]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RequisitionNumber">[strRequisitionNumber]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_PONumber">[String.Empty]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[String.Empty]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceStatus">[String.Empty]</InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_RecordId">[strRunRecordId]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="S5 Create purchase order - Invoke Workflow File (S5_CreatePurchaseOrder.xaml)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Workflows\S5_CreatePurchaseOrder.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">[uiBrowser]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_BaseUrl">[strBaseUrl]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RequisitionNumber">[strRequisitionNumber]</InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_PONumber">[strPONumber]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="DF update run record (PO) - Invoke Workflow File (DF_SaveP2PRun.xaml)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_98" UnSafe="False" WorkflowFileName="Workflows\DF_SaveP2PRun.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RecordId">[strRunRecordId]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_Stage">PO</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_CleanupAction">None</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_CleanupNotes">[String.Empty]</InArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_Run">[dictRun]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RequisitionNumber">[strRequisitionNumber]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_PONumber">[strPONumber]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[String.Empty]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceStatus">[String.Empty]</InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_RecordId">[strRunRecordId]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="S6 Receive order - Invoke Workflow File (S6_ReceiveOrder.xaml)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Workflows\S6_ReceiveOrder.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">[uiBrowser]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_BaseUrl">[strBaseUrl]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_PONumber">[strPONumber]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CredentialAssetName">[Oracle_Fusion_P2P_Test]</InArgument><InArgument x:TypeArguments="x:String" x:Key="in_CredentialFolderPath">[CredentialFolderPath]</InArgument></ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="DF update run record (Received) - Invoke Workflow File (DF_SaveP2PRun.xaml)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_99" UnSafe="False" WorkflowFileName="Workflows\DF_SaveP2PRun.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RecordId">[strRunRecordId]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_Stage">Received</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_CleanupAction">None</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_CleanupNotes">[String.Empty]</InArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_Run">[dictRun]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RequisitionNumber">[strRequisitionNumber]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_PONumber">[strPONumber]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[String.Empty]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceStatus">[String.Empty]</InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_RecordId">[strRunRecordId]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="S7 Create and validate invoice - Invoke Workflow File (S7_CreateInvoice.xaml)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Workflows\S7_CreateInvoice.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">[uiBrowser]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_BaseUrl">[strBaseUrl]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_PONumber">[strPONumber]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[strInvoiceNumber]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceAmount">[strInvoiceAmount]</InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_ValidationStatus">[strInvoiceStatus]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+    </Sequence></TryCatch.Try><TryCatch.Catches><Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch_9"><ActivityAction x:TypeArguments="s:Exception"><ActivityAction.Argument><DelegateInArgument x:TypeArguments="s:Exception" Name="exCaught" /></ActivityAction.Argument><Assign DisplayName="Keep the failure (rethrown after the browser is closed)" sap2010:WorkflowViewState.IdRef="Assign_90"><Assign.To><OutArgument x:TypeArguments="s:Exception">[exWhen]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="s:Exception">[exCaught]</InArgument></Assign.Value></Assign></ActivityAction></Catch></TryCatch.Catches><TryCatch.Finally><Sequence DisplayName="Finally" sap2010:WorkflowViewState.IdRef="Sequence_91"><If Condition="[RunCleanup]" DisplayName="If RunCleanup: S9 cleanup (REST, pass or fail)" sap2010:WorkflowViewState.IdRef="If_95"><If.Then><TryCatch DisplayName="Try S9 cleanup" sap2010:WorkflowViewState.IdRef="TryCatch_95"><TryCatch.Try><ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="S9 Cleanup - Invoke Workflow File (S9_Cleanup.xaml)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_95" UnSafe="False" WorkflowFileName="Workflows\S9_Cleanup.xaml"><ui:InvokeWorkflowFile.Arguments><InArgument x:TypeArguments="x:String" x:Key="in_BaseUrl">[strBaseUrl]</InArgument><InArgument x:TypeArguments="x:String" x:Key="in_CredentialAssetName">[Oracle_Fusion_P2P_Test]</InArgument><InArgument x:TypeArguments="x:String" x:Key="in_CredentialFolderPath">[CredentialFolderPath]</InArgument><InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[If(String.IsNullOrEmpty(strPONumber), "", strInvoiceNumber)]</InArgument><InArgument x:TypeArguments="x:String" x:Key="in_SupplierName">[strSupplierName]</InArgument><InArgument x:TypeArguments="x:String" x:Key="in_PONumber">[strPONumber]</InArgument><InArgument x:TypeArguments="x:String" x:Key="in_RequisitionNumber">[strRequisitionNumber]</InArgument></ui:InvokeWorkflowFile.Arguments></ui:InvokeWorkflowFile></TryCatch.Try><TryCatch.Catches><Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch_95"><ActivityAction x:TypeArguments="s:Exception"><ActivityAction.Argument><DelegateInArgument x:TypeArguments="s:Exception" Name="exClean" /></ActivityAction.Argument><ui:LogMessage DisplayName="Log cleanup failed" sap2010:WorkflowViewState.IdRef="LogMessage_95" Level="Warn" Message="[&quot;S9 cleanup failed: &quot; &amp; exClean.Message]" /></ActivityAction></Catch></TryCatch.Catches></TryCatch></If.Then></If><ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="DF update run record (final outcome) - Invoke Workflow File (DF_SaveP2PRun.xaml)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_100" UnSafe="False" WorkflowFileName="Workflows\DF_SaveP2PRun.xaml"><ui:InvokeWorkflowFile.Arguments><InArgument x:TypeArguments="x:String" x:Key="in_RecordId">[strRunRecordId]</InArgument><InArgument x:TypeArguments="x:String" x:Key="in_Stage">[If(exWhen IsNot Nothing, "Failed", If(RunCleanup, "CleanedUp", If(strInvoiceStatus = "Validated", "Validated", "Invoiced")))]</InArgument><InArgument x:TypeArguments="x:String" x:Key="in_CleanupAction">[If(RunCleanup, "None", If(exWhen IsNot Nothing, "ManualReview", "CancelInvoice"))]</InArgument><InArgument x:TypeArguments="x:String" x:Key="in_CleanupNotes">[If(exWhen IsNot Nothing, "Run failed: " &amp; exWhen.Message &amp; If(RunCleanup, " | S9 cleanup ran", " | no cleanup ran"), If(RunCleanup, "S9 cleanup ran: invoice and PO cancelled; requisition stays Approved once its lines are on the cancelled PO; supplier kept active", "Left in place for downstream tests; when done cancel the invoice, then the PO"))]</InArgument><InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_Run">[If(dictRun, New Dictionary(Of String, String) From {{"RunId", strRunId}})]</InArgument><InArgument x:TypeArguments="x:String" x:Key="in_RequisitionNumber">[If(strRequisitionNumber, String.Empty)]</InArgument><InArgument x:TypeArguments="x:String" x:Key="in_PONumber">[If(strPONumber, String.Empty)]</InArgument><InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[If(String.IsNullOrEmpty(strInvoiceStatus), String.Empty, strInvoiceNumber)]</InArgument><InArgument x:TypeArguments="x:String" x:Key="in_InvoiceStatus">[If(strInvoiceStatus, String.Empty)]</InArgument><OutArgument x:TypeArguments="x:String" x:Key="out_RecordId">[strRunRecordId]</OutArgument></ui:InvokeWorkflowFile.Arguments></ui:InvokeWorkflowFile><TryCatch DisplayName="Try close" sap2010:WorkflowViewState.IdRef="TryCatch_2"><TryCatch.Try><If Condition="[uiBrowser IsNot Nothing]" DisplayName="If the robot browser was opened" sap2010:WorkflowViewState.IdRef="If_9"><If.Then><uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Close robot browser (no leftover windows between runs)" HealingAgentBehavior="Job" sap2010:WorkflowViewState.IdRef="NApplicationCard_9" InUiElement="[uiBrowser]" OpenMode="Never" ScopeGuid="79e37bd8-6468-46ea-b237-d87a84bf178d" Version="V2"><uix:NApplicationCard.Body><ActivityAction x:TypeArguments="x:Object"><ActivityAction.Argument><DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" /></ActivityAction.Argument><Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_90"><ui:LogMessage DisplayName="Log closing browser" sap2010:WorkflowViewState.IdRef="LogMessage_90" Level="Info" Message="[&quot;Closing robot browser&quot;]" /></Sequence></ActivityAction></uix:NApplicationCard.Body></uix:NApplicationCard></If.Then></If></TryCatch.Try><TryCatch.Catches><Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch_1"><ActivityAction x:TypeArguments="s:Exception"><ActivityAction.Argument><DelegateInArgument x:TypeArguments="s:Exception" Name="exClose" /></ActivityAction.Argument><ui:LogMessage DisplayName="Log close failed" sap2010:WorkflowViewState.IdRef="LogMessage_91" Level="Warn" Message="[&quot;Could not close robot browser: &quot; &amp; exClose.Message]" /></ActivityAction></Catch></TryCatch.Catches></TryCatch></Sequence></TryCatch.Finally></TryCatch><If Condition="[exWhen IsNot Nothing]" DisplayName="If When failed, fail the test" sap2010:WorkflowViewState.IdRef="If_91"><If.Then><Throw DisplayName="Rethrow the When failure" Exception="[exWhen]" sap2010:WorkflowViewState.IdRef="Throw_91" /></If.Then></If>
+    <Sequence DisplayName="P2P E2E Then" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <uta:VerifyExpression AlternativeVerificationTitle="{x:Null}" KeepScreenshots="{x:Null}" OutputMessageFormat="{x:Null}" Result="{x:Null}" ScreenshotsPath="{x:Null}" ContinueOnFailure="True" DisplayName="Verify supplier registration submitted (registration id captured)" Expression="[Not String.IsNullOrEmpty(strRegistrationId)]" sap2010:WorkflowViewState.IdRef="VerifyExpression_1" TakeScreenshotInCaseOfFailingAssertion="False" TakeScreenshotInCaseOfSucceedingAssertion="False" />
+      <uta:VerifyExpression AlternativeVerificationTitle="{x:Null}" KeepScreenshots="{x:Null}" OutputMessageFormat="{x:Null}" Result="{x:Null}" ScreenshotsPath="{x:Null}" ContinueOnFailure="True" DisplayName="Verify requisition submitted (number captured)" Expression="[Not String.IsNullOrEmpty(strRequisitionNumber)]" sap2010:WorkflowViewState.IdRef="VerifyExpression_2" TakeScreenshotInCaseOfFailingAssertion="False" TakeScreenshotInCaseOfSucceedingAssertion="False" />
+      <uta:VerifyExpression AlternativeVerificationTitle="{x:Null}" KeepScreenshots="{x:Null}" OutputMessageFormat="{x:Null}" Result="{x:Null}" ScreenshotsPath="{x:Null}" ContinueOnFailure="True" DisplayName="Verify purchase order created (US number)" Expression="[strPONumber.StartsWith(&quot;US&quot;)]" sap2010:WorkflowViewState.IdRef="VerifyExpression_3" TakeScreenshotInCaseOfFailingAssertion="False" TakeScreenshotInCaseOfSucceedingAssertion="False" />
+      <uta:VerifyExpression AlternativeVerificationTitle="{x:Null}" KeepScreenshots="{x:Null}" OutputMessageFormat="{x:Null}" Result="{x:Null}" ScreenshotsPath="{x:Null}" ContinueOnFailure="True" DisplayName="Verify invoice validated" Expression="[strInvoiceStatus = &quot;Validated&quot;]" sap2010:WorkflowViewState.IdRef="VerifyExpression_4" TakeScreenshotInCaseOfFailingAssertion="False" TakeScreenshotInCaseOfSucceedingAssertion="False" />
+      <ui:LogMessage DisplayName="Log run documents" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;RUN DOCUMENTS: supplier=&quot; &amp; strSupplierName &amp; &quot; reg=&quot; &amp; strRegistrationId &amp; &quot; req=&quot; &amp; strRequisitionNumber &amp; &quot; po=&quot; &amp; strPONumber &amp; &quot; invoice=&quot; &amp; strInvoiceNumber &amp; &quot; (&quot; &amp; strInvoiceStatus &amp; &quot;)&quot;]" />
+    </Sequence>
+  </Sequence>
+</Activity>

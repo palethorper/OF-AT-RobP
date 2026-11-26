@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Invoices Tasks Panel Icon",
+  "Description": "Invoices Tasks Panel Icon",
+  "Type": "Element",
+  "TaxonomyType": "Icon",
+  "Id": "6oJqRf_U-U2SHv7Hl37GDw",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/6oJqRf_U-U2SHv7Hl37GDw",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Sq5OicXup0KJgfP--XChMA",
+  "Created": "2026-11-23T10:35:08.7917111Z",
+  "Updated": "2026-11-23T22:00:06.707622Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

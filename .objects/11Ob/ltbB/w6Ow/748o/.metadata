@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Process Requisitions Search Input",
+  "Description": "Process Requisitions Search Input",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "748oDv1auEmx3wgfeMcN5Q",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/748oDv1auEmx3wgfeMcN5Q",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/w6OwNA7hAE-KYeIMOONslQ",
+  "Created": "2026-11-23T10:21:54.5331191Z",
+  "Updated": "2026-11-23T10:21:54.5331191Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

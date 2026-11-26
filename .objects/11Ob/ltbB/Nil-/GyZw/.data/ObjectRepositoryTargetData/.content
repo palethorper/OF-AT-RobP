@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="AuNEuitiwE6cfSDQin0_mQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" DesignTimeRectangle="283, 979, 151, 61" DesignTimeScaleFactor="1" ElementType="TabPage" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='My Requisitions' aria-role='tab' tag='A' /&gt;" Guid="e0af560d-c9f0-4e8b-8c61-5e2167fdcdba" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="0" />
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="3f52c11478be45a89f0dcbb3a25843e7.jpg" xmlns="">0GHVeE8VfT0SywnNU9GWUwA</imageRef>
+    </TargetAnchorable>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

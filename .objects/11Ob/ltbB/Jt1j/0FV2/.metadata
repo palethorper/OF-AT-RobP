@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Dropdown Option Cell",
+  "Description": "First result row in an open, filtered Redwood search-select dropdown list",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "0FV2zcOEG0q0QRgmd20-kw",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/0FV2zcOEG0q0QRgmd20-kw",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Jt1jXBgpj0akYQz6-Z4ygQ",
+  "Created": "2026-11-23T04:38:46.5008661Z",
+  "Updated": "2026-11-23T05:23:34.481291Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

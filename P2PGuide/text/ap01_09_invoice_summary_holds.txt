@@ -1,0 +1,640 @@
+### Eval
+- Result: Create Invoice - Invoices - Oracle Fusion Cloud Applications
+https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview
+Skip to main content
+
+19
+
+Create Invoice: UIP-AP-231126-1013
+		
+About This Record
+	 	
+		Needs revalidation
+	 	
+	Invoice Actions	
+
+Save and Create Next
+		
+Save
+		
+Save and Close
+		
+Cancel
+
+Last Saved	22/11/26 11:21 PM
+
+Invoice Header
+	
+	Show More
+
+Identifying PO	
+Business Unit	US1 Business Unit
+*Supplier	
+Tab to the associated search button or type a value. Autocompletes on TAB
+
+Supplier Number	1288
+*Supplier Site	
+Autocompletes on TAB
+
+*Legal Entity	
+Autocompletes on TAB
+
+Invoice Group	
+
+*Number	
+*Amount	
+USD - US Dollar
+EUR - Euro
+GBP - Pound Sterling
+JPY - Yen
+ADP - Andorran Peseta
+AED - UAE Dirham
+AFA - Afghani (old)
+AFN - Afghani
+ALL - Lek
+AMD - Armenian Dram
+ANG - Netherlands Antillian Guilder
+AOA - Kwanza
+AOK - Kwanza (Obsolete)
+AON - New Kwanza
+ARA - Austral
+ARS - Argentine Peso
+ATS - Schilling
+AUD - Australian Dollar
+AWG - Aruban Guilder
+AZM - Azerbaijanian Manat (old)
+AZN - Azerbaijanian Manat
+BAM - Convertible Marks
+BBD - Barbados Dollar
+BDT - Taka
+BEF - Belgian Franc
+BGL - Bulgarian Lev (Obsolete)
+BGN - Bulgarian Lev
+BHD - Bahraini Dinar
+BIF - Burundi Franc
+BMD - Bermudian Dollar
+BND - Brunei Dollar
+BOB - Boliviano
+BOV - Mvdol
+BRC - Cruzado
+BRL - Brazilian Real
+BSD - Bahamian Dollar
+BTN - Ngultrum
+BUK - Kyat (Obsolete)
+BWP - Pula
+BYB - Belarusian Ruble (Withdrawn in 2000)
+BYN - Belarusian Ruble
+BYR - Belarusian Ruble (Withdrawn in 2016)
+BZD - Belize Dollar
+CAD - Canadian Dollar
+CDF - Franc Congolais
+CHE - WIR Euro
+CHF - Swiss Franc
+CHW - WIR Franc
+CLF - Unidad de Fomento
+CLP - Chilean Peso
+CNY - Yuan Renminbi
+COP - Colombian Peso
+COU - Unidad de Valor Real
+CRC - Costa Rican Colon
+CSK - Koruna
+CUP - Cuban Peso
+CVE - Cape Verde Escudo
+CYP - Cyprus Pound
+CZK - Czech Koruna
+DEM - Deutsche Mark
+DJF - Djibouti Franc
+DKK - Danish Krone
+DOP - Dominican Peso
+DZD - Algerian Dinar
+ECS - Sucre
+ECV - Unidad de Valor Constante (UVC)
+EEK - Kroon
+EGP - Egyptian Pound
+ERN - Nakfa
+ESB - Convertible Peseta Accounts
+ESP - Spanish Peseta
+ETB - Ethiopian Birr
+FIM - Markka
+FJD - Fiji Dollar
+FKP - Falkland Islands Pound
+FRF - French Franc
+GEK - Georgian Coupon
+GEL - Lari
+GHC - Ghana Cedi (old)
+GHS - Ghana Cedi
+GIP - Gibraltar Pound
+GMD - Dalasi
+GNF - Guinea Franc
+GRD - Drachma
+GTQ - Quetzal
+GWP - Guinea-Bissau Peso
+GYD - Guyana Dollar
+HKD - Hong Kong Dollar
+HNL - Lempira
+HRD - Croatian Dinar
+HRK - Croatian Kuna
+HTG - Gourde
+HUF - Forint
+IDR - Rupiah
+IEP - Irish Pound
+ILS - New Israeli Sheqel
+INR - Indian Rupee
+IQD - Iraqi Dinar
+IRR - Iranian Rial
+ISK - Iceland Krona
+ITL - Italian Lira
+JMD - Jamaican Dollar
+JOD - Jordanian Dinar
+KES - Kenyan Shilling
+KGS - Som
+KHR - Riel
+KMF - Comoro Franc
+KPW - North Korean Won
+KRW - Won
+KWD - Kuwaiti Dinar
+KYD - Cayman Islands Dollar
+KZT - Tenge
+LAK - Kip
+LBP - Lebanese Pound
+LKR - Sri Lanka Rupee
+LRD - Liberian Dollar
+LSL - Loti
+LTL - Lithuanian Litas
+LUC - Convertible Franc
+LUF - Luxembourg Franc
+LUL - Financial Franc
+LVL - Latvian Lats
+LVR - Latvian Ruble
+LYD - Libyan Dinar
+MAD - Moroccan Dirham
+MDL - Moldovan Leu
+MGA - Malagasy Ariary
+MGF - Malagasy Franc
+MKD - Denar
+MMK - Kyat
+MNT - Tugrik
+MOP - Pataca
+MRO - Ouguiya (Obsolete)
+MRU - Ouguiya
+MTL - Maltese Lira
+MUR - Mauritius Rupee
+MVR - Rufiyaa
+MWK - Kawacha
+MXN - Mexican Peso
+MXP - Mexican Peso (Obsolete)
+MXV - Mexican Unidad de Inversion (UDI)
+MYR - Malaysian Ringgit
+MZM - Metical (old)
+MZN - Metical
+NAD - Namibia Dollar
+NGN - Naira
+NIC - Cordoba
+NIO - Cordoba Oro
+NLG - Netherlands Guilder
+NOK - Norwegian Krone
+NPR - Nepalese Rupee
+NZD - New Zealand Dollar
+OMR - Rial Omani
+PAB - Balboa
+PEI - Inti
+PEN - Nuevo Sol
+PGK - Kina
+PHP - Philippine Peso
+PKR - Pakistan Rupee
+PLN - Zloty
+PLZ - Zloty (Obsolete)
+PTE - Portuguese Escudo
+PYG - Guarani
+QAR - Qatari Rial
+ROL - Leu
+RON - New Romanian Leu
+RSD - Serbian Dinar
+RUB - Russian Ruble
+RUR - Russian Ruble (old)
+RWF - Rwanda Franc
+SAR - Saudi Riyal
+SBD - Solomon Islands Dollar
+SCR - Seychelles Rupee
+SDD - Sudanese Dinar
+SDG - Sudanese Pound
+SDP - Sudanese Pound (old)
+SEK - Swedish Krona
+SGD - Singapore Dollar
+SHP - Saint Helena Pound
+SIT - Tolar
+SKK - Slovak Koruna
+SLE - New Leone
+SLL - Leone
+SOS - Somali Shilling
+SRD - Suriname Dollar
+SRG - Suriname Guilder
+SSP - South Sudanese Pound
+STD - Dobra (Obsolete)
+STN - Dobra
+SUR - Rouble
+SVC - El Salvador Colon
+SYP - Syrian Pound
+SZL - Lilangeni
+THB - Baht
+TJR - Tajik Ruble
+TJS - Somoni
+TMM - Manat (Obsolete)
+TMT - Manat
+TND - Tunisian Dinar
+TOP - Pa'anga
+TPE - Timor Escudo
+TRL - Turkish Lira
+TRY - New Turkish Lira
+TTD - Trinidad and Tobago Dollar
+TWD - New Taiwan Dollar
+TZS - Tanzanian Shilling
+UAH - Hryvnia
+UAK - Karbovanet
+UGS - Uganda Shilling (Obsolete)
+UGX - Uganda Shilling
+USN - US Dollar (next day)
+USS - US Dollar (same day)
+UYI - Uruguay Peso en Unidades Indexadas
+UYP - Uruguayan Peso
+UYU - Peso Uruguayo
+UYW - Unidad Previsional
+UZS - Uzbekistan Sum
+VEB - Bolivar
+VEF - Bolivar Fuerte
+VES - Bolivar Soberano
+VND - Dong
+VUV - Vatu
+WST - Tala
+XAD - Arab Accounting Dinar
+XAF - CFA Franc BEAC
+XAG - Silver
+XAU - Gold
+XB5 - Bond Markets Unit European Unit of Account 17 (Obsolete)
+XBA - Bond Markets Unit European Composite Unit (EURCO)
+XBB - Bond Markets Unit European Monetary Unit (E.M.U.-6)
+XBC - Bond Markets Unit European Unit of Account 9 (E.U.A.-9)
+XBD - Bond Markets Unit European Unit of Account 17 (E.U.A.-17)
+XCD - East Caribbean Dollar
+XCG - Caribbean Guilder
+XDR - SDR
+XEU - European Currency Unit (E.C.U.)
+XFO - Special settlement currencies - Gold-Franc
+XFU - UIC Franc (special settlement currency)
+XOF - CFA Franc BCEAO
+XPD - Palladium
+XPF - CFP Franc
+XPT - Platinum
+XTS - Testing
+XXX - No currency
+YDD - Yemeni Dinar
+YER - Yemeni Rial
+YUD - New Yugoslavian Dinar
+YUM - Yugoslavian Dinar
+YUN - Yugoslavian Dinar (Obsolete)
+ZAL - Financial Rand
+ZAR - Rand
+ZIG - Zimbabwe Gold
+ZMK - Zambian Kwacha (Obsolete)
+ZMW - Zambian Kwacha
+ZRN - New Zaire
+ZRZ - Zaire
+ZWD - Zimbabwe Dollar (Obsolete Much Earlier)
+ZWL - Zimbabwe Dollar
+ZWR - Zimbabwe Dollar (Obsolete)
+Invoice Currency
+
+Amount
+
+Type	
+Standard
+Prepayment
+Debit memo
+Credit memo
+Withholding tax
+
+Description	
+
+*Date	
+Press down arrow to access Calendar
+
+*Payment Terms	
+Autocompletes on TAB
+
+*Terms Date	
+Press down arrow to access Calendar
+
+Requester	
+Tab to the associated search button or type a value. Autocompletes on TAB
+
+Attachments	
+None		
+
+Note	
+		
+Lines
+
+Match Invoice Lines
+Match to Receipt Charges
+Correct Matched Invoices
+Correct Unmatched Invoices
+Action
+
+View	
+	
+Add Row
+	
+Duplicate
+	
+Delete
+	
+Export to Excel
+	
+Query By Example
+	
+Detach
+Detach
+	
+Allocate
+	
+Button has a popup, press down arrow key to access the popup.
+	
+Cancel Line
+	
+Distributions
+	
+DistributionReferenceTaxPurchase OrderAssetProject
+
+*Number
+	
+*Type
+	
+*Amount
+
+Distribution
+	
+Reference
+	
+Tax
+	
+Purchase Order
+	
+Asset
+	
+Project
+	
+Details
+
+Distribution Set
+	
+Distribution Combination
+	
+Accounting Date
+	
+Prorate Across All Item Lines
+	
+Description
+	
+Tax Classification
+	
+Ship-to Location
+	
+Number
+	
+Line
+	
+Schedule
+	
+Track as Asset
+	
+Book
+	
+Asset Category
+	
+Project Number		
+	
+Task Number		
+	
+Expenditure Item Date		
+	
+Expenditure Type		
+	
+Expenditure Organization		
+	
+Contract Number		
+	
+Funding Source		
+ 	
+1	
+	
+Freight
+Item
+Miscellaneous
+Type
+	
+Amount
+	
+Distribution Set
+	
+Autocompletes on TAB
+	
+Distribution Combination ID
+
+Press down arrow to access Calendar
+Accounting Date
+
+Description
+	
+Tax Classification
+	
+Autocompletes on TAB
+	
+Ship-to Location
+	
+Autocompletes on TAB
+	
+Number
+	
+Autocompletes on TAB
+	
+Line
+	
+Autocompletes on TAB
+	
+Schedule
+	
+Autocompletes on TAB
+
+AU CORP
+AU COUNCIL CORP
+CHINA CORP
+DE HB
+HC US CORP
+INDIA CORP
+IT PS ASSET BOOK
+NL BOOK
+PL KORPORACYJNA
+PROGRESS CA CORP
+PROGRESS LEASE US
+PROGRESS UK CORP
+PROGRESS US
+SA_PS ASSET BOOK
+SG AD US CORP
+SG AUTO US CORP
+SG ENG CONS US CORP
+SG FACILITIES NL CORP
+SG RET GB CORP
+SG RET IT CORP
+SG RET US CORP
+SG WHLSL DIST US CORP
+SUPREMO US CORP
+SUPREMO_ENERGY_US_CORP
+SWEDEN BOOK
+TEST_CORP_01
+UAE PS ASSET BOOK
+UK CORP
+UK FIN SVCS CORP
+UNIVERSITY US CORP
+US CORP
+US FIN SVCS CORP
+US INSURANCE CORP
+VISION FRANCE COMPTABLE
+VUK
+Book
+	
+Asset Category
+
+Project Number
+Tab to the associated search button or type a value. Autocompletes on TAB
+
+Taxes
+		
+Transaction Taxes
+Withholding Taxes
+	View	
+	
+Detach
+Detach
+	
+Override Tax Amount	
+	Apply	Edit Taxes	Manage Tax Details
+
+Line
+	
+Rate Name
+	
+Rate
+	
+Amount
+	
+Canceled
+	
+Inclusive
+	
+Self-Assessed
+	
+Tax Only Line
+	
+Regime
+	
+Tax Name
+	
+Tax Jurisdiction
+2	STD	2.5	12.50	
+Canceled
+	
+Inclusive
+	
+Self-Assessed
+	
+Tax Only Line
+	US SALES AND USE TAX	COUNTY	CA-San Mateo-CO-050810000
+3	STD	6.5	32.50	
+Canceled
+	
+Inclusive
+	
+Self-Assessed
+	
+Tax Only Line
+	US SALES AND USE TAX	STATE	CA-ST-050000000
+
+Total
+	
+	45.00
+	 	
+	0.00
+	
+	0.00
+
+Totals
+	
+Items
+500.00
+	
+Freight
+0.00
+	
+Miscellaneous
+0.00
+Retainage
+0.00
+	
+Tax
+45.00
+Withholding
+0.00
+	
+Included Prepayments
+0.00
+Applied Prepayments
+0.00
+	
+Total
+		545.00
+Due
+500.00
+
+Invoice Summary
+
+Status
+	
+Validation	Needs revalidation
+Accounting	Unaccounted
+Payments	Unpaid
+Due Date	22/12/26
+
+Holds
+	
+Installments	0
+Line Variance	1
+Distribution Variance	3
+Manual Holds	0
+System Holds	4
+Supplier Site	No
+
+Manage Installments	
+
+Calculate Tax	Ctrl+Alt+X	
+
+	Validate	Ctrl+Alt+V	
+
+	Apply or Unapply Prepayments	
+
+Manage Holds	
+
+Account Coding	
+
+Approval	
+
+View Approval and Notification History	
+
+Cancel Invoice	
+
+Delete Invoice	
+
+Pay in Full	
+
+Post to Ledger	
+
+Account in Draft

@@ -1,0 +1,38 @@
+### Eval
+- Result: Requisition Details - View - Oracle Fusion Cloud Applications
+https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions/tabbar/shopping/requisitiondetails
+Edit requisition?
+The requisition is pending approval. It will be withdrawn and removed from the approval process for you to edit.
+Cancel
+ 
+Edit
+Skip to main content
+16
+204162Pending approval
+Requisition
+Edit
+Entered By
+Casey Brown
+Business Unit
+US1 Business Unit
+Creation Date
+22/11/26
+Description
+Test UiPath P2P-01 R1 below 50K boundary
+Justification
+Subtotal
+$45,662.09
+Nonrecoverable Tax
+$4,337.90
+Approval Amount
+$49,999.99
+More information
+Lines
+Pending approval
+Test UiPath P2P-01 R1 below 50K boundary
+Dell Inc.
+$45,662.09
+1 Ea
+Self Service Procurement
+My Requisitions
+Cart

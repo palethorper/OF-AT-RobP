@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Purchase Requisitions App",
+  "Description": "Purchase Requisitions app link on the Procurement home tab",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "U2aXeGgBQky-ybLHBtSGtw",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/U2aXeGgBQky-ybLHBtSGtw",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/7TN2LWKdH0S2QSDE9rLCIg",
+  "Created": "2026-11-23T03:21:43.9399076Z",
+  "Updated": "2026-11-23T04:49:08.1082236Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

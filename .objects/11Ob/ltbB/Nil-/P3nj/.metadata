@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Cart Requisition Number Text",
+  "Description": "Cart Requisition Number Text",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "P3njWDPjn0SdqGQztoHSBA",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/P3njWDPjn0SdqGQztoHSBA",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Nil-6YrGSkGkeWX231SfiQ",
+  "Created": "2026-11-23T09:59:54.9852512Z",
+  "Updated": "2026-11-23T09:59:54.9852512Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

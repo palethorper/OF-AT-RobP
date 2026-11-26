@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Invoice Actions Menu Link",
+  "Description": "Invoice Actions Menu Link",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "_xqm-jIB40OS2aHugH7RMA",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/_xqm-jIB40OS2aHugH7RMA",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Sq5OicXup0KJgfP--XChMA",
+  "Created": "2026-11-23T10:50:58.6065794Z",
+  "Updated": "2026-11-23T10:50:58.6065794Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

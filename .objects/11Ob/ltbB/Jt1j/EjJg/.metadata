@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Taxpayer ID Input",
+  "Description": "Taxpayer ID text box enabled after Country, Company Details",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "EjJgcnsP80y5iPiGqjZFKQ",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/EjJgcnsP80y5iPiGqjZFKQ",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Jt1jXBgpj0akYQz6-Z4ygQ",
+  "Created": "2026-11-23T03:26:48.0443802Z",
+  "Updated": "2026-11-23T04:53:35.5937949Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

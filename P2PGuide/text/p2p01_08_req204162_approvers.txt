@@ -1,0 +1,21 @@
+### Eval
+- Result: Approval History - View - Oracle Fusion Cloud Applications
+https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions/tabbar/shopping/approval-history
+Skip to main content
+15
+Approvers
+Requisition 204162
+Entered By
+Casey Brown
+Business Unit
+US1 Business Unit
+Description
+Test UiPath P2P-01 R1 below 50K boundary
+Pending approval by
+Casey Brown
+Header Hierarchy: RequisitionApprovalCaseyBrown
+22/11/26 2:51 AM
+Submitted by
+You
+204162.pdf
+22/11/26 2:51 AM

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="IbaPhH1nBEypcVIq2dPEYA" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" DesignTimeRectangle="57, 446, 430, 52" DesignTimeScaleFactor="1" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='addr-edit-dyn-form1_fl_addresses.AddressName|input' tag='INPUT' type='text' class='oj-inputtext-input oj-text-field-input oj-component-initnode' aaname='Address Name' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="07960a9d-14a5-4d0a-860c-1321dcf9d996" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="1">
+          <Target DesignTimeRectangle="73, 463, 93, 16" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-DYN-FORM' id='addr-edit-dyn-form1' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl data-oj-field='AddressName' tag='OJ-INPUT-TEXT' matching:data-oj-field='fuzzy' fuzzylevel:data-oj-field='0.0' /&gt;&lt;webctrl tag='LABEL' type='' class='oj-component-initnode' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Address Name' /&gt;" Guid="b9ff0e84-f6b4-49cb-993c-d33efecf0fd5" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="b1f4573644647b7b3b7be3a13cf5bc74.jpg" xmlns="">0kd05dIZJTU-VO02GhTMIzg</imageRef>
+    </TargetAnchorable>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

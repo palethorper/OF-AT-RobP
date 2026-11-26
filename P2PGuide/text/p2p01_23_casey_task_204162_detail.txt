@@ -1,0 +1,46 @@
+### Eval
+- Result: Approve Requisition 204162
+https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/adf.task-flow
+
+Approve Requisition 204162
+		
+	Actions	
+	Approve	Reject	
+
+Requisition Approval
+
+49,999.99 USD
+
+Brown, Casey
+
+Test UiPath P2P-01 R1 below 50K boundary
+
+Requisition
+
+204162
+
+Justification
+
+Test UiPath P2P-01 withdrawn and resubmitted
+
+Lines
+
+Test UiPath P2P-01 R1 below 50K boundary
+
+45,662.09 USD
+
+1 x 45,662.09 USD
+
+Charge Account
+
+101.10.15910.000.000.000
+
+Approvers
+
+Assigned to Casey Brown	22/11/26 3:25 AM
+
+Submitted by Casey Brown	22/11/26 3:25 AM
+
+204162.pdf
+
+Edit Requisition

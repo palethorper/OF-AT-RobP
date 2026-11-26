@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Enter Address Lookup",
+  "Description": "Enter Address type-ahead address lookup, Addresses",
+  "Type": "Element",
+  "TaxonomyType": "Dropdown",
+  "Id": "808k5AIAlkWuVu4sKDHNfQ",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/808k5AIAlkWuVu4sKDHNfQ",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Jt1jXBgpj0akYQz6-Z4ygQ",
+  "Created": "2026-11-23T05:03:37.0391205Z",
+  "Updated": "2026-11-23T05:03:37.0391205Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

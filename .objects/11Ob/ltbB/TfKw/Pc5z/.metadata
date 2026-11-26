@@ -1,0 +1,15 @@
+﻿{
+  "Name": "PO Search Input",
+  "Description": "PO Search Input",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "Pc5zUefd0kSTpdmY1cy2Ww",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/Pc5zUefd0kSTpdmY1cy2Ww",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/TfKwx2WksUSlAtgbuwUUxg",
+  "Created": "2026-11-23T21:16:25.9944971Z",
+  "Updated": "2026-11-23T21:16:25.9944971Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

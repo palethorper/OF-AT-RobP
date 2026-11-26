@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Receive Now Button",
+  "Description": "Receive Now Button",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "di3OUJFGwkaFUozcB4JORQ",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/di3OUJFGwkaFUozcB4JORQ",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/dPfJT2lsS0O1S9rdH7Ge4g",
+  "Created": "2026-11-23T10:32:50.0602592Z",
+  "Updated": "2026-11-23T10:32:50.0602592Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Match Dialog Apply Button",
+  "Description": "Match Dialog Apply Button",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "tUinMCqxPEqG_u1rpV_aIw",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/tUinMCqxPEqG_u1rpV_aIw",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Sq5OicXup0KJgfP--XChMA",
+  "Created": "2026-11-23T10:44:40.1097448Z",
+  "Updated": "2026-11-23T10:44:40.1097448Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

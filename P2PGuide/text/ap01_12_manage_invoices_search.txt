@@ -1,0 +1,127 @@
+### Eval
+- Result: Manage Invoices - Invoices - Oracle Fusion Cloud Applications
+https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview
+Skip to main content
+
+19
+
+Manage Invoices
+		
+Done
+Search Results
+		
+Search: Invoice
+		 	
+Advanced	 	
+Saved Search	
+All Invoices
+Disbursement
+Document Sequence
+General
+Holds and Statuses
+Prepayment
+Purchase Order
+--------
+Personalize...
+Saved Search
+	 	
+** At least one is required
+Business Unit	
+	
+Business Unit
+Autocompletes on TAB
+
+**Invoice Number	
+	
+Invoice Number
+
+Invoice Amount	
+	
+Invoice Amount
+
+Invoice Date	
+	
+Press down arrow to access Calendar
+Invoice Date
+
+**Supplier or Party	
+	
+Supplier or Party
+Tab to the associated search button or type a value. Autocompletes on TAB
+
+**Supplier Number	
+	
+Supplier Number
+
+**Supplier Site	
+	
+Supplier Site
+Autocompletes on TAB
+
+Taxpayer ID	
+	
+Taxpayer ID
+	
+ 		Search	Reset	Save...
+
+Actions	
+	
+	View	
+	
+Export to Excel
+	
+Edit
+		
+Create Note
+		
+Attachments
+	
+Query By Example
+	
+Detach
+Detach
+	
+Validate
+	
+Pay in Full
+	
+Approval
+	
+Button has a popup, press down arrow key to access the popup.
+	
+Post
+	
+Button has a popup, press down arrow key to access the popup.
+
+Invoice Number
+
+Invoice Date
+	
+Creation Date
+	
+Supplier or Party
+	
+Supplier Site
+	
+Unpaid Amount
+	
+Invoice Amount
+	
+Applied Prepayments
+	
+Invoice Type
+	
+Source
+	
+Notes
+	
+Validation Status
+	
+Approval Status
+	
+Holds
+	
+Accounting Status
+	
+Details
+No search conducted.

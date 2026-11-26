@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Category Dropdown",
+  "Description": "Category Dropdown",
+  "Type": "Element",
+  "TaxonomyType": "Dropdown",
+  "Id": "C190rBaeWUyGiWKPJx7obQ",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/C190rBaeWUyGiWKPJx7obQ",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Nil-6YrGSkGkeWX231SfiQ",
+  "Created": "2026-11-23T09:48:23.5711677Z",
+  "Updated": "2026-11-23T09:48:23.5711677Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

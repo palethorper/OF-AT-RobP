@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Branch Number Dropdown",
+  "Description": "Bank account Branch Number search-select (auto-fills Bank and Branch), Bank Accounts",
+  "Type": "Element",
+  "TaxonomyType": "Dropdown",
+  "Id": "JtD2S7TYZUS8dYxmPMaedA",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/JtD2S7TYZUS8dYxmPMaedA",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Jt1jXBgpj0akYQz6-Z4ygQ",
+  "Created": "2026-11-23T05:21:31.3297378Z",
+  "Updated": "2026-11-23T05:21:31.3297378Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

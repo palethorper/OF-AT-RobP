@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Cart Save for Later Menu Item",
+  "Description": "Cart Save for Later Menu Item",
+  "Type": "Element",
+  "TaxonomyType": "None",
+  "Id": "EXQaLI-TVUazVKgAK7aFlQ",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/EXQaLI-TVUazVKgAK7aFlQ",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Nil-6YrGSkGkeWX231SfiQ",
+  "Created": "2026-11-23T12:41:42.0877422Z",
+  "Updated": "2026-11-23T12:41:42.0877422Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

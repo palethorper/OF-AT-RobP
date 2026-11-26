@@ -1,0 +1,83 @@
+{
+  "checkedAt": "2026-11-26",
+  "status": "ready-local",
+  "statusNote": "2026-11-26: TC_P2P_E2E passed locally (RunId 2611261221). Runs from Test Manager need a runtime in Shared/OracleFusion.",
+  "blockers": [
+    "Shared/OracleFusion has 0 runtimes of every type (checked 2026-11-26), so Test Manager cannot run DNZTRAIN:76 there yet."
+  ],
+  "package": {
+    "name": "OF-AT-RobP",
+    "latestVersion": "1.0.2",
+    "feed": "Orchestrator Tenant Processes Feed",
+    "note": "1.0.2 sets the TC_P2P_E2E CredentialFolderPath default to Shared/OracleFusion (1.0.1 still had Shared/Testing-UBAPI)."
+  },
+  "linkedTestCases": [
+    {
+      "key": "DNZTRAIN:76",
+      "id": "9bab6818-146a-0300-6ee6-0b4a690faea6",
+      "name": "TC P2P E2E: new supplier to validated invoice (US1, Casey Brown)",
+      "entryPoint": "Tests\\TC_P2P_E2E",
+      "entryPointId": "62d0a4af-f6e6-43de-9f9e-ffd0c72d6070",
+      "folderKey": "4a9ed7a3-e3cf-4e2e-81ac-352ed2406cf3"
+    }
+  ],
+  "dataFabric": {
+    "scope": "tenant",
+    "idsFile": "specs/datafabric/df-p2p-ids.json",
+    "projectNamespace": "OF_AT_RobP"
+  },
+  "integrationServiceConnection": {
+    "name": "Oracle Fusion dev16 - Basic (Casey)",
+    "id": "febfd95a-2028-4496-8c33-7e7567b95602",
+    "folder": "Shared"
+  },
+  "application": {
+    "name": "Oracle Fusion ERP",
+    "url": "https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FuseWelcome",
+    "explored": false
+  },
+  "uipath": {
+    "baseUrl": "https://cloud.uipath.com",
+    "organization": "deloivqbaydk",
+    "organizationId": "2bc59573-8b5f-47de-85b0-b89affbd6fc6",
+    "tenant": "DefaultTenant",
+    "tenantId": "5d6fa3e7-23cc-497c-be45-decc7915ba75"
+  },
+  "testManager": {
+    "exists": true,
+    "baseUrl": "https://cloud.uipath.com/deloivqbaydk/DefaultTenant/testmanager_/",
+    "projectKey": "DNZTRAIN",
+    "projectName": "DNZ-Train",
+    "projectId": "bfe8d125-7e0f-0000-9a10-0b4a6805c63e",
+    "url": "https://cloud.uipath.com/deloivqbaydk/DefaultTenant/testmanager_/DNZTRAIN",
+    "timeZone": "Australia/Sydney",
+    "defaultFolderKey": "4a9ed7a3-e3cf-4e2e-81ac-352ed2406cf3"
+  },
+  "orchestratorFolder": {
+    "exists": true,
+    "path": "Shared/OracleFusion",
+    "key": "4a9ed7a3-e3cf-4e2e-81ac-352ed2406cf3",
+    "id": 793334,
+    "type": "Standard",
+    "linkedToTestManagerProject": true,
+    "createdBySetup": "2026-11-26"
+  },
+  "loginCredentialAsset": "Oracle_Fusion_P2P_Test",
+  "credentialAssets": [
+    {
+      "name": "Oracle_Fusion_P2P_Test",
+      "key": "9425dca7-3017-45a8-96c4-c00e410dddef",
+      "id": 429260,
+      "exists": true,
+      "type": "Credential",
+      "scope": "Global",
+      "folder": "Shared/OracleFusion",
+      "credentialStore": "Orchestrator Database",
+      "createdBySetup": "2026-11-26",
+      "isPlaceholder": false,
+      "signsInAs": "CASEY.BROWN",
+      "signsInAsSource": "robot runtime: TC_P2P_E2E S0 sign-in with this asset showed 'Good afternoon, Casey Brown' (2026-11-26 12:21)",
+      "signsInAsNote": "Set by the user 2026-11-26 01:17 UTC. Password never read by the agent."
+    }
+  ]
+}

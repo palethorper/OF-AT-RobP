@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Supplier Registrations Link",
+  "Description": "Supplier Registrations action link in the Supplier Management actions panel",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "gWKA2MM0kkyDqxxkTwZakQ",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/gWKA2MM0kkyDqxxkTwZakQ",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/jhDdmUjsI0m8-cSqmfsztg",
+  "Created": "2026-11-23T03:23:14.9492577Z",
+  "Updated": "2026-11-23T04:50:33.3249271Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

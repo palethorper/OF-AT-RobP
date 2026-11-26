@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Oracle Fusion Cloud",
+  "Description": "Oracle Fusion Cloud Applications dev16 demo pod (Procurement Redwood + Payables ADF)",
+  "Type": "App",
+  "Id": "11ObnoGS7kiAZkJIbZT0qw",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/11ObnoGS7kiAZkJIbZT0qw",
+  "Created": "2026-11-23T03:18:59.7604556Z",
+  "Updated": "2026-11-23T03:18:59.7604556Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

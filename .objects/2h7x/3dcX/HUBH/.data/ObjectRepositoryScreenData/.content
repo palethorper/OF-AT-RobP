@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryScreenData ContentHash="9l_aTvEUR0a7x4BYJ-L7CA" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryScreenData.Data>
+    <TargetApp x:Key="TargetApp" Area="-8, -8, 1936, 1048" BrowserType="Chrome" Selector="&lt;html app='chrome.exe' title='Cloud Sign In' url='https://idcs-dfd9d303fd844502b1bca6b30a13b968.identity.oraclecloud.com/ui*' /&gt;" Url="https://idcs-dfd9d303fd844502b1bca6b30a13b968.identity.oraclecloud.com/ui/v1/signin" Version="V3">
+      <TargetApp.SapInfo>
+        <SAPElementInfo IsSapSubsystem="False" WebAutomationFramework="Default" />
+      </TargetApp.SapInfo>
+      <imageRef attrName="InformativeScreenshot" originalValue="272efd0a1e509f38f74221dadfbf13ca.jpg" xmlns="">0c3-ONJWlF065FsW-A4taLg</imageRef>
+    </TargetApp>
+    <NInteractionMode x:Key="InteractionMode">DebuggerApi</NInteractionMode>
+  </ObjectRepositoryScreenData.Data>
+</ObjectRepositoryScreenData>

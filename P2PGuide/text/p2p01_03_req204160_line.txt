@@ -1,0 +1,34 @@
+### Eval
+- Result: Requisition Details - View - Oracle Fusion Cloud Applications
+https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions/tabbar/shopping/requisitiondetails
+Skip to main content
+15
+204160Ordered
+Requisition
+Edit
+Entered By
+Casey Brown
+Business Unit
+US1 Business Unit
+Creation Date
+14/10/26
+Description
+Example non-catalog item
+Justification
+Subtotal
+$200.00
+Nonrecoverable Tax
+$19.00
+Approval Amount
+$219.00
+More information
+Lines
+Ordered
+Example non-catalog item
+Purchase Order: US165363 sold by Dell Inc.
+$200.00
+Approval Date: 19/11/26
+1 Ea
+Self Service Procurement
+My Requisitions
+Cart

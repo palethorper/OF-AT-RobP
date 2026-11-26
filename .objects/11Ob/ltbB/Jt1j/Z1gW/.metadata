@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Add Attachments Button",
+  "Description": "Add Attachments (n) button under the questionnaire answer, Questionnaire",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "Z1gWw-jUS0e9vFegn5TB-g",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/Z1gWw-jUS0e9vFegn5TB-g",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Jt1jXBgpj0akYQz6-Z4ygQ",
+  "Created": "2026-11-23T05:32:30.1499492Z",
+  "Updated": "2026-11-23T05:32:30.1499492Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

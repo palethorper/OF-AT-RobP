@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Organization Type Dropdown",
+  "Description": "Organization Type search-select, Company Details",
+  "Type": "Element",
+  "TaxonomyType": "Dropdown",
+  "Id": "JkJpRKlm2U21nPYMR5K9nw",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/JkJpRKlm2U21nPYMR5K9nw",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Jt1jXBgpj0akYQz6-Z4ygQ",
+  "Created": "2026-11-23T03:26:48.1705263Z",
+  "Updated": "2026-11-23T04:53:35.6944621Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

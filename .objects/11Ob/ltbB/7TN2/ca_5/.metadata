@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Purchase Orders New Quick Action",
+  "Description": "Purchase Orders (New) Redwood quick action link on the Procurement home tab",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "ca_5sQPq6E2i6m8iV3lwiQ",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/ca_5sQPq6E2i6m8iV3lwiQ",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/7TN2LWKdH0S2QSDE9rLCIg",
+  "Created": "2026-11-23T03:21:44.2959498Z",
+  "Updated": "2026-11-23T04:49:08.3490339Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

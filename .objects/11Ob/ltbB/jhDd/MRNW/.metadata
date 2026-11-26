@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Register Supplier Link",
+  "Description": "Register Supplier action link in the Supplier Management actions panel",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "MRNW5N07mEayizfB9qbRVg",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/MRNW5N07mEayizfB9qbRVg",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/jhDdmUjsI0m8-cSqmfsztg",
+  "Created": "2026-11-23T03:23:14.8368127Z",
+  "Updated": "2026-11-23T04:50:33.2489854Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

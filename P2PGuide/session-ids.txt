@@ -1,0 +1,16 @@
+﻿execution=bb1b19cb-1ba8-0400-d389-0b4a65158771
+log=531139c4-0858-1300-bf49-0b4a651587aa
+testcase=OFP2P:151 f0013b93-034d-0300-48ff-0b4a651563ff
+AP-01 session 2026-11-23 10:08
+execution=bf04ad37-2dc1-0400-a721-0b4a65c1f899
+log=
+testcase=d2077c22-4065-0300-fd3c-0b4a65c1de38
+AP-01 session 2026-11-23 10:08
+execution=bf04ad37-2dc1-0400-a721-0b4a65c1f899
+log=c718d10e-0474-1300-9570-0b4a65c1f8dd
+testcase=d2077c22-4065-0300-fd3c-0b4a65c1de38
+
+P2P-02 session 2026-11-26 13:01 NZ (project DNZTRAIN, org deloivqbaydk)
+execution=3e666452-b6c6-0400-c438-0b4a690036a1
+log=5b70778e-839c-1300-8929-0b4a690036b8
+testcase=DNZTRAIN:13 45fe13cf-f769-0300-f2b9-0b4a6900197b

@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Oracle Identity Cloud",
+  "Description": "Oracle Identity Cloud Service (IDCS) sign-in for the Oracle Fusion dev16 pod",
+  "Type": "App",
+  "Id": "2h7x-nsyRUeidlwOxhSMVg",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/2h7x-nsyRUeidlwOxhSMVg",
+  "Created": "2026-11-23T03:09:51.9212548Z",
+  "Updated": "2026-11-23T03:09:51.9212548Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

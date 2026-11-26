@@ -1,0 +1,195 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Workflows_S0_SignIn" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:uta="clr-namespace:UiPath.Testing.Activities;assembly=UiPath.Testing.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="out_Browser" Type="OutArgument(ui:UiElement)" />
+    <x:Property Name="in_CredentialAssetName" Type="InArgument(x:String)" />
+    <x:Property Name="in_CredentialFolderPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_FusionUrl" Type="InArgument(x:String)" />
+    <x:Property Name="in_UseIncognito" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_ChromeProfile" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Testing.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="S0 Sign in to Oracle Fusion" sap:VirtualizedContainerService.HintSize="789,930" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Sign-in start" sap:VirtualizedContainerService.HintSize="710,48" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;S0 Sign in: opening &quot; &amp; in_FusionUrl &amp; &quot; with credential asset &quot; &amp; in_CredentialAssetName]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <uix:NApplicationCard UserDataFolderMode="DefaultFolder" AttachMode="ByInstance" CloseMode="Never" ConnectionId="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Use Browser Chrome: Oracle Sign In" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="710,810" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="{x:Null}" IsIncognito="[in_UseIncognito]" OpenMode="Always" OutUiElement="[out_Browser]" ScopeGuid="53515ff0-9f40-4a94-a510-f51bc6e473a9" Timeout="{x:Null}" UserDataFolderPath="{x:Null}" Version="V2" WebDriverMode="{x:Null}" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="710,744" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NGoToUrl ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Go To Fusion URL (redirects to sign-in)" sap:VirtualizedContainerService.HintSize="680,48" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" InUiElement="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="53515ff0-9f40-4a94-a510-f51bc6e473a9" Timeout="{x:Null}" Url="[in_FusionUrl]" Version="V5">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NGoToUrl>
+            <ui:RetryScope DisplayName="Poll: sign-in page or home (10 s checks, ~7 min)" LogRetriedExceptions="True" NumberOfRetries="40" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:01" sap2010:WorkflowViewState.IdRef="RetryScope_30"><ui:RetryScope.ActivityBody><ActivityAction><Sequence DisplayName="Check" sap2010:WorkflowViewState.IdRef="Sequence_32"><uix:NCheckState CheckWindowActive="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Check sign-in page shown (else already signed in)" Exists="{x:Null}" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="680,426" sap2010:WorkflowViewState.IdRef="NCheckState_1" InUiElement="{x:Null}" OutUiElement="{x:Null}" Result="{x:Null}" ScopeIdentifier="53515ff0-9f40-4a94-a510-f51bc6e473a9" Timeout="10" Version="V5">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Sign in with the credential asset" sap:VirtualizedContainerService.HintSize="680,240" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="strUsername" />
+                    <Variable x:TypeArguments="ss:SecureString" Name="secPassword" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:GetRobotCredential AssetName="[in_CredentialAssetName]" CacheStrategy="None" DisplayName="Get Credential (Orchestrator asset)" FolderPath="[in_CredentialFolderPath]" sap:VirtualizedContainerService.HintSize="649.6,48" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[secPassword]" TimeoutMS="{x:Null}" Username="[strUsername]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:GetRobotCredential>
+                  <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Username" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="649.6,48" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="53515ff0-9f40-4a94-a510-f51bc6e473a9" SecureText="{x:Null}" Text="[strUsername]" Timeout="10" Version="V5">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable ContentHash="VYRr9CGk50SDJdZDKdn6tQ" DesignTimeRectangle="728, 516, 480, 52" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='idcs-signin-basic-signin-form-username|input' tag='INPUT' type='text' class='oj-inputtext-input oj-text-field-input oj-component-initnode' aaname='Username' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="e6271b3f-99b6-4a0d-9db8-3888e706cb76" InformativeScreenshot="bdd079b77a14388b325085ab4c38fee0.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/YDnFuy1_RUqnH_bIk3_pbA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Cloud Sign In' url='https://idcs-dfd9d303fd844502b1bca6b30a13b968.identity.oraclecloud.com/ui*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="744, 524, 55, 16" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-LABEL' id='idcs-signin-basic-signin-form-username-labelled-by' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' id='idcs-signin-basic-signin-form-username-labelled-by|label' type='' class='oj-component-initnode' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Username' /&gt;" Guid="99dac396-76b9-494e-889f-e9b344b4763f" SearchSteps="FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NTypeInto.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NTypeInto>
+                  <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Password" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="649.6,48" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="53515ff0-9f40-4a94-a510-f51bc6e473a9" SecureText="[secPassword]" Text="{x:Null}" Timeout="10" Version="V5">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable ContentHash="OiB5xpR-rEu5A8d-96AN1A" DesignTimeRectangle="728, 592, 480, 52" ElementType="InputBoxPassword" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='idcs-signin-basic-signin-form-password|input' tag='INPUT' type='password' class='oj-inputpassword-input oj-text-field-input oj-component-initnode' aaname='Password' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="6169ea30-4318-4b24-9757-1ec85a6619ca" InformativeScreenshot="8012df2823d977c51b69863c3ff777be.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/i1IoElEXDES-dGxkgGnFtg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Cloud Sign In' url='https://idcs-dfd9d303fd844502b1bca6b30a13b968.identity.oraclecloud.com/ui*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="744, 609, 58, 16" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-LABEL' id='idcs-signin-basic-signin-form-password-labelled-by' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' id='idcs-signin-basic-signin-form-password-labelled-by|label' type='' class='oj-component-initnode' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Password' /&gt;" Guid="db55e955-5172-454d-b9a6-219054164b8f" SearchSteps="FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NTypeInto.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NTypeInto>
+                  <uix:NClick ActivateBefore="True" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Next" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="649.6,48" sap2010:WorkflowViewState.IdRef="NClick_1" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="53515ff0-9f40-4a94-a510-f51bc6e473a9" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="N3BtNddN20uxGFPK-h0FXA" DesignTimeRectangle="727, 703, 482, 44" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='idcs-signin-basic-signin-form-submit' tag='OJ-BUTTON' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='BUTTON' type='' class='oj-button-button' aaname='Next' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Next' /&gt;" Guid="c887145a-3a17-4bf4-89e9-63bea0b842d5" InformativeScreenshot="7dbf06bf36efa168f291becacf8903e0.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/KkDVWm5ktUaTcz5qwNuR8A" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Cloud Sign In' url='https://idcs-dfd9d303fd844502b1bca6b30a13b968.identity.oraclecloud.com/ui*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="953, 716, 30, 18" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-BUTTON' id='idcs-signin-basic-signin-form-submit' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='SPAN' aaname='Next' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:text='Next' /&gt;" Guid="d1b163cc-abb7-4a59-88b7-f4664bc53a3a" SearchSteps="FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists><uix:NCheckState DisplayName="Check home greeting (already signed in?)" HealingAgentBehavior="Disabled" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="53515ff0-9f40-4a94-a510-f51bc6e473a9" Timeout="10" Version="V5"><uix:NCheckState.IfExists><Sequence DisplayName="Already signed in" sap2010:WorkflowViewState.IdRef="Sequence_30"><ui:LogMessage DisplayName="Log already signed in" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Info" Message="[&quot;S0: session already signed in&quot;]" /></Sequence></uix:NCheckState.IfExists><uix:NCheckState.IfNotExists><Sequence DisplayName="Neither page yet" sap2010:WorkflowViewState.IdRef="Sequence_31"><Throw DisplayName="Throw page not ready (retry)" Exception="[New Exception(&quot;S0: neither sign-in page nor home shown yet&quot;)]" sap2010:WorkflowViewState.IdRef="Throw_30" /></Sequence></uix:NCheckState.IfNotExists><uix:NCheckState.Target>
+                <uix:TargetAnchorable ContentHash="tS2vFAso8kW0wk-tVxJWAQ" DesignTimeRectangle="401, 305, 474, 41" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl adf-view='/AtkLayerHomePageTF/AtkLayerHomePage' tag='DIV' /&gt;&lt;webctrl adf-comptype='oracle.adf.RichOutputFormatted' adf-relative-id='ot3' tag='SPAN' /&gt;&lt;webctrl tag='H1' /&gt;" Guid="a7cef2e0-1dc4-4828-90ca-9d88f69b1f47" InformativeScreenshot="ca2afa2f8187bd449d0ee5db36b08cbb.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/1VHG3Jkrr0-d9MeaNIfe5Q" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications*' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NCheckState.Target></uix:NCheckState></uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable ContentHash="VYRr9CGk50SDJdZDKdn6tQ" DesignTimeRectangle="728, 516, 480, 52" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='idcs-signin-basic-signin-form-username|input' tag='INPUT' type='text' class='oj-inputtext-input oj-text-field-input oj-component-initnode' aaname='Username' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="e6271b3f-99b6-4a0d-9db8-3888e706cb76" InformativeScreenshot="bdd079b77a14388b325085ab4c38fee0.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/YDnFuy1_RUqnH_bIk3_pbA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Cloud Sign In' url='https://idcs-dfd9d303fd844502b1bca6b30a13b968.identity.oraclecloud.com/ui*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="744, 524, 55, 16" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-LABEL' id='idcs-signin-basic-signin-form-username-labelled-by' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' id='idcs-signin-basic-signin-form-username-labelled-by|label' type='' class='oj-component-initnode' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Username' /&gt;" Guid="99dac396-76b9-494e-889f-e9b344b4763f" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NCheckState.Target>
+            </uix:NCheckState></Sequence></ActivityAction></ui:RetryScope.ActivityBody><ui:RetryScope.Condition><ActivityFunc x:TypeArguments="x:Boolean" /></ui:RetryScope.Condition></ui:RetryScope><ui:RetryScope DisplayName="Poll: home greeting after sign-in (10 s checks, ~5 min)" LogRetriedExceptions="True" NumberOfRetries="25" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:02" sap2010:WorkflowViewState.IdRef="RetryScope_31"><ui:RetryScope.ActivityBody><ActivityAction><Sequence DisplayName="Check" sap2010:WorkflowViewState.IdRef="Sequence_33"><uix:NCheckState CheckWindowActive="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Check home greeting (signed in)" Exists="{x:Null}" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="680,246" sap2010:WorkflowViewState.IdRef="NCheckState_2" InUiElement="{x:Null}" OutUiElement="{x:Null}" Result="{x:Null}" ScopeIdentifier="53515ff0-9f40-4a94-a510-f51bc6e473a9" Timeout="10" Version="V5">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="680,102" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log signed in" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;S0: Fusion home greeting shown&quot;]" />
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <Throw DisplayName="Throw sign-in failed" Exception="[New Exception(&quot;S0: Fusion home greeting not shown yet, sign-in failed&quot;)]" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable ContentHash="tS2vFAso8kW0wk-tVxJWAQ" DesignTimeRectangle="401, 305, 474, 41" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl adf-view='/AtkLayerHomePageTF/AtkLayerHomePage' tag='DIV' /&gt;&lt;webctrl adf-comptype='oracle.adf.RichOutputFormatted' adf-relative-id='ot3' tag='SPAN' /&gt;&lt;webctrl tag='H1' /&gt;" Guid="8342cf3c-5036-4d64-b00d-7ebbf8ca9763" InformativeScreenshot="ca2afa2f8187bd449d0ee5db36b08cbb.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/1VHG3Jkrr0-d9MeaNIfe5Q" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications*' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState></Sequence></ActivityAction></ui:RetryScope.ActivityBody><ui:RetryScope.Condition><ActivityFunc x:TypeArguments="x:Boolean" /></ui:RetryScope.Condition></ui:RetryScope><uta:VerifyControlAttribute AlternativeVerificationTitle="S0 home greeting shows Casey Brown" ContinueOnFailure="True" DisplayName="Verify S0 home greeting shows Casey Brown" Operator="Contains" OutputArgument="TextString" TakeScreenshotInCaseOfFailingAssertion="True" TakeScreenshotInCaseOfSucceedingAssertion="True" sap2010:WorkflowViewState.IdRef="VerifyControlAttribute_90"><uta:VerifyControlAttribute.ActivityToTest><ActivityAction><uix:NGetText DisplayName="Get Text - S0 home greeting shows Casey Brown" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NGetText_90" ScopeIdentifier="53515ff0-9f40-4a94-a510-f51bc6e473a9" Timeout="10" Version="V5"><uix:NGetText.Target><uix:TargetAnchorable ContentHash="tS2vFAso8kW0wk-tVxJWAQ" DesignTimeRectangle="401, 305, 474, 41" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl adf-view='/AtkLayerHomePageTF/AtkLayerHomePage' tag='DIV' /&gt;&lt;webctrl adf-comptype='oracle.adf.RichOutputFormatted' adf-relative-id='ot3' tag='SPAN' /&gt;&lt;webctrl tag='H1' /&gt;" Guid="20cca7f2-d8d7-4980-bb3a-6192e4c9ef5e" InformativeScreenshot="ca2afa2f8187bd449d0ee5db36b08cbb.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/1VHG3Jkrr0-d9MeaNIfe5Q" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications*' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" /></uix:NGetText.Target></uix:NGetText></ActivityAction></uta:VerifyControlAttribute.ActivityToTest><uta:VerifyControlAttribute.Expression><InArgument x:TypeArguments="x:String">["Casey Brown"]</InArgument></uta:VerifyControlAttribute.Expression></uta:VerifyControlAttribute>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Arguments="[If(Not String.IsNullOrWhiteSpace(in_ChromeProfile), &quot;--profile-directory=&quot;&quot;&quot; &amp; in_ChromeProfile.Trim() &amp; &quot;&quot;&quot;&quot;, If(String.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(&quot;UIP_CHROME_PROFILE&quot;)), String.Empty, &quot;--profile-directory=&quot;&quot;&quot; &amp; Environment.GetEnvironmentVariable(&quot;UIP_CHROME_PROFILE&quot;).Trim() &amp; &quot;&quot;&quot;&quot;))]" Area="-8, -8, 1936, 1048" BrowserType="Chrome" ContentHash="9l_aTvEUR0a7x4BYJ-L7CA" InformativeScreenshot="272efd0a1e509f38f74221dadfbf13ca.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/HUBH5pJF9E2nxzkZHf7kdA" Selector="&lt;html app='chrome.exe' title='Cloud Sign In' url='https://idcs-dfd9d303fd844502b1bca6b30a13b968.identity.oraclecloud.com/ui*' /&gt;" Url="https://idcs-dfd9d303fd844502b1bca6b30a13b968.identity.oraclecloud.com/ui/v1/signin" Version="V3">
+          <uix:TargetApp.SapInfo>
+            <uix:SAPElementInfo IsSapSubsystem="False" WebAutomationFramework="Default" />
+          </uix:TargetApp.SapInfo>
+        </uix:TargetApp>
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+    <ui:LogMessage DisplayName="Log Sign-in submitted" sap:VirtualizedContainerService.HintSize="710,48" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;S0 Sign in: credentials submitted&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+  </Sequence>
+</Activity>

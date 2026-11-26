@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Process Requisitions",
+  "Description": "Redwood Process Requisitions (buyer workbench)",
+  "Type": "Screen",
+  "Id": "w6OwNA7hAE-KYeIMOONslQ",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/w6OwNA7hAE-KYeIMOONslQ",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/ltbBRqeaGEOJBm2u-N1KjA",
+  "Created": "2026-11-23T10:20:41.9568328Z",
+  "Updated": "2026-11-23T10:20:41.9568328Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="anydDtZOfkO4GcYdMFa48g" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" DesignTimeRectangle="1675, 249, 43, 24" DesignTimeScaleFactor="1" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl adf-view='/CreateInvoiceFlow/InvoiceEditPF' tag='DIV' /&gt;&lt;webctrl adf-relative-id='ap1:ct5' tag='DIV' /&gt;&lt;webctrl aria-role='button' tag='A' /&gt;" Guid="67886548-dff5-4bcb-8670-240adcb14527" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="0" />
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="bda97a50f06fd3980f7e102ded2efe15.jpg" xmlns="">0xuWzQTyGj0eqUT9hKPsjSQ</imageRef>
+    </TargetAnchorable>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="PdiCo00PMUGQrSk0YJB-Lg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" DesignTimeRectangle="57, 415, 430, 52" DesignTimeScaleFactor="1" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='contact-update-dynamic-form_fl_contacts.FirstName|input' tag='INPUT' type='text' class='oj-inputtext-input oj-text-field-input oj-component-initnode' aaname='First Name' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="0403745b-4475-41e6-bf3a-84458ef165cb" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="1">
+          <Target DesignTimeRectangle="73, 431, 70, 17" ElementType="Text" FuzzySelectorArgument="&lt;webctrl data-oj-field='FirstName' tag='OJ-INPUT-TEXT' id='contact-update-dynamic-form_fl_contacts.FirstName' matching:data-oj-field='fuzzy' fuzzylevel:data-oj-field='0.0' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='OJ-LABEL' id='contact-update-dynamic-form_fl_contacts.FirstName-labelled-by' matching:id='fuzzy' fuzzylevel:id='0.0' /&gt;&lt;webctrl tag='LABEL' id='contact-update-dynamic-form_fl_contacts.FirstName-labelled-by|label' type='' class='oj-component-initnode' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='First Name' /&gt;" Guid="d3c008df-9bde-468c-a99a-eea2f7481e9d" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="92f9023503cb98765d59f329be355714.jpg" xmlns="">0ZD_KZwLLSEidXue2QSFOOw</imageRef>
+    </TargetAnchorable>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

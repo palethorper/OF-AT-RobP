@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Invoice Amount Input",
+  "Description": "Invoice Amount Input",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "H5Es1cHMKEmZQzQ61b5rXA",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/H5Es1cHMKEmZQzQ61b5rXA",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Sq5OicXup0KJgfP--XChMA",
+  "Created": "2026-11-23T10:38:07.8946975Z",
+  "Updated": "2026-11-23T10:38:07.8946975Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

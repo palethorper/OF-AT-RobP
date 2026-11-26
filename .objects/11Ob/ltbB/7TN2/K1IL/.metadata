@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Supplier Management App",
+  "Description": "Supplier Management app link on the Procurement home tab",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "K1ILxNxhI0iD9a3jmXF8tw",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/K1ILxNxhI0iD9a3jmXF8tw",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/7TN2LWKdH0S2QSDE9rLCIg",
+  "Created": "2026-11-23T03:21:44.0662232Z",
+  "Updated": "2026-11-23T04:49:08.198636Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

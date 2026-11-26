@@ -1,0 +1,17 @@
+﻿{
+  "Name": "Fusion Home",
+  "Description": "Oracle Fusion home page with greeting and group navigation tabs (Sales, Procurement, Payables...)",
+  "Type": "Screen",
+  "Id": "7TN2LWKdH0S2QSDE9rLCIg",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/7TN2LWKdH0S2QSDE9rLCIg",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/ltbBRqeaGEOJBm2u-N1KjA",
+  "Created": "2026-11-23T03:19:48.2077167Z",
+  "Updated": "2026-11-23T04:47:44.7482059Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

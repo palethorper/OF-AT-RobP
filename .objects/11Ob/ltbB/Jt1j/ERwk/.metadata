@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Add Files Drop Zone",
+  "Description": "Add Files / drag and drop zone in the Response attachments panel (opens the browser file picker)",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "ERwkH74cR0yAAsbWzRC_qg",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/ERwkH74cR0yAAsbWzRC_qg",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Jt1jXBgpj0akYQz6-Z4ygQ",
+  "Created": "2026-11-23T05:34:33.4885574Z",
+  "Updated": "2026-11-23T05:34:33.4885574Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

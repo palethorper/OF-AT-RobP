@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Receipt Line Row Checkbox",
+  "Description": "Receipt Line Row Checkbox",
+  "Type": "Element",
+  "TaxonomyType": "Checkbox",
+  "Id": "d4VV3ebpDUCwoBco70r3Cg",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/d4VV3ebpDUCwoBco70r3Cg",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/dPfJT2lsS0O1S9rdH7Ge4g",
+  "Created": "2026-11-23T10:32:41.9028129Z",
+  "Updated": "2026-11-23T10:32:41.9028129Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

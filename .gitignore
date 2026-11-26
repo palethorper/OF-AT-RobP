@@ -1,0 +1,83 @@
+# .gitignore — OracleFusion_AgenticTesting (UiPath Studio test project, Portable / VB)
+#
+# COMMIT (Studio project source — do NOT ignore):
+#   project.json, project.uiproj, *.xaml, *.cs (user-authored)
+#   .objects/      Object Repository source (descriptors)
+#   .screenshots/  Object Repository informative screenshots
+#   .settings/     project settings (Design / Debug / Release)
+#   .project/      binding metadata shipped in the package
+#   .templates/    test execution templates
+#   .entities/     imported Data Fabric entities (EntitiesStore.json; project.json points here)
+#   Data/, Tests/, Workflows/, specs/, P2PGuide/, Prompts/, run-config.json
+
+# ---------------------------------------------------------------------------
+# UiPath Studio — generated / machine-local
+# ---------------------------------------------------------------------------
+# Package cache, compiler output, activity docs, UIA interaction screenshots,
+# references DB, JIT cache. Regenerated on every Studio / `uip rpa` load.
+.local/
+
+# Generated coded-workflow stubs (ConnectionsFactory.cs, ConnectionsManager.cs)
+.codedworkflows/
+
+# Runtime statistics (ActivityStatistics etc.)
+.storage/.runtime/
+
+# Studio's per-user Test Manager connection (re-create with `uip rpa tm connect`)
+.tmh/
+
+# Local edit backups taken before bulk changes (kept on disk, not in history)
+.backup/
+
+# ---------------------------------------------------------------------------
+# Build and package output
+# ---------------------------------------------------------------------------
+*.nupkg
+bin/
+obj/
+Output/
+
+# ---------------------------------------------------------------------------
+# Secrets and credentials — never commit
+# ---------------------------------------------------------------------------
+.env
+.env.*
+*.pfx
+*.p12
+*.key
+*.pem
+credentials.json
+secrets.json
+*.secret
+.claude/settings.local.json
+
+# ---------------------------------------------------------------------------
+# Tooling caches (P2PGuide/tools helpers)
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+
+# ---------------------------------------------------------------------------
+# IDE / OS / Office noise
+# ---------------------------------------------------------------------------
+.vs/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+*.user
+*.suo
+Thumbs.db
+desktop.ini
+.DS_Store
+~$*
+*.tmp
+*.log
+
+################################################################################
+# Added by UiPath Studio
+# Prevent caching and local artifacts from being committed
+################################################################################
+.local
+################################################################################
+# End of UiPath Studio common ignores
+################################################################################

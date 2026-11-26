@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Purchase Orders",
+  "Description": "Redwood Purchase Orders pages (edit, view)",
+  "Type": "Screen",
+  "Id": "TfKwx2WksUSlAtgbuwUUxg",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/TfKwx2WksUSlAtgbuwUUxg",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/ltbBRqeaGEOJBm2u-N1KjA",
+  "Created": "2026-11-23T10:27:36.9650377Z",
+  "Updated": "2026-11-23T10:27:36.9650377Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

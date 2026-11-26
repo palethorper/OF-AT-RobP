@@ -1,0 +1,38 @@
+### Eval
+- Result: Shopping Cart - View - Oracle Fusion Cloud Applications
+https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions/tabbar/shopping/shoppingcart
+Skip to main content
+15
+Cart
+Requisition 204162
+Submit
+1 item
+Edit Multiple
+Test UiPath P2P-01 R1 below 50K boundary
+Sold By Dell Inc.
+$45,662.09
+Ea
+Quantity
+
+Requisition summary
+Edit
+Subtotal
+$45,662.09
+Nonrecoverable Tax
+$4,337.90
+Approval Amount
+$49,999.99
+Description
+Justification
+Requester
+Casey Brown
+Deliver-to Location
+Seattle
+Destination Type
+Expense
+Charge To
+101.10.15910.000.000.000
+Self Service Procurement
+My Requisitions
+Cart
+1

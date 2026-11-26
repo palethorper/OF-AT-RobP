@@ -1,0 +1,369 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Workflows_S9_Cleanup" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uwah="clr-namespace:UiPath.Web.Activities.Http;assembly=UiPath.Web.Activities" xmlns:uwahm="clr-namespace:UiPath.Web.Activities.Http.Models;assembly=UiPath.Web.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_BaseUrl" Type="InArgument(x:String)" />
+    <x:Property Name="in_CredentialAssetName" Type="InArgument(x:String)" />
+    <x:Property Name="in_CredentialFolderPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_InvoiceNumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_SupplierName" Type="InArgument(x:String)" />
+    <x:Property Name="in_PONumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_RequisitionNumber" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Web.Activities.Http</x:String>
+      <x:String>UiPath.Web.Activities.Http.Models</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Net.Primitives</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="S9 Cleanup (REST): cancel invoice, cancel or close PO, cancel requisition" sap:VirtualizedContainerService.HintSize="789,2124" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="uwahm:HttpResponseSummary" Name="resp" />
+      <Variable x:TypeArguments="x:String" Name="strId" />
+      <Variable x:TypeArguments="x:String" Name="strApi" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log S9 start" sap:VirtualizedContainerService.HintSize="710,48" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;S9 cleanup: invoice=&quot; &amp; in_InvoiceNumber &amp; &quot; po=&quot; &amp; in_PONumber &amp; &quot; req=&quot; &amp; in_RequisitionNumber &amp; &quot; supplier=&quot; &amp; in_SupplierName]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <Assign DisplayName="strApi = REST base" sap:VirtualizedContainerService.HintSize="710,48" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strApi]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_BaseUrl &amp; "/fscmRestApi/resources/11.13.18.05"]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <If Condition="[Not String.IsNullOrWhiteSpace(in_InvoiceNumber)]" DisplayName="If an invoice was created" sap:VirtualizedContainerService.HintSize="710,556" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <TryCatch DisplayName="Try cancel invoice" sap:VirtualizedContainerService.HintSize="680,445" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+          <TryCatch.Try>
+            <Sequence DisplayName="Cancel invoice" sap:VirtualizedContainerService.HintSize="680,192" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="strUsername" />
+                <Variable x:TypeArguments="ss:SecureString" Name="secPassword" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_CredentialAssetName]" CacheStrategy="None" DisplayName="Get Credential (Orchestrator asset)" FolderPath="[in_CredentialFolderPath]" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[secPassword]" Username="[strUsername]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:GetRobotCredential>
+              <uwah:NetHttpRequest BasicAuthPassword="{x:Null}" BinaryPayload="{x:Null}" ClientCertPassword="{x:Null}" ClientCertPath="{x:Null}" ClientCertSecurePassword="{x:Null}" Cookies="{x:Null}" CustomNegotiatedAuthCredentials="{x:Null}" FilePath="{x:Null}" FormData="{x:Null}" Headers="{x:Null}" LocalFiles="{x:Null}" OAuthToken="{x:Null}" OutputFileName="{x:Null}" OutputFileTargetFolder="{x:Null}" Parameters="{x:Null}" PathResource="{x:Null}" ProxyConfiguration="{x:Null}" ResourceFiles="{x:Null}" AuthenticationType="BasicUsernamePassword" BasicAuthSecurePassword="[secPassword]" BasicAuthUsername="[strUsername]" ContinueOnError="True" DisableSslVerification="False" DisplayName="POST invoices/action/cancelInvoice (WRITE: cancels the invoice)" EnableCookies="True" FileOverwrite="AutoRename" FollowRedirects="True" FormDataParts="[New List (Of FormDataPart) From _&#xD;&#xA;{&#xD;&#xA;&#x9;New FileFormDataPart(),&#xD;&#xA;&#x9;New BinaryFormDataPart(),&#xD;&#xA;&#x9;New TextFormDataPart()&#xD;&#xA;}]" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NetHttpRequest_1" InitialDelay="500" MaxRedirects="3" MaxRetryAfterDelay="30000" Method="POST" Multiplier="2" PreferRetryAfterValue="True" RequestBodyType="Text" RequestUrl="[strApi &amp; &quot;/invoices/action/cancelInvoice&quot;]" Result="[resp]" RetryCount="1" RetryStatusCodes="[New List (Of System.Net.HttpStatusCode) From _&#xD;&#xA;{&#xD;&#xA;&#x9;System.Net.HttpStatusCode.RequestTimeout,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.TooManyRequests,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.InternalServerError,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.BadGateway,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.ServiceUnavailable,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.GatewayTimeout&#xD;&#xA;}]" SaveRawRequestResponse="False" SaveResponseAsFile="False" TextPayload="[&quot;{&quot;&quot;InvoiceNumber&quot;&quot;:&quot;&quot;&quot; &amp; in_InvoiceNumber &amp; &quot;&quot;&quot;,&quot;&quot;BusinessUnit&quot;&quot;:&quot;&quot;US1 Business Unit&quot;&quot;,&quot;&quot;Supplier&quot;&quot;:&quot;&quot;&quot; &amp; in_SupplierName &amp; &quot;&quot;&quot;}&quot;]" TextPayloadContentType="application/vnd.oracle.adf.action+json" TextPayloadEncoding="UTF-8" TlsProtocol="Automatic" UseJitter="True" UseOsNegotiatedAuthCredentials="True">
+                <uwah:NetHttpRequest.TimeoutInMiliseconds>
+                  <InArgument x:TypeArguments="s:Nullable(x:Int32)">
+                    <Literal x:TypeArguments="s:Nullable(x:Int32)" Value="60000" />
+                  </InArgument>
+                </uwah:NetHttpRequest.TimeoutInMiliseconds>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uwah:NetHttpRequest>
+              <ui:LogMessage DisplayName="Log invoice cancel" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;S9 cancel invoice &quot; &amp; in_InvoiceNumber &amp; &quot;: &quot; &amp; CInt(resp.StatusCode).ToString &amp; &quot; &quot; &amp; If(resp.TextContent, &quot;&quot;).Substring(0, Math.Min(300, If(resp.TextContent, &quot;&quot;).Length))]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
+            </Sequence>
+          </TryCatch.Try>
+          <TryCatch.Catches>
+            <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch_1">
+              <ActivityAction x:TypeArguments="s:Exception">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exInv" />
+                </ActivityAction.Argument>
+                <ui:LogMessage DisplayName="Log invoice cancel failed" sap:VirtualizedContainerService.HintSize="680,24" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;S9 cancel invoice failed: &quot; &amp; exInv.Message]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+              </ActivityAction>
+            </Catch>
+          </TryCatch.Catches>
+        </TryCatch>
+      </If.Then>
+    </If>
+    <If Condition="[Not String.IsNullOrWhiteSpace(in_PONumber)]" DisplayName="If a PO was created" sap:VirtualizedContainerService.HintSize="710,994" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <TryCatch DisplayName="Try cancel or close PO" sap:VirtualizedContainerService.HintSize="710,883" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+          <TryCatch.Try>
+            <Sequence DisplayName="Cancel or close PO" sap:VirtualizedContainerService.HintSize="710,630" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="strUsername" />
+                <Variable x:TypeArguments="ss:SecureString" Name="secPassword" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_CredentialAssetName]" CacheStrategy="None" DisplayName="Get Credential (Orchestrator asset)" FolderPath="[in_CredentialFolderPath]" sap:VirtualizedContainerService.HintSize="680,48" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[secPassword]" Username="[strUsername]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:GetRobotCredential>
+              <uwah:NetHttpRequest BasicAuthPassword="{x:Null}" BinaryPayload="{x:Null}" ClientCertPassword="{x:Null}" ClientCertPath="{x:Null}" ClientCertSecurePassword="{x:Null}" Cookies="{x:Null}" CustomNegotiatedAuthCredentials="{x:Null}" FilePath="{x:Null}" FormData="{x:Null}" Headers="{x:Null}" LocalFiles="{x:Null}" OAuthToken="{x:Null}" OutputFileName="{x:Null}" OutputFileTargetFolder="{x:Null}" PathResource="{x:Null}" ProxyConfiguration="{x:Null}" ResourceFiles="{x:Null}" TextPayload="{x:Null}" AuthenticationType="BasicUsernamePassword" BasicAuthSecurePassword="[secPassword]" BasicAuthUsername="[strUsername]" ContinueOnError="True" DisableSslVerification="False" DisplayName="GET purchaseOrders by number" EnableCookies="True" FileOverwrite="AutoRename" FollowRedirects="True" FormDataParts="[New List (Of FormDataPart) From _&#xD;&#xA;{&#xD;&#xA;&#x9;New FileFormDataPart(),&#xD;&#xA;&#x9;New BinaryFormDataPart(),&#xD;&#xA;&#x9;New TextFormDataPart()&#xD;&#xA;}]" sap:VirtualizedContainerService.HintSize="680,48" sap2010:WorkflowViewState.IdRef="NetHttpRequest_2" InitialDelay="500" MaxRedirects="3" MaxRetryAfterDelay="30000" Method="GET" Multiplier="2" Parameters="[New Dictionary(Of String, String) From {{&quot;q&quot;, &quot;OrderNumber='&quot; &amp; in_PONumber &amp; &quot;'&quot;}, {&quot;onlyData&quot;, &quot;true&quot;}, {&quot;fields&quot;, &quot;POHeaderId,Status&quot;}}]" PreferRetryAfterValue="True" RequestBodyType="None" RequestUrl="[strApi &amp; &quot;/purchaseOrders&quot;]" Result="[resp]" RetryCount="1" RetryStatusCodes="[New List (Of System.Net.HttpStatusCode) From _&#xD;&#xA;{&#xD;&#xA;&#x9;System.Net.HttpStatusCode.RequestTimeout,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.TooManyRequests,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.InternalServerError,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.BadGateway,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.ServiceUnavailable,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.GatewayTimeout&#xD;&#xA;}]" SaveRawRequestResponse="False" SaveResponseAsFile="False" TextPayloadContentType="application/json" TextPayloadEncoding="UTF-8" TlsProtocol="Automatic" UseJitter="True" UseOsNegotiatedAuthCredentials="True">
+                <uwah:NetHttpRequest.TimeoutInMiliseconds>
+                  <InArgument x:TypeArguments="s:Nullable(x:Int32)">
+                    <Literal x:TypeArguments="s:Nullable(x:Int32)" Value="60000" />
+                  </InArgument>
+                </uwah:NetHttpRequest.TimeoutInMiliseconds>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uwah:NetHttpRequest>
+              <Assign DisplayName="strId = POHeaderId" sap:VirtualizedContainerService.HintSize="680,48" sap2010:WorkflowViewState.IdRef="Assign_2">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[strId]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(resp.TextContent, """POHeaderId""\s*:\s*(\d+)").Groups(1).Value]</InArgument>
+                </Assign.Value>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Assign>
+              <If Condition="[If(resp.TextContent, &quot;&quot;).Contains(&quot;Incomplete&quot;)]" DisplayName="If PO status is Incomplete: delete draft, else cancel (close if refused)" sap:VirtualizedContainerService.HintSize="680,390" sap2010:WorkflowViewState.IdRef="If_7">
+                <If.Then>
+                  <Sequence DisplayName="Delete draft PO" sap:VirtualizedContainerService.HintSize="680,144" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="strUsername3" />
+                      <Variable x:TypeArguments="ss:SecureString" Name="secPassword3" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_CredentialAssetName]" CacheStrategy="None" DisplayName="Get Credential (Orchestrator asset)" FolderPath="[in_CredentialFolderPath]" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="GetRobotCredential_30" Password="[secPassword3]" Username="[strUsername3]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:GetRobotCredential>
+                    <uwah:NetHttpRequest BasicAuthPassword="{x:Null}" BinaryPayload="{x:Null}" ClientCertPassword="{x:Null}" ClientCertPath="{x:Null}" ClientCertSecurePassword="{x:Null}" Cookies="{x:Null}" CustomNegotiatedAuthCredentials="{x:Null}" FilePath="{x:Null}" FormData="{x:Null}" Headers="{x:Null}" LocalFiles="{x:Null}" OAuthToken="{x:Null}" OutputFileName="{x:Null}" OutputFileTargetFolder="{x:Null}" Parameters="{x:Null}" PathResource="{x:Null}" ProxyConfiguration="{x:Null}" ResourceFiles="{x:Null}" TextPayload="{x:Null}" AuthenticationType="BasicUsernamePassword" BasicAuthSecurePassword="[secPassword3]" BasicAuthUsername="[strUsername3]" ContinueOnError="True" DisableSslVerification="False" DisplayName="DELETE draftPurchaseOrders/{id} (WRITE: deletes the incomplete PO)" EnableCookies="True" FileOverwrite="AutoRename" FollowRedirects="True" FormDataParts="[New List (Of FormDataPart) From _&#xD;&#xA;{&#xD;&#xA;&#x9;New FileFormDataPart(),&#xD;&#xA;&#x9;New BinaryFormDataPart(),&#xD;&#xA;&#x9;New TextFormDataPart()&#xD;&#xA;}]" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NetHttpRequest_8" InitialDelay="500" MaxRedirects="3" MaxRetryAfterDelay="30000" Method="DELETE" Multiplier="2" PreferRetryAfterValue="True" RequestBodyType="None" RequestUrl="[strApi &amp; &quot;/draftPurchaseOrders/&quot; &amp; strId]" Result="[resp]" RetryCount="1" RetryStatusCodes="[New List (Of System.Net.HttpStatusCode) From _&#xD;&#xA;{&#xD;&#xA;&#x9;System.Net.HttpStatusCode.RequestTimeout,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.TooManyRequests,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.InternalServerError,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.BadGateway,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.ServiceUnavailable,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.GatewayTimeout&#xD;&#xA;}]" SaveRawRequestResponse="False" SaveResponseAsFile="False" TextPayloadContentType="application/json" TextPayloadEncoding="UTF-8" TlsProtocol="Automatic" UseJitter="True" UseOsNegotiatedAuthCredentials="True">
+                      <uwah:NetHttpRequest.TimeoutInMiliseconds>
+                        <InArgument x:TypeArguments="s:Nullable(x:Int32)">
+                          <Literal x:TypeArguments="s:Nullable(x:Int32)" Value="60000" />
+                        </InArgument>
+                      </uwah:NetHttpRequest.TimeoutInMiliseconds>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uwah:NetHttpRequest>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence DisplayName="Cancel, or close if refused" sap:VirtualizedContainerService.HintSize="680,156" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Sequence DisplayName="Scoped cancel" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:String" Name="strUsername9" />
+                        <Variable x:TypeArguments="ss:SecureString" Name="secPassword9" />
+                      </Sequence.Variables>
+                      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_CredentialAssetName]" CacheStrategy="None" DisplayName="Get Credential (Orchestrator asset)" FolderPath="[in_CredentialFolderPath]" sap2010:WorkflowViewState.IdRef="GetRobotCredential_49" Password="[secPassword9]" Username="[strUsername9]" />
+                      <uwah:NetHttpRequest BasicAuthPassword="{x:Null}" BinaryPayload="{x:Null}" ClientCertPassword="{x:Null}" ClientCertPath="{x:Null}" ClientCertSecurePassword="{x:Null}" Cookies="{x:Null}" CustomNegotiatedAuthCredentials="{x:Null}" FilePath="{x:Null}" FormData="{x:Null}" FormDataParts="{x:Null}" Headers="{x:Null}" LocalFiles="{x:Null}" OAuthToken="{x:Null}" OutputFileName="{x:Null}" OutputFileTargetFolder="{x:Null}" Parameters="{x:Null}" PathResource="{x:Null}" ProxyConfiguration="{x:Null}" ResourceFiles="{x:Null}" RetryStatusCodes="{x:Null}" AuthenticationType="BasicUsernamePassword" BasicAuthSecurePassword="[secPassword9]" BasicAuthUsername="[strUsername9]" ContinueOnError="True" DisableSslVerification="False" DisplayName="POST purchaseOrders/{id}/action/cancel (WRITE: cancels the PO)" EnableCookies="True" FileOverwrite="AutoRename" FollowRedirects="True" sap2010:WorkflowViewState.IdRef="NetHttpRequest_3" InitialDelay="500" MaxRedirects="3" MaxRetryAfterDelay="30000" Method="POST" Multiplier="2" PreferRetryAfterValue="True" RequestBodyType="Text" RequestUrl="[strApi &amp; &quot;/purchaseOrders/&quot; &amp; strId &amp; &quot;/action/cancel&quot;]" Result="[resp]" RetryCount="1" SaveRawRequestResponse="False" SaveResponseAsFile="False" TextPayload="{}{&quot;cancellationReason&quot;:&quot;Test UiPath OFP2P:227 cleanup&quot;,&quot;initiatingParty&quot;:&quot;BUYER&quot;,&quot;cancelUnfulfilledDemandFlag&quot;:false}" TextPayloadContentType="application/vnd.oracle.adf.action+json" TextPayloadEncoding="UTF-8" TlsProtocol="Automatic" UseJitter="True" UseOsNegotiatedAuthCredentials="True">
+                        <uwah:NetHttpRequest.TimeoutInMiliseconds>
+                          <InArgument x:TypeArguments="s:Nullable(x:Int32)">
+                            <Literal x:TypeArguments="s:Nullable(x:Int32)" Value="60000" />
+                          </InArgument>
+                        </uwah:NetHttpRequest.TimeoutInMiliseconds>
+                      </uwah:NetHttpRequest>
+                    </Sequence>
+                    <If Condition="[CInt(resp.StatusCode) &lt;&gt; 200]" DisplayName="If cancel refused: delete draft (Incomplete) or close (received/invoiced)" sap2010:WorkflowViewState.IdRef="If_3">
+                      <If.Then>
+                        <Sequence DisplayName="Close PO" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="x:String" Name="strUsername2" />
+                            <Variable x:TypeArguments="ss:SecureString" Name="secPassword2" />
+                          </Sequence.Variables>
+                          <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_CredentialAssetName]" CacheStrategy="None" DisplayName="Get Credential (Orchestrator asset)" FolderPath="[in_CredentialFolderPath]" sap2010:WorkflowViewState.IdRef="GetRobotCredential_4" Password="[secPassword2]" Username="[strUsername2]" />
+                          <uwah:NetHttpRequest BasicAuthPassword="{x:Null}" BinaryPayload="{x:Null}" ClientCertPassword="{x:Null}" ClientCertPath="{x:Null}" ClientCertSecurePassword="{x:Null}" Cookies="{x:Null}" CustomNegotiatedAuthCredentials="{x:Null}" FilePath="{x:Null}" FormData="{x:Null}" FormDataParts="{x:Null}" Headers="{x:Null}" LocalFiles="{x:Null}" OAuthToken="{x:Null}" OutputFileName="{x:Null}" OutputFileTargetFolder="{x:Null}" Parameters="{x:Null}" PathResource="{x:Null}" ProxyConfiguration="{x:Null}" ResourceFiles="{x:Null}" RetryStatusCodes="{x:Null}" AuthenticationType="BasicUsernamePassword" BasicAuthSecurePassword="[secPassword2]" BasicAuthUsername="[strUsername2]" ContinueOnError="True" DisableSslVerification="False" DisplayName="POST purchaseOrders/{id}/action/close (WRITE: closes the PO)" EnableCookies="True" FileOverwrite="AutoRename" FollowRedirects="True" sap2010:WorkflowViewState.IdRef="NetHttpRequest_4" InitialDelay="500" MaxRedirects="3" MaxRetryAfterDelay="30000" Method="POST" Multiplier="2" PreferRetryAfterValue="True" RequestBodyType="Text" RequestUrl="[strApi &amp; &quot;/purchaseOrders/&quot; &amp; strId &amp; &quot;/action/close&quot;]" Result="[resp]" RetryCount="1" SaveRawRequestResponse="False" SaveResponseAsFile="False" TextPayload="{}{&quot;closeAction&quot;:&quot;CLOSE&quot;,&quot;closeReason&quot;:&quot;Test UiPath OFP2P:227 cleanup&quot;}" TextPayloadContentType="application/vnd.oracle.adf.action+json" TextPayloadEncoding="UTF-8" TlsProtocol="Automatic" UseJitter="True" UseOsNegotiatedAuthCredentials="True">
+                            <uwah:NetHttpRequest.TimeoutInMiliseconds>
+                              <InArgument x:TypeArguments="s:Nullable(x:Int32)">
+                                <Literal x:TypeArguments="s:Nullable(x:Int32)" Value="60000" />
+                              </InArgument>
+                            </uwah:NetHttpRequest.TimeoutInMiliseconds>
+                          </uwah:NetHttpRequest>
+                        </Sequence>
+                      </If.Then>
+                    </If>
+                  </Sequence>
+                </If.Else>
+              </If>
+              <ui:LogMessage DisplayName="Log PO cleanup" sap:VirtualizedContainerService.HintSize="680,48" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;S9 PO &quot; &amp; in_PONumber &amp; &quot; (id &quot; &amp; strId &amp; &quot;): &quot; &amp; CInt(resp.StatusCode).ToString &amp; &quot; &quot; &amp; If(resp.TextContent, &quot;&quot;).Substring(0, Math.Min(300, If(resp.TextContent, &quot;&quot;).Length))]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
+            </Sequence>
+          </TryCatch.Try>
+          <TryCatch.Catches>
+            <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch_2">
+              <ActivityAction x:TypeArguments="s:Exception">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exPo" />
+                </ActivityAction.Argument>
+                <ui:LogMessage DisplayName="Log PO cleanup failed" sap:VirtualizedContainerService.HintSize="680,24" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[&quot;S9 PO cleanup failed: &quot; &amp; exPo.Message]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+              </ActivityAction>
+            </Catch>
+          </TryCatch.Catches>
+        </TryCatch>
+      </If.Then>
+    </If>
+    <If Condition="[Not String.IsNullOrWhiteSpace(in_RequisitionNumber)]" DisplayName="If a requisition was created" sap:VirtualizedContainerService.HintSize="710,406" sap2010:WorkflowViewState.IdRef="If_4">
+      <If.Then>
+        <TryCatch DisplayName="Try cancel requisition" sap:VirtualizedContainerService.HintSize="680,295" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+          <TryCatch.Try>
+            <Sequence DisplayName="Cancel requisition" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="strUsername" />
+                <Variable x:TypeArguments="ss:SecureString" Name="secPassword" />
+              </Sequence.Variables>
+              <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_CredentialAssetName]" CacheStrategy="None" DisplayName="Get Credential (Orchestrator asset)" FolderPath="[in_CredentialFolderPath]" sap2010:WorkflowViewState.IdRef="GetRobotCredential_3" Password="[secPassword]" Username="[strUsername]" />
+              <uwah:NetHttpRequest BasicAuthPassword="{x:Null}" BinaryPayload="{x:Null}" ClientCertPassword="{x:Null}" ClientCertPath="{x:Null}" ClientCertSecurePassword="{x:Null}" Cookies="{x:Null}" CustomNegotiatedAuthCredentials="{x:Null}" FilePath="{x:Null}" FormData="{x:Null}" FormDataParts="{x:Null}" Headers="{x:Null}" LocalFiles="{x:Null}" OAuthToken="{x:Null}" OutputFileName="{x:Null}" OutputFileTargetFolder="{x:Null}" PathResource="{x:Null}" ProxyConfiguration="{x:Null}" ResourceFiles="{x:Null}" RetryStatusCodes="{x:Null}" TextPayload="{x:Null}" AuthenticationType="BasicUsernamePassword" BasicAuthSecurePassword="[secPassword]" BasicAuthUsername="[strUsername]" ContinueOnError="True" DisableSslVerification="False" DisplayName="GET purchaseRequisitions by number" EnableCookies="True" FileOverwrite="AutoRename" FollowRedirects="True" sap2010:WorkflowViewState.IdRef="NetHttpRequest_5" InitialDelay="500" MaxRedirects="3" MaxRetryAfterDelay="30000" Method="GET" Multiplier="2" Parameters="[New Dictionary(Of String, String) From {{&quot;q&quot;, &quot;Requisition='&quot; &amp; in_RequisitionNumber &amp; &quot;'&quot;}, {&quot;onlyData&quot;, &quot;true&quot;}, {&quot;fields&quot;, &quot;RequisitionHeaderId,DocumentStatus&quot;}}]" PreferRetryAfterValue="True" RequestBodyType="None" RequestUrl="[strApi &amp; &quot;/purchaseRequisitions&quot;]" Result="[resp]" RetryCount="1" SaveRawRequestResponse="False" SaveResponseAsFile="False" TextPayloadContentType="application/json" TextPayloadEncoding="UTF-8" TlsProtocol="Automatic" UseJitter="True" UseOsNegotiatedAuthCredentials="True">
+                <uwah:NetHttpRequest.TimeoutInMiliseconds>
+                  <InArgument x:TypeArguments="s:Nullable(x:Int32)">
+                    <Literal x:TypeArguments="s:Nullable(x:Int32)" Value="60000" />
+                  </InArgument>
+                </uwah:NetHttpRequest.TimeoutInMiliseconds>
+              </uwah:NetHttpRequest>
+              <ui:LogMessage DisplayName="Log requisition lookup" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;S9 requisition lookup: &quot; &amp; CInt(resp.StatusCode).ToString &amp; &quot; &quot; &amp; If(resp.TextContent, &quot;&quot;).Replace(Environment.NewLine, &quot; &quot;)]" />
+              <Assign DisplayName="strId = RequisitionHeaderId" sap2010:WorkflowViewState.IdRef="Assign_3">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[strId]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(resp.TextContent, """RequisitionHeaderId""\s*:\s*(\d+)").Groups(1).Value]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <If Condition="[If(resp.TextContent, &quot;&quot;).Contains(&quot;Incomplete&quot;)]" DisplayName="If Incomplete: delete (Oracle refuses cancel), else cancel" sap2010:WorkflowViewState.IdRef="If_5">
+                <If.Then>
+                  <Sequence DisplayName="Scoped call" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="strUsername7" />
+                      <Variable x:TypeArguments="ss:SecureString" Name="secPassword7" />
+                    </Sequence.Variables>
+                    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_CredentialAssetName]" CacheStrategy="None" DisplayName="Get Credential (Orchestrator asset)" FolderPath="[in_CredentialFolderPath]" sap2010:WorkflowViewState.IdRef="GetRobotCredential_27" Password="[secPassword7]" Username="[strUsername7]" />
+                    <uwah:NetHttpRequest BasicAuthPassword="{x:Null}" BinaryPayload="{x:Null}" ClientCertPassword="{x:Null}" ClientCertPath="{x:Null}" ClientCertSecurePassword="{x:Null}" Cookies="{x:Null}" CustomNegotiatedAuthCredentials="{x:Null}" FilePath="{x:Null}" FormData="{x:Null}" FormDataParts="{x:Null}" Headers="{x:Null}" LocalFiles="{x:Null}" OAuthToken="{x:Null}" OutputFileName="{x:Null}" OutputFileTargetFolder="{x:Null}" Parameters="{x:Null}" PathResource="{x:Null}" ProxyConfiguration="{x:Null}" ResourceFiles="{x:Null}" RetryStatusCodes="{x:Null}" TextPayload="{x:Null}" AuthenticationType="BasicUsernamePassword" BasicAuthSecurePassword="[secPassword7]" BasicAuthUsername="[strUsername7]" ContinueOnError="True" DisableSslVerification="False" DisplayName="DELETE purchaseRequisitions/{id} (WRITE: deletes the incomplete requisition)" EnableCookies="True" FileOverwrite="AutoRename" FollowRedirects="True" sap2010:WorkflowViewState.IdRef="NetHttpRequest_7" InitialDelay="500" MaxRedirects="3" MaxRetryAfterDelay="30000" Method="DELETE" Multiplier="2" PreferRetryAfterValue="True" RequestBodyType="None" RequestUrl="[strApi &amp; &quot;/purchaseRequisitions/&quot; &amp; strId &amp; &quot;&quot;]" Result="[resp]" RetryCount="1" SaveRawRequestResponse="False" SaveResponseAsFile="False" TextPayloadContentType="application/json" TextPayloadEncoding="UTF-8" TlsProtocol="Automatic" UseJitter="True" UseOsNegotiatedAuthCredentials="True">
+                      <uwah:NetHttpRequest.TimeoutInMiliseconds>
+                        <InArgument x:TypeArguments="s:Nullable(x:Int32)">
+                          <Literal x:TypeArguments="s:Nullable(x:Int32)" Value="60000" />
+                        </InArgument>
+                      </uwah:NetHttpRequest.TimeoutInMiliseconds>
+                    </uwah:NetHttpRequest>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence DisplayName="Scoped call" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="strUsername6" />
+                      <Variable x:TypeArguments="ss:SecureString" Name="secPassword6" />
+                    </Sequence.Variables>
+                    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_CredentialAssetName]" CacheStrategy="None" DisplayName="Get Credential (Orchestrator asset)" FolderPath="[in_CredentialFolderPath]" sap2010:WorkflowViewState.IdRef="GetRobotCredential_26" Password="[secPassword6]" Username="[strUsername6]" />
+                    <uwah:NetHttpRequest BasicAuthPassword="{x:Null}" BinaryPayload="{x:Null}" ClientCertPassword="{x:Null}" ClientCertPath="{x:Null}" ClientCertSecurePassword="{x:Null}" Cookies="{x:Null}" CustomNegotiatedAuthCredentials="{x:Null}" FilePath="{x:Null}" FormData="{x:Null}" FormDataParts="{x:Null}" Headers="{x:Null}" LocalFiles="{x:Null}" OAuthToken="{x:Null}" OutputFileName="{x:Null}" OutputFileTargetFolder="{x:Null}" Parameters="{x:Null}" PathResource="{x:Null}" ProxyConfiguration="{x:Null}" ResourceFiles="{x:Null}" RetryStatusCodes="{x:Null}" AuthenticationType="BasicUsernamePassword" BasicAuthSecurePassword="[secPassword6]" BasicAuthUsername="[strUsername6]" ContinueOnError="True" DisableSslVerification="False" DisplayName="POST purchaseRequisitions/{id}/action/cancel (WRITE: cancels the requisition)" EnableCookies="True" FileOverwrite="AutoRename" FollowRedirects="True" sap2010:WorkflowViewState.IdRef="NetHttpRequest_6" InitialDelay="500" MaxRedirects="3" MaxRetryAfterDelay="30000" Method="POST" Multiplier="2" PreferRetryAfterValue="True" RequestBodyType="Text" RequestUrl="[strApi &amp; &quot;/purchaseRequisitions/&quot; &amp; strId &amp; &quot;/action/cancel&quot;]" Result="[resp]" RetryCount="1" SaveRawRequestResponse="False" SaveResponseAsFile="False" TextPayload="{}{&quot;cancelReason&quot;:&quot;Test UiPath OFP2P:227 cleanup&quot;}" TextPayloadContentType="application/vnd.oracle.adf.action+json" TextPayloadEncoding="UTF-8" TlsProtocol="Automatic" UseJitter="True" UseOsNegotiatedAuthCredentials="True">
+                      <uwah:NetHttpRequest.TimeoutInMiliseconds>
+                        <InArgument x:TypeArguments="s:Nullable(x:Int32)">
+                          <Literal x:TypeArguments="s:Nullable(x:Int32)" Value="60000" />
+                        </InArgument>
+                      </uwah:NetHttpRequest.TimeoutInMiliseconds>
+                    </uwah:NetHttpRequest>
+                  </Sequence>
+                </If.Else>
+              </If>
+              <ui:LogMessage DisplayName="Log requisition cancel" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;S9 cancel requisition &quot; &amp; in_RequisitionNumber &amp; &quot; (id &quot; &amp; strId &amp; &quot;): &quot; &amp; CInt(resp.StatusCode).ToString &amp; &quot; &quot; &amp; If(resp.TextContent, &quot;&quot;).Substring(0, Math.Min(300, If(resp.TextContent, &quot;&quot;).Length))]" />
+            </Sequence>
+          </TryCatch.Try>
+          <TryCatch.Catches>
+            <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch_3">
+              <ActivityAction x:TypeArguments="s:Exception">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exReq" />
+                </ActivityAction.Argument>
+                <ui:LogMessage DisplayName="Log requisition cancel failed" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Warn" Message="[&quot;S9 cancel requisition failed: &quot; &amp; exReq.Message]" />
+              </ActivityAction>
+            </Catch>
+          </TryCatch.Catches>
+        </TryCatch>
+      </If.Then>
+    </If>
+    <ui:LogMessage DisplayName="Log supplier kept" sap:VirtualizedContainerService.HintSize="710,48" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;S9 supplier &quot; &amp; in_SupplierName &amp; &quot; kept active (inactivation pending decision)&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+  </Sequence>
+</Activity>

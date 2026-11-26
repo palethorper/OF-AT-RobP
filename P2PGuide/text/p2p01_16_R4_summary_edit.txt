@@ -1,0 +1,38 @@
+### Eval
+- Result: Requisition - Edit - Oracle Fusion Cloud Applications
+https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions/tabbar/shopping/editrequisition-header
+Skip to main content
+16
+204165
+Requisition
+Cancel
+Update
+Description
+Justification
+Emergency purchase order request
+Overriding Approver
+Supplier
+Supplier
+Dell Inc.
+Additional Contact Email
+Delivery
+Requester
+Requested Delivery Date
+Press Key down or Key up for access to Calendar.
+Deliver-to Location Type
+Deliver-to Location
+Urgent
+Project costing
+Charge account
+Select favorite charge account
+Enter charge account number
+Charge To
+Additional information
+Notes
+Note to Supplier
+Attachments
+Category
+Drag and Drop
+Select or drop files here.
+URL
+Add URL

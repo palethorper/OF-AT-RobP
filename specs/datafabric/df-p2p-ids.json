@@ -1,0 +1,72 @@
+{
+  "scope": "tenant",
+  "choiceSets": {
+    "OracleP2PStage": {
+      "id": "e688f81d-35e9-f111-91f2-6045bdc3efdf",
+      "values": {
+        "Requisition": 0,
+        "Approved": 1,
+        "PO": 2,
+        "Received": 3,
+        "Invoiced": 4,
+        "Validated": 5,
+        "Paid": 6,
+        "CleanedUp": 7,
+        "Failed": 8
+      }
+    },
+    "OracleP2PCleanupAction": {
+      "id": "a001b52c-35e9-f111-91f2-6045bdc3efdf",
+      "values": {
+        "None": 0,
+        "CancelRequisition": 1,
+        "CancelPOLine": 2,
+        "CancelInvoice": 3,
+        "VoidPayment": 4,
+        "ManualReview": 5
+      }
+    },
+    "OracleP2PReferenceType": {
+      "id": "1ddfa23b-35e9-f111-91f2-6045bdc3efdf",
+      "values": {
+        "Persona": 0,
+        "BusinessUnit": 1,
+        "Supplier": 2,
+        "SupplierSite": 3,
+        "CatalogItem": 4,
+        "ChargeAccount": 5,
+        "PaymentTerms": 6,
+        "BankAccount": 7
+      }
+    },
+    "OracleP2PReservationStatus": {
+      "id": "9c2ea04e-35e9-f111-91f2-6045bdc3efdf",
+      "values": {
+        "Reserved": 0,
+        "InUse": 1,
+        "Consumed": 2,
+        "Released": 3,
+        "Expired": 4
+      }
+    },
+    "OracleP2PReservationPurpose": {
+      "id": "041cf75d-35e9-f111-91f2-6045bdc3efdf",
+      "values": {
+        "Receipt": 0,
+        "Invoice": 1,
+        "Payment": 2
+      }
+    }
+  },
+  "entities": {
+    "OracleP2PRun": {
+      "id": "f2dea23b-35e9-f111-91f2-6045bdc3efdf"
+    },
+    "OracleP2PReference": {
+      "id": "892ea04e-35e9-f111-91f2-6045bdc3efdf"
+    },
+    "OracleP2PReservation": {
+      "id": "cbb88a68-35e9-f111-91f2-6045bdc3efdf"
+    }
+  }
+}

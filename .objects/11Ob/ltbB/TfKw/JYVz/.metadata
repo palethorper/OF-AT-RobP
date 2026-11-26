@@ -1,0 +1,18 @@
+﻿{
+  "Name": "PO Number Link (row by requisition)",
+  "Description": "PO Number Link (row by requisition)",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "JYVzSklYIUq2HWNvQ3AviA",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/JYVzSklYIUq2HWNvQ3AviA",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/TfKwx2WksUSlAtgbuwUUxg",
+  "Created": "2026-11-23T21:14:50.0824734Z",
+  "Updated": "2026-11-23T21:16:05.6837014Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

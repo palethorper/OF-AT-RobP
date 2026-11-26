@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Next Button",
+  "Description": "Next button that submits the Oracle Cloud sign-in form",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "KkDVWm5ktUaTcz5qwNuR8A",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/KkDVWm5ktUaTcz5qwNuR8A",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/HUBH5pJF9E2nxzkZHf7kdA",
+  "Created": "2026-11-23T03:10:44.9544889Z",
+  "Updated": "2026-11-23T04:44:38.9731937Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

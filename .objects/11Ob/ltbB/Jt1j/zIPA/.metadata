@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Draft Exists Start Over Button",
+  "Description": "Draft-exists dialog: Start Over discards the open draft and starts a new registration",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "zIPAczD5IE6ZXQsB6Ds_mQ",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/zIPAczD5IE6ZXQsB6Ds_mQ",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Jt1jXBgpj0akYQz6-Z4ygQ",
+  "Created": "2026-11-23T08:23:37.937116Z",
+  "Updated": "2026-11-23T08:23:37.937116Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

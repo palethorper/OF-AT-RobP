@@ -1,0 +1,15 @@
+﻿{
+  "Name": "LOV Option Row",
+  "Description": "LOV Option Row",
+  "Type": "Element",
+  "TaxonomyType": "None",
+  "Id": "yQqWXSuLD0-mTzP0kU9k8g",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/yQqWXSuLD0-mTzP0kU9k8g",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Nil-6YrGSkGkeWX231SfiQ",
+  "Created": "2026-11-23T09:50:39.2138078Z",
+  "Updated": "2026-11-23T09:50:39.2138078Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

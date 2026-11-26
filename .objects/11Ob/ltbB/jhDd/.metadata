@@ -1,0 +1,17 @@
+﻿{
+  "Name": "Supplier Management",
+  "Description": "Redwood Supplier Management landing page with Register Supplier and Supplier Registrations actions",
+  "Type": "Screen",
+  "Id": "jhDdmUjsI0m8-cSqmfsztg",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/jhDdmUjsI0m8-cSqmfsztg",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/ltbBRqeaGEOJBm2u-N1KjA",
+  "Created": "2026-11-23T03:22:53.4635686Z",
+  "Updated": "2026-11-23T04:49:57.8003015Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

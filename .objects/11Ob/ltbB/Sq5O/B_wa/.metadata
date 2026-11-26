@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Invoice Save Link",
+  "Description": "Invoice Save Link",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "B_wa3qs-X06R0QjRDf-eOQ",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/B_wa3qs-X06R0QjRDf-eOQ",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Sq5OicXup0KJgfP--XChMA",
+  "Created": "2026-11-23T10:50:58.8680572Z",
+  "Updated": "2026-11-23T10:50:58.8680572Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

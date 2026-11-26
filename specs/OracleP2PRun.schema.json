@@ -1,0 +1,262 @@
+{
+  "_status": "DESIGN APPROVED 2026-11-24 (names, text ids, UIP-TEST marker). Not yet created.",
+  "scope": "tenant",
+  "choiceSets": [
+    {
+      "name": "OracleP2PStage",
+      "displayName": "Oracle P2P Stage",
+      "description": "How far an OFP2P test run got in Oracle Fusion",
+      "values": [
+        "Requisition",
+        "Approved",
+        "PO",
+        "Received",
+        "Invoiced",
+        "Validated",
+        "Paid",
+        "CleanedUp",
+        "Failed"
+      ]
+    },
+    {
+      "name": "OracleP2PCleanupAction",
+      "displayName": "Oracle P2P Cleanup Action",
+      "description": "What cleanup a run record needs. Oracle cannot delete approved documents, only cancel, close or void them.",
+      "values": [
+        "None",
+        "CancelRequisition",
+        "CancelPOLine",
+        "CancelInvoice",
+        "VoidPayment",
+        "ManualReview"
+      ]
+    }
+  ],
+  "entity": {
+    "name": "OracleP2PRun",
+    "displayName": "Oracle P2P Run",
+    "description": "One record per OFP2P test run on dev16: everything a later test needs from an earlier one, plus how to clean up. Every Oracle document the run creates has a description starting UIP-TEST-<RunId>.",
+    "fields": [
+      {
+        "name": "RunId",
+        "type": "STRING",
+        "lengthLimit": 40,
+        "isRequired": true,
+        "isUnique": true,
+        "displayName": "Run ID",
+        "description": "yyMMddHHmm run identifier"
+      },
+      {
+        "name": "TestMarker",
+        "type": "STRING",
+        "lengthLimit": 60,
+        "isRequired": true,
+        "isUnique": true,
+        "displayName": "Test Marker",
+        "description": "UIP-TEST-<RunId>; prefix of every Oracle description this run writes"
+      },
+      {
+        "name": "TestCaseKey",
+        "type": "STRING",
+        "lengthLimit": 40,
+        "displayName": "Test Case Key",
+        "description": "Test Manager key, e.g. OFP2P:227"
+      },
+      {
+        "name": "Stage",
+        "type": "CHOICE_SET_SINGLE",
+        "choiceSetId": "<OracleP2PStage>",
+        "isRequired": true,
+        "displayName": "Stage"
+      },
+      {
+        "name": "BusinessUnit",
+        "type": "STRING",
+        "lengthLimit": 120,
+        "displayName": "Business Unit",
+        "description": "e.g. US1 Business Unit"
+      },
+      {
+        "name": "Requester",
+        "type": "STRING",
+        "lengthLimit": 120,
+        "displayName": "Requester"
+      },
+      {
+        "name": "Buyer",
+        "type": "STRING",
+        "lengthLimit": 120,
+        "displayName": "Buyer",
+        "description": "Assigned by Oracle from the category, e.g. Calvin Roth"
+      },
+      {
+        "name": "Supplier",
+        "type": "STRING",
+        "lengthLimit": 240,
+        "displayName": "Supplier"
+      },
+      {
+        "name": "SupplierNumber",
+        "type": "STRING",
+        "lengthLimit": 30,
+        "displayName": "Supplier Number"
+      },
+      {
+        "name": "SupplierSite",
+        "type": "STRING",
+        "lengthLimit": 120,
+        "displayName": "Supplier Site"
+      },
+      {
+        "name": "ItemDescription",
+        "type": "STRING",
+        "lengthLimit": 240,
+        "displayName": "Item Description",
+        "description": "Starts with the test marker"
+      },
+      {
+        "name": "ItemNumber",
+        "type": "STRING",
+        "lengthLimit": 60,
+        "displayName": "Item Number",
+        "description": "Catalog item, empty for noncatalog"
+      },
+      {
+        "name": "Category",
+        "type": "STRING",
+        "lengthLimit": 120,
+        "displayName": "Category",
+        "description": "e.g. 206.61 Monitors"
+      },
+      {
+        "name": "Quantity",
+        "type": "DECIMAL",
+        "decimalPrecision": 2,
+        "minValue": 0,
+        "displayName": "Quantity"
+      },
+      {
+        "name": "UOM",
+        "type": "STRING",
+        "lengthLimit": 20,
+        "displayName": "UOM"
+      },
+      {
+        "name": "UnitPrice",
+        "type": "DECIMAL",
+        "decimalPrecision": 2,
+        "minValue": 0,
+        "displayName": "Unit Price"
+      },
+      {
+        "name": "Amount",
+        "type": "DECIMAL",
+        "decimalPrecision": 2,
+        "minValue": 0,
+        "displayName": "Amount",
+        "description": "Quantity x unit price (before tax)"
+      },
+      {
+        "name": "ApprovalAmount",
+        "type": "DECIMAL",
+        "decimalPrecision": 2,
+        "minValue": 0,
+        "displayName": "Approval Amount",
+        "description": "Amount + nonrecoverable tax (9.5% US1 Seattle); approval rules test this"
+      },
+      {
+        "name": "Currency",
+        "type": "STRING",
+        "lengthLimit": 3,
+        "displayName": "Currency",
+        "defaultValue": "USD"
+      },
+      {
+        "name": "ChargeAccount",
+        "type": "STRING",
+        "lengthLimit": 120,
+        "displayName": "Charge Account"
+      },
+      {
+        "name": "RequisitionNumber",
+        "type": "STRING",
+        "lengthLimit": 30,
+        "displayName": "Requisition Number"
+      },
+      {
+        "name": "RequisitionStatus",
+        "type": "STRING",
+        "lengthLimit": 40,
+        "displayName": "Requisition Status",
+        "description": "As Oracle reports it (Incomplete, Pending approval, Approved, Canceled)"
+      },
+      {
+        "name": "PONumber",
+        "type": "STRING",
+        "lengthLimit": 30,
+        "displayName": "PO Number"
+      },
+      {
+        "name": "POStatus",
+        "type": "STRING",
+        "lengthLimit": 40,
+        "displayName": "PO Status"
+      },
+      {
+        "name": "ReceiptNumber",
+        "type": "STRING",
+        "lengthLimit": 30,
+        "displayName": "Receipt Number"
+      },
+      {
+        "name": "InvoiceNumber",
+        "type": "STRING",
+        "lengthLimit": 50,
+        "displayName": "Invoice Number"
+      },
+      {
+        "name": "InvoiceId",
+        "type": "STRING",
+        "lengthLimit": 30,
+        "displayName": "Invoice ID",
+        "description": "Oracle InvoiceId (15+ digits; kept as text so it is never rounded)"
+      },
+      {
+        "name": "InvoiceValidationStatus",
+        "type": "STRING",
+        "lengthLimit": 40,
+        "displayName": "Invoice Validation Status"
+      },
+      {
+        "name": "PaymentNumber",
+        "type": "STRING",
+        "lengthLimit": 30,
+        "displayName": "Payment Number"
+      },
+      {
+        "name": "CleanupAction",
+        "type": "CHOICE_SET_SINGLE",
+        "choiceSetId": "<OracleP2PCleanupAction>",
+        "displayName": "Cleanup Action",
+        "description": "What still needs doing; None when clean"
+      },
+      {
+        "name": "CleanupNotes",
+        "type": "MULTILINE_TEXT",
+        "lengthLimit": 4000,
+        "displayName": "Cleanup Notes",
+        "description": "What was cancelled/closed/deleted and Oracle's response"
+      },
+      {
+        "name": "StartedAt",
+        "type": "DATETIME_WITH_TZ",
+        "displayName": "Started At"
+      },
+      {
+        "name": "LastStageAt",
+        "type": "DATETIME_WITH_TZ",
+        "displayName": "Last Stage At"
+      }
+    ]
+  }
+}

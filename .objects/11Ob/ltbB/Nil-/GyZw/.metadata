@@ -1,0 +1,15 @@
+﻿{
+  "Name": "My Requisitions Tab",
+  "Description": "My Requisitions Tab",
+  "Type": "Element",
+  "TaxonomyType": "None",
+  "Id": "GyZwtBuHvUyE_k8oYk0ppg",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/GyZwtBuHvUyE_k8oYk0ppg",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Nil-6YrGSkGkeWX231SfiQ",
+  "Created": "2026-11-23T09:46:57.0868579Z",
+  "Updated": "2026-11-23T09:46:57.0868579Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

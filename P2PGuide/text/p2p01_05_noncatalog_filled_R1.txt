@@ -1,0 +1,42 @@
+### Eval
+- Result: Noncatalog Request - Edit - Oracle Fusion Cloud Applications
+https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions/tabbar/shopping/create_noncatalog_request
+Skip to main content
+15
+Create Noncatalog Request
+Cancel
+Add to List
+Add to Cart
+Item Description
+Item Type
+Category
+Pricing
+Quantity
+UOM
+Price
+$
+Currency
+Source
+New supplier
+Supplier
+Supplier
+Enter at least 3 characters.
+Supplier Site
+Supplier Contact
+Additional Contact Email
+Supplier Item
+Manufacturer
+Manufacturer
+Manufacturer Part Number
+Additional information
+Notes
+Note to Supplier
+Attachments
+Category
+Drag and Drop
+Select or drop files here.
+URL
+Add URL
+Self Service Procurement
+My Requisitions
+Cart

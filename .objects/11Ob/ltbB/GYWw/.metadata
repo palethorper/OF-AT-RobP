@@ -1,0 +1,14 @@
+﻿{
+  "Name": "BPM Worklist",
+  "Description": "BPM Worklist My Tasks",
+  "Type": "Screen",
+  "Id": "GYWw2sOWe0q0O0CapymM2Q",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/GYWw2sOWe0q0O0CapymM2Q",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/ltbBRqeaGEOJBm2u-N1KjA",
+  "Created": "2026-11-23T10:06:07.1529145Z",
+  "Updated": "2026-11-23T10:06:07.1529145Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

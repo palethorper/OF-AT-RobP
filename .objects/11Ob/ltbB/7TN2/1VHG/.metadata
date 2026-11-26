@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Greeting Text",
+  "Description": "Home page greeting text Good afternoon user name, proves the user is signed in",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "1VHG3Jkrr0-d9MeaNIfe5Q",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/1VHG3Jkrr0-d9MeaNIfe5Q",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/7TN2LWKdH0S2QSDE9rLCIg",
+  "Created": "2026-11-23T03:20:29.0631663Z",
+  "Updated": "2026-11-23T04:48:18.6165622Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

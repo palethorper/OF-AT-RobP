@@ -1,0 +1,174 @@
+{
+  "_status": "DESIGN APPROVED 2026-11-24 (names, text ids, Anita per findings, ABC confirmed, UIP-TEST marker). Not yet created.",
+  "scope": "tenant",
+  "choiceSets": [
+    {
+      "name": "OracleP2PReferenceType",
+      "displayName": "Oracle P2P Reference Type",
+      "description": "Kind of shared reference data the OFP2P tests use",
+      "values": [
+        "Persona",
+        "BusinessUnit",
+        "Supplier",
+        "SupplierSite",
+        "CatalogItem",
+        "ChargeAccount",
+        "PaymentTerms",
+        "BankAccount"
+      ]
+    }
+  ],
+  "entity": {
+    "name": "OracleP2PReference",
+    "displayName": "Oracle P2P Reference",
+    "description": "Read-mostly master and common data for the OFP2P tests on dev16: one row per reference item. Shared Oracle data - never created or changed by the tests.",
+    "fields": [
+      {
+        "name": "ReferenceType",
+        "type": "CHOICE_SET_SINGLE",
+        "choiceSetId": "<OracleP2PReferenceType>",
+        "isRequired": true,
+        "displayName": "Reference Type"
+      },
+      {
+        "name": "ReferenceKey",
+        "type": "STRING",
+        "lengthLimit": 120,
+        "isRequired": true,
+        "displayName": "Key",
+        "description": "Oracle key: user name, BU name, supplier number, item number, account combination"
+      },
+      {
+        "name": "UniqueKey",
+        "type": "STRING",
+        "lengthLimit": 160,
+        "isRequired": true,
+        "isUnique": true,
+        "displayName": "Unique Key",
+        "description": "<ReferenceType>|<ReferenceKey>, so a key can repeat across types"
+      },
+      {
+        "name": "DisplayValue",
+        "type": "STRING",
+        "lengthLimit": 240,
+        "isRequired": true,
+        "displayName": "Display Value"
+      },
+      {
+        "name": "BusinessUnit",
+        "type": "STRING",
+        "lengthLimit": 120,
+        "displayName": "Business Unit"
+      },
+      {
+        "name": "Roles",
+        "type": "STRING",
+        "lengthLimit": 400,
+        "displayName": "Roles / Use",
+        "description": "For personas: requester, buyer, approver, AP, payments"
+      },
+      {
+        "name": "IsActive",
+        "type": "BOOLEAN",
+        "isRequired": true,
+        "defaultValue": "false",
+        "displayName": "Is Active",
+        "description": "true only once confirmed on dev16"
+      },
+      {
+        "name": "LastChecked",
+        "type": "DATE",
+        "displayName": "Last Checked"
+      },
+      {
+        "name": "Notes",
+        "type": "MULTILINE_TEXT",
+        "lengthLimit": 2000,
+        "displayName": "Notes",
+        "description": "Evidence and caveats"
+      }
+    ]
+  },
+  "proposedSeedRows": [
+    {
+      "ReferenceType": "Persona",
+      "ReferenceKey": "CASEY.BROWN",
+      "DisplayValue": "Casey Brown",
+      "BusinessUnit": "US1 Business Unit",
+      "Roles": "requester, receiver, AP, payments",
+      "IsActive": true,
+      "LastChecked": "2026-11-24",
+      "Notes": "Robot login (credential asset Oracle_Fusion_P2P_Test). Self-approves the catch-all RequisitionApprovalCaseyBrown step."
+    },
+    {
+      "ReferenceType": "Persona",
+      "ReferenceKey": "CALVIN.ROTH",
+      "DisplayValue": "Calvin Roth",
+      "BusinessUnit": "US1 Business Unit",
+      "Roles": "buyer (assigned by category, e.g. 206.61 Monitors); override approver",
+      "IsActive": true,
+      "LastChecked": "2026-11-24"
+    },
+    {
+      "ReferenceType": "Persona",
+      "ReferenceKey": "ANITA.KENNEDY",
+      "DisplayValue": "Anita Kennedy",
+      "BusinessUnit": "US1 Business Unit",
+      "Roles": "requisition approver when approval amount >= 50,000 USD (supervisor hierarchy: Casey's manager)",
+      "IsActive": true,
+      "LastChecked": "2026-11-22",
+      "Notes": "Rule 'Requisition Supervisory 50K Approval' (US1; specs/OracleFusion_Tenant_Findings.md). CFO, Executive Office; manager William Taylor. No credential asset, so tests stay under 50K."
+    },
+    {
+      "ReferenceType": "BusinessUnit",
+      "ReferenceKey": "US1 Business Unit",
+      "DisplayValue": "US1 Business Unit",
+      "BusinessUnit": "US1 Business Unit",
+      "IsActive": true,
+      "LastChecked": "2026-11-24"
+    },
+    {
+      "ReferenceType": "Supplier",
+      "ReferenceKey": "1288",
+      "DisplayValue": "ABC Consulting (supplier 1288)",
+      "BusinessUnit": "US1 Business Unit",
+      "IsActive": true,
+      "Notes": "Confirmed read-only via REST suppliers q Supplier='ABC Consulting': SupplierId 300000075039541, number 1288, ACTIVE (specs/API_Findings.md R3). Shared supplier - never changed by tests.",
+      "LastChecked": "2026-11-23"
+    },
+    {
+      "ReferenceType": "SupplierSite",
+      "ReferenceKey": "ABC US1",
+      "DisplayValue": "ABC US1 (ABC Consulting)",
+      "BusinessUnit": "US1 Business Unit",
+      "IsActive": true,
+      "LastChecked": "2026-11-23",
+      "Notes": "US1 BU site of ABC Consulting (API_Findings R3); used in AP-01 invoice UIP-AP-231126-1013."
+    },
+    {
+      "ReferenceType": "CatalogItem",
+      "ReferenceKey": "LAP-BBAG",
+      "DisplayValue": "Laptop Carrycase Black, $25.00",
+      "BusinessUnit": "US1 Business Unit",
+      "IsActive": true,
+      "Notes": "Catalog item from your prompt; not yet re-read in this session."
+    },
+    {
+      "ReferenceType": "ChargeAccount",
+      "ReferenceKey": "101.10.15910.000.000.000",
+      "DisplayValue": "US1 requester default charge account",
+      "BusinessUnit": "US1 Business Unit",
+      "IsActive": false,
+      "Notes": "Playbook default for Casey; cart showed 101.10.60540.120.000.000 for category 206.61 - unconfirmed"
+    },
+    {
+      "ReferenceType": "PaymentTerms",
+      "ReferenceKey": "Immediate",
+      "DisplayValue": "Immediate",
+      "BusinessUnit": "US1 Business Unit",
+      "IsActive": true,
+      "LastChecked": "2026-11-23",
+      "Notes": "Default payment terms on US1 invoices (AP-01)."
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Supplier Dropdown",
+  "Description": "Supplier Dropdown",
+  "Type": "Element",
+  "TaxonomyType": "Dropdown",
+  "Id": "i261spjS3Ua2aJHkgFMLZw",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/i261spjS3Ua2aJHkgFMLZw",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Nil-6YrGSkGkeWX231SfiQ",
+  "Created": "2026-11-23T09:49:09.4394573Z",
+  "Updated": "2026-11-23T09:49:09.4394573Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -1,0 +1,498 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Workflows_GetP2PAssignment" this:Workflows_GetP2PAssignment.in_ExpiryMinutes="120" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:local="clr-namespace:OF_AT_RobP;assembly=DataService.OF_AT_RobP" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:uda="clr-namespace:UiPath.DataService.Activities;assembly=UiPath.DataService.Activities.Core" xmlns:udam="clr-namespace:UiPath.DataService.Activities.Models;assembly=UiPath.DataService.Activities.Core" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_TestSetKey" Type="InArgument(x:String)" />
+    <x:Property Name="in_Purpose" Type="InArgument(x:String)" />
+    <x:Property Name="in_RunId" Type="InArgument(x:String)" />
+    <x:Property Name="in_TestCaseKey" Type="InArgument(x:String)" />
+    <x:Property Name="in_ExpiryMinutes" Type="InArgument(x:Int32)" />
+    <x:Property Name="out_PONumber" Type="OutArgument(x:String)" />
+    <x:Property Name="out_Snapshot" Type="OutArgument(scg:Dictionary(x:String, x:String))" />
+    <x:Property Name="out_Source" Type="OutArgument(x:String)" />
+    <x:Property Name="out_ReservationId" Type="OutArgument(x:String)" />
+  </x:Members>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.DataService.Activities</x:String>
+      <x:String>UiPath.DataService.Activities.Models</x:String>
+      <x:String>UiPath.DataService.Definition</x:String>
+      <x:String>OF_AT_RobP</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DataService.Activities.Core</AssemblyReference>
+      <AssemblyReference>UiPath.DataService.Definition</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>DataService.OF_AT_RobP</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Get P2P assignment (reservation, else latest UIP-TEST run at stage, else None)" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="s:DateTimeOffset" Name="dtoNow" />
+      <Variable x:TypeArguments="x:Int32" Name="intPurpose" />
+      <Variable x:TypeArguments="x:Int32" Name="intRunStage" />
+      <Variable x:TypeArguments="x:Int32" Name="intIdx" />
+      <Variable x:TypeArguments="x:Decimal" Name="decQty" />
+      <Variable x:TypeArguments="x:Decimal" Name="decReceived" />
+      <Variable x:TypeArguments="scg:IList(local:OracleP2PReservation)" Name="lstRes" />
+      <Variable x:TypeArguments="scg:IList(local:OracleP2PRun)" Name="lstRuns" />
+      <Variable x:TypeArguments="scg:IList(local:OracleP2PReservation)" Name="lstActive" />
+      <Variable x:TypeArguments="local:OracleP2PReservation" Name="objRes" />
+      <Variable x:TypeArguments="local:OracleP2PReservation" Name="objNewRes" />
+      <Variable x:TypeArguments="local:OracleP2PRun" Name="objRun" />
+    </Sequence.Variables>
+    <Assign DisplayName="Assign dtoNow" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="s:DateTimeOffset">[dtoNow]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="s:DateTimeOffset">[DateTimeOffset.Now]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign out_Source = None" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_Source]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">None</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign out_PONumber = empty" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_PONumber]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[String.Empty]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign out_ReservationId = empty" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_ReservationId]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[String.Empty]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign out_Snapshot = empty" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[out_Snapshot]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[New Dictionary(Of String, String)()]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign intPurpose (Receipt 0, Invoice 1, Payment 2)" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[intPurpose]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">[Array.IndexOf(New String() {"Receipt", "Invoice", "Payment"}, in_Purpose)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[intPurpose &lt; 0]" DisplayName="If the purpose is unknown" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Throw DisplayName="Throw unknown purpose" Exception="[New ArgumentException(&quot;in_Purpose must be Receipt, Invoice or Payment, not: &quot; &amp; in_Purpose)]" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        </Sequence>
+      </If.Then>
+    </If>
+    <Assign DisplayName="Assign intRunStage (Receipt needs PO, Invoice needs Received, Payment needs Validated)" sap2010:WorkflowViewState.IdRef="Assign_7">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[intRunStage]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">[(New Integer() {2, 3, 5})(intPurpose)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <uda:QueryEntityRecords x:TypeArguments="local:OracleP2PReservation" OutputRecords="[lstRes]" SortAscending="False" SortByField="[&quot;ReservedAt&quot;]" TotalRecords="{x:Null}" ContinueOnError="False" DisplayName="Query this test set's live reservation" EntityId="cbb88a68-35e9-f111-91f2-6045bdc3efdf" ExpansionDepth="1" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_1" Skip="0" TimeoutInMs="30000" Top="1">
+      <uda:QueryEntityRecords.FilterArguments>
+        <uda:FilterArgument FilterActivityType="{x:Null}">
+          <uda:FilterArgument.Filter>
+            <uda:GroupFilter Index="0" Operator="AND">
+              <uda:GroupFilter.Filters>
+                <scg:List x:TypeArguments="uda:SimpleFilter" Capacity="4">
+                  <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="ReservedBy" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="0" />
+                  <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="Purpose" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="1" />
+                  <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="Status" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="2" />
+                  <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="ExpiresAt" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="&gt;" ValueIndex="3" />
+                </scg:List>
+              </uda:GroupFilter.Filters>
+              <uda:GroupFilter.Groups>
+                <scg:List x:TypeArguments="uda:GroupFilter" Capacity="0" />
+              </uda:GroupFilter.Groups>
+            </uda:GroupFilter>
+          </uda:FilterArgument.Filter>
+        </uda:FilterArgument>
+      </uda:QueryEntityRecords.FilterArguments>
+      <uda:QueryEntityRecords.FilterValues>
+        <scg:List x:TypeArguments="InArgument" Capacity="4">
+          <InArgument x:TypeArguments="x:String">[in_TestSetKey]</InArgument>
+          <InArgument x:TypeArguments="x:Int32">[intPurpose]</InArgument>
+          <InArgument x:TypeArguments="x:Int32">0</InArgument>
+          <InArgument x:TypeArguments="s:DateTimeOffset">[dtoNow]</InArgument>
+        </scg:List>
+      </uda:QueryEntityRecords.FilterValues>
+    </uda:QueryEntityRecords>
+    <If Condition="[lstRes IsNot Nothing AndAlso lstRes.Count &gt; 0]" DisplayName="If a live reservation exists: take it, else claim from a run record" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Assign DisplayName="Assign objRes" sap2010:WorkflowViewState.IdRef="Assign_8">
+            <Assign.To>
+              <OutArgument x:TypeArguments="local:OracleP2PReservation">[objRes]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="local:OracleP2PReservation">[lstRes(0)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <uda:UpdateEntityRecord x:TypeArguments="local:OracleP2PReservation" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Update reservation to InUse" EntityId="cbb88a68-35e9-f111-91f2-6045bdc3efdf" ExpansionDepth="1" sap2010:WorkflowViewState.IdRef="UpdateEntityRecord`1_1" RecordId="[CType(objRes.Id, Guid)]" InputEntityInFieldView="[New OracleP2PReservation() With {.Status = CType(1, OracleP2PReservationStatus), .RunId = in_RunId}]" IsInRecordView="[False]" TimeoutInMs="30000">
+            <uda:UpdateEntityRecord.State>
+              <udam:RecordState IsInRecordView="False" RequiredFieldCount="2">
+                <udam:RecordState.SelectedFields>
+                  <scg:List x:TypeArguments="udam:DynamicEntityField">
+                    <udam:DynamicEntityField Id="065bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="True" Name="Status">
+                      <udam:DynamicEntityField.ArgumentValue>
+                        <InArgument x:TypeArguments="x:Int32">[1]</InArgument>
+                      </udam:DynamicEntityField.ArgumentValue>
+                    </udam:DynamicEntityField>
+                    <udam:DynamicEntityField Id="095bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="True" Name="RunId">
+                      <udam:DynamicEntityField.ArgumentValue>
+                        <InArgument x:TypeArguments="x:String">[in_RunId]</InArgument>
+                      </udam:DynamicEntityField.ArgumentValue>
+                    </udam:DynamicEntityField>
+                  </scg:List>
+                </udam:RecordState.SelectedFields>
+              </udam:RecordState>
+            </uda:UpdateEntityRecord.State>
+          </uda:UpdateEntityRecord>
+          <Assign DisplayName="Assign out_PONumber (reservation)" sap2010:WorkflowViewState.IdRef="Assign_9">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[out_PONumber]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[objRes.PONumber]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Assign out_ReservationId (reservation)" sap2010:WorkflowViewState.IdRef="Assign_10">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[out_ReservationId]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[objRes.Id.ToString()]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Assign out_Snapshot (reservation)" sap2010:WorkflowViewState.IdRef="Assign_11">
+            <Assign.To>
+              <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[out_Snapshot]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[New Dictionary(Of String, String) From {{"ReservationKey", objRes.ReservationKey}, {"PONumber", objRes.PONumber}, {"Supplier", objRes.Supplier}, {"SupplierSite", objRes.SupplierSite}, {"ItemDescription", objRes.ItemDescription}, {"OrderedQuantity", Convert.ToString(objRes.OrderedQuantity, CultureInfo.InvariantCulture)}, {"ReceivedQuantity", Convert.ToString(objRes.ReceivedQuantity, CultureInfo.InvariantCulture)}, {"UnitPrice", Convert.ToString(objRes.UnitPrice, CultureInfo.InvariantCulture)}, {"Amount", Convert.ToString(objRes.Amount, CultureInfo.InvariantCulture)}, {"Currency", objRes.Currency}}]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Assign out_Source = Reservation" sap2010:WorkflowViewState.IdRef="Assign_12">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[out_Source]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">Reservation</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <uda:QueryEntityRecords x:TypeArguments="local:OracleP2PRun" OutputRecords="[lstRuns]" SortAscending="False" SortByField="[&quot;LastStageAt&quot;]" TotalRecords="{x:Null}" ContinueOnError="False" DisplayName="Query latest UIP-TEST runs at the needed stage" EntityId="f2dea23b-35e9-f111-91f2-6045bdc3efdf" ExpansionDepth="1" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_2" Skip="0" TimeoutInMs="30000" Top="20">
+            <uda:QueryEntityRecords.FilterArguments>
+              <uda:FilterArgument FilterActivityType="{x:Null}">
+                <uda:FilterArgument.Filter>
+                  <uda:GroupFilter Index="0" Operator="AND">
+                    <uda:GroupFilter.Filters>
+                      <scg:List x:TypeArguments="uda:SimpleFilter" Capacity="4">
+                        <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="TestMarker" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="startswith" ValueIndex="0" />
+                        <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="Stage" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="1" />
+                        <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="PONumber" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="not empty" ValueIndex="2" />
+                      </scg:List>
+                    </uda:GroupFilter.Filters>
+                    <uda:GroupFilter.Groups>
+                      <scg:List x:TypeArguments="uda:GroupFilter" Capacity="0" />
+                    </uda:GroupFilter.Groups>
+                  </uda:GroupFilter>
+                </uda:FilterArgument.Filter>
+              </uda:FilterArgument>
+            </uda:QueryEntityRecords.FilterArguments>
+            <uda:QueryEntityRecords.FilterValues>
+              <scg:List x:TypeArguments="InArgument" Capacity="4">
+                <InArgument x:TypeArguments="x:String">UIP-TEST-</InArgument>
+                <InArgument x:TypeArguments="x:Int32">[intRunStage]</InArgument>
+                <x:Null />
+              </scg:List>
+            </uda:QueryEntityRecords.FilterValues>
+          </uda:QueryEntityRecords>
+          <Assign DisplayName="Assign intIdx = 0" sap2010:WorkflowViewState.IdRef="Assign_13">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[intIdx]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">0</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:InterruptibleWhile DisplayName="While candidates remain and none is claimed" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1" MaxIterations="25">
+            <ui:InterruptibleWhile.Condition>
+              <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="lstRuns IsNot Nothing AndAlso intIdx &lt; lstRuns.Count AndAlso out_Source = &quot;None&quot;" />
+            </ui:InterruptibleWhile.Condition>
+            <ui:InterruptibleWhile.Body>
+              <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Assign DisplayName="Assign objRun (candidate)" sap2010:WorkflowViewState.IdRef="Assign_14">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="local:OracleP2PRun">[objRun]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="local:OracleP2PRun">[lstRuns(intIdx)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign intIdx + 1" sap2010:WorkflowViewState.IdRef="Assign_15">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[intIdx]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">[intIdx + 1]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <uda:QueryEntityRecords x:TypeArguments="local:OracleP2PReservation" OutputRecords="[lstActive]" SortAscending="True" SortByField="{x:Null}" TotalRecords="{x:Null}" ContinueOnError="False" DisplayName="Query active reservations on this PO for this purpose" EntityId="cbb88a68-35e9-f111-91f2-6045bdc3efdf" ExpansionDepth="1" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_3" Skip="0" TimeoutInMs="30000" Top="1">
+                  <uda:QueryEntityRecords.FilterArguments>
+                    <uda:FilterArgument FilterActivityType="{x:Null}">
+                      <uda:FilterArgument.Filter>
+                        <uda:GroupFilter Index="0" Operator="AND">
+                          <uda:GroupFilter.Filters>
+                            <scg:List x:TypeArguments="uda:SimpleFilter" Capacity="4">
+                              <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="PONumber" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="0" />
+                              <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="Purpose" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="1" />
+                              <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="Status" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="in" ValueIndex="2" />
+                              <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="ExpiresAt" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="&gt;" ValueIndex="3" />
+                            </scg:List>
+                          </uda:GroupFilter.Filters>
+                          <uda:GroupFilter.Groups>
+                            <scg:List x:TypeArguments="uda:GroupFilter" Capacity="0" />
+                          </uda:GroupFilter.Groups>
+                        </uda:GroupFilter>
+                      </uda:FilterArgument.Filter>
+                    </uda:FilterArgument>
+                  </uda:QueryEntityRecords.FilterArguments>
+                  <uda:QueryEntityRecords.FilterValues>
+                    <scg:List x:TypeArguments="InArgument" Capacity="4">
+                      <InArgument x:TypeArguments="x:String">[objRun.PONumber]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32">[intPurpose]</InArgument>
+                      <InArgument x:TypeArguments="s:String[]">[{ "0", "1" }]</InArgument>
+                      <InArgument x:TypeArguments="s:DateTimeOffset">[dtoNow]</InArgument>
+                    </scg:List>
+                  </uda:QueryEntityRecords.FilterValues>
+                </uda:QueryEntityRecords>
+                <If Condition="[lstActive Is Nothing OrElse lstActive.Count = 0]" DisplayName="If nobody holds this PO for this purpose" sap2010:WorkflowViewState.IdRef="If_3">
+                  <If.Then>
+                    <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                      <TryCatch DisplayName="Try claim the PO (unique key rejects a double claim)" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                        <TryCatch.Try>
+                          <Sequence DisplayName="Try" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                            <Assign DisplayName="Assign decQty (ordered quantity)" sap2010:WorkflowViewState.IdRef="Assign_16">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Decimal">[decQty]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Decimal">[If(objRun.Quantity, 0D)]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign DisplayName="Assign decReceived (0 before receipt, else ordered)" sap2010:WorkflowViewState.IdRef="Assign_17">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Decimal">[decReceived]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Decimal">[If(intPurpose = 0, 0D, decQty)]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <uda:CreateEntityRecord x:TypeArguments="local:OracleP2PReservation" OutputEntity="[objNewRes]" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create reservation (InUse)" EntityId="cbb88a68-35e9-f111-91f2-6045bdc3efdf" ExpansionDepth="1" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_1" InputEntityInFieldView="[New OracleP2PReservation() With {.ReservationKey = objRun.PONumber &amp; &quot;|1|1|&quot; &amp; in_Purpose, .PONumber = objRun.PONumber, .LineNumber = 1D, .ScheduleNumber = 1D, .Purpose = CType(intPurpose, OracleP2PReservationPurpose), .Status = CType(1, OracleP2PReservationStatus), .ReservedBy = in_TestSetKey, .TestCaseKey = in_TestCaseKey, .RunId = in_RunId, .SourceRun = New OracleP2PRun() With {.Id = objRun.Id},.ReservedAt = dtoNow, .ExpiresAt = dtoNow.AddMinutes(in_ExpiryMinutes), .Supplier = objRun.Supplier, .SupplierSite = objRun.SupplierSite, .ItemDescription = objRun.ItemDescription, .OrderedQuantity = decQty, .ReceivedQuantity = decReceived, .UnitPrice = objRun.UnitPrice, .Amount = objRun.Amount, .Currency = objRun.Currency, .Notes = &quot;Claimed from run &quot; &amp; objRun.RunId}]" IsInRecordView="[False]" TimeoutInMs="30000">
+                              <uda:CreateEntityRecord.State>
+                                <udam:RecordState IsInRecordView="False" RequiredFieldCount="10">
+                                  <udam:RecordState.SelectedFields>
+                                    <scg:List x:TypeArguments="udam:DynamicEntityField">
+                                      <udam:DynamicEntityField Id="005bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="True" Name="ReservationKey">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:String">[objRun.PONumber &amp; "|1|1|" &amp; in_Purpose]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="015bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="True" Name="PONumber">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:String">[objRun.PONumber]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="035bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="True" Name="LineNumber">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:Decimal">[1D]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="045bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="True" Name="ScheduleNumber">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:Decimal">[1D]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="055bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="True" Name="Purpose">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:Int32">[intPurpose]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="065bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="True" Name="Status">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:Int32">[1]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="075bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="True" Name="ReservedBy">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:String">[in_TestSetKey]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="095bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="True" Name="RunId">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:String">[in_RunId]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="0c5bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="True" Name="ReservedAt">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:String">[dtoNow.ToString("o", CultureInfo.InvariantCulture)]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="0d5bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="True" Name="ExpiresAt">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:String">[dtoNow.AddMinutes(in_ExpiryMinutes).ToString("o", CultureInfo.InvariantCulture)]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="085bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="TestCaseKey">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:String">[in_TestCaseKey]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="0a5bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="SourceRun">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:String">[objRun.Id.ToString()]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="0e5bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="Supplier">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:String">[objRun.Supplier]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="0f5bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="SupplierSite">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:String">[objRun.SupplierSite]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="105bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="ItemDescription">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:String">[objRun.ItemDescription]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="115bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="OrderedQuantity">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:Decimal">[decQty]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="125bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="ReceivedQuantity">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:Decimal">[decReceived]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="135bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="UnitPrice">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:Decimal">[If(objRun.UnitPrice, 0D)]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="145bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="Amount">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:Decimal">[If(objRun.Amount, 0D)]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="155bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="Currency">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:String">[objRun.Currency]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                      <udam:DynamicEntityField Id="165bd955-9ce7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="Notes">
+                                        <udam:DynamicEntityField.ArgumentValue>
+                                          <InArgument x:TypeArguments="x:String">["Claimed from run " &amp; objRun.RunId]</InArgument>
+                                        </udam:DynamicEntityField.ArgumentValue>
+                                      </udam:DynamicEntityField>
+                                    </scg:List>
+                                  </udam:RecordState.SelectedFields>
+                                </udam:RecordState>
+                              </uda:CreateEntityRecord.State>
+                            </uda:CreateEntityRecord>
+                            <Assign DisplayName="Assign out_PONumber (run record)" sap2010:WorkflowViewState.IdRef="Assign_18">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[out_PONumber]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[objRun.PONumber]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign DisplayName="Assign out_ReservationId (new reservation)" sap2010:WorkflowViewState.IdRef="Assign_19">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[out_ReservationId]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[objNewRes.Id.ToString()]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign DisplayName="Assign out_Snapshot (run record)" sap2010:WorkflowViewState.IdRef="Assign_20">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[out_Snapshot]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[New Dictionary(Of String, String) From {{"ReservationKey", objRun.PONumber &amp; "|1|1|" &amp; in_Purpose}, {"SourceRunId", objRun.RunId}, {"PONumber", objRun.PONumber}, {"Supplier", objRun.Supplier}, {"SupplierSite", objRun.SupplierSite}, {"ItemDescription", objRun.ItemDescription}, {"OrderedQuantity", decQty.ToString(CultureInfo.InvariantCulture)}, {"ReceivedQuantity", decReceived.ToString(CultureInfo.InvariantCulture)}, {"UnitPrice", Convert.ToString(objRun.UnitPrice, CultureInfo.InvariantCulture)}, {"Amount", Convert.ToString(objRun.Amount, CultureInfo.InvariantCulture)}, {"Currency", objRun.Currency}}]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign DisplayName="Assign out_Source = RunRecord" sap2010:WorkflowViewState.IdRef="Assign_21">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[out_Source]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">RunRecord</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </Sequence>
+                        </TryCatch.Try>
+                        <TryCatch.Catches>
+                          <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                            <ActivityAction x:TypeArguments="s:Exception">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Catch" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                <ui:LogMessage DisplayName="Log claim failed (try next candidate)" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;GetP2PAssignment: could not claim PO &quot; &amp; objRun.PONumber &amp; &quot; for &quot; &amp; in_Purpose &amp; &quot; (taken by another test?): &quot; &amp; exception.Message]" />
+                              </Sequence>
+                            </ActivityAction>
+                          </Catch>
+                        </TryCatch.Catches>
+                      </TryCatch>
+                    </Sequence>
+                  </If.Then>
+                </If>
+              </Sequence>
+            </ui:InterruptibleWhile.Body>
+          </ui:InterruptibleWhile>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:LogMessage DisplayName="Log assignment result" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;GetP2PAssignment: purpose=&quot; &amp; in_Purpose &amp; &quot; testSet=&quot; &amp; in_TestSetKey &amp; &quot; source=&quot; &amp; out_Source &amp; &quot; po=&quot; &amp; out_PONumber &amp; &quot; reservation=&quot; &amp; out_ReservationId]" />
+  </Sequence>
+</Activity>

@@ -1,0 +1,15 @@
+﻿{
+  "Name": "PO Submit Button",
+  "Description": "PO Submit Button",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "pYi-_2qCh0OSr4hQN_e55w",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/pYi-_2qCh0OSr4hQN_e55w",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/TfKwx2WksUSlAtgbuwUUxg",
+  "Created": "2026-11-23T10:28:27.0756114Z",
+  "Updated": "2026-11-23T10:28:27.0756114Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

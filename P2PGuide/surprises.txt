@@ -1,0 +1,10 @@
+S1|Requisition|Approval Amount = subtotal + 9.5% nonrecoverable tax; rules test approval amount, so 50K boundary is after tax|Findings 6.1 says amount only
+S2|Requisition|Under-50K requisition (204162, 49,999.99) did NOT auto-approve: held for Casey by RequisitionApprovalCaseyBrown|expected: catch-all step yes; self-approve rule did not complete it alone
+S3|Requisition|50,000.00 and 50,000.01 both route Anita Kennedy (RequisitionSupervisory50KApproval) then Casey|matches rule (>=)
+S4|Requisition|Overriding Approver Calvin Roth on 204165 -> Calvin (Requisition50KandOverride) then Casey; Anita skipped|matches rule
+S5|Requisition|Edit on pending requisition = withdraw (dialog), returns to cart with same number; resubmit restarts approval
+S6|Cart|Cart summary does not display Justification after Update, but approval task shows it|UI display gap
+S7|Approval|BPM task opens in a separate window; Approve opens Comment dialog, commit via Submit link; DebuggerApi/Simulate click on Approve showed no visible change, hardware click opened dialog|automation
+S8|Requisition|Supplier site defaulted to Dell US1; Deliver-to Seattle, Destination Expense, Charge 101.10.15910.000.000.000 default from requester|defaults
+S9|Requisition|Redwood LOV fields lose first typed text after re-render; typing 'Desktop' splits option label|automation
+S10|Cleanup|Requisition details More Actions > Delete does not fire with DebuggerApi or Simulate (menu stays open); Cancel in the same menu works. Cart has no requisition Delete; withdrawn reqs need Save for Later to leave the cart|automation

@@ -1,0 +1,15 @@
+﻿{
+  "Name": "PO Created Message Text",
+  "Description": "PO Created Message Text",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "9PD6-U_-GkWFvbvsT1YRFA",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/9PD6-U_-GkWFvbvsT1YRFA",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/w6OwNA7hAE-KYeIMOONslQ",
+  "Created": "2026-11-23T10:25:22.2212309Z",
+  "Updated": "2026-11-23T10:25:22.2212309Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

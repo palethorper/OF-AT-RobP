@@ -1,0 +1,17 @@
+﻿{
+  "Name": "Oracle Sign In",
+  "Description": "Oracle Cloud sign-in page (IDCS) where the user enters username and password for Oracle Fusion",
+  "Type": "Screen",
+  "Id": "HUBH5pJF9E2nxzkZHf7kdA",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/HUBH5pJF9E2nxzkZHf7kdA",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/3dcXbnXmdUa2j2CX1V8Prw",
+  "Created": "2026-11-23T03:09:58.1433494Z",
+  "Updated": "2026-11-23T04:43:52.4610993Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

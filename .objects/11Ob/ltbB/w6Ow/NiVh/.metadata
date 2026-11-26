@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Stage Button",
+  "Description": "Stage Button",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "NiVh9XcrMkOhuEDvQXor5A",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/NiVh9XcrMkOhuEDvQXor5A",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/w6OwNA7hAE-KYeIMOONslQ",
+  "Created": "2026-11-23T10:21:54.7647257Z",
+  "Updated": "2026-11-23T10:21:54.7647257Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

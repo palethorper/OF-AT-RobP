@@ -1,0 +1,124 @@
+### Eval
+- Result: Invoice Workbench - Invoices - Oracle Fusion Cloud Applications
+https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview
+Skip to main content
+
+19
+
+Invoices
+
+Scanned
+	
+	0	
+0-7
+	
+	0	
+8-14
+	
+	67	
+15+
+		
+Recent
+	
+5 Days
+	0	
+Incomplete
+	1	
+Complete
+	1	
+Total
+		
+Holds
+	
+-	All Days
+	94	
+Validation
+	24	
+Purchasing
+	31	
+Other
+		
+Approval
+	
+	0	
+Pending
+	15	
+Others
+	4	
+Rejected
+		
+Prepaid
+	
+	0	
+0-30
+	
+	0	
+31-60
+	
+	18	
+61+
+	
+	View	
+	
+Delete
+	
+Export to Excel
+		
+Create Note
+	
+Query By Example
+	
+Detach
+Detach
+
+Press down arrow to access Calendar
+Invoice Date
+		
+Press down arrow to access Calendar
+Creation Date
+
+Invoice Number
+	
+Amount
+	
+Supplier
+	
+Supplier Site
+	
+Validation Status
+	
+Invoice Date
+	
+Business Unit
+	
+Creation Date
+	
+Assignee
+	
+Identifying PO
+No data to display.
+
+Invoices
+Create Invoice
+Create Invoice from Spreadsheet
+Create Recurring Invoices
+Manage Invoices
+Apply Missing Conversion Rates
+Validate Invoices
+Initiate Approval Workflow
+Import Invoices
+Correct Import Errors
+Import Payment Requests
+Run Payables Exceptions Listing
+
+Accounting
+Create Accounting
+Create Adjustment Journal
+Review Journal Entries
+Payables to Ledger Reconciliation
+
+Assets
+Create Mass Additions
+
+Payables Periods
+Manage Accounting Periods

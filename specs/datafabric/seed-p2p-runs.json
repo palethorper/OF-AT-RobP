@@ -1,0 +1,30 @@
+{
+  "_source": "P2PGuide/documents.txt, verified against REST 2026-11-24. One record per robot/capture run that created P2P documents. Oracle descriptions on these runs still use the older 'Test UiPath OFP2P:227' prefix; TestMarker is UIP-TEST-<RunId> from now on.",
+  "defaults": { "TestCaseKey": "OFP2P:227", "BusinessUnit": "US1 Business Unit", "Requester": "Casey Brown", "Category": "206.61 Monitors", "Quantity": 1, "UOM": "Ea", "UnitPrice": 2000, "Amount": 2000, "ApprovalAmount": 2190, "Currency": "USD", "SupplierSite": "HQ" },
+  "runs": [
+    { "RunId": "2611232030", "Supplier": "UIPTST Supplier 2611232030", "SupplierNumber": "1503", "Buyer": "Calvin Roth", "ItemDescription": "Test UiPath OFP2P:227 capture - UI Path Item", "ChargeAccount": "101.10.60540.120.000.000",
+      "RequisitionNumber": "204170", "RequisitionStatus": "Approved", "PONumber": "US165367", "POStatus": "Closed", "ReceiptNumber": "52957", "InvoiceNumber": "UIP-OFP2P-2611232030", "InvoiceValidationStatus": "Validated",
+      "Stage": "Validated", "CleanupAction": "CancelInvoice", "CleanupNotes": "Agent capture run 2026-11-23 (manual, robot elements captured). PO closed by Oracle after receipt + invoice. Invoice still Validated - cancel it.", "StartedAt": "2026-11-23T20:30:00+11:00" },
+    { "RunId": "2611232231", "Supplier": "UIPTST Supplier 2611232231", "ItemDescription": "Test UiPath OFP2P:227 UI Path Item 2611232231",
+      "RequisitionNumber": "204171", "RequisitionStatus": "Deleted",
+      "Stage": "CleanedUp", "CleanupAction": "None", "CleanupNotes": "Run 7 failed at Cart tab. Requisition saved for later, then deleted via REST 2026-11-24 (Incomplete cannot be cancelled, POR-2010919).", "StartedAt": "2026-11-23T22:31:00+11:00" },
+    { "RunId": "2611232240", "Supplier": "UIPTST Supplier 2611232240", "ItemDescription": "Test UiPath OFP2P:227 UI Path Item 2611232240",
+      "RequisitionNumber": "204172", "RequisitionStatus": "Approved",
+      "Stage": "Failed", "CleanupAction": "ManualReview", "CleanupNotes": "Run 8 staged the line, Publish failed. Cancel refused (POR-2010924: line held in a staged document). Remove the staged document in Process Requisitions, then cancel the requisition.", "StartedAt": "2026-11-23T22:40:00+11:00" },
+    { "RunId": "2611232255", "Supplier": "UIPTST Supplier 2611232255", "ItemDescription": "Test UiPath OFP2P:227 UI Path Item 2611232255",
+      "RequisitionNumber": "204173", "RequisitionStatus": "Deleted",
+      "Stage": "CleanedUp", "CleanupAction": "None", "CleanupNotes": "Run 9 cart Submit did not land (Incomplete). Deleted via REST 2026-11-24.", "StartedAt": "2026-11-23T22:55:00+11:00" },
+    { "RunId": "2611232344", "Supplier": "UIPTST Supplier 2611232344", "ItemDescription": "Test UiPath OFP2P:227 UI Path Item 2611232344",
+      "RequisitionNumber": "204174", "RequisitionStatus": "Deleted",
+      "Stage": "CleanedUp", "CleanupAction": "None", "CleanupNotes": "Run 10 stopped (Redwood outage). Requisition left in cart, parked, deleted via REST 2026-11-24.", "StartedAt": "2026-11-23T23:44:00+11:00" },
+    { "RunId": "2611240724", "Supplier": "UIPTST Supplier 2611240724", "Buyer": "Calvin Roth", "ItemDescription": "Test UiPath OFP2P:227 UI Path Item 2611240724",
+      "RequisitionNumber": "204175", "RequisitionStatus": "Approved", "PONumber": "US165369", "POStatus": "Canceled",
+      "Stage": "CleanedUp", "CleanupAction": "None", "CleanupNotes": "Run 12: PO Submit did not land; agent submitted it. PO cancelled via REST 2026-11-24.", "StartedAt": "2026-11-24T07:24:00+11:00" },
+    { "RunId": "2611240749", "Supplier": "UIPTST Supplier 2611240749", "Buyer": "Calvin Roth", "ItemDescription": "Test UiPath OFP2P:227 UI Path Item 2611240749",
+      "RequisitionNumber": "204176", "RequisitionStatus": "Canceled", "PONumber": "US165370", "POStatus": "Deleted",
+      "Stage": "CleanedUp", "CleanupAction": "None", "CleanupNotes": "Run 13: draft PO deleted (DELETE draftPurchaseOrders), then requisition cancelled via REST 2026-11-24.", "StartedAt": "2026-11-24T07:49:00+11:00" },
+    { "RunId": "2611240821", "Supplier": "UIPTST Supplier 2611240821", "Buyer": "Calvin Roth", "ItemDescription": "Test UiPath OFP2P:227 UI Path Item 2611240821",
+      "RequisitionNumber": "204177", "RequisitionStatus": "Approved", "PONumber": "US165371", "POStatus": "Closed", "ReceiptNumber": "(received 2026-11-24 08:41)", "InvoiceNumber": "UIP-OFP2P-2611240821", "InvoiceValidationStatus": "Canceled",
+      "Stage": "CleanedUp", "CleanupAction": "None", "CleanupNotes": "Run 14 S0-S5 + dev harness S6/S7: full chain to a Validated invoice. Invoice cancelled, PO closed (received) via REST 2026-11-24.", "StartedAt": "2026-11-24T08:21:00+11:00" }
+  ]
+}

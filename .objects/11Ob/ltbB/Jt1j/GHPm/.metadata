@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Account Suffix Input",
+  "Description": "Bank Account Suffix, Bank Accounts",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "GHPmCwffVUWSv5C4ylmFQA",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/GHPmCwffVUWSv5C4ylmFQA",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Jt1jXBgpj0akYQz6-Z4ygQ",
+  "Created": "2026-11-23T05:21:31.6760453Z",
+  "Updated": "2026-11-23T05:21:31.6760453Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

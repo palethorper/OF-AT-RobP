@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Task Action Submit Link",
+  "Description": "Task Action Submit Link",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "LpzlQPdCg06CSNf9YTpQXw",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/LpzlQPdCg06CSNf9YTpQXw",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/cNl6egkSqk2MwtyM5suytA",
+  "Created": "2026-11-23T10:11:11.9850507Z",
+  "Updated": "2026-11-23T10:11:11.9850507Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="ip72iIi7MUmg1YKIF5L6vA" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" DesignTimeRectangle="57, 538, 1316, 52" DesignTimeScaleFactor="1" ElementType="DropDown" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl aria-role='combobox' id='main-input-address-*_address-search-select|input' tag='INPUT' type='text' class='oj-searchselect-input oj-text-field-input' aaname='Enter Address' matching:aria-role='fuzzy' fuzzylevel:aria-role='0.0' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="eb0b40c6-8ecf-4594-a6a2-8d69aff883d6" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="1">
+          <Target DesignTimeRectangle="73, 555, 90, 16" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-SELECT-SINGLE' redwood-id='uidaddresssearchselect' matching:redwood-id='fuzzy' fuzzylevel:redwood-id='0.0' /&gt;&lt;webctrl tag='LABEL' type='' class='oj-component-initnode' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Enter Address' /&gt;" Guid="0347739e-7fe6-4d7b-b18c-d2bafddb98f6" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="8dcf2b12448ee181135d2b9ace52c044.jpg" xmlns="">0cjzbOdcK1EuKBpiMzU70hQ</imageRef>
+    </TargetAnchorable>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

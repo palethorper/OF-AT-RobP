@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Create Invoice Task Link",
+  "Description": "Create Invoice Task Link",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "oc-Rgo1AkUqgw9qiv715aA",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/oc-Rgo1AkUqgw9qiv715aA",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Sq5OicXup0KJgfP--XChMA",
+  "Created": "2026-11-23T10:35:56.3653203Z",
+  "Updated": "2026-11-23T10:35:56.3653203Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

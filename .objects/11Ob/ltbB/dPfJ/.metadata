@@ -1,0 +1,14 @@
+﻿{
+  "Name": "My Receipts",
+  "Description": "Redwood self-service receiving (Orders to Receive)",
+  "Type": "Screen",
+  "Id": "dPfJT2lsS0O1S9rdH7Ge4g",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/dPfJT2lsS0O1S9rdH7Ge4g",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/ltbBRqeaGEOJBm2u-N1KjA",
+  "Created": "2026-11-23T10:31:49.7450181Z",
+  "Updated": "2026-11-23T10:31:49.7450181Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

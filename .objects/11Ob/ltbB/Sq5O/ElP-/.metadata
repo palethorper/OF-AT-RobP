@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Match Dialog OK Button",
+  "Description": "Match Dialog OK Button",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "ElP-gOCGDkmnlNYJkBePPg",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/ElP-gOCGDkmnlNYJkBePPg",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Sq5OicXup0KJgfP--XChMA",
+  "Created": "2026-11-23T10:44:56.7943267Z",
+  "Updated": "2026-11-23T10:44:56.7943267Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

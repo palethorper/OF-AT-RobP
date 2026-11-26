@@ -1,0 +1,400 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Workflows_DF_SaveP2PRun" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:local="clr-namespace:OF_AT_RobP;assembly=DataService.OF_AT_RobP" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uda="clr-namespace:UiPath.DataService.Activities;assembly=UiPath.DataService.Activities.Core" xmlns:udam="clr-namespace:UiPath.DataService.Activities.Models;assembly=UiPath.DataService.Activities.Core" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_RecordId" Type="InArgument(x:String)" />
+    <x:Property Name="in_Stage" Type="InArgument(x:String)" />
+    <x:Property Name="in_CleanupAction" Type="InArgument(x:String)" />
+    <x:Property Name="in_CleanupNotes" Type="InArgument(x:String)" />
+    <x:Property Name="in_Run" Type="InArgument(scg:Dictionary(x:String, x:String))" />
+    <x:Property Name="in_RequisitionNumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_PONumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_InvoiceNumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_InvoiceStatus" Type="InArgument(x:String)" />
+    <x:Property Name="out_RecordId" Type="OutArgument(x:String)" />
+  </x:Members>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.DataService.Activities</x:String>
+      <x:String>UiPath.DataService.Activities.Models</x:String>
+      <x:String>UiPath.DataService.Definition</x:String>
+      <x:String>OF_AT_RobP</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DataService.Activities.Core</AssemblyReference>
+      <AssemblyReference>UiPath.DataService.Definition</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>DataService.OF_AT_RobP</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Save OracleP2PRun record (create or update; never fails the caller)" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dictV" />
+      <Variable x:TypeArguments="x:Int32" Name="intStage" />
+      <Variable x:TypeArguments="x:Int32" Name="intCleanup" />
+      <Variable x:TypeArguments="x:Decimal" Name="decQuantity" />
+      <Variable x:TypeArguments="x:Decimal" Name="decUnitPrice" />
+      <Variable x:TypeArguments="x:Decimal" Name="decAmount" />
+      <Variable x:TypeArguments="x:String" Name="strNow" />
+      <Variable x:TypeArguments="local:OracleP2PRun" Name="objRun" />
+    </Sequence.Variables>
+    <Assign DisplayName="Assign out_RecordId (unchanged unless a record is created)" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_RecordId]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[If(in_RecordId, String.Empty)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <TryCatch DisplayName="Try save run record" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence DisplayName="Try" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Assign DisplayName="Assign dictV (every run field present, missing = empty)" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign.To>
+              <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dictV]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[(New String() {"RunId", "TestCaseKey", "BusinessUnit", "Requester", "Supplier", "ItemDescription", "Category", "Quantity", "UOM", "UnitPrice", "Amount", "Currency"}).ToDictionary(Function(k) k, Function(k) If(in_Run IsNot Nothing AndAlso in_Run.ContainsKey(k) AndAlso in_Run(k) IsNot Nothing, in_Run(k), String.Empty))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Assign intStage (Stage choice Id)" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[intStage]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[Array.IndexOf(New String() {"Requisition", "Approved", "PO", "Received", "Invoiced", "Validated", "Paid", "CleanedUp", "Failed"}, in_Stage)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Assign intCleanup (CleanupAction choice Id, default None)" sap2010:WorkflowViewState.IdRef="Assign_4">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[intCleanup]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[Math.Max(0, Array.IndexOf(New String() {"None", "CancelRequisition", "CancelPOLine", "CancelInvoice", "VoidPayment", "ManualReview"}, If(in_CleanupAction, "None")))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <If Condition="[intStage &lt; 0]" DisplayName="If the stage name is unknown" sap2010:WorkflowViewState.IdRef="If_1">
+            <If.Then>
+              <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Throw DisplayName="Throw unknown stage" Exception="[New ArgumentException(&quot;Unknown OracleP2PStage: &quot; &amp; in_Stage)]" sap2010:WorkflowViewState.IdRef="Throw_1" />
+              </Sequence>
+            </If.Then>
+          </If>
+          <Assign DisplayName="Assign decQuantity" sap2010:WorkflowViewState.IdRef="Assign_5">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Decimal">[decQuantity]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Decimal">[If(String.IsNullOrWhiteSpace(dictV("Quantity")), 0D, Decimal.Parse(dictV("Quantity"), CultureInfo.InvariantCulture))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Assign decUnitPrice" sap2010:WorkflowViewState.IdRef="Assign_6">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Decimal">[decUnitPrice]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Decimal">[If(String.IsNullOrWhiteSpace(dictV("UnitPrice")), 0D, Decimal.Parse(dictV("UnitPrice"), CultureInfo.InvariantCulture))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Assign decAmount" sap2010:WorkflowViewState.IdRef="Assign_7">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Decimal">[decAmount]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Decimal">[If(String.IsNullOrWhiteSpace(dictV("Amount")), 0D, Decimal.Parse(dictV("Amount"), CultureInfo.InvariantCulture))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Assign strNow (ISO 8601)" sap2010:WorkflowViewState.IdRef="Assign_8">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[strNow]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[DateTimeOffset.Now.ToString("o", CultureInfo.InvariantCulture)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <If Condition="[String.IsNullOrWhiteSpace(in_RecordId)]" DisplayName="If no record yet: create it, else update it" sap2010:WorkflowViewState.IdRef="If_2">
+            <If.Then>
+              <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <uda:CreateEntityRecord x:TypeArguments="local:OracleP2PRun" OutputEntity="[objRun]" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create OracleP2PRun Record" EntityId="f2dea23b-35e9-f111-91f2-6045bdc3efdf" ExpansionDepth="1" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_1" InputEntityInFieldView="[New OracleP2PRun() With {.RunId = dictV(&quot;RunId&quot;), .TestMarker = &quot;UIP-TEST-&quot; &amp; dictV(&quot;RunId&quot;), .Stage = CType(intStage, OracleP2PStage),.TestCaseKey = dictV(&quot;TestCaseKey&quot;), .BusinessUnit = dictV(&quot;BusinessUnit&quot;), .Requester = dictV(&quot;Requester&quot;), .Supplier = dictV(&quot;Supplier&quot;), .ItemDescription = dictV(&quot;ItemDescription&quot;), .Category = dictV(&quot;Category&quot;), .Quantity = decQuantity, .UOM = dictV(&quot;UOM&quot;), .UnitPrice = decUnitPrice, .Amount = decAmount, .Currency = dictV(&quot;Currency&quot;), .RequisitionNumber = in_RequisitionNumber, .PONumber = in_PONumber, .InvoiceNumber = in_InvoiceNumber, .InvoiceValidationStatus = in_InvoiceStatus, .CleanupAction = CType(intCleanup, OracleP2PCleanupAction),.CleanupNotes = in_CleanupNotes, .StartedAt = DateTimeOffset.Parse(strNow, CultureInfo.InvariantCulture), .LastStageAt = DateTimeOffset.Parse(strNow, CultureInfo.InvariantCulture)}]" IsInRecordView="[False]" TimeoutInMs="30000">
+                  <uda:CreateEntityRecord.State>
+                    <udam:RecordState IsInRecordView="False" RequiredFieldCount="3">
+                      <udam:RecordState.SelectedFields>
+                        <scg:List x:TypeArguments="udam:DynamicEntityField">
+                          <udam:DynamicEntityField Id="63cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="True" Name="RunId">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[dictV("RunId")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="64cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="True" Name="TestMarker">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">["UIP-TEST-" &amp; dictV("RunId")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="66cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="True" Name="Stage">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:Int32">[intStage]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="65cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="TestCaseKey">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[dictV("TestCaseKey")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="67cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="BusinessUnit">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[dictV("BusinessUnit")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="68cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="Requester">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[dictV("Requester")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="6acc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="Supplier">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[dictV("Supplier")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="6dcc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="ItemDescription">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[dictV("ItemDescription")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="6fcc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="Category">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[dictV("Category")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="70cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="Quantity">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:Decimal">[decQuantity]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="71cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="UOM">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[dictV("UOM")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="72cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="UnitPrice">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:Decimal">[decUnitPrice]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="73cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="Amount">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:Decimal">[decAmount]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="75cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="Currency">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[dictV("Currency")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="77cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="RequisitionNumber">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[in_RequisitionNumber]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="79cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="PONumber">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[in_PONumber]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="7ccc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="InvoiceNumber">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[in_InvoiceNumber]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="7ecc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="InvoiceValidationStatus">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[in_InvoiceStatus]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="80cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="CleanupAction">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:Int32">[intCleanup]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="81cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="CleanupNotes">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[in_CleanupNotes]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="82cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="StartedAt">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[strNow]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="83cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="LastStageAt">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[strNow]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                        </scg:List>
+                      </udam:RecordState.SelectedFields>
+                    </udam:RecordState>
+                  </uda:CreateEntityRecord.State>
+                </uda:CreateEntityRecord>
+                <Assign DisplayName="Assign out_RecordId (new record Id)" sap2010:WorkflowViewState.IdRef="Assign_9">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[out_RecordId]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[objRun.Id.ToString()]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <ui:LogMessage DisplayName="Log run record created" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;DF OracleP2PRun created: RunId=&quot; &amp; dictV(&quot;RunId&quot;) &amp; &quot; Stage=&quot; &amp; in_Stage &amp; &quot; Id=&quot; &amp; out_RecordId]" />
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence DisplayName="Else" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <uda:UpdateEntityRecord x:TypeArguments="local:OracleP2PRun" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Update OracleP2PRun Record" EntityId="f2dea23b-35e9-f111-91f2-6045bdc3efdf" ExpansionDepth="1" sap2010:WorkflowViewState.IdRef="UpdateEntityRecord`1_1" RecordId="[Guid.Parse(in_RecordId)]" InputEntityInFieldView="[New OracleP2PRun() With {.RunId = dictV(&quot;RunId&quot;), .TestMarker = &quot;UIP-TEST-&quot; &amp; dictV(&quot;RunId&quot;), .Stage = CType(intStage, OracleP2PStage),.TestCaseKey = dictV(&quot;TestCaseKey&quot;), .BusinessUnit = dictV(&quot;BusinessUnit&quot;), .Requester = dictV(&quot;Requester&quot;), .Supplier = dictV(&quot;Supplier&quot;), .ItemDescription = dictV(&quot;ItemDescription&quot;), .Category = dictV(&quot;Category&quot;), .Quantity = decQuantity, .UOM = dictV(&quot;UOM&quot;), .UnitPrice = decUnitPrice, .Amount = decAmount, .Currency = dictV(&quot;Currency&quot;), .RequisitionNumber = in_RequisitionNumber, .PONumber = in_PONumber, .InvoiceNumber = in_InvoiceNumber, .InvoiceValidationStatus = in_InvoiceStatus, .CleanupAction = CType(intCleanup, OracleP2PCleanupAction),.CleanupNotes = in_CleanupNotes, .LastStageAt = DateTimeOffset.Parse(strNow, CultureInfo.InvariantCulture)}]" IsInRecordView="[False]" TimeoutInMs="30000">
+                  <uda:UpdateEntityRecord.State>
+                    <udam:RecordState IsInRecordView="False" RequiredFieldCount="3">
+                      <udam:RecordState.SelectedFields>
+                        <scg:List x:TypeArguments="udam:DynamicEntityField">
+                          <udam:DynamicEntityField Id="63cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="True" Name="RunId">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[dictV("RunId")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="64cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="True" Name="TestMarker">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">["UIP-TEST-" &amp; dictV("RunId")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="66cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="True" Name="Stage">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:Int32">[intStage]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="65cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="TestCaseKey">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[dictV("TestCaseKey")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="67cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="BusinessUnit">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[dictV("BusinessUnit")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="68cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="Requester">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[dictV("Requester")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="6acc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="Supplier">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[dictV("Supplier")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="6dcc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="ItemDescription">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[dictV("ItemDescription")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="6fcc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="Category">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[dictV("Category")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="70cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="Quantity">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:Decimal">[decQuantity]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="71cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="UOM">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[dictV("UOM")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="72cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="UnitPrice">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:Decimal">[decUnitPrice]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="73cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="Amount">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:Decimal">[decAmount]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="75cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="Currency">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[dictV("Currency")]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="77cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="RequisitionNumber">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[in_RequisitionNumber]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="79cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="PONumber">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[in_PONumber]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="7ccc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="InvoiceNumber">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[in_InvoiceNumber]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="7ecc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="InvoiceValidationStatus">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[in_InvoiceStatus]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="80cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="CleanupAction">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:Int32">[intCleanup]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="81cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="CleanupNotes">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[in_CleanupNotes]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                          <udam:DynamicEntityField Id="83cc1152-92e7-f111-91f2-6045bdc3efdf" IsRequired="False" Name="LastStageAt">
+                            <udam:DynamicEntityField.ArgumentValue>
+                              <InArgument x:TypeArguments="x:String">[strNow]</InArgument>
+                            </udam:DynamicEntityField.ArgumentValue>
+                          </udam:DynamicEntityField>
+                        </scg:List>
+                      </udam:RecordState.SelectedFields>
+                    </udam:RecordState>
+                  </uda:UpdateEntityRecord.State>
+                </uda:UpdateEntityRecord>
+                <ui:LogMessage DisplayName="Log run record updated" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;DF OracleP2PRun updated: RunId=&quot; &amp; dictV(&quot;RunId&quot;) &amp; &quot; Stage=&quot; &amp; in_Stage]" />
+              </Sequence>
+            </If.Else>
+          </If>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Catch" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <ui:LogMessage DisplayName="Log save failed (test continues)" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;DF OracleP2PRun save failed (Stage=&quot; &amp; in_Stage &amp; &quot;): &quot; &amp; exception.Message]" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>

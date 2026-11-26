@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Settings And Actions",
+  "Description": "User menu link in the global header used for Sign Out",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "xJ3VCf-66UuVJwsZc1IINw",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/xJ3VCf-66UuVJwsZc1IINw",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/7TN2LWKdH0S2QSDE9rLCIg",
+  "Created": "2026-11-23T03:20:29.3820885Z",
+  "Updated": "2026-11-23T04:48:18.8678765Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

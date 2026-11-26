@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Process Requisitions New Quick Action",
+  "Description": "Process Requisitions (New) Redwood quick action link on the Procurement home tab",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "Tp6y-6Z-VUqTXLUch4t1oQ",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/Tp6y-6Z-VUqTXLUch4t1oQ",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/7TN2LWKdH0S2QSDE9rLCIg",
+  "Created": "2026-11-23T03:21:44.189235Z",
+  "Updated": "2026-11-23T04:49:08.2690441Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

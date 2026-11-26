@@ -1,0 +1,18 @@
+﻿{
+  "Name": "My Receipts App",
+  "Description": "My Receipts app link on the Procurement home tab",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "2nwjno-dHUKcvX3Hhq8cmw",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/2nwjno-dHUKcvX3Hhq8cmw",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/7TN2LWKdH0S2QSDE9rLCIg",
+  "Created": "2026-11-23T03:21:44.3992726Z",
+  "Updated": "2026-11-23T04:49:08.4400092Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

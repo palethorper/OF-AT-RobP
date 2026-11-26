@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="av55n0Cz1UuB1hLEwgYtDw" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" DesignTimeRectangle="1341, 976, 80, 36" DesignTimeScaleFactor="1" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl aria-label='Submit' class='*BaseButtonStyles_styles_base*' tag='BUTTON' type='' aaname=' Submit ' matching:aria-label='fuzzy' fuzzylevel:aria-label='0.0' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:text='Submit' /&gt;" Guid="691b99fb-e72e-4770-81f4-ce07c4bb1d08" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Registration Internal*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="1">
+          <Target DesignTimeRectangle="1358, 985, 46, 18" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='OJ-C-PROGRESS-BUTTON' redwood-id='uidprimaryAction' matching:redwood-id='fuzzy' fuzzylevel:redwood-id='0.0' /&gt;&lt;webctrl tag='SPAN' aaname=' Submit ' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:text='Submit' /&gt;" Guid="882a4c6c-7592-432a-b663-9b3047b744a4" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="c8d2454018587f063271d9f08097390f.jpg" xmlns="">09m58Gm9XSEaFWn0_wCQo-w</imageRef>
+    </TargetAnchorable>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

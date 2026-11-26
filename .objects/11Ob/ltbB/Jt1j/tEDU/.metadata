@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Receive Payments Checkbox",
+  "Description": "Address purpose checkbox Receive Payments, Addresses",
+  "Type": "Element",
+  "TaxonomyType": "Checkbox",
+  "Id": "tEDUx5cHTkaw2yRyBl0atw",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/tEDUx5cHTkaw2yRyBl0atw",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Jt1jXBgpj0akYQz6-Z4ygQ",
+  "Created": "2026-11-23T05:03:36.9208881Z",
+  "Updated": "2026-11-23T05:03:36.9208881Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

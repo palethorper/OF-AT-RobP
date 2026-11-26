@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Tax Country Dropdown",
+  "Description": "Country search-select that enables Taxpayer ID, Company Details",
+  "Type": "Element",
+  "TaxonomyType": "Dropdown",
+  "Id": "nYg28rdtYkikJVX1GhqOVg",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/nYg28rdtYkikJVX1GhqOVg",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Jt1jXBgpj0akYQz6-Z4ygQ",
+  "Created": "2026-11-23T03:26:47.927248Z",
+  "Updated": "2026-11-23T04:53:35.5102609Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

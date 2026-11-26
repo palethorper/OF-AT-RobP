@@ -1,0 +1,75 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Workflows_Dev_RunFromS6" this:Workflows_Dev_RunFromS6.in_PONumber="US165371" this:Workflows_Dev_RunFromS6.in_InvoiceNumber="UIP-OFP2P-2611240821" this:Workflows_Dev_RunFromS6.in_InvoiceAmount="2190.00" this:Workflows_Dev_RunFromS6.in_RunReceive="True" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_PONumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_InvoiceNumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_InvoiceAmount" Type="InArgument(x:String)" />
+    <x:Property Name="in_RunReceive" Type="InArgument(x:Boolean)" />
+  </x:Members>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="DEV: sign in, then S6 receive + S7 invoice for an existing open PO (iteration harness, not a test)" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ui:UiElement" Name="uiBrowser" />
+      <Variable x:TypeArguments="x:String" Name="strStatus" />
+      <Variable x:TypeArguments="x:String" Name="strBaseUrl" Default="https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com" />
+    </Sequence.Variables>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="S0 Sign in - Invoke Workflow File (S0_SignIn.xaml)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\S0_SignIn.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CredentialAssetName">Oracle_Fusion_P2P_Test</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CredentialFolderPath">Shared/Testing-UBAPI</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FusionUrl">[strBaseUrl &amp; "/fscmUI/faces/FuseWelcome"]</InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_UseIncognito">False</InArgument>
+        <OutArgument x:TypeArguments="ui:UiElement" x:Key="out_Browser">[uiBrowser]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <If Condition="[in_RunReceive]" DisplayName="If receive" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="S6 Receive order - Invoke Workflow File (S6_ReceiveOrder.xaml)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\S6_ReceiveOrder.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">[uiBrowser]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_BaseUrl">[strBaseUrl]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_PONumber">[in_PONumber]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_CredentialAssetName">Oracle_Fusion_P2P_Test</InArgument><InArgument x:TypeArguments="x:String" x:Key="in_CredentialFolderPath">Shared/Testing-UBAPI</InArgument></ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </If.Then>
+    </If>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="S7 Create and validate invoice - Invoke Workflow File (S7_CreateInvoice.xaml)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\S7_CreateInvoice.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">[uiBrowser]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_BaseUrl">[strBaseUrl]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_PONumber">[in_PONumber]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[in_InvoiceNumber]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceAmount">[in_InvoiceAmount]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_ValidationStatus">[strStatus]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:LogMessage DisplayName="Log result" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;DEV S6/S7 result: invoice &quot; &amp; in_InvoiceNumber &amp; &quot; = &quot; &amp; strStatus]" />
+  </Sequence>
+</Activity>

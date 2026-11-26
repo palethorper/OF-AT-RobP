@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Receipts Search Input",
+  "Description": "Receipts Search Input",
+  "Type": "Element",
+  "TaxonomyType": "Dropdown",
+  "Id": "ZPDKGzeIdEaGe4EjDSyukQ",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/ZPDKGzeIdEaGe4EjDSyukQ",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/dPfJT2lsS0O1S9rdH7Ge4g",
+  "Created": "2026-11-23T10:32:49.9585173Z",
+  "Updated": "2026-11-23T10:32:49.9585173Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

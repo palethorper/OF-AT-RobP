@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Chrome Open File Dialog",
+  "Description": "Native Open dialog Chrome shows for a file input (fallback when the extension has no file access)",
+  "Type": "Screen",
+  "Id": "5m4VnW9Ej0CuRdRB58kbLQ",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/5m4VnW9Ej0CuRdRB58kbLQ",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/ltbBRqeaGEOJBm2u-N1KjA",
+  "Created": "2026-11-23T08:30:18.8861343Z",
+  "Updated": "2026-11-23T08:30:18.8861343Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

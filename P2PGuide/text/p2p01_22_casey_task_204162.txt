@@ -1,0 +1,151 @@
+### Eval
+- Result: BPM Worklist
+https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/integration/worklistapp/faces/home.jspx
+
+BPM Worklist
+
+Casey Brown	
+
+Views
+
+Inbox
+
+My Tasks (7)
+
+Initiated Tasks
+
+Administrative Tasks
+	
+Views
+
+Due Soon
+
+High Priority
+
+Past Day
+
+Past Week
+
+Past Month
+
+Past Quarter
+
+New Tasks
+
+Actions	
+
+Task Actions - None
+		
+Task Actions - None
+	 		
+Search
+						
+Button has a popup, press down arrow key to access the popup.
+	 		
+Me
+My Group
+Me & My Group
+Me & My Group All
+Me (Previously)
+Me (Review Only)
+Assignee
+		 	
+Any
+Assigned
+Completed
+Suspended
+Withdrawn
+Expired
+Errored
+Alerted
+Information Requested
+Status
+		 	
+Last 7 Days
+Last 14 Days
+Last 30 Days
+All
+Days
+
+Status
+
+Title
+	
+Number
+	
+Creator
+	
+Assigned
+	
+Priority
+		
+Approve Requisition 204162
+Approve Requisition 204162:
+	2481250	Casey Brown	22/11/26 3:25 AM	
+1
+2
+3
+4
+5
+Press down arrow to change priority:
+
+Document (Purchase Order) US165364 (Requisition 204161) Implemented
+Document (Purchase Order) US165364 (Requisition 204161) Implemented:
+	2482228	Calvin Roth	19/11/26 3:27 AM	
+1
+2
+3
+4
+5
+Press down arrow to change priority:
+
+Requisition 204161 Approved
+Requisition 204161 Approved:
+	2482224	Casey Brown	19/11/26 3:25 AM	
+1
+2
+3
+4
+5
+Press down arrow to change priority:
+
+Document (Purchase Order) US165363 (Requisition 204160) Implemented
+Document (Purchase Order) US165363 (Requisition 204160) Implemented:
+	2482218	Casey Brown	19/11/26 2:01 AM	
+1
+2
+3
+4
+5
+Press down arrow to change priority:
+
+Requisition 204160 Approved
+Requisition 204160 Approved:
+	2482216	Casey Brown	19/11/26 1:42 AM	
+1
+2
+3
+4
+5
+Press down arrow to change priority:
+
+Request to Approve Supplier Example for Spend Was Approved
+Request to Approve Supplier Example for Spend Was Approved:
+	2482210	 	18/11/26 10:21 PM	
+1
+2
+3
+4
+5
+Press down arrow to change priority:
+
+Supplier Registration Request 34006 for Example Was Approved
+Supplier Registration Request 34006 for Example Was Approved:
+	2481220	 	18/11/26 10:19 PM	
+1
+2
+3
+4
+5
+Press down arrow to change priority:
+Copyright © 1997, 2024, Oracle and/or its affiliates.

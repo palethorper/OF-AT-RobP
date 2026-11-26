@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Quantity Input",
+  "Description": "Quantity Input",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "IL2ExY56r0qFYGL1dlSV0w",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/IL2ExY56r0qFYGL1dlSV0w",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Nil-6YrGSkGkeWX231SfiQ",
+  "Created": "2026-11-23T09:48:35.0786382Z",
+  "Updated": "2026-11-23T09:48:35.0786382Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

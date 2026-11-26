@@ -1,0 +1,208 @@
+{
+  "_status": "DESIGN APPROVED 2026-11-24 (entity + 2 choice sets, SourceRun shows RunId, DataService package OK).",
+  "scope": "tenant",
+  "purpose": "Lets the receipt, invoice and payment tests run independently and in parallel without receiving or invoicing the same PO schedule. A test set reserves one PO schedule, works on it, then marks it Consumed (or Released on failure). Expired reservations can be reclaimed.",
+  "choiceSets": [
+    {
+      "name": "OracleP2PReservationStatus",
+      "displayName": "Oracle P2P Reservation Status",
+      "description": "Lifecycle of a PO schedule reservation",
+      "values": [
+        "Reserved",
+        "InUse",
+        "Consumed",
+        "Released",
+        "Expired"
+      ]
+    },
+    {
+      "name": "OracleP2PReservationPurpose",
+      "displayName": "Oracle P2P Reservation Purpose",
+      "description": "Which downstream test the PO schedule is reserved for",
+      "values": [
+        "Receipt",
+        "Invoice",
+        "Payment"
+      ]
+    }
+  ],
+  "entity": {
+    "name": "OracleP2PReservation",
+    "displayName": "Oracle P2P Reservation",
+    "description": "One row per reserved PO schedule. ReservationKey <PO>|<Line>|<Schedule>|<Purpose> is unique, so one schedule can be held by one test per purpose at a time.",
+    "fields": [
+      {
+        "name": "ReservationKey",
+        "type": "STRING",
+        "lengthLimit": 80,
+        "isRequired": true,
+        "isUnique": true,
+        "displayName": "Reservation Key",
+        "description": "<PONumber>|<LineNumber>|<ScheduleNumber>|<Purpose>"
+      },
+      {
+        "name": "PONumber",
+        "type": "STRING",
+        "lengthLimit": 30,
+        "isRequired": true,
+        "displayName": "PO Number"
+      },
+      {
+        "name": "POHeaderId",
+        "type": "STRING",
+        "lengthLimit": 30,
+        "displayName": "PO Header ID",
+        "description": "Oracle id kept as text"
+      },
+      {
+        "name": "LineNumber",
+        "type": "DECIMAL",
+        "decimalPrecision": 0,
+        "minValue": 1,
+        "isRequired": true,
+        "displayName": "Line Number"
+      },
+      {
+        "name": "ScheduleNumber",
+        "type": "DECIMAL",
+        "decimalPrecision": 0,
+        "minValue": 1,
+        "isRequired": true,
+        "displayName": "Schedule Number"
+      },
+      {
+        "name": "Purpose",
+        "type": "CHOICE_SET_SINGLE",
+        "choiceSetId": "<OracleP2PReservationPurpose>",
+        "isRequired": true,
+        "displayName": "Purpose"
+      },
+      {
+        "name": "Status",
+        "type": "CHOICE_SET_SINGLE",
+        "choiceSetId": "<OracleP2PReservationStatus>",
+        "isRequired": true,
+        "displayName": "Status"
+      },
+      {
+        "name": "ReservedBy",
+        "type": "STRING",
+        "lengthLimit": 60,
+        "isRequired": true,
+        "displayName": "Reserved By (test set)",
+        "description": "Test Manager test set key, e.g. OFP2P:300"
+      },
+      {
+        "name": "TestCaseKey",
+        "type": "STRING",
+        "lengthLimit": 40,
+        "displayName": "Test Case Key"
+      },
+      {
+        "name": "RunId",
+        "type": "STRING",
+        "lengthLimit": 40,
+        "isRequired": true,
+        "displayName": "Run ID",
+        "description": "RunId of the test run holding the reservation"
+      },
+      {
+        "name": "SourceRun",
+        "type": "RELATIONSHIP",
+        "referenceEntity": "OracleP2PRun",
+        "referenceField": "RunId",
+        "displayName": "Source Run",
+        "description": "The OracleP2PRun record that created the PO"
+      },
+      {
+        "name": "ReservedAt",
+        "type": "DATETIME_WITH_TZ",
+        "isRequired": true,
+        "displayName": "Reserved At"
+      },
+      {
+        "name": "ExpiresAt",
+        "type": "DATETIME_WITH_TZ",
+        "isRequired": true,
+        "displayName": "Expires At",
+        "description": "After this a reservation may be reclaimed (Expired)"
+      },
+      {
+        "name": "Supplier",
+        "type": "STRING",
+        "lengthLimit": 240,
+        "displayName": "Supplier"
+      },
+      {
+        "name": "SupplierSite",
+        "type": "STRING",
+        "lengthLimit": 120,
+        "displayName": "Supplier Site"
+      },
+      {
+        "name": "ItemDescription",
+        "type": "STRING",
+        "lengthLimit": 240,
+        "displayName": "Item Description"
+      },
+      {
+        "name": "OrderedQuantity",
+        "type": "DECIMAL",
+        "decimalPrecision": 2,
+        "minValue": 0,
+        "displayName": "Ordered Quantity"
+      },
+      {
+        "name": "ReceivedQuantity",
+        "type": "DECIMAL",
+        "decimalPrecision": 2,
+        "minValue": 0,
+        "displayName": "Received Quantity"
+      },
+      {
+        "name": "UnitPrice",
+        "type": "DECIMAL",
+        "decimalPrecision": 2,
+        "minValue": 0,
+        "displayName": "Unit Price"
+      },
+      {
+        "name": "Amount",
+        "type": "DECIMAL",
+        "decimalPrecision": 2,
+        "minValue": 0,
+        "displayName": "Amount"
+      },
+      {
+        "name": "Currency",
+        "type": "STRING",
+        "lengthLimit": 3,
+        "defaultValue": "USD",
+        "displayName": "Currency"
+      },
+      {
+        "name": "Notes",
+        "type": "MULTILINE_TEXT",
+        "lengthLimit": 2000,
+        "displayName": "Notes"
+      }
+    ]
+  },
+  "workflow": {
+    "file": "Workflows/GetP2PAssignment.xaml",
+    "arguments": {
+      "in_TestSetKey": "String - the calling test set (ReservedBy)",
+      "in_Purpose": "String - Receipt | Invoice | Payment",
+      "in_RunId": "String - the caller's RunId (written when it claims a fallback)",
+      "out_PONumber": "String",
+      "out_Snapshot": "Dictionary(String, String) - supplier, site, item, quantities, unit price, amount, currency",
+      "out_Source": "String - Reservation | RunRecord | None"
+    },
+    "logic": [
+      "1. Query OracleP2PReservation where ReservedBy = in_TestSetKey and Purpose = in_Purpose and Status = Reserved and ExpiresAt > now; take the newest. If found: set Status = InUse, return its PO and snapshot (Source = Reservation).",
+      "2. Else fall back to the latest OracleP2PRun whose TestMarker starts with UIP-TEST- at the right Stage (Receipt -> PO, Invoice -> Received, Payment -> Validated), sorted by LastStageAt desc, that has no active reservation for this purpose. Insert a Reserved/InUse reservation for it (unique key prevents two tests taking the same schedule), return its PO and snapshot (Source = RunRecord).",
+      "3. Else return Source = None (caller fails the test with a clear message)."
+    ],
+    "needs": "UiPath.DataService.Activities package and the three entities imported into the project (Data Service) - will ask before installing"
+  }
+}

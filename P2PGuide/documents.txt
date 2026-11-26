@@ -1,0 +1,59 @@
+Requisition|204162|R1 approval 49,999.99 (sub 45,662.09 + tax 4,337.90)|created 13:50
+Requisition|204163|R2 approval 50,000.00 (sub 45,662.10 + tax 4,337.90)|created 14:00
+Requisition|204164|R3 approval 50,000.01 (sub 45,662.11 + tax 4,337.90)|created 14:12
+Requisition|204165|R4 approval ~54,750 overriding approver Calvin Roth|created 14:20
+Requisition|204162|withdrawn via Edit and resubmitted with justification|14:25
+Approval|204162|Casey approved catch-all step (comment 'Test UiPath P2P-01 approve catch-all step')|14:39
+Cleanup|204162|Canceled (More Actions > Cancel, reason 'Test UiPath P2P-01 cleanup')|23:00
+Cleanup|204163,204164,204165|Withdrawn via Edit + Save for Later, then Canceled|23:00
+Invoice|UIP-AP-231126-1013|AP-01 ABC Consulting 500.00 USD Net 30, saved Not validated|10:17
+Invoice|UIP-AP-231126-1013|Validated (545.00, 0 holds) then Canceled via Invoice Actions > Cancel Invoice > OK|10:30
+SupplierRegistration|300000342326530 (draft reg id from wizard URL)|C3 capture 14:24
+SupplierRegistration|300000342326536 (draft reg id, Chrome wizard)|C3 capture 15:51
+Workflow|TC_P2P_E2E debug run 1 started (S0+S1: new supplier registration UIPTST Supplier <RunId>)|16:47
+SupplierRegistration|300000342395586 (robot debug run 1, UIPTST Supplier 2611231647, Taxpayer 2611231647, acct 11231647)|16:53
+2026-11-23 19:15 robot debug run 2: SupplierRegistration draft 300000342395586 NOT submitted (session expired while paused at file picker); robot window closed. Cleanup: draft.
+2026-11-23 19:20 robot debug run 3 (UIPTST Supplier 2611231915) aborted on stale windows before any write (it attached to the old draft wizard). No new record.
+SupplierRegistration|300000342395586 discarded by robot "Start Over" (draft-exists dialog), run 4|19:25
+SupplierRegistration|300000342395635 (robot run 4, UIPTST Supplier 2611231925, Taxpayer 2611231925, acct 11231925) draft, pages 1-6 filled, paused at upload - NOT submitted|19:28
+SupplierRegistration|300000342395635 discarded by robot "Start Over", run 5|20:30
+SupplierRegistration|300000342395684 SUBMITTED by robot run 5 (UIPTST Supplier 2611232030, Taxpayer 2611232030, acct 11232030) - S0+S1 PASSED|20:36
+SupplierRegistration|request 35011 (RegId 300000342395684) APPROVED by Casey via BPM task (DebuggerApi Approve works) -> Supplier UIPTST Supplier 2611232030, number 1503, site HQ|20:45
+Requisition|204170 created (capture) "Test UiPath OFP2P:227 capture - UI Path Item", 206.61 Monitors, 1 Ea x 2000, supplier 1503 / HQ, approval amount 2190.00; SUBMITTED|20:58
+Requisition|204170 APPROVED by Casey via BPM task|21:01
+Requisition|204170 Approved; buyer Calvin Roth (from category); staged as Casey in Process Requisitions (New)|21:05
+PurchaseOrder|US165367 created by Publish (staged document, Place order) for UIPTST Supplier 2611232030 / HQ, total 2190.00 USD; status Incomplete -> SUBMITTED by Casey|21:10
+Receipt|52957 created by Casey (My Receipts Receive Now) for PO US165367 line 1, 1 Ea|21:16
+Invoice|UIP-OFP2P-2611232030 created by Casey (Identifying PO US165367, amount 2190.00, matched line 2000.00), VALIDATED, Save and Close|21:30
+SupplierRegistration|request 35012 (RegId 300000342395881, UIPTST Supplier 2611232201) submitted by robot run 6; APPROVED via Notifications inline Approve (BPM task never listed)|22:35
+Robot run 7 (2611232231): SupplierRegistration RegId 300000342396045 submitted + approved via Notifications (S2 PASSED); Requisition 204171 added to cart, run failed at Cart tab (InvalidNode) -> 204171 SAVED FOR LATER by agent (cleanup: cancel)|22:50
+Robot run 8 (2611232240): RegId 300000342396212 approved; Requisition 204172 submitted+approved (S0-S4 PASSED); S5 Stage done, Publish failed (InvalidNode) -> 204172 left STAGED (cleanup: remove staged doc + cancel req)|23:05
+Robot run 9 (2611232255): request 36014 approved (S2); Requisition 204173 cart Submit did not land (stayed Incomplete) -> run stopped; 204173 SAVED FOR LATER by agent (cleanup: cancel)|23:45
+Robot run 10 (2611232344): RegId 300000342400560 approved (S2); Requisition 204174 added to cart (Incomplete, still in cart) - S3 failed: Redwood pages stopped rendering (~23:50 onwards)|23:57
+ENV 2026-11-24 00:10-00:30: Redwood pages (requisitions, suppliers landing) stay on "Skip to main content" for 4-9+ min (3 attempts); ADF FuseWelcome loads in 13 s; REST API OK. Stopped per user rule (3 attempts).|00:30
+Robot run 11 (2611240716): RegId 300000342400743 approved (S0-S2 PASSED); S3 pre-clean Cart tab invalid element -> stopped before any requisition write|07:23
+Robot run 12 (2611240724): S0-S5 PASSED (RegId 300000342400907 approved; leftover cart 204174 parked; Requisition 204175 submitted+approved; PO US165369 created) - PO Submit click did not land (API: Incomplete) so S6 found nothing. Agent submitted US165369 manually (now Pending Approval)|07:48
+Robot run 13 (2611240749): S0-S4 PASSED (RegId 300000342401098; Requisition 204176 approved); S5 Publish landed (PO US165370 Incomplete) but banner never shown -> failed reading PO number|08:08
+Agent closed 3 Chrome windows at 08:18 (own PO window + 2 robot leftovers: Orders to Receive US16536x, Process Requisitions) - test Finally had never run|08:18
+Robot run 14 (2611240821): S0-S5 PASSED (RegId 300000342401283; Req 204177 approved; PO US165371 submitted -> Open). S6 InvalidNode on receipt row checkbox. Browser closed by Finally (fix works).|08:37
+DEV harness 1: S6 PASSED - PO US165371 received (receipt created). S7 Create Invoice did not open (Tasks click too early).|08:44
+DEV harness 3: S7 PASSED - Invoice UIP-OFP2P-2611240821 (PO US165371, 2190.00) created + VALIDATED by robot|09:08
+Robot run 15 (2611240910): S1 Register Supplier timed out twice (Redwood slow, Supplier Management took 281 s to render at 09:25), then job ended 'Session ended' at 09:18 (stopped externally?). Timeouts raised 180->300.|09:27
+CLEANUP 24/11 09:40-10:05 (agent, REST): Invoice UIP-OFP2P-2611240821 CANCELED; PO US165371 CLOSED (received, cancel refused); Req 204171/204173/204174 DELETED (Incomplete); PO US165369 CANCELED; draft PO US165370 DELETED (draftPurchaseOrders); Req 204176 CANCELED. Remaining: Req 204172 (line in staged document - remove via Process Requisitions), PO US165367 Closed (capture), suppliers (pending decision), IRS invoices 1581378/1581379 (pending decision)
+Robot run 16 (2611240949): S0 greeting not shown in 60 s (Oracle slow) - no Oracle writes. S0 greeting wait raised to 300 s.|09:51
+Robot run 17 (2611240952): S0 sign-in page slower than 20 s check -> took 'already signed in' branch -> no home. Fixed: username wait 90 s. No Oracle writes.|09:58
+Robot run 18 (2611241000): S0-S6 PASSED (RegId 300000342406552 approved; Req 204178 approved; PO US165372 submitted + RECEIVED 10:36). S7/S9 failed 'Could not load assembly' - agent validated files during the run (self-inflicted).|10:36
+CLEANUP run 18: PO US165372 CLOSED via S9 (REST)|10:40
+Robot run 19 (2611241038): stopped by agent at S1 (Home tile click did not navigate; no Oracle writes). Wait design reworked: 10 s UI timeouts + polling/refresh loops, S1 opens Supplier Management by URL, S6 REST gate removed (UI polling).|10:50
+Robot run 20 (2611241054): S1 reached wizard in 15 s (URL navigation works); failed at upload - Chrome last-used profile had switched to Profile 2 (file access off). S0 now launches Chrome with --profile-directory="Profile 4". Draft RegId 300000342406752 (discarded by next run's Start Over)|10:56
+Robot run 21 (2611241058): S0-S6 PASSED in 9.5 min (Req 204179, PO US165373 received). S7 InvalidNode on Invoice Number (header re-render). S9: PO US165373 CLOSED, no invoice existed.|11:08
+Robot run 22 (2611241111): S0-S4 PASSED (Req 204180 approved 11:18); S5 staged the line (instance 10230273) but Publish did not land -> no PO; S9 failed (agent ran uia snapshot during the run). Cleanup: remove staged document, cancel 204180.|11:28
+CLEANUP run 22: agent published staged doc 15 by hand (PO US165374, proves Publish works on a ready page), deleted draft US165374 (REST), S9 cancel 204180/204172 - see S9 log|11:45
+OPEN CLEANUP: Req 204172 and 204180 Approved, lines not cancellable (POR-2010924) after their staged/draft docs were removed - ManualReview (Process Requisitions: return/remove lines)|11:47
+Run 23 aborted at compile: S9 'Regex is not declared' (runtime JIT) - fixed with fully qualified System.Text.RegularExpressions.Regex|11:55
+Robot run 24 (2611241140): FULL PASS S0-S7 + S9 (Reg 300000342407175, Req 204181, PO US165375, receipt, Invoice UIP-OFP2P-2611241140 Validated; S9 cancelled invoice, closed PO) 11:40-11:51|11:51
+Robot run 25 (2611241155): S0-S6 PASSED (Req 204182, PO US165376 received); S7 could not open Create Invoice (Tasks panel toggled closed - state persists); S9 closed US165376. Screenshots: 'no active desktop' under uip rpa run.|12:16
+Robot run 26 (2611241219): FULL PASS S0-S7 + S9, all 9 verifications passed (Req 204183, PO US165377, Invoice UIP-OFP2P-2611241219 Validated; S9 cancelled invoice + closed PO)|12:31
+PUBLISHED OracleFusion_AgenticTesting 1.0.0 (tenant processes feed); OFP2P:227 LINKED to Tests\TC_P2P_E2E; TM unattended execution 9cbae443-11c3-0400-2d96-0b4a670d782f started|12:36
+Invoice|889900|canceled via REST cancelInvoice (leftover from 23 Nov E2E, PO US165366)|12:16 2026-11-26
+E2E|2611261221|TC_P2P_E2E local run (DNZTRAIN setup): supplier UIPTST Supplier 2611261221 (#1522, reg 300000342410481, kept active), req 204186 (Approved), PO US165380 (Closed), invoice UIP-OFP2P-2611261221 (Canceled)|12:21-12:36 2026-11-26

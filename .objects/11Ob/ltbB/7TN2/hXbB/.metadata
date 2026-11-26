@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Payables Tab",
+  "Description": "Payables group tab link in the home navigation strip",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "hXbByTQ_10iiLuzsNPUoIQ",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/hXbByTQ_10iiLuzsNPUoIQ",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/7TN2LWKdH0S2QSDE9rLCIg",
+  "Created": "2026-11-23T03:20:29.2819021Z",
+  "Updated": "2026-11-23T04:48:18.7718248Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

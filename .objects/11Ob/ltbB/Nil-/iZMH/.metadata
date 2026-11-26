@@ -1,0 +1,15 @@
+﻿{
+  "Name": "UOM Dropdown",
+  "Description": "UOM Dropdown",
+  "Type": "Element",
+  "TaxonomyType": "Dropdown",
+  "Id": "iZMHSp3MXEqJroj6LlUKgA",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/iZMHSp3MXEqJroj6LlUKgA",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Nil-6YrGSkGkeWX231SfiQ",
+  "Created": "2026-11-23T09:48:46.8963599Z",
+  "Updated": "2026-11-23T09:48:46.8963599Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

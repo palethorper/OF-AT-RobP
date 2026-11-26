@@ -1,0 +1,92 @@
+<Activity mc:Ignorable="sap2010" x:Class="Workflows_Common_ApproveNotification" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Browser" Type="InArgument(ui:UiElement)" />
+    <x:Property Name="in_BaseUrl" Type="InArgument(x:String)" />
+    <x:Property Name="in_TaskTitle" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Approve own task from the Notifications panel" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="taskTitle" />
+    </Sequence.Variables>
+    <Assign DisplayName="taskTitle = in_TaskTitle" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[taskTitle]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_TaskTitle]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:LogMessage DisplayName="Log approve start" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Approve from Notifications: &quot; &amp; taskTitle]" />
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Fusion Redwood Page" HealingAgentBehavior="Job" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_Browser]" OpenMode="Never" ScopeGuid="a5318ddf-895e-4791-8536-bc8f88e8b5fd" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <ui:RetryScope DisplayName="Refresh and recheck until our approval notification arrives (up to ~20 min)" sap2010:WorkflowViewState.IdRef="RetryScope_1" LogRetriedExceptions="True" NumberOfRetries="40" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:15">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence DisplayName="Open notifications and approve" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <uix:NGoToUrl DisplayName="Go To Supplier Management (light Redwood page with the bell)" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" ScopeIdentifier="a5318ddf-895e-4791-8536-bc8f88e8b5fd" Url="[in_BaseUrl &amp; &quot;/fscmUI/redwood/suppliers/landing-page/overview&quot;]" Version="V5" />
+                    <ui:RetryScope DisplayName="Poll the bell until the page has rendered (10 s checks)" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" sap2010:WorkflowViewState.IdRef="RetryScope_101"><ui:RetryScope.ActivityBody><ActivityAction><Sequence DisplayName="Poll the bell until the page has rendered (10 s checks) (body)" sap2010:WorkflowViewState.IdRef="Sequence_102"><uix:NClick ActivateBefore="False" ClickType="Single" DisplayName="Click Notifications Bell Link" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="a5318ddf-895e-4791-8536-bc8f88e8b5fd" Timeout="10" Version="V5">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable ContentHash="MBse14uViU2n1upWon7HLA" DesignTimeRectangle="1801, 198, 24, 24" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='ojSpSimpleUIShellNotifications_NOa1' tag='A' /&gt;" Guid="f9392352-6fc9-44a9-9a20-040df1c6656c" InformativeScreenshot="d5ca40ca04eef58caa65e1fc8ffc1b7f.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/ir9GRl_c4EejDM_rohgiqg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                      </uix:NClick.Target>
+                    </uix:NClick></Sequence></ActivityAction></ui:RetryScope.ActivityBody><ui:RetryScope.Condition><ActivityFunc x:TypeArguments="x:Boolean" /></ui:RetryScope.Condition></ui:RetryScope>
+                    <uix:NClick ActivateBefore="False" ClickType="Single" DisplayName="Click Notification Approve Button (WRITE: approves)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="a5318ddf-895e-4791-8536-bc8f88e8b5fd" Timeout="10" Version="V5">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable ContentHash="lWy-KkjmQkm-APlizJg8hg" DesignTimeRectangle="1593, 490, 92, 44" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='LI' aria-role='row' visibleinnertext='*{0}*' /&gt;&lt;webctrl tag='BUTTON' aaname='Approve' /&gt;&quot;, taskTitle)]" Guid="eb7480f8-0397-4c66-a281-efa59b191db1" InformativeScreenshot="b982b86ed79c6dac221dcb240b8bb44f.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/CO-_pynyRkSgT3GQwsmQ4A" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                  </Sequence>
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+            </ui:RetryScope>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1936, 1048" BrowserType="Chrome" ContentHash="jQYSd-WWJEKLzA7mtEgbzg" InformativeScreenshot="2dbdfa08a267d64a934a6036a9d806b3.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/z4ovH5D8okq8-29g9OcuBQ" Selector="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood*' /&gt;" Url="https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/suppliers/landing-page/overview" Version="V3">
+          <uix:TargetApp.SapInfo>
+            <uix:SAPElementInfo IsSapSubsystem="False" WebAutomationFramework="Default" />
+          </uix:TargetApp.SapInfo>
+        </uix:TargetApp>
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+    <ui:LogMessage DisplayName="Log approved" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Approved from Notifications: &quot; &amp; taskTitle]" />
+  </Sequence>
+</Activity>

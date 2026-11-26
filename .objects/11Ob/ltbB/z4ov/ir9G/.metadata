@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Notifications Bell Link",
+  "Description": "Notifications Bell Link",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "ir9GRl_c4EejDM_rohgiqg",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/ir9GRl_c4EejDM_rohgiqg",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/z4ovH5D8okq8-29g9OcuBQ",
+  "Created": "2026-11-23T11:16:29.8017154Z",
+  "Updated": "2026-11-23T11:16:29.8017154Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Cart Submit Button",
+  "Description": "Cart Submit Button",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "CKOGxnMeIU2YkQScoedfmw",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/CKOGxnMeIU2YkQScoedfmw",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Nil-6YrGSkGkeWX231SfiQ",
+  "Created": "2026-11-23T10:00:02.407653Z",
+  "Updated": "2026-11-23T10:00:02.407653Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

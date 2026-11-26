@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Account Number Input",
+  "Description": "Bank Account Number, Bank Accounts",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "xs-Pvw42OEaQW9SuUbQ3wA",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/xs-Pvw42OEaQW9SuUbQ3wA",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Jt1jXBgpj0akYQz6-Z4ygQ",
+  "Created": "2026-11-23T05:21:31.4422639Z",
+  "Updated": "2026-11-23T05:21:31.4422639Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

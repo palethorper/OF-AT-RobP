@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Request Reason Dropdown",
+  "Description": "Request Reason search-select, Company Details",
+  "Type": "Element",
+  "TaxonomyType": "Dropdown",
+  "Id": "0vZdiBLqZUO6h4YTo-l2-Q",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/0vZdiBLqZUO6h4YTo-l2-Q",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Jt1jXBgpj0akYQz6-Z4ygQ",
+  "Created": "2026-11-23T03:26:47.8080252Z",
+  "Updated": "2026-11-23T04:53:35.4237682Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -1,0 +1,564 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Workflows_S7_CreateInvoice" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:uta="clr-namespace:UiPath.Testing.Activities;assembly=UiPath.Testing.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Browser" Type="InArgument(ui:UiElement)" />
+    <x:Property Name="in_BaseUrl" Type="InArgument(x:String)" />
+    <x:Property Name="in_PONumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_InvoiceNumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_InvoiceAmount" Type="InArgument(x:String)" />
+    <x:Property Name="out_ValidationStatus" Type="OutArgument(x:String)" />
+  </x:Members>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Testing.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="S7 Create, match and validate the invoice" sap:VirtualizedContainerService.HintSize="820,3960" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="optionText" />
+      <Variable x:TypeArguments="x:String" Name="strStatus" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" ConnectionId="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Use Browser Chrome: Payables Invoices" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="800,3936" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_Browser]" IsIncognito="{x:Null}" OpenMode="Never" OutUiElement="{x:Null}" ScopeGuid="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" Timeout="{x:Null}" UserDataFolderMode="{x:Null}" UserDataFolderPath="{x:Null}" Version="V2" WebDriverMode="{x:Null}">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="800,3870" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Open Invoices + Create Invoice (reload up to 3x)" sap:VirtualizedContainerService.HintSize="770,1554" sap2010:WorkflowViewState.IdRef="RetryScope_107" LogRetriedExceptions="True" NumberOfRetries="3" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:02" StopRetryingOnBusinessException="{x:Null}">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence DisplayName="Open Invoices + Create Invoice (reload up to 3x) (body)" sap:VirtualizedContainerService.HintSize="770,1368" sap2010:WorkflowViewState.IdRef="Sequence_108">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NGoToUrl ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Go To Payables Invoices" sap:VirtualizedContainerService.HintSize="740,48" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" InUiElement="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" Timeout="{x:Null}" Url="[in_BaseUrl &amp; &quot;/fscmUI/faces/FndOverview?fndGlobalItemNodeId=itemNode_payables_payables_invoices&quot;]" Version="V5">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NGoToUrl>
+                    <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry open Create Invoice (Tasks panel + link, verified)" sap:VirtualizedContainerService.HintSize="740,1272" sap2010:WorkflowViewState.IdRef="RetryScope_70" LogRetriedExceptions="True" NumberOfRetries="4" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:05" StopRetryingOnBusinessException="{x:Null}">
+                      <ui:RetryScope.ActivityBody>
+                        <ActivityAction>
+                          <Sequence DisplayName="Open Create Invoice" sap:VirtualizedContainerService.HintSize="740,1086" sap2010:WorkflowViewState.IdRef="Sequence_72">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <uix:NCheckState DisplayName="Check Tasks panel already open (Create Invoice visible)" HealingAgentBehavior="Disabled" sap2010:WorkflowViewState.IdRef="NCheckState_91" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" Timeout="5" Version="V5"><uix:NCheckState.IfExists><Sequence DisplayName="Panel open" sap2010:WorkflowViewState.IdRef="Sequence_91"><ui:LogMessage DisplayName="Log panel open" sap2010:WorkflowViewState.IdRef="LogMessage_91" Level="Trace" Message="[&quot;S7 Tasks panel already open&quot;]" /></Sequence></uix:NCheckState.IfExists><uix:NCheckState.IfNotExists><Sequence DisplayName="Open the Tasks panel" sap2010:WorkflowViewState.IdRef="Sequence_92"><ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Poll Click Invoices Tasks Panel Icon (10 s checks)" sap:VirtualizedContainerService.HintSize="710,282" sap2010:WorkflowViewState.IdRef="RetryScope_101" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
+                              <ui:RetryScope.ActivityBody>
+                                <ActivityAction>
+                                  <Sequence DisplayName="Poll Click Invoices Tasks Panel Icon (10 s checks) (body)" sap:VirtualizedContainerService.HintSize="680,96" sap2010:WorkflowViewState.IdRef="Sequence_102">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Invoices Tasks Panel Icon" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_1" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                                      <uix:NClick.Target>
+                                        <uix:TargetAnchorable ContentHash="JAlvV88YFkCw__Alukd59w" DesignTimeRectangle="1885, 386, 42, 42" ElementType="Icon" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='IMG' id='*_FOTsdiitemNode_InvoiceWorkbench_FndTasksList::icon' /&gt;" Guid="c00bbc3c-2f03-424f-898f-ee6da775ae89" InformativeScreenshot="ee3cd4006508635d0a682e973e02d22b.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/6oJqRf_U-U2SHv7Hl37GDw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                      </uix:NClick.Target>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </uix:NClick>
+                                  </Sequence>
+                                </ActivityAction>
+                              </ui:RetryScope.ActivityBody>
+                              <ui:RetryScope.Condition>
+                                <ActivityFunc x:TypeArguments="x:Boolean" />
+                              </ui:RetryScope.Condition>
+                            </ui:RetryScope></Sequence></uix:NCheckState.IfNotExists><uix:NCheckState.Target><uix:TargetAnchorable ContentHash="NsopmiDNbkKhui-QFwgDTw" DesignTimeRectangle="1637, 271, 77, 14" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl adf-view='/TasksList/TasksList1' tag='DIV' /&gt;&lt;webctrl adf-relative-id='RAtl1' tag='A' /&gt;" Guid="3e2adcca-6faf-4d93-8a54-3b402dea18a2" InformativeScreenshot="e5464099bfa758963d842dac9bbf994a.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/oc-Rgo1AkUqgw9qiv715aA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" /></uix:NCheckState.Target></uix:NCheckState>
+                            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Poll Click Create Invoice Task Link (10 s checks)" sap:VirtualizedContainerService.HintSize="710,282" sap2010:WorkflowViewState.IdRef="RetryScope_103" LogRetriedExceptions="True" NumberOfRetries="3" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
+                              <ui:RetryScope.ActivityBody>
+                                <ActivityAction>
+                                  <Sequence DisplayName="Poll Click Create Invoice Task Link (10 s checks) (body)" sap:VirtualizedContainerService.HintSize="680,96" sap2010:WorkflowViewState.IdRef="Sequence_104">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Create Invoice Task Link" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_2" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                                      <uix:NClick.Target>
+                                        <uix:TargetAnchorable ContentHash="NsopmiDNbkKhui-QFwgDTw" DesignTimeRectangle="1637, 271, 77, 14" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl adf-view='/TasksList/TasksList1' tag='DIV' /&gt;&lt;webctrl adf-relative-id='RAtl1' tag='A' /&gt;" Guid="1e753e74-d463-4c9d-b7ef-d841ab65277d" InformativeScreenshot="e5464099bfa758963d842dac9bbf994a.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/oc-Rgo1AkUqgw9qiv715aA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                      </uix:NClick.Target>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </uix:NClick>
+                                  </Sequence>
+                                </ActivityAction>
+                              </ui:RetryScope.ActivityBody>
+                              <ui:RetryScope.Condition>
+                                <ActivityFunc x:TypeArguments="x:Boolean" />
+                              </ui:RetryScope.Condition>
+                            </ui:RetryScope>
+                            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Poll Check Create Invoice opened (Identifying PO shown) (10 s checks)" sap:VirtualizedContainerService.HintSize="710,474" sap2010:WorkflowViewState.IdRef="RetryScope_105" LogRetriedExceptions="True" NumberOfRetries="6" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
+                              <ui:RetryScope.ActivityBody>
+                                <ActivityAction>
+                                  <Sequence DisplayName="Poll Check Create Invoice opened (Identifying PO shown) (10 s checks) (body)" sap:VirtualizedContainerService.HintSize="710,288" sap2010:WorkflowViewState.IdRef="Sequence_106">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NCheckState CheckWindowActive="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Check Create Invoice opened (Identifying PO shown)" Exists="{x:Null}" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="680,240" sap2010:WorkflowViewState.IdRef="NCheckState_7" InUiElement="{x:Null}" OutUiElement="{x:Null}" Result="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" Timeout="10" Version="V5">
+                                      <uix:NCheckState.IfExists>
+                                        <Sequence DisplayName="Opened" sap2010:WorkflowViewState.IdRef="Sequence_70">
+                                          <ui:LogMessage DisplayName="Log create invoice opened" sap2010:WorkflowViewState.IdRef="LogMessage_70" Level="Trace" Message="[&quot;S7 Create Invoice opened&quot;]" />
+                                        </Sequence>
+                                      </uix:NCheckState.IfExists>
+                                      <uix:NCheckState.IfNotExists>
+                                        <Sequence DisplayName="Not opened" sap:VirtualizedContainerService.HintSize="680,96" sap2010:WorkflowViewState.IdRef="Sequence_71">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <Throw DisplayName="Throw create invoice not opened" Exception="[New Exception(&quot;S7: Create Invoice did not open&quot;)]" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="Throw_70">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </Throw>
+                                        </Sequence>
+                                      </uix:NCheckState.IfNotExists>
+                                      <uix:NCheckState.Target>
+                                        <uix:TargetAnchorable ContentHash="ViwNMZBzuE6ruywCj4EHIQ" DesignTimeRectangle="342, 377, 180, 28" ElementType="DropDown" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl adf-view='/GeneralTabFlow/GeneralTab' tag='DIV' /&gt;&lt;webctrl tag='INPUT' aaname='Identifying PO' /&gt;" Guid="4220b526-f0d2-4fd7-936b-f8d8973c4801" InformativeScreenshot="a285727ebec4cd8b78330499fdfc76ca.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/8DvDQMgcxUi-1oH_fcqJOw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                      </uix:NCheckState.Target>
+                                    </uix:NCheckState>
+                                  </Sequence>
+                                </ActivityAction>
+                              </ui:RetryScope.ActivityBody>
+                              <ui:RetryScope.Condition>
+                                <ActivityFunc x:TypeArguments="x:Boolean" />
+                              </ui:RetryScope.Condition>
+                            </ui:RetryScope>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:RetryScope.ActivityBody>
+                      <ui:RetryScope.Condition>
+                        <ActivityFunc x:TypeArguments="x:Boolean" />
+                      </ui:RetryScope.Condition>
+                    </ui:RetryScope>
+                  </Sequence>
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+            </ui:RetryScope>
+            <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Identifying PO Input (PO + Tab)" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="770,48" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" SecureText="{x:Null}" Text="[in_PONumber &amp; &quot;[k(tab)]&quot;]" Timeout="10" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="ViwNMZBzuE6ruywCj4EHIQ" DesignTimeRectangle="342, 377, 180, 28" ElementType="DropDown" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl adf-view='/GeneralTabFlow/GeneralTab' tag='DIV' /&gt;&lt;webctrl tag='INPUT' aaname='Identifying PO' /&gt;" Guid="06115b5b-8534-4a81-ae73-b687e5a2b45c" InformativeScreenshot="a285727ebec4cd8b78330499fdfc76ca.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/8DvDQMgcxUi-1oH_fcqJOw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NTypeInto.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="3" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Invoice Number Input" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="770,48" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" SecureText="{x:Null}" Text="[in_InvoiceNumber &amp; &quot;[k(tab)]&quot;]" Timeout="10" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="4f4INk1NmECiN42WcX1sxw" DesignTimeRectangle="981, 377, 176, 28" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl adf-view='/GeneralTabFlow/GeneralTab' tag='DIV' /&gt;&lt;webctrl tag='INPUT' aaname='Number' /&gt;" Guid="b4552ea8-c3ae-4972-9d34-9f4da21e8fba" InformativeScreenshot="078dcc8332d0daf0ce7f78643db1e6e4.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/QMqzEiC_u0GOInfuMavhuA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NTypeInto.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Invoice Amount Input" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="770,48" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" SecureText="{x:Null}" Text="[in_InvoiceAmount &amp; &quot;[k(tab)]&quot;]" Timeout="10" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="dGzN7WXzZE-FsBB3sgyUCg" DesignTimeRectangle="1041, 413, 115, 28" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl adf-view='/GeneralTabFlow/GeneralTab' tag='DIV' /&gt;&lt;webctrl adf-relative-id='i3::content' tag='INPUT' /&gt;" Guid="99b02e35-66a4-4fc6-a140-f17088a354ff" InformativeScreenshot="3588cd6b5fcd52449fa06b18b755bd25.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/H5Es1cHMKEmZQzQ61b5rXA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NTypeInto.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NTypeInto>
+            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Click Lines Action Go Link (Match Invoice Lines) (page re-renders)" sap:VirtualizedContainerService.HintSize="770,282" sap2010:WorkflowViewState.IdRef="RetryScope_3" LogRetriedExceptions="True" NumberOfRetries="4" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" StopRetryingOnBusinessException="{x:Null}">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence DisplayName="Action (retry)" sap:VirtualizedContainerService.HintSize="680,96" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Lines Action Go Link (Match Invoice Lines)" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_3" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable ContentHash="nRN8TDeGok2tm9WvRb3CSg" DesignTimeRectangle="327, 633, 19, 14" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl adf-view='/CreateInvoiceFlow/InvoiceEditPF' tag='DIV' /&gt;&lt;webctrl adf-relative-id='ap1:cg1' tag='A' /&gt;" Guid="8748632c-3126-472a-9558-1ba1d92d01f1" InformativeScreenshot="4235f89441dae28c0485b3eacb947ac3.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/DfFYQsKlP0GH0a0sIeGYVQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                      </uix:NClick.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NClick>
+                  </Sequence>
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+            </ui:RetryScope>
+            <uix:NCheckState CheckWindowActive="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Check PO search dialog (shown when the PO is not yet confirmed)" Exists="{x:Null}" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="770,900" sap2010:WorkflowViewState.IdRef="NCheckState_1" InUiElement="{x:Null}" OutUiElement="{x:Null}" Result="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" Timeout="10" Version="V5">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Confirm the PO, then Go again" sap:VirtualizedContainerService.HintSize="710,756" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Click PO Search Dialog Search Button (page re-renders)" sap:VirtualizedContainerService.HintSize="680,282" sap2010:WorkflowViewState.IdRef="RetryScope_10" LogRetriedExceptions="True" NumberOfRetries="4" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" StopRetryingOnBusinessException="{x:Null}">
+                    <ui:RetryScope.ActivityBody>
+                      <ActivityAction>
+                        <Sequence DisplayName="Action (retry)" sap:VirtualizedContainerService.HintSize="680,96" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click PO Search Dialog Search Button" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_4" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable ContentHash="CTzrnpwiVk6HHp2TIjmncg" DesignTimeRectangle="1426, 642, 54, 28" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='BUTTON' adf-relative-id='*ic1::_afrLovInternalQueryId::search' /&gt;" Guid="7ff76798-b78c-49e5-bdeb-ab5fda959938" InformativeScreenshot="0518e5cf81622ef0a89ae916e0cde54a.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/uDpO2LhcHUWWJt7zv03TVw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                            </uix:NClick.Target>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uix:NClick>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:RetryScope.ActivityBody>
+                    <ui:RetryScope.Condition>
+                      <ActivityFunc x:TypeArguments="x:Boolean" />
+                    </ui:RetryScope.Condition>
+                  </ui:RetryScope>
+                  <Assign DisplayName="optionText = PO number" sap:VirtualizedContainerService.HintSize="680,48" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[optionText]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[in_PONumber]</InArgument>
+                    </Assign.Value>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Assign>
+                  <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click PO Search Result Cell" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="680,48" sap2010:WorkflowViewState.IdRef="NClick_5" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="Ms68ZHMOek67V-kBPRzDBw" DesignTimeRectangle="420, 723, 57, 14" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='SPAN' parentid='*_afrLovInternalTableId::db*' aaname='{0}' /&gt;&quot;, optionText)]" Guid="0737528c-8441-414a-82ab-e663975319c7" InformativeScreenshot="d50932fc2eacd7f3bedf8af44aea7327.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/-K5eV4VG4USEoE86iAEF0Q" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                    </uix:NClick.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NClick>
+                  <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Click PO Search Dialog OK Button (page re-renders)" sap:VirtualizedContainerService.HintSize="680,282" sap2010:WorkflowViewState.IdRef="RetryScope_11" LogRetriedExceptions="True" NumberOfRetries="4" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" StopRetryingOnBusinessException="{x:Null}">
+                    <ui:RetryScope.ActivityBody>
+                      <ActivityAction>
+                        <Sequence DisplayName="Action (retry)" sap:VirtualizedContainerService.HintSize="680,96" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click PO Search Dialog OK Button" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_6" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable ContentHash="ro3tMLv8yUe0t6KcpR940A" DesignTimeRectangle="1442, 762, 35, 28" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='BUTTON' adf-relative-id='*ic1::lovDialogId::ok' /&gt;" Guid="5adb3816-1891-4021-9ae5-0acb6d3fdb57" InformativeScreenshot="2c2549cd12abf9072f6e6ecae107e468.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/1AxC9m6UX0WuSwNEBLqiQQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                            </uix:NClick.Target>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uix:NClick>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:RetryScope.ActivityBody>
+                    <ui:RetryScope.Condition>
+                      <ActivityFunc x:TypeArguments="x:Boolean" />
+                    </ui:RetryScope.Condition>
+                  </ui:RetryScope>
+                  <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="3" DisplayName="Click Lines Action Go Link (again)" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="680,48" sap2010:WorkflowViewState.IdRef="NClick_7" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="nRN8TDeGok2tm9WvRb3CSg" DesignTimeRectangle="327, 633, 19, 14" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl adf-view='/CreateInvoiceFlow/InvoiceEditPF' tag='DIV' /&gt;&lt;webctrl adf-relative-id='ap1:cg1' tag='A' /&gt;" Guid="8748632c-3126-472a-9558-1ba1d92d01f1" InformativeScreenshot="4235f89441dae28c0485b3eacb947ac3.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/DfFYQsKlP0GH0a0sIeGYVQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                    </uix:NClick.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Match dialog opened directly" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <ui:LogMessage DisplayName="Log no PO dialog" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;S7: no PO search dialog&quot;]" />
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable ContentHash="ro3tMLv8yUe0t6KcpR940A" DesignTimeRectangle="1442, 762, 35, 28" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='BUTTON' adf-relative-id='*ic1::lovDialogId::ok' /&gt;" Guid="5adb3816-1891-4021-9ae5-0acb6d3fdb57" InformativeScreenshot="2c2549cd12abf9072f6e6ecae107e468.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/1AxC9m6UX0WuSwNEBLqiQQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Click Match Line Checkbox (page re-renders)" sap:VirtualizedContainerService.HintSize="770,240" sap2010:WorkflowViewState.IdRef="RetryScope_4" LogRetriedExceptions="True" NumberOfRetries="6" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence DisplayName="Action (retry)" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Match Line Checkbox" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_8" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable ContentHash="fIOCoJVFEkGuKAhcdxrxSA" DesignTimeRectangle="467, 550, 13, 13" ElementType="CheckBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl adf-view='/AddLinesByPOMatchLiteFlow/AddLinesByPOMatchLitePF' tag='DIV' /&gt;&lt;webctrl adf-relative-id='at1:_ATp:ta1:sb1::content' tag='INPUT' /&gt;" Guid="e593ac89-6ba6-4a98-8393-32c826913a60" InformativeScreenshot="efa9fa2ff7437562c901bc3631ce5220.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/HhQODW8GbE6Fjriu9Zif7g" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                  </Sequence>
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+            </ui:RetryScope>
+            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Click Match Dialog Apply Button (page re-renders)" sap:VirtualizedContainerService.HintSize="770,240" sap2010:WorkflowViewState.IdRef="RetryScope_5" LogRetriedExceptions="True" NumberOfRetries="4" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" StopRetryingOnBusinessException="{x:Null}">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence DisplayName="Action (retry)" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Match Dialog Apply Button" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_9" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable ContentHash="fnaFO_8yB0uFgQvS2UvSuw" DesignTimeRectangle="1360, 876, 51, 28" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='BUTTON' adf-relative-id='*:ap1:cb2' aaname='Apply' /&gt;" Guid="3147f201-0c74-480d-bb00-d917a7ee70c5" InformativeScreenshot="a0fc626b9e309491a75087203415431b.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/tUinMCqxPEqG_u1rpV_aIw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                  </Sequence>
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+            </ui:RetryScope>
+            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Click Match Dialog OK Button (WRITE: saves the matched invoi (page re-renders)" sap2010:WorkflowViewState.IdRef="RetryScope_6" LogRetriedExceptions="True" NumberOfRetries="4" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" StopRetryingOnBusinessException="{x:Null}">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence DisplayName="Action (retry)" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="3" DisplayName="Click Match Dialog OK Button (WRITE: saves the matched invoice)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_10" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable ContentHash="q1tyH7HPWEuoG4DB8LLS1g" DesignTimeRectangle="1414, 876, 35, 28" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='BUTTON' adf-relative-id='*:ap1:cb17' aaname='OK' /&gt;" Guid="d6112fd9-011f-4480-9991-c374fb1e9ed4" InformativeScreenshot="3f6f4256af89908493d98cee9ba551dc.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/ElP-gOCGDkmnlNYJkBePPg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                  </Sequence>
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+            </ui:RetryScope>
+            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Click Invoice Actions Menu Link (page re-renders)" sap2010:WorkflowViewState.IdRef="RetryScope_7" LogRetriedExceptions="True" NumberOfRetries="6" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence DisplayName="Action (retry)" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="3" DisplayName="Click Invoice Actions Menu Link" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_11" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable ContentHash="co8Q1rn560uN-TWPS0PbjA" DesignTimeRectangle="1404, 250, 88, 24" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl adf-view='/CreateInvoiceFlow/InvoiceEditPF' tag='DIV' /&gt;&lt;webctrl aaname='Invoice Actions' tag='A' /&gt;" Guid="d9d831d5-7638-47dc-a4f1-5418b000265b" InformativeScreenshot="092b48b29e3295290b476fc042d25b66.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/_xqm-jIB40OS2aHugH7RMA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                  </Sequence>
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+            </ui:RetryScope>
+            <Assign DisplayName="optionText = Validate" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[optionText]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">Validate</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Click Invoice Actions Menu Item (WRITE: validates) (page re-renders)" sap2010:WorkflowViewState.IdRef="RetryScope_8" LogRetriedExceptions="True" NumberOfRetries="4" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" StopRetryingOnBusinessException="{x:Null}">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence DisplayName="Action (retry)" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Invoice Actions Menu Item (WRITE: validates)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_12" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable ContentHash="Pa_UJz0HAkSCpwoaUN1bKw" DesignTimeRectangle="1434, 340, 212, 30" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl aria-role='presentation' tag='TABLE' visibleinnertext='*View Approval and Notification History*' /&gt;&lt;webctrl tag='TD' aaname='{0}' /&gt;&quot;, optionText)]" Guid="a9352d1e-8fa8-4342-84fd-486ad5b591f7" InformativeScreenshot="8b172e1c6331c8db710bc7f167d40e70.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/7GPja8L7R0m1lof2fp7y1A" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                  </Sequence>
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+            </ui:RetryScope>
+            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Wait for status Validated" sap2010:WorkflowViewState.IdRef="RetryScope_1" LogRetriedExceptions="False" NumberOfRetries="10" RetriedExceptionsLogLevel="{x:Null}" RetryInterval="00:00:06" StopRetryingOnBusinessException="{x:Null}">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence DisplayName="Read status" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <uix:NGetText ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Get Text Invoice Validation Status Link" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NGetText_1" InScope="{x:Null}" InUiElement="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" ScrapingOptions="{x:Null}" TextString="[strStatus]" Timeout="10" Version="V5" WordsInfo="{x:Null}">
+                      <uix:NGetText.Target>
+                        <uix:TargetAnchorable ContentHash="sBt2LHaVAkWvxPZB9b91dA" DesignTimeRectangle="1337, 255, 49, 14" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl adf-view='/CreateInvoiceFlow/InvoiceEditPF' tag='DIV' /&gt;&lt;webctrl tag='A' aaname='*alidat*' /&gt;" Guid="5108b546-5851-4240-9181-cf03ed58af4d" InformativeScreenshot="0ef3ceffe6f94bb6a1f9ad915f4dfcfd.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/XTMhr4iehEqclph2o4iwjQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                      </uix:NGetText.Target>
+                    </uix:NGetText>
+                    <If Condition="[strStatus.Trim() &lt;&gt; &quot;Validated&quot;]" DisplayName="If not yet Validated" sap2010:WorkflowViewState.IdRef="If_1">
+                      <If.Then>
+                        <Throw DisplayName="Throw not validated yet" Exception="[New Exception(&quot;S7: invoice status is '&quot; &amp; strStatus &amp; &quot;'&quot;)]" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                      </If.Then>
+                    </If>
+                  </Sequence>
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+            </ui:RetryScope>
+            <Assign DisplayName="Assign out_ValidationStatus" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[out_ValidationStatus]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[strStatus.Trim()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <uta:VerifyControlAttribute AlternativeVerificationTitle="S7 invoice status Validated" ContinueOnFailure="True" DisplayName="Verify S7 invoice status Validated" sap2010:WorkflowViewState.IdRef="VerifyControlAttribute_90" KeepScreenshots="{x:Null}" Operator="Contains" OutputArgument="TextString" OutputMessageFormat="{x:Null}" Result="{x:Null}" ScreenshotsPath="{x:Null}" TakeScreenshotInCaseOfFailingAssertion="True" TakeScreenshotInCaseOfSucceedingAssertion="True">
+              <uta:VerifyControlAttribute.ActivityToTest>
+                <ActivityAction>
+                  <uix:NGetText ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Get Text - S7 invoice status Validated" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NGetText_90" InScope="{x:Null}" InUiElement="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" ScrapingOptions="{x:Null}" Timeout="10" Version="V5">
+                    <uix:NGetText.OutUiElement>
+                      <OutArgument x:TypeArguments="ui:UiElement">
+                        <VariableReference x:TypeArguments="ui:UiElement">
+                          <VariableReference.Variable>
+                            <Variable x:TypeArguments="ui:UiElement" Name="_autogenerated_OutUiElement" />
+                          </VariableReference.Variable>
+                        </VariableReference>
+                      </OutArgument>
+                    </uix:NGetText.OutUiElement>
+                    <uix:NGetText.Target>
+                      <uix:TargetAnchorable ContentHash="sBt2LHaVAkWvxPZB9b91dA" DesignTimeRectangle="1337, 255, 49, 14" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl adf-view='/CreateInvoiceFlow/InvoiceEditPF' tag='DIV' /&gt;&lt;webctrl tag='A' aaname='*alidat*' /&gt;" Guid="a2bd2fdd-b945-439e-8ee6-6fca724caa7a" InformativeScreenshot="0ef3ceffe6f94bb6a1f9ad915f4dfcfd.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/XTMhr4iehEqclph2o4iwjQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                    </uix:NGetText.Target>
+                    <uix:NGetText.Text>
+                      <OutArgument x:TypeArguments="x:Object">
+                        <VariableReference x:TypeArguments="x:Object">
+                          <VariableReference.Variable>
+                            <Variable x:TypeArguments="x:Object" Name="_autogenerated_Text" />
+                          </VariableReference.Variable>
+                        </VariableReference>
+                      </OutArgument>
+                    </uix:NGetText.Text>
+                    <uix:NGetText.TextString>
+                      <OutArgument x:TypeArguments="x:String">
+                        <VariableReference x:TypeArguments="x:String">
+                          <VariableReference.Variable>
+                            <Variable x:TypeArguments="x:String" x:Name="__ReferenceID0" Name="_autogenerated_TextString" />
+                          </VariableReference.Variable>
+                        </VariableReference>
+                      </OutArgument>
+                    </uix:NGetText.TextString>
+                    <uix:NGetText.WordsInfo>
+                      <OutArgument x:TypeArguments="scg:IEnumerable(uix:NWordInfo)">
+                        <VariableReference x:TypeArguments="scg:IEnumerable(uix:NWordInfo)">
+                          <VariableReference.Variable>
+                            <Variable x:TypeArguments="scg:IEnumerable(uix:NWordInfo)" Name="_autogenerated_WordsInfo" />
+                          </VariableReference.Variable>
+                        </VariableReference>
+                      </OutArgument>
+                    </uix:NGetText.WordsInfo>
+                  </uix:NGetText>
+                </ActivityAction>
+              </uta:VerifyControlAttribute.ActivityToTest>
+              <uta:VerifyControlAttribute.ArgumentsBridgeActivity>
+                <ActivityFunc x:TypeArguments="x:Object">
+                  <uta:ArgumentsBridge sap2010:WorkflowViewState.IdRef="ArgumentsBridge_1" Result="{x:Null}">
+                    <uta:ArgumentsBridge.Input>
+                      <InArgument x:TypeArguments="x:Object">
+                        <VariableValue x:TypeArguments="x:Object" Variable="{x:Reference __ReferenceID0}" />
+                      </InArgument>
+                    </uta:ArgumentsBridge.Input>
+                  </uta:ArgumentsBridge>
+                </ActivityFunc>
+              </uta:VerifyControlAttribute.ArgumentsBridgeActivity>
+              <uta:VerifyControlAttribute.Expression>
+                <InArgument x:TypeArguments="x:String">["Validated"]</InArgument>
+              </uta:VerifyControlAttribute.Expression>
+            </uta:VerifyControlAttribute>
+            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Click Invoice Save and Close Link (page re-renders)" sap2010:WorkflowViewState.IdRef="RetryScope_9" LogRetriedExceptions="True" NumberOfRetries="4" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" StopRetryingOnBusinessException="{x:Null}">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence DisplayName="Action (retry)" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Invoice Save and Close Link" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_13" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="d2ceeb16-2cd5-43e2-91ce-9418d0af0df0" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable ContentHash="L2NZG5qP00C7hqmzs18fng" DesignTimeRectangle="1726, 249, 104, 24" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl adf-view='/CreateInvoiceFlow/InvoiceEditPF' tag='DIV' /&gt;&lt;webctrl adf-relative-id='ap1:cb14' tag='DIV' /&gt;&lt;webctrl aria-role='button' tag='A' /&gt;" Guid="37c66541-8166-4cfe-86f7-855336cb1fd3" InformativeScreenshot="bf84f716daa5a66c899d388d398fd5f6.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/JohE2qNur0up-w-iy-4X-A" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                  </Sequence>
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+            </ui:RetryScope>
+            <ui:LogMessage DisplayName="Log invoice" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;S7 invoice &quot; &amp; in_InvoiceNumber &amp; &quot; for PO &quot; &amp; in_PONumber &amp; &quot;: &quot; &amp; out_ValidationStatus]" />
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1936, 1048" BrowserType="Chrome" ContentHash="mlCC7SYudEa1KPQFOod7rw" InformativeScreenshot="a00353ff3056afcd2a725dcce910f2eb.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/Sq5OicXup0KJgfP--XChMA" Selector="&lt;html app='chrome.exe' title='*Invoices - Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview*' /&gt;" Url="https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/faces/FndOverview?fndGlobalItemNodeId=itemNode_payables_payables_invoices" Version="V3">
+          <uix:TargetApp.SapInfo>
+            <uix:SAPElementInfo IsSapSubsystem="False" WebAutomationFramework="Default" />
+          </uix:TargetApp.SapInfo>
+        </uix:TargetApp>
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

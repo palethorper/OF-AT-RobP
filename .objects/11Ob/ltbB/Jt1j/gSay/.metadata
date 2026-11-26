@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Continue Button",
+  "Description": "Continue button at the bottom of each wizard page",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "gSay6ZsI2Eeqd607x1nG-w",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/gSay6ZsI2Eeqd607x1nG-w",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Jt1jXBgpj0akYQz6-Z4ygQ",
+  "Created": "2026-11-23T03:26:48.2755478Z",
+  "Updated": "2026-11-23T04:53:35.777083Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

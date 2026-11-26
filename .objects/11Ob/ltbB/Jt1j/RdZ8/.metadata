@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Attachments Panel Close Button",
+  "Description": "Close button of the Response attachments for question panel",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "RdZ8D6OZckqXtsCRlYEVrg",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/RdZ8D6OZckqXtsCRlYEVrg",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Jt1jXBgpj0akYQz6-Z4ygQ",
+  "Created": "2026-11-23T05:34:33.5965331Z",
+  "Updated": "2026-11-23T05:34:33.5965331Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

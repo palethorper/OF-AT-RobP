@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Submit Button",
+  "Description": "Wizard Submit button (last page), submits the registration request",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "l49rTBLTF0WY9KscJtyLTg",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/l49rTBLTF0WY9KscJtyLTg",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/Jt1jXBgpj0akYQz6-Z4ygQ",
+  "Created": "2026-11-23T05:32:30.2663207Z",
+  "Updated": "2026-11-23T05:32:30.2663207Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

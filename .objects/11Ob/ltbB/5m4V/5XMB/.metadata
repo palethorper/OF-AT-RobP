@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Open Dialog File Name Input",
+  "Description": "File name box of the native Open dialog",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "5XMBf2Ew4EKel2W7AcxB2w",
+  "Reference": "uR7IZSwNKU6CNcqBhFFDJg/5XMBf2Ew4EKel2W7AcxB2w",
+  "ParentRef": "uR7IZSwNKU6CNcqBhFFDJg/5m4VnW9Ej0CuRdRB58kbLQ",
+  "Created": "2026-11-23T08:30:54.9955748Z",
+  "Updated": "2026-11-23T08:30:54.9955748Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.9.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
