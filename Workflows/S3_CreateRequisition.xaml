@@ -39,7 +39,7 @@
       <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="S3 Create and submit requisition" sap:VirtualizedContainerService.HintSize="789,2412" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="S3 Create and submit requisition" sap:VirtualizedContainerService.HintSize="820,4026" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="optionText" />
       <Variable x:TypeArguments="x:String" Name="strCartTitle" />
@@ -49,144 +49,246 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log S3 start" sap:VirtualizedContainerService.HintSize="740,48" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;S3 Create requisition: &quot; &amp; in_Profile(&quot;ItemDescription&quot;) &amp; &quot; / supplier &quot; &amp; in_Profile(&quot;SupplierName&quot;)]">
+    <ui:LogMessage DisplayName="Log S3 start" sap:VirtualizedContainerService.HintSize="800,48" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;S3 Create requisition: &quot; &amp; in_Profile(&quot;ItemDescription&quot;) &amp; &quot; / supplier &quot; &amp; in_Profile(&quot;SupplierName&quot;)]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" ConnectionId="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Use Browser Chrome: Requisitions" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="740,2340" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_Browser]" IsIncognito="{x:Null}" OpenMode="Never" OutUiElement="{x:Null}" ScopeGuid="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="{x:Null}" UserDataFolderMode="{x:Null}" UserDataFolderPath="{x:Null}" Version="V2" WebDriverMode="{x:Null}">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" ConnectionId="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Use Browser Chrome: Requisitions" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="800,3954" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_Browser]" IsIncognito="{x:Null}" OpenMode="Never" OutUiElement="{x:Null}" ScopeGuid="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="{x:Null}" UserDataFolderMode="{x:Null}" UserDataFolderPath="{x:Null}" Version="V2" WebDriverMode="{x:Null}">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="740,2274" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="800,3888" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:RetryScope DisplayName="Open Requisitions + pre-clean (reload up to 3x)" LogRetriedExceptions="True" NumberOfRetries="3" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:02" sap2010:WorkflowViewState.IdRef="RetryScope_101"><ui:RetryScope.ActivityBody><ActivityAction><Sequence DisplayName="Open Requisitions + pre-clean (reload up to 3x) (body)" sap2010:WorkflowViewState.IdRef="Sequence_102"><uix:NGoToUrl ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Go To Requisitions" sap:VirtualizedContainerService.HintSize="710,48" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" InUiElement="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="{x:Null}" Url="[in_BaseUrl &amp; &quot;/fscmUI/redwood/procurement/requisitions&quot;]" Version="V5">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </uix:NGoToUrl>
-            <Sequence DisplayName="Pre-clean: park any requisition left in the cart by an earlier run" sap:VirtualizedContainerService.HintSize="710,612" sap2010:WorkflowViewState.IdRef="Sequence_10">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:RetryScope DisplayName="Retry Click Cart Tab (pre-clean) (page re-renders)" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" sap2010:WorkflowViewState.IdRef="RetryScope_6"><ui:RetryScope.ActivityBody><ActivityAction><Sequence DisplayName="Action (retry)" sap2010:WorkflowViewState.IdRef="Sequence_13"><uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Cart Tab (pre-clean)" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="680,48" sap2010:WorkflowViewState.IdRef="NClick_20" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
-                <uix:NClick.Target>
-                  <uix:TargetAnchorable ContentHash="okAHF8UB7kKwVAtYgsnNPA" DesignTimeRectangle="466, 979, 64, 61" ElementType="TabPage" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='Cart*' aria-role='tab' tag='A' /&gt;" Guid="e8417dfa-4931-4e22-a976-16eddc235421" InformativeScreenshot="2c7bb37a4ec32bf991c4660a8195b968.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/WAQshC50jkCRrYbBc8xQWQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-                </uix:NClick.Target>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </uix:NClick></Sequence></ActivityAction></ui:RetryScope.ActivityBody><ui:RetryScope.Condition><ActivityFunc x:TypeArguments="x:Boolean" /></ui:RetryScope.Condition></ui:RetryScope>
-              <uix:NCheckState CheckWindowActive="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Check cart holds a requisition" Exists="{x:Null}" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="680,426" sap2010:WorkflowViewState.IdRef="NCheckState_2" InUiElement="{x:Null}" OutUiElement="{x:Null}" Result="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" Version="V5">
-                <uix:NCheckState.IfExists>
-                  <Sequence DisplayName="Save for Later" sap:VirtualizedContainerService.HintSize="680,240" sap2010:WorkflowViewState.IdRef="Sequence_11">
+            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Open Requisitions + pre-clean (reload up to 3x)" sap:VirtualizedContainerService.HintSize="770,1830" sap2010:WorkflowViewState.IdRef="RetryScope_101" LogRetriedExceptions="True" NumberOfRetries="3" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:02" StopRetryingOnBusinessException="{x:Null}">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence DisplayName="Open Requisitions + pre-clean (reload up to 3x) (body)" sap:VirtualizedContainerService.HintSize="770,1644" sap2010:WorkflowViewState.IdRef="Sequence_102">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log leftover cart" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Warn" Message="[&quot;S3: cart not empty - saving the leftover requisition for later&quot;]">
+                    <uix:NGoToUrl ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Go To Requisitions" sap:VirtualizedContainerService.HintSize="740,48" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" InUiElement="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="{x:Null}" Url="[in_BaseUrl &amp; &quot;/fscmUI/redwood/procurement/requisitions&quot;]" Version="V5">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                    </ui:LogMessage>
-                    <ui:RetryScope DisplayName="Retry Click Cart More Actions Button (page re-renders)" LogRetriedExceptions="True" NumberOfRetries="4" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" sap2010:WorkflowViewState.IdRef="RetryScope_7"><ui:RetryScope.ActivityBody><ActivityAction><Sequence DisplayName="Action (retry)" sap2010:WorkflowViewState.IdRef="Sequence_14"><uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Cart More Actions Button" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_21" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
-                      <uix:NClick.Target>
-                        <uix:TargetAnchorable ContentHash="SE5acw4A40q38rT4UmOIUQ" DesignTimeRectangle="1477, 255, 36, 36" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aria-label='More Actions' class='*BaseButtonStyles_styles_base*' tag='BUTTON' /&gt;" Guid="a7962a76-cd30-47ba-940d-c0afffa4fbdf" InformativeScreenshot="81b98fd67b184ac1d29a54293c73dd21.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/eF0LSXB460KKW_X_UoGy-Q" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-                      </uix:NClick.Target>
+                    </uix:NGoToUrl>
+                    <Sequence DisplayName="Pre-clean: park any requisition left in the cart by an earlier run" sap:VirtualizedContainerService.HintSize="740,1548" sap2010:WorkflowViewState.IdRef="Sequence_10">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                    </uix:NClick></Sequence></ActivityAction></ui:RetryScope.ActivityBody><ui:RetryScope.Condition><ActivityFunc x:TypeArguments="x:Boolean" /></ui:RetryScope.Condition></ui:RetryScope>
-                    <ui:RetryScope DisplayName="Retry Click Cart Save for Later Menu Item (page re-renders)" LogRetriedExceptions="True" NumberOfRetries="4" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" sap2010:WorkflowViewState.IdRef="RetryScope_8"><ui:RetryScope.ActivityBody><ActivityAction><Sequence DisplayName="Action (retry)" sap2010:WorkflowViewState.IdRef="Sequence_15"><uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Cart Save for Later Menu Item" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_22" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
-                      <uix:NClick.Target>
-                        <uix:TargetAnchorable ContentHash="DW-dDGRe7ECif-pFlbxpxw" DesignTimeRectangle="1478, 448, 201, 48" ElementType="ListItem" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='Save for Later' aria-role='menuitem' tag='A' /&gt;" Guid="82dcfe9b-a1bc-4aae-8263-78e3a2810b94" InformativeScreenshot="ec78cc2c203c60bb667ff9b86b5604ba.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/EXQaLI-TVUazVKgAK7aFlQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-                      </uix:NClick.Target>
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                    </uix:NClick></Sequence></ActivityAction></ui:RetryScope.ActivityBody><ui:RetryScope.Condition><ActivityFunc x:TypeArguments="x:Boolean" /></ui:RetryScope.Condition></ui:RetryScope>
-                    <ui:RetryScope DisplayName="Retry Click Save for Later Confirm Button (WRITE: parks leftover r (page re-renders)" LogRetriedExceptions="True" NumberOfRetries="4" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" sap2010:WorkflowViewState.IdRef="RetryScope_9"><ui:RetryScope.ActivityBody><ActivityAction><Sequence DisplayName="Action (retry)" sap2010:WorkflowViewState.IdRef="Sequence_16"><uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Save for Later Confirm Button (WRITE: parks leftover requisition)" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_23" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
-                      <uix:NClick.Target>
-                        <uix:TargetAnchorable ContentHash="evgBLLsOD0aLB3cM85Nm9g" DesignTimeRectangle="1113, 653, 122, 44" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='saveForLaterContinue' tag='OJ-BUTTON' /&gt;&lt;webctrl tag='BUTTON' /&gt;" Guid="919d3409-9d24-4571-a603-ce51cbcc1479" InformativeScreenshot="0faabe0608afdc63502c7d04812d17f4.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/CFTVedfFlUOXpCPeACbLyg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-                      </uix:NClick.Target>
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                    </uix:NClick></Sequence></ActivityAction></ui:RetryScope.ActivityBody><ui:RetryScope.Condition><ActivityFunc x:TypeArguments="x:Boolean" /></ui:RetryScope.Condition></ui:RetryScope>
+                      <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Click Cart Tab (pre-clean) (page re-renders)" sap:VirtualizedContainerService.HintSize="710,282" sap2010:WorkflowViewState.IdRef="RetryScope_6" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
+                        <ui:RetryScope.ActivityBody>
+                          <ActivityAction>
+                            <Sequence DisplayName="Action (retry)" sap:VirtualizedContainerService.HintSize="680,96" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Cart Tab (pre-clean)" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_20" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                                <uix:NClick.Target>
+                                  <uix:TargetAnchorable ContentHash="okAHF8UB7kKwVAtYgsnNPA" DesignTimeRectangle="466, 979, 64, 61" ElementType="TabPage" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='Cart*' aria-role='tab' tag='A' /&gt;" Guid="e8417dfa-4931-4e22-a976-16eddc235421" InformativeScreenshot="2c7bb37a4ec32bf991c4660a8195b968.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/WAQshC50jkCRrYbBc8xQWQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                </uix:NClick.Target>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </uix:NClick>
+                            </Sequence>
+                          </ActivityAction>
+                        </ui:RetryScope.ActivityBody>
+                        <ui:RetryScope.Condition>
+                          <ActivityFunc x:TypeArguments="x:Boolean" />
+                        </ui:RetryScope.Condition>
+                      </ui:RetryScope>
+                      <uix:NCheckState CheckWindowActive="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Check cart holds a requisition" Exists="{x:Null}" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="710,1128" sap2010:WorkflowViewState.IdRef="NCheckState_2" InUiElement="{x:Null}" OutUiElement="{x:Null}" Result="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" Version="V5">
+                        <uix:NCheckState.IfExists>
+                          <Sequence DisplayName="Save for Later" sap:VirtualizedContainerService.HintSize="710,942" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:LogMessage DisplayName="Log leftover cart" sap:VirtualizedContainerService.HintSize="680,48" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Warn" Message="[&quot;S3: cart not empty - saving the leftover requisition for later&quot;]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:LogMessage>
+                            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Click Cart More Actions Button (page re-renders)" sap:VirtualizedContainerService.HintSize="680,282" sap2010:WorkflowViewState.IdRef="RetryScope_7" LogRetriedExceptions="True" NumberOfRetries="4" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" StopRetryingOnBusinessException="{x:Null}">
+                              <ui:RetryScope.ActivityBody>
+                                <ActivityAction>
+                                  <Sequence DisplayName="Action (retry)" sap:VirtualizedContainerService.HintSize="680,96" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Cart More Actions Button" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_21" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                                      <uix:NClick.Target>
+                                        <uix:TargetAnchorable ContentHash="SE5acw4A40q38rT4UmOIUQ" DesignTimeRectangle="1477, 255, 36, 36" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aria-label='More Actions' class='*BaseButtonStyles_styles_base*' tag='BUTTON' /&gt;" Guid="a7962a76-cd30-47ba-940d-c0afffa4fbdf" InformativeScreenshot="81b98fd67b184ac1d29a54293c73dd21.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/eF0LSXB460KKW_X_UoGy-Q" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                      </uix:NClick.Target>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </uix:NClick>
+                                  </Sequence>
+                                </ActivityAction>
+                              </ui:RetryScope.ActivityBody>
+                              <ui:RetryScope.Condition>
+                                <ActivityFunc x:TypeArguments="x:Boolean" />
+                              </ui:RetryScope.Condition>
+                            </ui:RetryScope>
+                            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Click Cart Save for Later Menu Item (page re-renders)" sap:VirtualizedContainerService.HintSize="680,282" sap2010:WorkflowViewState.IdRef="RetryScope_8" LogRetriedExceptions="True" NumberOfRetries="4" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" StopRetryingOnBusinessException="{x:Null}">
+                              <ui:RetryScope.ActivityBody>
+                                <ActivityAction>
+                                  <Sequence DisplayName="Action (retry)" sap:VirtualizedContainerService.HintSize="680,96" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Cart Save for Later Menu Item" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_22" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                                      <uix:NClick.Target>
+                                        <uix:TargetAnchorable ContentHash="DW-dDGRe7ECif-pFlbxpxw" DesignTimeRectangle="1478, 448, 201, 48" ElementType="ListItem" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='Save for Later' aria-role='menuitem' tag='A' /&gt;" Guid="82dcfe9b-a1bc-4aae-8263-78e3a2810b94" InformativeScreenshot="ec78cc2c203c60bb667ff9b86b5604ba.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/EXQaLI-TVUazVKgAK7aFlQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                      </uix:NClick.Target>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </uix:NClick>
+                                  </Sequence>
+                                </ActivityAction>
+                              </ui:RetryScope.ActivityBody>
+                              <ui:RetryScope.Condition>
+                                <ActivityFunc x:TypeArguments="x:Boolean" />
+                              </ui:RetryScope.Condition>
+                            </ui:RetryScope>
+                            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Click Save for Later Confirm Button (WRITE: parks leftover r (page re-renders)" sap:VirtualizedContainerService.HintSize="680,282" sap2010:WorkflowViewState.IdRef="RetryScope_9" LogRetriedExceptions="True" NumberOfRetries="4" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" StopRetryingOnBusinessException="{x:Null}">
+                              <ui:RetryScope.ActivityBody>
+                                <ActivityAction>
+                                  <Sequence DisplayName="Action (retry)" sap:VirtualizedContainerService.HintSize="680,96" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Save for Later Confirm Button (WRITE: parks leftover requisition)" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_23" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                                      <uix:NClick.Target>
+                                        <uix:TargetAnchorable ContentHash="evgBLLsOD0aLB3cM85Nm9g" DesignTimeRectangle="1113, 653, 122, 44" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='saveForLaterContinue' tag='OJ-BUTTON' /&gt;&lt;webctrl tag='BUTTON' /&gt;" Guid="919d3409-9d24-4571-a603-ce51cbcc1479" InformativeScreenshot="0faabe0608afdc63502c7d04812d17f4.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/CFTVedfFlUOXpCPeACbLyg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                      </uix:NClick.Target>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </uix:NClick>
+                                  </Sequence>
+                                </ActivityAction>
+                              </ui:RetryScope.ActivityBody>
+                              <ui:RetryScope.Condition>
+                                <ActivityFunc x:TypeArguments="x:Boolean" />
+                              </ui:RetryScope.Condition>
+                            </ui:RetryScope>
+                          </Sequence>
+                        </uix:NCheckState.IfExists>
+                        <uix:NCheckState.IfNotExists>
+                          <Sequence DisplayName="Cart empty" sap:VirtualizedContainerService.HintSize="680,96" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:LogMessage DisplayName="Log cart empty" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;S3: cart empty&quot;]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:LogMessage>
+                          </Sequence>
+                        </uix:NCheckState.IfNotExists>
+                        <uix:NCheckState.Target>
+                          <uix:TargetAnchorable ContentHash="G81m48vSNkasZr5SQ8QpIQ" DesignTimeRectangle="313, 295, 1116, 16" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='*_h_pageSubtitle' tag='DIV' innertext='Requisition *' /&gt;" Guid="c9622858-289a-4e01-a724-afe8307edb3f" InformativeScreenshot="615ab73947df6e1e07d35d083ecf395b.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/P3njWDPjn0SdqGQztoHSBA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                        </uix:NCheckState.Target>
+                      </uix:NCheckState>
+                      <uix:NGoToUrl ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Go To Requisitions (after pre-clean)" sap:VirtualizedContainerService.HintSize="710,48" sap2010:WorkflowViewState.IdRef="NGoToUrl_2" InUiElement="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="{x:Null}" Url="[in_BaseUrl &amp; &quot;/fscmUI/redwood/procurement/requisitions&quot;]" Version="V5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </uix:NGoToUrl>
+                    </Sequence>
                   </Sequence>
-                </uix:NCheckState.IfExists>
-                <uix:NCheckState.IfNotExists>
-                  <Sequence DisplayName="Cart empty" sap:VirtualizedContainerService.HintSize="680,96" sap2010:WorkflowViewState.IdRef="Sequence_12">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log cart empty" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;S3: cart empty&quot;]">
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+            </ui:RetryScope>
+            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Click Create Noncatalog Request Button (page re-renders)" sap:VirtualizedContainerService.HintSize="770,240" sap2010:WorkflowViewState.IdRef="RetryScope_10" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence DisplayName="Action (retry)" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Create Noncatalog Request Button" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="710,48" sap2010:WorkflowViewState.IdRef="NClick_1" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable ContentHash="jhUPHRrJhUeyyJYD_LHR9g" DesignTimeRectangle="72, 1464, 256, 36" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='nonCatalogRequestButton' tag='OJ-BUTTON' /&gt;&lt;webctrl tag='BUTTON' /&gt;" Guid="5eef826e-16e2-493f-aae8-84de250e126e" InformativeScreenshot="008ba5dc2f9dd739fec76e0b1d12ec15.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/LlXqSoEFmUCElxnvxgkpIw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                      </uix:NClick.Target>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                    </ui:LogMessage>
+                    </uix:NClick>
                   </Sequence>
-                </uix:NCheckState.IfNotExists>
-                <uix:NCheckState.Target>
-                  <uix:TargetAnchorable ContentHash="G81m48vSNkasZr5SQ8QpIQ" DesignTimeRectangle="313, 295, 1116, 16" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='*_h_pageSubtitle' tag='DIV' innertext='Requisition *' /&gt;" Guid="c9622858-289a-4e01-a724-afe8307edb3f" InformativeScreenshot="615ab73947df6e1e07d35d083ecf395b.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/P3njWDPjn0SdqGQztoHSBA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-                </uix:NCheckState.Target>
-              </uix:NCheckState>
-              <uix:NGoToUrl ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Go To Requisitions (after pre-clean)" sap:VirtualizedContainerService.HintSize="680,48" sap2010:WorkflowViewState.IdRef="NGoToUrl_2" InUiElement="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="{x:Null}" Url="[in_BaseUrl &amp; &quot;/fscmUI/redwood/procurement/requisitions&quot;]" Version="V5">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </uix:NGoToUrl>
-            </Sequence></Sequence></ActivityAction></ui:RetryScope.ActivityBody><ui:RetryScope.Condition><ActivityFunc x:TypeArguments="x:Boolean" /></ui:RetryScope.Condition></ui:RetryScope>
-            <ui:RetryScope DisplayName="Retry Click Create Noncatalog Request Button (page re-renders)" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" sap2010:WorkflowViewState.IdRef="RetryScope_10"><ui:RetryScope.ActivityBody><ActivityAction><Sequence DisplayName="Action (retry)" sap2010:WorkflowViewState.IdRef="Sequence_17"><uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Create Noncatalog Request Button" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="710,48" sap2010:WorkflowViewState.IdRef="NClick_1" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
-              <uix:NClick.Target>
-                <uix:TargetAnchorable ContentHash="jhUPHRrJhUeyyJYD_LHR9g" DesignTimeRectangle="72, 1464, 256, 36" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='nonCatalogRequestButton' tag='OJ-BUTTON' /&gt;&lt;webctrl tag='BUTTON' /&gt;" Guid="5eef826e-16e2-493f-aae8-84de250e126e" InformativeScreenshot="008ba5dc2f9dd739fec76e0b1d12ec15.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/LlXqSoEFmUCElxnvxgkpIw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-              </uix:NClick.Target>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </uix:NClick></Sequence></ActivityAction></ui:RetryScope.ActivityBody><ui:RetryScope.Condition><ActivityFunc x:TypeArguments="x:Boolean" /></ui:RetryScope.Condition></ui:RetryScope>
-            <ui:RetryScope DisplayName="Poll Type Into Item Description Input (10 s checks)" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" sap2010:WorkflowViewState.IdRef="RetryScope_103"><ui:RetryScope.ActivityBody><ActivityAction><Sequence DisplayName="Poll Type Into Item Description Input (10 s checks) (body)" sap2010:WorkflowViewState.IdRef="Sequence_104"><uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Item Description Input" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="710,48" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" SecureText="{x:Null}" Text="[in_Profile(&quot;ItemDescription&quot;)]" Timeout="10" Version="V5">
-              <uix:NTypeInto.Target>
-                <uix:TargetAnchorable ContentHash="IQA0PyrcBUq6hlOIP0gJDw" DesignTimeRectangle="57, 410, 1334, 60" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='TEXTAREA' aaname='Item Description' /&gt;" Guid="134fcca4-4af9-47ce-94f2-6a79614bf94c" InformativeScreenshot="f208eec8c662f002bd9fd36f168dc0cd.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/SAAa4XKDfkW2tF5dGZtE4g" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-              </uix:NTypeInto.Target>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </uix:NTypeInto></Sequence></ActivityAction></ui:RetryScope.ActivityBody><ui:RetryScope.Condition><ActivityFunc x:TypeArguments="x:Boolean" /></ui:RetryScope.Condition></ui:RetryScope>
-            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Category (list drops the first typed text)" sap:VirtualizedContainerService.HintSize="710,378" sap2010:WorkflowViewState.IdRef="RetryScope_1" LogRetriedExceptions="True" NumberOfRetries="3" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" StopRetryingOnBusinessException="{x:Null}">
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+            </ui:RetryScope>
+            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Poll Type Into Item Description Input (10 s checks)" sap:VirtualizedContainerService.HintSize="770,240" sap2010:WorkflowViewState.IdRef="RetryScope_103" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence DisplayName="Poll Type Into Item Description Input (10 s checks) (body)" sap2010:WorkflowViewState.IdRef="Sequence_104">
+                    <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Item Description Input" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="710,48" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" SecureText="{x:Null}" Text="[in_Profile(&quot;ItemDescription&quot;)]" Timeout="10" Version="V5">
+                      <uix:NTypeInto.Target>
+                        <uix:TargetAnchorable ContentHash="IQA0PyrcBUq6hlOIP0gJDw" DesignTimeRectangle="57, 410, 1334, 60" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='TEXTAREA' aaname='Item Description' /&gt;" Guid="134fcca4-4af9-47ce-94f2-6a79614bf94c" InformativeScreenshot="f208eec8c662f002bd9fd36f168dc0cd.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/SAAa4XKDfkW2tF5dGZtE4g" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                      </uix:NTypeInto.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NTypeInto>
+                  </Sequence>
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+            </ui:RetryScope>
+            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Category (list drops the first typed text)" sap:VirtualizedContainerService.HintSize="770,378" sap2010:WorkflowViewState.IdRef="RetryScope_1" LogRetriedExceptions="True" NumberOfRetries="3" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" StopRetryingOnBusinessException="{x:Null}">
               <ui:RetryScope.ActivityBody>
                 <ActivityAction>
                   <Sequence DisplayName="Category" sap:VirtualizedContainerService.HintSize="680,192" sap2010:WorkflowViewState.IdRef="Sequence_3">
@@ -218,7 +320,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </uix:NTypeInto>
-                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click LOV Option Row (Category)" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_2" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click LOV Option Row (Category)" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_2" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
                       <uix:NClick.Target>
                         <uix:TargetAnchorable ContentHash="PNxYA48Q2kayzD60yIu1sQ" DesignTimeRectangle="511, 605, 368, 63" ElementType="TableRow" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl aria-role='row' tag='LI' visibleinnertext='*{0}*' /&gt;&quot;, optionText)]" Guid="fe1765be-935b-49f7-b1c6-03bb3dce508f" InformativeScreenshot="144382a93d40bf9d90b8d3a04c39ba3f.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/yQqWXSuLD0-mTzP0kU9k8g" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                       </uix:NClick.Target>
@@ -235,7 +337,7 @@
                 <ActivityFunc x:TypeArguments="x:Boolean" />
               </ui:RetryScope.Condition>
             </ui:RetryScope>
-            <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Quantity Input" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="710,48" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" SecureText="{x:Null}" Text="[in_Profile(&quot;Quantity&quot;)]" Timeout="10" Version="V5">
+            <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Quantity Input" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="770,48" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" SecureText="{x:Null}" Text="[in_Profile(&quot;Quantity&quot;)]" Timeout="10" Version="V5">
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable ContentHash="G30yAsGNYE6O5kyVJX7Myw" DesignTimeRectangle="57, 714, 428, 52" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='INPUT' aaname='Quantity' /&gt;" Guid="27ed6ecd-5d8a-4e4d-8636-5c265fcf34cc" InformativeScreenshot="19a4ee585454ed1c85fa5b30add13f1e.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/IL2ExY56r0qFYGL1dlSV0w" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
               </uix:NTypeInto.Target>
@@ -245,7 +347,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uix:NTypeInto>
-            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry UOM" sap:VirtualizedContainerService.HintSize="710,378" sap2010:WorkflowViewState.IdRef="RetryScope_2" LogRetriedExceptions="True" NumberOfRetries="3" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" StopRetryingOnBusinessException="{x:Null}">
+            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry UOM" sap:VirtualizedContainerService.HintSize="770,378" sap2010:WorkflowViewState.IdRef="RetryScope_2" LogRetriedExceptions="True" NumberOfRetries="3" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" StopRetryingOnBusinessException="{x:Null}">
               <ui:RetryScope.ActivityBody>
                 <ActivityAction>
                   <Sequence DisplayName="UOM" sap:VirtualizedContainerService.HintSize="680,192" sap2010:WorkflowViewState.IdRef="Sequence_4">
@@ -277,7 +379,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </Assign>
-                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click LOV Option Row (UOM)" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_3" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click LOV Option Row (UOM)" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_3" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
                       <uix:NClick.Target>
                         <uix:TargetAnchorable ContentHash="PNxYA48Q2kayzD60yIu1sQ" DesignTimeRectangle="511, 605, 368, 63" ElementType="TableRow" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl aria-role='row' tag='LI' visibleinnertext='*{0}*' /&gt;&quot;, optionText)]" Guid="fe1765be-935b-49f7-b1c6-03bb3dce508f" InformativeScreenshot="144382a93d40bf9d90b8d3a04c39ba3f.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/yQqWXSuLD0-mTzP0kU9k8g" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                       </uix:NClick.Target>
@@ -294,7 +396,7 @@
                 <ActivityFunc x:TypeArguments="x:Boolean" />
               </ui:RetryScope.Condition>
             </ui:RetryScope>
-            <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Price Input" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="680,48" sap2010:WorkflowViewState.IdRef="NTypeInto_5" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" SecureText="{x:Null}" Text="[in_Profile(&quot;Price&quot;)]" Timeout="10" Version="V5">
+            <uix:NTypeInto ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into Price Input" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="770,48" sap2010:WorkflowViewState.IdRef="NTypeInto_5" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" SecureText="{x:Null}" Text="[in_Profile(&quot;Price&quot;)]" Timeout="10" Version="V5">
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable ContentHash="Ta3gqV2350yxwEP9LGnfqg" DesignTimeRectangle="965, 714, 428, 52" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='INPUT' aaname='Price' /&gt;" Guid="100f8048-e687-4474-bdc7-e3911276909f" InformativeScreenshot="27c1adb02411bd301f2186f88aa8c5f9.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/B9Sfrv2o2kez4n2fdrnMrQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
               </uix:NTypeInto.Target>
@@ -304,7 +406,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uix:NTypeInto>
-            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Supplier (list drops the first typed text)" sap:VirtualizedContainerService.HintSize="710,378" sap2010:WorkflowViewState.IdRef="RetryScope_3" LogRetriedExceptions="True" NumberOfRetries="4" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" StopRetryingOnBusinessException="{x:Null}">
+            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Supplier (list drops the first typed text)" sap:VirtualizedContainerService.HintSize="770,378" sap2010:WorkflowViewState.IdRef="RetryScope_3" LogRetriedExceptions="True" NumberOfRetries="4" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" StopRetryingOnBusinessException="{x:Null}">
               <ui:RetryScope.ActivityBody>
                 <ActivityAction>
                   <Sequence DisplayName="Supplier" sap:VirtualizedContainerService.HintSize="680,192" sap2010:WorkflowViewState.IdRef="Sequence_5">
@@ -336,7 +438,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </uix:NTypeInto>
-                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click LOV Option Row (Supplier)" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_4" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click LOV Option Row (Supplier)" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="NClick_4" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
                       <uix:NClick.Target>
                         <uix:TargetAnchorable ContentHash="PNxYA48Q2kayzD60yIu1sQ" DesignTimeRectangle="511, 605, 368, 63" ElementType="TableRow" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl aria-role='row' tag='LI' visibleinnertext='*{0}*' /&gt;&quot;, optionText)]" Guid="fe1765be-935b-49f7-b1c6-03bb3dce508f" InformativeScreenshot="144382a93d40bf9d90b8d3a04c39ba3f.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/yQqWXSuLD0-mTzP0kU9k8g" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                       </uix:NClick.Target>
@@ -353,16 +455,27 @@
                 <ActivityFunc x:TypeArguments="x:Boolean" />
               </ui:RetryScope.Condition>
             </ui:RetryScope>
-            <ui:RetryScope DisplayName="Retry Click Add to Cart Button (WRITE: creates requisition) (page re-renders)" LogRetriedExceptions="True" NumberOfRetries="4" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" sap2010:WorkflowViewState.IdRef="RetryScope_11"><ui:RetryScope.ActivityBody><ActivityAction><Sequence DisplayName="Action (retry)" sap2010:WorkflowViewState.IdRef="Sequence_18"><uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Add to Cart Button (WRITE: creates requisition)" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="710,48" sap2010:WorkflowViewState.IdRef="NClick_5" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
-              <uix:NClick.Target>
-                <uix:TargetAnchorable ContentHash="XEEAHyHQRkie1QPGx4gPTw" DesignTimeRectangle="1758, 255, 107, 36" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='BUTTON' aaname='Add to Cart' /&gt;" Guid="34a16d3f-ab38-4b4f-acb0-e4d412f41106" InformativeScreenshot="ff47ab494a5eb5e888654427705a74e6.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/twUI6mj2skGZY4y8J0v2Nw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-              </uix:NClick.Target>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </uix:NClick></Sequence></ActivityAction></ui:RetryScope.ActivityBody><ui:RetryScope.Condition><ActivityFunc x:TypeArguments="x:Boolean" /></ui:RetryScope.Condition></ui:RetryScope>
+            <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Click Add to Cart Button (WRITE: creates requisition) (page re-renders)" sap2010:WorkflowViewState.IdRef="RetryScope_11" LogRetriedExceptions="True" NumberOfRetries="4" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" StopRetryingOnBusinessException="{x:Null}">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence DisplayName="Action (retry)" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Add to Cart Button (WRITE: creates requisition)" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="710,48" sap2010:WorkflowViewState.IdRef="NClick_5" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable ContentHash="XEEAHyHQRkie1QPGx4gPTw" DesignTimeRectangle="1758, 255, 107, 36" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='BUTTON' aaname='Add to Cart' /&gt;" Guid="34a16d3f-ab38-4b4f-acb0-e4d412f41106" InformativeScreenshot="ff47ab494a5eb5e888654427705a74e6.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/twUI6mj2skGZY4y8J0v2Nw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                      </uix:NClick.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NClick>
+                  </Sequence>
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+            </ui:RetryScope>
             <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Cart (page re-renders after Add to Cart)" sap2010:WorkflowViewState.IdRef="RetryScope_4" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
               <ui:RetryScope.ActivityBody>
                 <ActivityAction>
@@ -377,7 +490,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </uix:NClick>
-                    <uix:NGetText ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Get Text Cart Requisition Number Text" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="680,48" sap2010:WorkflowViewState.IdRef="NGetText_1" InScope="{x:Null}" InUiElement="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" ScrapingOptions="{x:Null}" TextString="[strCartTitle]" Timeout="10" Version="V5" WordsInfo="{x:Null}">
+                    <uix:NGetText ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Get Text Cart Requisition Number Text" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="680,48" sap2010:WorkflowViewState.IdRef="NGetText_1" InScope="{x:Null}" InUiElement="{x:Null}" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" ScrapingOptions="{x:Null}" TextString="[strCartTitle]" Timeout="10" Version="V5" WordsInfo="{x:Null}">
                       <uix:NGetText.Target>
                         <uix:TargetAnchorable ContentHash="G81m48vSNkasZr5SQ8QpIQ" DesignTimeRectangle="313, 295, 1116, 16" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='*_h_pageSubtitle' tag='DIV' innertext='Requisition *' /&gt;" Guid="c9622858-289a-4e01-a724-afe8307edb3f" InformativeScreenshot="615ab73947df6e1e07d35d083ecf395b.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/P3njWDPjn0SdqGQztoHSBA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                       </uix:NGetText.Target>
@@ -401,31 +514,103 @@
               <Assign.Value>
                 <InArgument x:TypeArguments="x:String">[Regex.Match(strCartTitle, "\d+").Value]</InArgument>
               </Assign.Value>
-            </Assign><uta:VerifyControlAttribute AlternativeVerificationTitle="S3 cart shows the requisition number" ContinueOnFailure="True" DisplayName="Verify S3 cart shows the requisition number" Operator="Contains" OutputArgument="TextString" TakeScreenshotInCaseOfFailingAssertion="True" TakeScreenshotInCaseOfSucceedingAssertion="True" sap2010:WorkflowViewState.IdRef="VerifyControlAttribute_90"><uta:VerifyControlAttribute.ActivityToTest><ActivityAction><uix:NGetText DisplayName="Get Text - S3 cart shows the requisition number" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NGetText_90" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" Version="V5"><uix:NGetText.Target><uix:TargetAnchorable ContentHash="G81m48vSNkasZr5SQ8QpIQ" DesignTimeRectangle="313, 295, 1116, 16" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='*_h_pageSubtitle' tag='DIV' innertext='Requisition *' /&gt;" Guid="3aad31ff-9d1d-4553-aabe-8298c72a9768" InformativeScreenshot="615ab73947df6e1e07d35d083ecf395b.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/P3njWDPjn0SdqGQztoHSBA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" /></uix:NGetText.Target></uix:NGetText></ActivityAction></uta:VerifyControlAttribute.ActivityToTest><uta:VerifyControlAttribute.Expression><InArgument x:TypeArguments="x:String">[out_RequisitionNumber]</InArgument></uta:VerifyControlAttribute.Expression></uta:VerifyControlAttribute>
+            </Assign>
+            <uta:VerifyControlAttribute AlternativeVerificationTitle="S3 cart shows the requisition number" ContinueOnFailure="True" DisplayName="Verify S3 cart shows the requisition number" sap2010:WorkflowViewState.IdRef="VerifyControlAttribute_90" KeepScreenshots="{x:Null}" Operator="Contains" OutputArgument="TextString" OutputMessageFormat="{x:Null}" Result="{x:Null}" ScreenshotsPath="{x:Null}" TakeScreenshotInCaseOfFailingAssertion="True" TakeScreenshotInCaseOfSucceedingAssertion="True">
+              <uta:VerifyControlAttribute.ActivityToTest>
+                <ActivityAction>
+                  <uix:NGetText ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Get Text - S3 cart shows the requisition number" HealingAgentBehavior="Disabled" sap2010:WorkflowViewState.IdRef="NGetText_90" InScope="{x:Null}" InUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" ScrapingOptions="{x:Null}" Timeout="10" Version="V5">
+                    <uix:NGetText.OutUiElement>
+                      <OutArgument x:TypeArguments="ui:UiElement">
+                        <VariableReference x:TypeArguments="ui:UiElement">
+                          <VariableReference.Variable>
+                            <Variable x:TypeArguments="ui:UiElement" Name="_autogenerated_OutUiElement" />
+                          </VariableReference.Variable>
+                        </VariableReference>
+                      </OutArgument>
+                    </uix:NGetText.OutUiElement>
+                    <uix:NGetText.Target>
+                      <uix:TargetAnchorable ContentHash="G81m48vSNkasZr5SQ8QpIQ" DesignTimeRectangle="313, 295, 1116, 16" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='*_h_pageSubtitle' tag='DIV' innertext='Requisition *' /&gt;" Guid="3aad31ff-9d1d-4553-aabe-8298c72a9768" InformativeScreenshot="615ab73947df6e1e07d35d083ecf395b.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/P3njWDPjn0SdqGQztoHSBA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                    </uix:NGetText.Target>
+                    <uix:NGetText.Text>
+                      <OutArgument x:TypeArguments="x:Object">
+                        <VariableReference x:TypeArguments="x:Object">
+                          <VariableReference.Variable>
+                            <Variable x:TypeArguments="x:Object" Name="_autogenerated_Text" />
+                          </VariableReference.Variable>
+                        </VariableReference>
+                      </OutArgument>
+                    </uix:NGetText.Text>
+                    <uix:NGetText.TextString>
+                      <OutArgument x:TypeArguments="x:String">
+                        <VariableReference x:TypeArguments="x:String">
+                          <VariableReference.Variable>
+                            <Variable x:TypeArguments="x:String" x:Name="__ReferenceID0" Name="_autogenerated_TextString" />
+                          </VariableReference.Variable>
+                        </VariableReference>
+                      </OutArgument>
+                    </uix:NGetText.TextString>
+                    <uix:NGetText.WordsInfo>
+                      <OutArgument x:TypeArguments="scg:IEnumerable(uix:NWordInfo)">
+                        <VariableReference x:TypeArguments="scg:IEnumerable(uix:NWordInfo)">
+                          <VariableReference.Variable>
+                            <Variable x:TypeArguments="scg:IEnumerable(uix:NWordInfo)" Name="_autogenerated_WordsInfo" />
+                          </VariableReference.Variable>
+                        </VariableReference>
+                      </OutArgument>
+                    </uix:NGetText.WordsInfo>
+                  </uix:NGetText>
+                </ActivityAction>
+              </uta:VerifyControlAttribute.ActivityToTest>
+              <uta:VerifyControlAttribute.ArgumentsBridgeActivity>
+                <ActivityFunc x:TypeArguments="x:Object">
+                  <uta:ArgumentsBridge sap2010:WorkflowViewState.IdRef="ArgumentsBridge_1" Result="{x:Null}">
+                    <uta:ArgumentsBridge.Input>
+                      <InArgument x:TypeArguments="x:Object">
+                        <VariableValue x:TypeArguments="x:Object" Variable="{x:Reference __ReferenceID0}" />
+                      </InArgument>
+                    </uta:ArgumentsBridge.Input>
+                  </uta:ArgumentsBridge>
+                </ActivityFunc>
+              </uta:VerifyControlAttribute.ArgumentsBridgeActivity>
+              <uta:VerifyControlAttribute.Expression>
+                <InArgument x:TypeArguments="x:String">[out_RequisitionNumber]</InArgument>
+              </uta:VerifyControlAttribute.Expression>
+            </uta:VerifyControlAttribute>
             <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Retry Submit until it lands (cart may still be settling)" sap2010:WorkflowViewState.IdRef="RetryScope_5" LogRetriedExceptions="True" NumberOfRetries="3" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:03" StopRetryingOnBusinessException="{x:Null}">
               <ui:RetryScope.ActivityBody>
                 <ActivityAction>
                   <Sequence DisplayName="Submit and confirm" sap2010:WorkflowViewState.IdRef="Sequence_9">
-                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Cart Submit Button (WRITE: submits requisition)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_7" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
+                    <uix:NClick ActivateBefore="False" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click Cart Submit Button (WRITE: submits requisition)" HealingAgentBehavior="Disabled" sap2010:WorkflowViewState.IdRef="NClick_7" InScope="{x:Null}" InUiElement="{x:Null}" InteractionMode="{x:Null}" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" UnblockInput="{x:Null}" Version="V5">
                       <uix:NClick.Target>
                         <uix:TargetAnchorable ContentHash="y04iQ_nepkKGdArvSA03vg" DesignTimeRectangle="1529, 255, 80, 36" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='*_h_primaryAction' tag='OJ-C-BUTTON' /&gt;&lt;webctrl aria-label='Submit' tag='BUTTON' /&gt;" Guid="50cb8e9d-257e-4e04-be36-e78cd721865e" InformativeScreenshot="77d66575f739a74567c97b93a0614770.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/CKOGxnMeIU2YkQScoedfmw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                       </uix:NClick.Target>
                     </uix:NClick>
-                    <ui:RetryScope DisplayName="Poll for Requisitions home after Submit (10 s checks)" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" sap2010:WorkflowViewState.IdRef="RetryScope_105"><ui:RetryScope.ActivityBody><ActivityAction><Sequence DisplayName="Poll for Requisitions home after Submit (10 s checks) (body)" sap2010:WorkflowViewState.IdRef="Sequence_106"><uix:NCheckState CheckWindowActive="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Check submit landed (Requisitions home shows Create Noncatalog Request)" Exists="{x:Null}" HealingAgentBehavior="Disabled" sap2010:WorkflowViewState.IdRef="NCheckState_1" InScope="{x:Null}" InUiElement="{x:Null}" OutUiElement="{x:Null}" Result="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" Version="V5">
-                      <uix:NCheckState.IfExists>
-                        <Sequence DisplayName="Submitted" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                          <ui:LogMessage DisplayName="Log submit confirmed" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[&quot;S3 submit confirmed&quot;]" />
-                        </Sequence>
-                      </uix:NCheckState.IfExists>
-                      <uix:NCheckState.IfNotExists>
-                        <Sequence DisplayName="Not submitted" sap2010:WorkflowViewState.IdRef="Sequence_8">
-                          <Throw DisplayName="Throw submit not confirmed" Exception="[New Exception(&quot;S3: cart Submit did not land for requisition &quot; &amp; out_RequisitionNumber)]" sap2010:WorkflowViewState.IdRef="Throw_1" />
-                        </Sequence>
-                      </uix:NCheckState.IfNotExists>
-                      <uix:NCheckState.Target>
-                        <uix:TargetAnchorable ContentHash="jhUPHRrJhUeyyJYD_LHR9g" DesignTimeRectangle="72, 1464, 256, 36" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='nonCatalogRequestButton' tag='OJ-BUTTON' /&gt;&lt;webctrl tag='BUTTON' /&gt;" Guid="7f5098c8-3d28-431c-9736-7cebddd82005" InformativeScreenshot="008ba5dc2f9dd739fec76e0b1d12ec15.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/LlXqSoEFmUCElxnvxgkpIw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-                      </uix:NCheckState.Target>
-                    </uix:NCheckState></Sequence></ActivityAction></ui:RetryScope.ActivityBody><ui:RetryScope.Condition><ActivityFunc x:TypeArguments="x:Boolean" /></ui:RetryScope.Condition></ui:RetryScope>
+                    <ui:RetryScope ContinueOnError="{x:Null}" DisplayName="Poll for Requisitions home after Submit (10 s checks)" sap2010:WorkflowViewState.IdRef="RetryScope_105" LogRetriedExceptions="True" NumberOfRetries="12" RetriedExceptionsLogLevel="Trace" RetryInterval="00:00:00" StopRetryingOnBusinessException="{x:Null}">
+                      <ui:RetryScope.ActivityBody>
+                        <ActivityAction>
+                          <Sequence DisplayName="Poll for Requisitions home after Submit (10 s checks) (body)" sap2010:WorkflowViewState.IdRef="Sequence_106">
+                            <uix:NCheckState CheckWindowActive="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Check submit landed (Requisitions home shows Create Noncatalog Request)" Exists="{x:Null}" HealingAgentBehavior="Disabled" sap2010:WorkflowViewState.IdRef="NCheckState_1" InScope="{x:Null}" InUiElement="{x:Null}" OutUiElement="{x:Null}" Result="{x:Null}" ScopeIdentifier="68ca8dbc-6746-4214-9a36-317ce334a604" Timeout="10" Version="V5">
+                              <uix:NCheckState.IfExists>
+                                <Sequence DisplayName="Submitted" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                  <ui:LogMessage DisplayName="Log submit confirmed" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[&quot;S3 submit confirmed&quot;]" />
+                                </Sequence>
+                              </uix:NCheckState.IfExists>
+                              <uix:NCheckState.IfNotExists>
+                                <Sequence DisplayName="Not submitted" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                  <Throw DisplayName="Throw submit not confirmed" Exception="[New Exception(&quot;S3: cart Submit did not land for requisition &quot; &amp; out_RequisitionNumber)]" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                                </Sequence>
+                              </uix:NCheckState.IfNotExists>
+                              <uix:NCheckState.Target>
+                                <uix:TargetAnchorable ContentHash="jhUPHRrJhUeyyJYD_LHR9g" DesignTimeRectangle="72, 1464, 256, 36" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='nonCatalogRequestButton' tag='OJ-BUTTON' /&gt;&lt;webctrl tag='BUTTON' /&gt;" Guid="7f5098c8-3d28-431c-9736-7cebddd82005" InformativeScreenshot="008ba5dc2f9dd739fec76e0b1d12ec15.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/LlXqSoEFmUCElxnvxgkpIw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood/procurement/requisitions*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                              </uix:NCheckState.Target>
+                            </uix:NCheckState>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:RetryScope.ActivityBody>
+                      <ui:RetryScope.Condition>
+                        <ActivityFunc x:TypeArguments="x:Boolean" />
+                      </ui:RetryScope.Condition>
+                    </ui:RetryScope>
                   </Sequence>
                 </ActivityAction>
               </ui:RetryScope.ActivityBody>

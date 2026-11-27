@@ -37,6 +37,7 @@
   <Sequence DisplayName="Approve own task from the Notifications panel" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="taskTitle" />
+      <Variable x:TypeArguments="x:Boolean" Name="approveClicked" Default="False" />
     </Sequence.Variables>
     <Assign DisplayName="taskTitle = in_TaskTitle" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
@@ -64,11 +65,63 @@
                         <uix:TargetAnchorable ContentHash="MBse14uViU2n1upWon7HLA" DesignTimeRectangle="1801, 198, 24, 24" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='ojSpSimpleUIShellNotifications_NOa1' tag='A' /&gt;" Guid="f9392352-6fc9-44a9-9a20-040df1c6656c" InformativeScreenshot="d5ca40ca04eef58caa65e1fc8ffc1b7f.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/ir9GRl_c4EejDM_rohgiqg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                       </uix:NClick.Target>
                     </uix:NClick></Sequence></ActivityAction></ui:RetryScope.ActivityBody><ui:RetryScope.Condition><ActivityFunc x:TypeArguments="x:Boolean" /></ui:RetryScope.Condition></ui:RetryScope>
-                    <uix:NClick ActivateBefore="False" ClickType="Single" DisplayName="Click Notification Approve Button (WRITE: approves)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="a5318ddf-895e-4791-8536-bc8f88e8b5fd" Timeout="10" Version="V5">
+                    <If Condition="[Not approveClicked]" DisplayName="If Approve not clicked yet (on retry, click again only if our button is still there)" sap2010:WorkflowViewState.IdRef="If_1">
+                      <If.Then>
+                        <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_105">
+                    <uix:NClick ActivateBefore="False" ClickType="Single" DisplayName="Click Notification Approve Button (WRITE: approves)" HealingAgentBehavior="Disabled" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="a5318ddf-895e-4791-8536-bc8f88e8b5fd" Timeout="10" Version="V5">
                       <uix:NClick.Target>
                         <uix:TargetAnchorable ContentHash="lWy-KkjmQkm-APlizJg8hg" DesignTimeRectangle="1593, 490, 92, 44" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='LI' aria-role='row' visibleinnertext='*{0}*' /&gt;&lt;webctrl tag='BUTTON' aaname='Approve' /&gt;&quot;, taskTitle)]" Guid="eb7480f8-0397-4c66-a281-efa59b191db1" InformativeScreenshot="b982b86ed79c6dac221dcb240b8bb44f.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/CO-_pynyRkSgT3GQwsmQ4A" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                       </uix:NClick.Target>
                     </uix:NClick>
+                          <Assign DisplayName="approveClicked = True" sap2010:WorkflowViewState.IdRef="Assign_2">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Boolean">[approveClicked]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence DisplayName="Else" sap2010:WorkflowViewState.IdRef="Sequence_106">
+                          <uix:NCheckState DisplayName="Check our Approve button still there (earlier click may have landed late)" HealingAgentBehavior="Disabled" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="a5318ddf-895e-4791-8536-bc8f88e8b5fd" Timeout="10" Version="V5">
+                            <uix:NCheckState.IfExists>
+                              <Sequence DisplayName="Still pending" sap2010:WorkflowViewState.IdRef="Sequence_107">
+                                <uix:NClick ActivateBefore="False" ClickType="Single" DisplayName="Click Notification Approve Button again (WRITE: approves)" HealingAgentBehavior="Disabled" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="a5318ddf-895e-4791-8536-bc8f88e8b5fd" Timeout="10" Version="V5">
+                                  <uix:NClick.Target>
+                                    <uix:TargetAnchorable ContentHash="lWy-KkjmQkm-APlizJg8hg" DesignTimeRectangle="1593, 490, 92, 44" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='LI' aria-role='row' visibleinnertext='*{0}*' /&gt;&lt;webctrl tag='BUTTON' aaname='Approve' /&gt;&quot;, taskTitle)]" Guid="3c9d7e15-6a2f-4b8e-9d04-71e5a8c2f6b9" InformativeScreenshot="b982b86ed79c6dac221dcb240b8bb44f.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/CO-_pynyRkSgT3GQwsmQ4A" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                  </uix:NClick.Target>
+                                </uix:NClick>
+                              </Sequence>
+                            </uix:NCheckState.IfExists>
+                            <uix:NCheckState.IfNotExists>
+                              <Sequence DisplayName="Button already gone" sap2010:WorkflowViewState.IdRef="Sequence_108">
+                                <ui:LogMessage DisplayName="Log approve already landed" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Approve landed late (our button gone on recheck): &quot; &amp; taskTitle]" />
+                              </Sequence>
+                            </uix:NCheckState.IfNotExists>
+                            <uix:NCheckState.Target>
+                              <uix:TargetAnchorable ContentHash="lWy-KkjmQkm-APlizJg8hg" DesignTimeRectangle="1593, 490, 92, 44" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='LI' aria-role='row' visibleinnertext='*{0}*' /&gt;&lt;webctrl tag='BUTTON' aaname='Approve' /&gt;&quot;, taskTitle)]" Guid="a7e2c9d4-18b3-4f6a-8e5d-2b9c0f4a7e61" InformativeScreenshot="b982b86ed79c6dac221dcb240b8bb44f.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/CO-_pynyRkSgT3GQwsmQ4A" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                            </uix:NCheckState.Target>
+                          </uix:NCheckState>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                    <uix:NCheckState DelayBefore="15" DisplayName="Check approve landed (our task's Approve button gone)" HealingAgentBehavior="Disabled" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="a5318ddf-895e-4791-8536-bc8f88e8b5fd" Timeout="5" Version="V5">
+                      <uix:NCheckState.IfExists>
+                        <Sequence DisplayName="Still pending" sap2010:WorkflowViewState.IdRef="Sequence_103">
+                          <Throw DisplayName="Throw approve did not land (retry)" Exception="[New Exception(&quot;Approve did not land for: &quot; &amp; taskTitle)]" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                        </Sequence>
+                      </uix:NCheckState.IfExists>
+                      <uix:NCheckState.IfNotExists>
+                        <Sequence DisplayName="Approved" sap2010:WorkflowViewState.IdRef="Sequence_104">
+                          <ui:LogMessage DisplayName="Log approve confirmed" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[&quot;Approve confirmed (button gone): &quot; &amp; taskTitle]" />
+                        </Sequence>
+                      </uix:NCheckState.IfNotExists>
+                      <uix:NCheckState.Target>
+                        <uix:TargetAnchorable ContentHash="lWy-KkjmQkm-APlizJg8hg" DesignTimeRectangle="1593, 490, 92, 44" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='LI' aria-role='row' visibleinnertext='*{0}*' /&gt;&lt;webctrl tag='BUTTON' aaname='Approve' /&gt;&quot;, taskTitle)]" Guid="fbf78655-98e6-4823-b73a-dcfcaebb7f26" InformativeScreenshot="b982b86ed79c6dac221dcb240b8bb44f.jpg" Reference="uR7IZSwNKU6CNcqBhFFDJg/CO-_pynyRkSgT3GQwsmQ4A" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Oracle Fusion Cloud Applications' url='https://fa-eqjz-dev16-saasfademo1.ds-fa.oraclepdemos.com/fscmUI/redwood*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                      </uix:NCheckState.Target>
+                    </uix:NCheckState>
                   </Sequence>
                 </ActivityAction>
               </ui:RetryScope.ActivityBody>
